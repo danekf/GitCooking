@@ -3,6 +3,7 @@ import {} from "../helpers/profileHelpers";
 
 export default function UserProfile() {
   return (
+    
     <header>
     <h1>Username</h1>
     <p>The recipe sideways scoll item using recipe cards</p>

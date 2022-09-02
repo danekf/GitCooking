@@ -1,6 +1,12 @@
 export default function Login() {
   return (
-    <header><h1>Login to GitCooking!</h1></header>
+    <body>
+      <form>
+        <input type='text' id='username' name='username' placeholder="username"></input>
+        <input type='password' id='password' name='password' placeholder='password'></input>
+        <button>Submit</button>
+      </form>
+    </body>
 
   );  
 }

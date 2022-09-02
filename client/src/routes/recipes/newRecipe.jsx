@@ -17,6 +17,7 @@ export default function NewRecipe(props) {
       <p>+Add Component and logic</p>
       props.instructions.map here, creating list item for each prop passed
 
+    <h2>Tags placeholder</h2>
     </header>
   );  
 }

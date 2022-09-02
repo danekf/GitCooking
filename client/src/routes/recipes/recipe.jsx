@@ -13,6 +13,8 @@ export default function Recipe() {
       <h2>:userName</h2>
       <h3><img src='https://media.istockphoto.com/photos/fork-picture-id149341227' width='50px'></img>Fork it</h3>
       <h3><img src='https://cdn.shopify.com/s/files/1/0780/9439/products/gestrura-spoon-silver.jpg?v=1640188238' width='50px'></img>Spoon it</h3>
+      {/* Delete feature only for if user is on their own recipe */}
+      <h3><img src='https://thumbs.dreamstime.com/b/knife-479028.jpg' width='50px'></img>Knife it</h3>
       <h3>Rating from MUI?</h3>
       
       <h2>Ingredients</h2>
@@ -26,6 +28,8 @@ export default function Recipe() {
       </ul>
 
       <div>Picture of food here for desktop view</div>
+
+      <h2>Tags placeholder</h2>
 
 
     </body>
