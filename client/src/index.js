@@ -12,6 +12,8 @@ import Menu from "./routes/menu";
 import UserProfile from "./routes/userProfile";
 import Login from './routes/login';
 import Register from './routes/register';
+import NewRecipe from './routes/newRecipe';
+import Recipe from './routes/recipe';
 
 
 
@@ -22,11 +24,13 @@ root.render(
       <Route path = '/' element= {<App />} > 
         <Route index element = {<Home />} />
         <Route path = 'favourites' element = {<Favourites />} />
-        <Route path = 'userProfile' element = {<UserProfile />} />
+        <Route path = 'users/:userName' element = {<UserProfile />}/>
+        <Route path = 'users/:userName/:recipeId' element = {<Recipe />} />
         <Route path = 'chat' element = {<Chat />} />
         <Route path = 'menu' element = {<Menu />} />
         <Route path = 'login' element = {<Login />} />
         <Route path = 'register' element = {<Register />} />
+        <Route path = 'newRecipe' element = {<NewRecipe />} />
       </Route>
     </Routes>
   </BrowserRouter>
