@@ -16,7 +16,6 @@ import NewRecipe from './routes/newRecipe';
 import Recipe from './routes/recipe';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -36,6 +35,7 @@ root.render(
             // ingredients={}
             // instructions={}
             // equipment={}
+            //...
           />} 
         />
       </Route>
