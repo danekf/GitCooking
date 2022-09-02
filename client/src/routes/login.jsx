@@ -4,7 +4,7 @@ export default function Login() {
       <form>
         <input type='text' id='username' name='username' placeholder="username"></input>
         <input type='password' id='password' name='password' placeholder='password'></input>
-        <button>Submit</button>
+        <button>Login</button>
       </form>
     </body>
 

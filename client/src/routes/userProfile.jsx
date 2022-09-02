@@ -1,8 +1,12 @@
-import RecipeList from './recipes/recipeList'
 import {} from "../helpers/profileHelpers";
 import { Link } from "react-router-dom";
 
+import RecipeList from './recipes/recipeList'
+
+
+
 export default function UserProfile() {
+  // const profileData = getProfileData();
   return (
 
     <header>
@@ -11,7 +15,7 @@ export default function UserProfile() {
     <RecipeList 
       mode = ":userId recipes"
     />
-    <p>Bio goes here</p>
+    <p>Bio goes here (ex: profileData.bio)</p>
     <p>Contact info goes here</p>
     <p>Socials goes here</p>
     <p>Qualifications go here</p>
