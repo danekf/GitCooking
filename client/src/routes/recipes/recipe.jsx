@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import CommentList from "../comments/commentList";
+
 
 export default function Recipe() {
   return (
@@ -19,11 +21,8 @@ export default function Recipe() {
 
       <h2>Instructions</h2>
 
-      <h2>Comments: </h2>
       <ul>
-        <li>comment</li>
-        <li>comment</li>
-        <li>comment</li>
+      <CommentList />
       </ul>
 
       <div>Picture of food here for desktop view</div>

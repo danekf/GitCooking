@@ -12,8 +12,8 @@ import Menu from "./routes/menu";
 import UserProfile from "./routes/userProfile";
 import Login from './routes/login';
 import Register from './routes/register';
-import NewRecipe from './routes/newRecipe';
-import Recipe from './routes/recipe';
+import NewRecipe from './routes/recipes/newRecipe';
+import Recipe from './routes/recipes/recipe';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

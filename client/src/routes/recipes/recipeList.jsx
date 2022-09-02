@@ -1,4 +1,4 @@
-import RecipeCard from "./components/recipeCard";
+import RecipeCard from "./recipeCard"
 
 export default function RecipeList(props){
   const mode = props.mode;

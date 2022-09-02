@@ -1,4 +1,4 @@
-import RecipeList from './recipeList'
+import RecipeList from './recipes/recipeList'
 import {} from "../helpers/profileHelpers";
 
 export default function UserProfile() {

@@ -1,4 +1,4 @@
-import RecipeList from './recipeList'
+import RecipeList from './recipes/recipeList'
 
 export default function Home() {
   return (
