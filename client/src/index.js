@@ -7,7 +7,7 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./routes/home";
 import Chat from "./routes/chat";
-import Favourites from "./routes/favourites";
+import Favourites from "./routes/profile_components/favourites";
 import Menu from "./routes/menu";
 import UserProfile from "./routes/userProfile";
 import Login from './routes/login';

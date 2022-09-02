@@ -15,16 +15,23 @@ function App() {
 
       {/* Logged in stuff here */}
       <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png" width = "50px" alt='profilePic'></img>
+      Implement "click to edit" on profile pick
       <Link to='/newRecipe'>Create a new recipe</Link>
 
     </header>
+    
+    <body>
       <Outlet />
+    </body>
+
+    <footer>
       <nav>
         <Link to="/users/:userName">Profile</Link>
         <Link to="/favourites">Favourites</Link>
         <Link to="/chat">Chat</Link>
         <Link to="/menu">Menu</Link>
       </nav>
+    </footer>
     </div>
   );
 }
