@@ -31,6 +31,13 @@ root.render(
         <Route path = 'login' element = {<Login />} />
         <Route path = 'register' element = {<Register />} />
         <Route path = 'newRecipe' element = {<NewRecipe />} />
+        <Route path = 'forkRecipe' element = {
+          <NewRecipe 
+            // ingredients={}
+            // instructions={}
+            // equipment={}
+          />} 
+        />
       </Route>
     </Routes>
   </BrowserRouter>
