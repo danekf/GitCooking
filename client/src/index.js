@@ -5,38 +5,38 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Link, BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from "./routes/home";
-import Chat from "./routes/chat";
-import Favourites from "./routes/profile_components/favourites";
-import Menu from "./routes/menu";
-import UserProfile from "./routes/userProfile";
+import Home from './routes/home';
+import Chat from './routes/chat';
+import Menu from './routes/menu';
+import UserProfile from './routes/userProfile';
 import Login from './routes/login';
 import Register from './routes/register';
 import NewRecipe from './routes/recipes/newRecipe';
 import Recipe from './routes/recipes/recipe';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path = '/' element= {<App />} > 
-        <Route index element = {<Home />} />
-        <Route path = 'favourites' element = {<Favourites />} />
-        <Route path = 'users/:userName' element = {<UserProfile />}/>
-        <Route path = 'users/:userName/:recipeId' element = {<Recipe />} />
-        <Route path = 'chat' element = {<Chat />} />
-        <Route path = 'menu' element = {<Menu />} />
-        <Route path = 'login' element = {<Login />} />
-        <Route path = 'register' element = {<Register />} />
-        <Route path = 'newRecipe' element = {<NewRecipe />} />
-        <Route path = 'forkRecipe' element = {
-          <NewRecipe 
+      <Route path='/' element={<App />}>
+        <Route index element={<Home />} />
+        <Route path='users/:userName' element={<UserProfile />} />
+        <Route path='users/:userName/:recipeId' element={<Recipe />} />
+        <Route path='chat' element={<Chat />} />
+        <Route path='menu' element={<Menu />} />
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
+        <Route path='newRecipe' element={<NewRecipe />} />
+        <Route
+          path='forkRecipe'
+          element={
+            <NewRecipe
             // ingredients={}
             // instructions={}
             // equipment={}
             //...
-          />} 
+            />
+          }
         />
       </Route>
     </Routes>
