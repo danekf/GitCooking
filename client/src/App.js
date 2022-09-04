@@ -6,6 +6,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <head>
+        <meta charset="UTF-8"/>
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        {/* Font Awesome */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      </head>
     <header>
       <Link to='/'><img src='https://www.pngfind.com/pngs/m/597-5975111_unknown-small-copy-small-circle-png-transparent-png.png' width = '50px' alt="gitCookingLogo"></img>Home</Link>
       {/* Condiditional render here for what to show */}
@@ -24,13 +32,13 @@ function App() {
       <Outlet />
     </body>
 
-    <footer>
-      <nav>
-        <Link to="/users/:userName">Profile</Link>
-        <Link to="/favourites">Favourites</Link>
-        <Link to="/chat">Chat</Link>
-        <Link to="/menu">Menu</Link>
-      </nav>
+    <footer class="app-footer">
+      <nav class="app-footer-nav">
+          <li><Link to="/users/:userName"><i class="fa-solid fa-user app-footer-nav-list-item"></i></Link></li>
+          <li><Link to="/favourites"><i class="fa-solid fa-star app-footer-nav-list-item"></i></Link></li>
+          <li><Link to="/chat"><i class="fa-solid fa-comment app-footer-nav-list-item"></i></Link></li>
+          <li><Link to="/menu"><i class="fa-solid fa-bars app-footer-nav-list-item"></i></Link></li>
+        </nav>
     </footer>
     </div>
   );
