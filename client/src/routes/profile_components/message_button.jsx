@@ -1,6 +1,6 @@
 export default function MessageButton () {
   return (
-    <div className="Message-Button-Container">
+    <div>
       <div>
         <button className="message-button">
           Message

@@ -2,7 +2,7 @@ export default function Bio () {
   return (
     <div>
       <div>
-        <p>Bio</p>
+        <p className="bio">Bio</p>
       </div>
     </div>
   );
