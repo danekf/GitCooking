@@ -17,15 +17,20 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header {
+  background-color: #FAF1E6;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FFAD60;
+  font-family: Fredoka One;
+  height: 100px;
+}
+
+.gitcooking-title {
+  font-family: Fredoka One;
 }
 
 .App-link {

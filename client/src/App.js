@@ -14,8 +14,8 @@ function App() {
         {/* Font Awesome */}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       </head>
-    <header>
-      <Link to='/'><img src='/GitCookingLogo.png' width = '50px' alt="gitCookingLogo"></img>Home</Link>
+    <header className="app-header">
+      <Link to='/'><img src='/GitCookingLogo.png' width = '50px' alt="gitCookingLogo" className="gitcooking-title"></img>GitCooking</Link>
       {/* Condiditional render here for what to show */}
       {/* Not logged in stuff */}
       <Link to='/register'>Register</Link>
@@ -23,9 +23,8 @@ function App() {
 
       {/* Logged in stuff here */}
       <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png" width = "50px" alt='profilePic'></img>
-      Implement "click to edit" on profile pick
+      {/* Implement "click to edit" on profile pick */}
       <Link to='/newRecipe'>Create a new recipe</Link>
-
     </header>
     
     <body>
