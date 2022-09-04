@@ -1,5 +1,9 @@
+@import url(https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@100&display=swap);
+
 .App {
   text-align: center;
+  font-family: Montserrat;
+  font-weight: 800;
 }
 
 .App-logo {
@@ -35,4 +39,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-footer {
+  position: fixed;
 }
