@@ -1,0 +1,25 @@
+.profile-picture {
+  vertical-align: middle;
+    border-style: solid;
+    padding: 2em;
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5em;
+    margin-top: 5em;
+}
+
+.username {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5em;
+    margin-top: 1em;
+}
