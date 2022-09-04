@@ -3,7 +3,7 @@ import './userProfile.scss';
 
 import ProfilePicture from "./profile_components/profile_picture";
 import Username from "./profile_components/username";
-import MessageButton from "./profile_components/message_button";
+import ProfileButtons from "./profile_components/profile_buttons";
 import Badges from "./profile_components/badges";
 import Qualifications from "./profile_components/qualifications";
 import Socials from "./profile_components/socials";
@@ -20,7 +20,7 @@ export default function UserProfile() {
           <ProfilePicture/>
           <Badges/>
           <Username/>
-          <MessageButton/>
+          <ProfileButtons/>
           <Socials/>
           <Qualifications/>
           <Bio/>
