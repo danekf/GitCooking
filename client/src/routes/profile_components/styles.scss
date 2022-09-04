@@ -1,6 +1,10 @@
 .profile-picture {
   vertical-align: middle;
     border-style: solid;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
     padding: 2em;
     height: 10em;
     width: 10em;
@@ -20,6 +24,63 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 5em;
+    margin-left: 6em;
     margin-top: 1em;
 }
+
+.message-button {
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  padding: 0.75rem 1.2rem;
+  text-align: center;
+  margin-left: -8em;
+  cursor: pointer;
+  flex: 0 0 auto;
+  text-decoration: none #6B7280 solid;
+  width: auto;
+  background-color: #d9534f;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+
+
+}
+
+.message-button:hover {
+  background-color: #FFAD60;
+  
+}
+
+.message-button:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+//colors:
+// green: 96CEB4
+// linen: FAF1E6
+//champagne/ yellow: FFEEAD
+// red: D9534F
+// orange: FFAD60
+
+// /* CSS */
+// .button-40 {
+//   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+
+// @media (min-width: 768px) {
+//   .button-40 {
+//     padding: .75rem 1.5rem;
+//   }
+// }

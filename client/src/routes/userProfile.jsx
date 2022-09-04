@@ -3,6 +3,7 @@ import './userProfile.scss';
 
 import ProfilePicture from "./profile_components/profile_picture";
 import Username from "./profile_components/username";
+import MessageButton from "./profile_components/message_button";
 
 
 export default function UserProfile() {
@@ -12,6 +13,7 @@ export default function UserProfile() {
       <main>
         <ProfilePicture/>
         <Username/>
+        <MessageButton/>
       </main>
     </>
   );  

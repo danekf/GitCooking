@@ -2,7 +2,7 @@ export default function Username () {
   return (
     <div className="username-container">
       <div className="username">
-        <h1>Username</h1>
+        <h1>@mhener</h1>
       </div>
     </div>
   )
