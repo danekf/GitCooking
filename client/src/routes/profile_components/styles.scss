@@ -14,18 +14,47 @@
     align-items: center;
     margin-left: 5em;
     margin-top: 5em;
+  }
+  
+  .badges {
+    display: flex;
+    margin-left: 30em;
+    margin-top: -8em;
+    margin-right: 44.5em;
+    font-weight: 600;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
+    border-radius: .75rem;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none #6B7280 solid;
+    flex: 0 0 auto;
+    line-height: 1.5rem;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color,border-color,color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background-color: #d9534f;
+    color: #fff;
+    width: auto;
+    font-size: 1.125rem;
 }
 
 .username {
-    margin-top: 0;
     margin-bottom: 0.5rem;
     line-height: 1.2;
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 6em;
-    margin-top: 1em;
+    margin-left: 5em;
+    margin-top: 7em;
+    text-align: center;
 }
 
 .message-button {
@@ -34,7 +63,8 @@
   box-sizing: border-box;
   padding: 0.75rem 1.2rem;
   text-align: center;
-  margin-left: -8em;
+  margin-left: -65em;
+  margin-top: 0.8em;
   cursor: pointer;
   flex: 0 0 auto;
   text-decoration: none #6B7280 solid;
@@ -52,13 +82,10 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 
-
-
 }
 
 .message-button:hover {
-  background-color: #FFAD60;
-  
+  background-color: #FFAD60; 
 }
 
 .message-button:focus {

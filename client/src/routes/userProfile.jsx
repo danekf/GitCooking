@@ -4,6 +4,7 @@ import './userProfile.scss';
 import ProfilePicture from "./profile_components/profile_picture";
 import Username from "./profile_components/username";
 import MessageButton from "./profile_components/message_button";
+import Badges from "./profile_components/badges";
 
 
 export default function UserProfile() {
@@ -12,6 +13,7 @@ export default function UserProfile() {
     <>
       <main>
         <ProfilePicture/>
+        <Badges/>
         <Username/>
         <MessageButton/>
       </main>
