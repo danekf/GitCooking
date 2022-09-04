@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import './userProfile.scss';
 
 import ProfilePicture from "./profile_components/profile_picture";
@@ -12,7 +11,6 @@ import RecipeList from "./recipes/recipeList"
 
 
 export default function UserProfile() {
-  // const profileData = getProfileData();
   return (
     <>
       <main>
@@ -25,7 +23,9 @@ export default function UserProfile() {
           <Qualifications/>
           <Bio/>
         </div>
-        <RecipeList/>
+        <div>
+          <RecipeList/>
+        </div>
       </main>
     </>
   );  
