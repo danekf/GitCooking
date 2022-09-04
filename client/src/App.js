@@ -15,7 +15,7 @@ function App() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       </head>
     <header>
-      <Link to='/'><img src='https://www.pngfind.com/pngs/m/597-5975111_unknown-small-copy-small-circle-png-transparent-png.png' width = '50px' alt="gitCookingLogo"></img>Home</Link>
+      <Link to='/'><img src='/GitCookingLogo.png' width = '50px' alt="gitCookingLogo"></img>Home</Link>
       {/* Condiditional render here for what to show */}
       {/* Not logged in stuff */}
       <Link to='/register'>Register</Link>
