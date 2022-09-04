@@ -24,13 +24,13 @@ function App() {
       <Outlet />
     </body>
 
-    <footer>
-      <nav>
-        <Link to="/users/:userName">Profile</Link>
-        <Link to="/favourites">Favourites</Link>
-        <Link to="/chat">Chat</Link>
-        <Link to="/menu">Menu</Link>
-      </nav>
+    <footer class="app-footer">
+      <nav class="app-footer-nav">
+          <Link to="/users/:userName">Profile</Link>
+          <Link to="/favourites">Favourites</Link>
+          <Link to="/chat">Chat</Link>
+          <Link to="/menu">Menu</Link>
+        </nav>
     </footer>
     </div>
   );
