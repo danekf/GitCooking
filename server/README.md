@@ -25,4 +25,8 @@ If you have changed any values, ensure that they are reflected in your ENV file.
 
 ## Seeding for development
 
-Run a the development server with `npm seed`
+Seed the development server with `npm seed` (NOT YET IMPLEMENTED)
+
+## Running dev server
+
+Run the server in development mode with `npm run local`. This will start the server with nodemon.

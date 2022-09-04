@@ -11,15 +11,14 @@ const server = require("http").Server(app);
 const morgan = require("morgan");
 app.use(morgan("dev"));
 
-
-
-
 // Separated Routes for each Resource
 // const db = require('./db');
 const recipes = require('./routes/recipes');
 
 // Mount all resource routes
 app.use("/recipes", recipes());
+
+
 //message on server start
 server.listen(PORT , () => {
   console.log("Its servin' Time!")
