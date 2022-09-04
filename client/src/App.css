@@ -50,8 +50,8 @@
   background-image: radial-gradient(#96CEB4, #74A48D);
   box-shadow: 0px 0px 5px 0px grey;
   border: grey;
-  font-size: calc(7px + 2vmin);
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

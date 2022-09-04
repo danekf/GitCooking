@@ -19,12 +19,13 @@ function App() {
       {/* Condiditional render here for what to show */}
       {/* Not logged in stuff */}
 
-      <Link to='/register' className="badge badge-secondary">Register</Link>
-      {/* Add a redirect link on Register page for those who have a login */}
+      {/* <Link to='/register' className="badge badge-secondary">Register</Link> */}
+      {/* Add a redirect link on Register page for those who have a login
       {/* <Link to='/login'>Login</Link> */}
 
       {/* Logged in stuff here */}
-      <Link to='/newRecipe' className="badge badge-secondary">Create a new recipe</Link>
+      {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
+      <Link to='/newRecipe' className="badge badge-secondary">Create</Link>
       <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png" width = "50px" alt='profilePic'></img>
       {/* Implement "click to edit" on profile pick */}
 
