@@ -52,6 +52,19 @@
   border: grey;
 }
 
+@media screen and (max-width:500px) {
+  .mob-view {
+    display:block;
+  }
+  .normal-view {
+    display:none;
+  }
+}
+
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -65,7 +78,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 60px;
   font-family: Montserrat;
   background-color: #ffeead;
   bottom: 0;

@@ -25,7 +25,7 @@ function App() {
 
       {/* Logged in stuff here */}
       {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
-      <Link to='/newRecipe' className="badge badge-secondary">Create</Link>
+      <Link to='/newRecipe' className="badge badge-secondary"><span class="mob-view">Create</span><span class="normal-view"> a new recipe</span></Link>
       <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png" width = "50px" alt='profilePic'></img>
       {/* Implement "click to edit" on profile pick */}
 
