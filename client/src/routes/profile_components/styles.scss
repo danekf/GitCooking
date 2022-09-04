@@ -21,7 +21,7 @@
     margin-left: 30em;
     margin-top: -8em;
     margin-right: 44.5em;
-    font-weight: 600;
+    font-weight: 900;
     justify-content: center;
     text-align: center;
     text-align: center;
@@ -43,18 +43,21 @@
     color: #fff;
     width: auto;
     font-size: 1.125rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .username {
     margin-bottom: 0.5rem;
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: 900;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-left: 5em;
     margin-top: 7em;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
 }
 
 .message-button {
@@ -81,7 +84,8 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
 }
 
 .message-button:hover {
