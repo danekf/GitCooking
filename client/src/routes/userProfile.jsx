@@ -16,13 +16,15 @@ export default function UserProfile() {
   return (
     <>
       <main>
-        <ProfilePicture/>
-        <Badges/>
-        <Username/>
-        <MessageButton/>
-        <Socials/>
-        <Qualifications/>
-        <Bio/>
+        <div className="profile-card">
+          <ProfilePicture/>
+          <Badges/>
+          <Username/>
+          <MessageButton/>
+          <Socials/>
+          <Qualifications/>
+          <Bio/>
+        </div>
         <RecipeList/>
       </main>
     </>

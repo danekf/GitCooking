@@ -3,6 +3,7 @@ export default function Bio () {
     <div>
       <div>
         <p className="bio">Bio</p>
+        <p></p>
       </div>
     </div>
   );
