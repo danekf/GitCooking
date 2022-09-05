@@ -37,9 +37,18 @@ div form h4 {
   margin-top: 1em;
 }
 
+ul li {
+  list-style-type: none;
+}
+
+ul li input {
+  margin-left: 6em;
+}
+
 input {
   display: flex;
   margin-left: 2em;
+  margin-top: -1em;
   border-style: solid;
   border-width: 2px;
   border-top: none;
@@ -50,6 +59,15 @@ input {
   width: 18em;
   flex-wrap: wrap;
   overflow-wrap: break-word;
+}
+
+.fa-plus {
+  color: #d9534f;
+  font-weight: 900;
+  font-size: x-large;
+  margin-left: -49em;
+  margin-top: 1em;
+  cursor: pointer;
 }
 
 .recipe-btn-submit {

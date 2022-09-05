@@ -21,13 +21,25 @@ export default function NewRecipe(props) {
           <input className='servings' type="text" name="servings" id="servings" />
 
           <h4>Ingredients:</h4>
-          <input type="list" name="ingredients" id="ingredients" />
+          <ul>
+            <li>
+            <i class="fa-solid fa-plus"></i><input type="list" name="ingredients" id="ingredients" />
+            </li>
+          </ul>
 
           <h4>Equipments Required:</h4>
-          <input type="list" name="equipments" id="equipments" />
+          <ul>
+            <li>
+            <i class="fa-solid fa-plus"></i><input type="list" name="equipments" id="equipments" />
+            </li>
+          </ul>
 
           <h4>Instructions:</h4>
-          <input type="list" name="instructions" id="instructions" />
+          <ul>
+            <li>
+            <i class="fa-solid fa-plus"></i><input type="list" name="instructions" id="instructions" />
+            </li>
+          </ul>
           
           <h4>Tags:</h4>
           <input type="text" name="tags" id="tags" />
