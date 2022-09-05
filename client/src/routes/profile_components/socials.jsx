@@ -3,11 +3,11 @@ export default function Socials () {
     <div>
       <p className="socials">Socials</p>
       <div className="socials-list-item">
-        <img src="" alt="Instagram" />
-        <img src="" alt="Twitter" />
-        <img src="" alt="Tiktok" />
-        <img src="" alt="YouTube" />
-        <img src="" alt="LinkedIn" />
+        <i class="fa-brands fa-instagram">@shakespeare</i> 
+        <i class="fa-brands fa-twitter">@shakespeare</i>
+        <i class="fa-brands fa-tiktok">@shakespeare</i>
+        <i class="fa-brands fa-youtube">@shakespeare</i>
+        <i class="fa-brands fa-linkedin">@shakespeare</i>
       </div>
     </div>
   );
