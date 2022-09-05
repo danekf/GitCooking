@@ -11,8 +11,10 @@ module.exports = (db) => {
     console.log(req.body)
     // ////////////////////////////////
 
-    const {username, password_hash} = req.body;
+    const {username, password} = req.body;
 
+    //Password should be hashed on SERVER side when request is sent. Do it HERE.
+    const password_hash = password //+ bcrypt stuff
 
     //search string
     const queryString = `
@@ -26,7 +28,7 @@ module.exports = (db) => {
     db.query(queryString, queryValues)
       .then(({rows: users}) => {
         //bcrypt the password on the client side BEFORE SENDING to server. Server should not handle the password as far as I know. Must confirm.
-
+        console.log(`Users data: `, users)
         
         if (!users[0] ){
           res.json({Error: "Username or email not found."})
