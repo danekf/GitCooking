@@ -30,7 +30,7 @@ app.use(morgan("dev"));
 // const db = require('./db');
 const recipes = require('./routes/recipes');
 const users = require('./routes/users');
-const { Console } = require('console');
+
 
 // Mount all resource routes
 app.use("/recipes", recipes());
