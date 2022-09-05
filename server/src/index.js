@@ -29,12 +29,12 @@ app.use(morgan("dev"));
 // Separated Routes for each Resource
 // const db = require('./db');
 const recipes = require('./routes/recipes');
-const users = require('./routes/users');
+const login = require('./routes/login');
 
 
 // Mount all resource routes
-app.use("/recipes", recipes(db));
-app.use("/users", users(db));
+app.use("/api/recipes", recipes(db));
+app.use("/api/login", login(db));
 
 
 //message on server start

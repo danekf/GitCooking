@@ -4,14 +4,15 @@ const router = express.Router();
 module.exports = (db) => {
   
   //it is a get request because they are trying to log in
-  router.get('/login', (request, response)=>{
-    //from client request
-    const username = req.body.username;
-    const password_hash = req.body.password;
+  router.post('/', (req, res) => {
 
-    //////delete me, testing logs/////
-    console.log(`Username: ${username}, password: ${password_hash}`)
-    //////////////////////////////////
+    ////delete me, testing logs/////
+    console.log('Incoming login request')
+    console.log(req.body)
+    // ////////////////////////////////
+
+    const {username, password_hash} = req.body;
+
 
     //search string
     const queryString = `
@@ -28,14 +29,14 @@ module.exports = (db) => {
 
         
         if (!users[0] ){
-          response.json({Error: "Username or email not found."})
+          res.json({Error: "Username or email not found."})
 
         } else if(password_hash != users[0].password_hash) {
-          response.json({Error: "Password is incorrect."})
+          res.json({Error: "Password is incorrect."})
 
         } else{
           //pass, return user data
-          response.json(users[0])
+          res.json(users[0])
         }
       })
       .catch(error => console.log(error));
