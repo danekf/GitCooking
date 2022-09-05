@@ -9,8 +9,8 @@ export default function Register() {
         <Link to='/login' className="badge badge-primary">Login</Link>
         <form className="register-form">
           <input className="register-form-item" type='text' id='email' name='email' placeholder="Email"></input>
-          <input className="register-form-item" type='text' id='firstname' name='first name' placeholder='First Name'></input>
-          <input className="register-form-item" type='text' id='lastname' name='last name' placeholder='Last Name'></input>
+          <input className="register-form-item" type='text' id='first-name' name='first name' placeholder='First Name'></input>
+          <input className="register-form-item" type='text' id='last-name' name='last name' placeholder='Last Name'></input>
           <input className="register-form-item" type='text' id='username' name='username' placeholder='Username'></input>
           <input className="register-form-item" type='password' id='password' name='password' placeholder='Password'></input>
 
@@ -18,8 +18,8 @@ export default function Register() {
           <input 
             className="register-form-item"
             type='file' 
-            id='profile picture' 
-            name='profile picture' 
+            id='profile-picture' 
+            name='profile-picture' 
             // // onChange={onChange}
           ></input>
           
