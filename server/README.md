@@ -25,7 +25,7 @@ If you have changed any values, ensure that they are reflected in your ENV file.
 
 ## Seeding for development
 
-Seed the development server with `npm seed` (NOT YET IMPLEMENTED)
+Seed the development server with `npm run resetdb`. This will run all schema files and then all seed files. This will allow you to easily add tables and seed datato the database.
 
 ## Running dev server
 
