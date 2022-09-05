@@ -1,13 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (db) => {
   
+  //home page, just get recipes of the week, currently just getting ALL recipes
   router.get('/', (request, response)=>{
-    console.log('Recipes accessed');
-    //temp redirect when accessed
-    response.redirect('https://www.google.com/search?q=recipes&source=hp&ei=6vUUY-KvFd2_0PEPr5ag4AQ&iflsig=AJiK0e8AAAAAYxUD-ltKBBfdLHToTDPjJicymq15RP3k&ved=0ahUKEwjizPyq6fv5AhXdHzQIHS8LCEwQ4dUDCAk&uact=5&oq=recipes&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEELEDMg4ILhCABBCxAxDHARDRAzIFCAAQgAQyCwgAEIAEELEDEIMBMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyBQgAEIAEMgsIABCABBCxAxCDATIFCAAQgAQyBQgAEIAEOg4ILhCABBCxAxCDARDUAjoLCC4QsQMQgwEQ1AI6EQguEIAEELEDEIMBEMcBENEDOhEILhCABBCxAxCDARDHARCvAToRCC4QgAQQsQMQxwEQrwEQ1AI6BwgAEIAEEApQAFjtBGDMBWgAcAB4AIABmgGIAZ0FkgEDMy4zmAEAoAEB&sclient=gws-wiz');
-  });
+    
+    const queryString = `
+    SELECT *
+    FROM recipes
+    ;`;
+
+    db.query(queryString)
+      //return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+    });
 
 
 

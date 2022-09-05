@@ -1,7 +1,8 @@
 //index.js is main connection setup
-const ENV = require('./environment.js');
+const ENV = require("dotenv").config();
 const PORT = process.env.PORT || 8001;
 const express = require('express');
+
 
 //PG connection and database setup
 const { Pool } = require('pg');
@@ -12,7 +13,6 @@ const dbParams = {
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT
 };
-  //create new db using the dbParams from env file
 const db = new Pool(dbParams);
 db.connect()
   .then(()=> console.log(`Connected to ${dbParams.database}`))
@@ -33,12 +33,12 @@ const users = require('./routes/users');
 
 
 // Mount all resource routes
-app.use("/recipes", recipes());
-app.use("/users", users());
+app.use("/recipes", recipes(db));
+app.use("/users", users(db));
 
 
 //message on server start
 server.listen(PORT , () => {
   console.log("Its servin' Time!")
-  console.log(`Port: ${PORT}, Mode: ${ENV}.`)
+  console.log(`Port: ${PORT}, Mode: .`, ENV)
 });
