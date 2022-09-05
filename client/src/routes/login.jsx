@@ -7,7 +7,7 @@ export default function Login() {
       <form className="login-form">
         <input type='text' id='username' name='username' placeholder="username"></input>
         <input type='password' id='password' name='password' placeholder='password'></input>
-        <button>Login</button>
+        <button className="badge badge-primary">Login</button>
       </form>
     </body>
 
