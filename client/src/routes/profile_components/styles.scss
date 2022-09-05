@@ -272,7 +272,7 @@ ul li {
   display: flex;
   margin-left: 1em;
   margin-top: 1em;
-  margin-right: 15em;
+  margin-right: 10em;
   font-weight: 900;
   justify-content: center;
   text-align: center;
@@ -305,19 +305,6 @@ ul li {
   font-size: 1rem;
   margin-top: -2em;
 }
-
-@media screen and (min-width: 1024) {
-  .qualifications {
-
-  }
-
-  .bio {
-    margin-left: 10em;
-    margin-right: 10em;
-  }
-  
-}
-
 // //colors:
 // // green: 96CEB4
 // // linen: FAF1E6
