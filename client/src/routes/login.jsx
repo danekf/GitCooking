@@ -22,16 +22,17 @@ export default function Login() {
 
     //when we add bcrypt, we must HASH the password prior to sending it. Currently we do not hash.
     //add password to form data
-    loginData.append('password_hash')
+    loginData.append('password_hash', formValue.password);
 
-    //make request with form data
-    axios({
-      method: 'post',
-      url: '/login',
-      data: loginData
-    });
-
+      // make axios post request with the new formData
+      axios({
+        method: "post",
+        url: "/api/login",
+        data: loginData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
   }
+   
 
   const handleChange =(event) =>{
     setformValue({
@@ -43,10 +44,10 @@ export default function Login() {
   return (
     <body>
       <h1 className="login-title">Login</h1>
-      <form className="login-form" onSubmit={submitLogin}>
+      <form className="login-form" onsubmit={submitLogin}>
         <input className="login-form-item" type='text' id='username' name='username' placeholder='username' value={formValue.username} onChange={handleChange}></input>
         <input className="login-form-item" type='password' id='password' name='password' placeholder='password' value={formValue.password} onChange={handleChange}></input>
-        <button className="badge badge-primary" type='submit'>Login</button>
+        <button className="badge badge-primary" type='submit' >Login</button>
       </form>
     </body>
 
