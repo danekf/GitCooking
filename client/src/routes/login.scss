@@ -1,0 +1,35 @@
+.login-title {
+  color: #FFAD60;
+  text-shadow: 2px 2px #D9534F;
+  font-size: xx-large;
+  font-family: Fredoka One;
+  padding: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-item {
+  margin-bottom: 20px;
+}
+
+.badge-primary {
+  color: #D9534F;
+  text-shadow: 2px 2px #FFAD60;
+  background-color: #FAF1E6;
+  background-image: radial-gradient(#FAF1E6, #96CEB4);
+  box-shadow: 0px 0px 5px 0px grey;
+  border: grey;
+  font-size: large;
+  font-family: Fredoka One;
+  margin-top: 20px;
+}
+
+.Login button{
+  color: #D9534F;
+  text-shadow: 2px 2px #FFAD60;
+  font-size: large;
+}
