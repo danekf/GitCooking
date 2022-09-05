@@ -34,13 +34,11 @@ module.exports = (db) => {
           response.json({Error: "Password is incorrect."})
 
         } else{
+          //pass, return user data
           response.json(users[0])
         }
       })
-
-      .catch(error => {
-
-      });
+      .catch(error => console.log(error));
 
   });
 
