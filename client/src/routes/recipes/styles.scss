@@ -47,6 +47,9 @@ input {
   border-right: none;
   border-bottom-color: #d9534f;
   padding: 0.3em;
+  width: 18em;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
 }
 
 .recipe-btn-submit {
@@ -109,3 +112,22 @@ input {
   outline-offset: 2px;
 }
 
+@media screen and (min-width: 1024px) {
+  div form h4 {
+    padding: 0.3em; 
+    display: flex;  
+    margin-left: 5em;
+    margin-top: 1em;
+  }
+  
+  input {
+    display: flex;
+    margin-left: 8em;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #d9534f;
+    width: 40em;
+  }
+}
