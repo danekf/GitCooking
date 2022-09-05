@@ -52,6 +52,18 @@
   border: grey;
 }
 
+.badge-primary {
+  color: #D9534F;
+  text-shadow: 2px 2px #FFAD60;
+  background-color: #FAF1E6;
+  background-image: radial-gradient(#FAF1E6, #96CEB4);
+  box-shadow: 0px 0px 5px 0px grey;
+  border: grey;
+  font-size: large;
+  font-family: Fredoka One;
+  margin-top: 20px;
+}
+
 @media screen and (max-width:500px) {
   .mob-view {
     display:block;
