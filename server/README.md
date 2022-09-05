@@ -8,7 +8,7 @@ Install dependencies with `npm install`.
 
 Use the `psql -U development` command to login to the PostgreSQL server with the username `development` and the password `development`. You may sub the username and password for your preferred development credentials.
 
-Create a database with the command `CREATE DATABASE GitCooking_development;`. 
+Create a database with the command `CREATE DATABASE gitcooking_development;`. 
 
 Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
 
@@ -16,7 +16,7 @@ Copy the `.env.example` file to `.env.development` and fill in the necessary Pos
 ```
 PGHOST=localhost
 PGUSER=development
-PGDATABASE=GitCooking_development
+PGDATABASE=gitcooking_development
 PGPASSWORD=development
 PGPORT=5432
 ```

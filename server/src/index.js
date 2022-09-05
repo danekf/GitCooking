@@ -16,7 +16,7 @@ const dbParams = {
 const db = new Pool(dbParams);
 db.connect()
   .then(()=> console.log(`Connected to ${dbParams.database}`))
-  .catch(error => console.log(`Error connecting to database : ${error}`));
+  .catch(error => console.log(`Error connecting to database. ${error}`));
 
 //main application folder once connection setup
 const app = express();
