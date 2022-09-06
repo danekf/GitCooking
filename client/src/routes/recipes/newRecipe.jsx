@@ -1,4 +1,4 @@
-import './styles.scss'
+import './newRecipe_style.scss'
 
 export default function NewRecipe(props) {
   return (
