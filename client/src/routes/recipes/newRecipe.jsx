@@ -23,21 +23,21 @@ export default function NewRecipe(props) {
           <h4>Ingredients:</h4>
           <ul>
             <li>
-            <i class="fa-solid fa-plus"></i><input type="list" name="ingredients" id="ingredients" />
+            <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="ingredients" id="ingredients" />
             </li>
           </ul>
 
           <h4>Equipments Required:</h4>
           <ul>
             <li>
-            <i class="fa-solid fa-plus"></i><input type="list" name="equipments" id="equipments" />
+            <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="equipments" id="equipments" />
             </li>
           </ul>
 
           <h4>Instructions:</h4>
           <ul>
             <li>
-            <i class="fa-solid fa-plus"></i><input type="list" name="instructions" id="instructions" />
+            <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="instructions" id="instructions" />
             </li>
           </ul>
           
