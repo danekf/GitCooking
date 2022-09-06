@@ -3,7 +3,6 @@ import { React, useState } from 'react';
 import password_hasher_bcrypt from "../helpers/password_hasher_bcrypt";
 import axios from 'axios';
 
-
 export default function Login(event) {  
 
   //state managed form data
@@ -36,14 +35,15 @@ export default function Login(event) {
   }
 
   return (
-    <div>
-      <form className="login-form" onSubmit={submitLogin}>
+    <div className='login-body'>
+      <div className='login-card'>
         <h1 className="login-title">Login</h1>
-        <input className="login-form-item" type='text' id='username' name='username' placeholder='username' value={formValue.username} onChange={handleChange}/>
-        <input className="login-form-item" type='password' id='password' name='password' placeholder='password' value={formValue.password} onChange={handleChange}/>
-        <button className="badge badge-primary" type='submit'>Login</button>
-      </form>
+        <form className="login-form" onSubmit={submitLogin}>
+          <input className="login-form-item" type='text' id='username' name='username' placeholder='username' value={formValue.username} onChange={handleChange}/>
+          <input className="login-form-item" type='password' id='password' name='password' placeholder='password' value={formValue.password} onChange={handleChange}/>
+          <button className="login-btn" type='submit'>Login</button>
+        </form>
+      </div>
     </div>
-
   );  
 }

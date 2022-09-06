@@ -3,7 +3,7 @@ import './register.scss';
 
 export default function Register() {
   return (
-      <body>
+      <div className="register-body">
         <div className="register-card">
         <h1 className="register-title">Register</h1>
 
@@ -22,6 +22,6 @@ export default function Register() {
         </form>
         
         </div>
-    </body>
+    </div>
   );
 }
