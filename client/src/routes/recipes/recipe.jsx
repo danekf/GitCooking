@@ -4,34 +4,53 @@ import CommentList from "../comments/commentList";
 
 export default function Recipe() {
   return (
-    <body>
-    {/* This should take up the whole screen, do not show the header, profile pic and stuff, this covers it */}
-      <Link to="/">X</Link>
-      <h1>Recipe Name</h1>
+    <>
+      <div>
 
-      <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png" width = "50px" alt='profilePic'></img>
-      <h2>:userName</h2>
-      <h3><img src='https://media.istockphoto.com/photos/fork-picture-id149341227' width='50px'></img>Fork it</h3>
-      <h3><img src='https://cdn.shopify.com/s/files/1/0780/9439/products/gestrura-spoon-silver.jpg?v=1640188238' width='50px'></img>Spoon it</h3>
-      {/* Delete feature only for if user is on their own recipe */}
-      <h3><img src='https://thumbs.dreamstime.com/b/knife-479028.jpg' width='50px'></img>Knife it</h3>
-      <h3>Rating from MUI?</h3>
+        <div>
+        <i class="fa-solid fa-spoon"></i>
+        <i class="fa-solid fa-utensils"></i>
+
+        </div>
+
+        <h1>Recipe Name</h1>
+
+        <img src="" alt="Recipe Image" />
+
+        <h6>This recipe is made with love by: Shakespeare</h6>
+
+        <h4>Prep Time</h4>
+        <p></p>
+
+        <h4>Cook Time</h4>
+        <p></p>
+        
+        <h4>Servings</h4>
+        <p></p>
+
+        <h4>Equipments Required</h4>
+        <ul>
+          <li></li>
+        </ul>
+        <h4>Ingredients</h4>
+        <ul>
+          <li></li>
+        </ul>
+        <h4>Instructions</h4>
+        <ul>
+          <li></li>
+        </ul>
+
+        <h4>Tags</h4>
+        <p></p>
+
+      </div>
       
-      <h2>Ingredients</h2>
-
-      <h2>Equipment</h2>
-
-      <h2>Instructions</h2>
-
-      <ul>
-      <CommentList />
-      </ul>
-
-      <div>Picture of food here for desktop view</div>
-
-      <h2>Tags placeholder</h2>
-
-
-    </body>
+      <div>
+        <ul>
+        <CommentList/>
+        </ul>
+      </div>
+    </>
   );
 }
