@@ -11,10 +11,26 @@ export default function Login(event) {
     password: ''
   })
 
-  //login handler on button click
-  const submitLogin = (event) => {
+  const [validationError, setvalidationError] = useState();
+
+  //form validation prior to submission
+  const loginValidation = (event) => {
     event.preventDefault();
 
+    if (formValue.username = ''){
+      setvalidationError('Please enter an email before submitting');
+    } else if (formValue.password = ''){
+      setvalidationError({...validationError, "\nPlease enter a password before submission"});
+    }
+    else {
+      submitLogin;
+    }
+
+  }
+
+  //login handler on button click
+  const submitLogin = (event) => {
+   
     axios({
       method: "post",
       url: "/api/login",
@@ -24,8 +40,7 @@ export default function Login(event) {
         console.log(response);
       })
 
-  }
-   
+  }   
 
   const handleChange =(event) =>{
     setformValue({
@@ -38,11 +53,14 @@ export default function Login(event) {
     <div className='login-body'>
       <div className='login-card'>
         <h1 className="login-title">Login</h1>
-        <form className="login-form" onSubmit={submitLogin}>
+        <form className="login-form" onSubmit={loginValidation}>
           <input className="login-form-item" type='text' id='username' name='username' placeholder='username' value={formValue.username} onChange={handleChange}/>
           <input className="login-form-item" type='password' id='password' name='password' placeholder='password' value={formValue.password} onChange={handleChange}/>
           <button className="login-btn" type='submit'>Login</button>
         </form>
+        <div>
+          {validationError}
+        </div>
       </div>
     </div>
   );  
