@@ -16,7 +16,7 @@ export default function Register() {
   const [validationError, setvalidationError] = useState();
 
   //form validation prior to submission, creates an error message
-  const registraterValidation = (event) => {
+  const registrationValidation = (event) => {
     event.preventDefault();
     //clear error messages prior to setting new ones.
     setvalidationError();
@@ -65,7 +65,7 @@ export default function Register() {
         <h6 className="register-to-login">Already registered?</h6>
         <Link to='/login' className="login-btn">Login</Link>
 
-        <form className="register-form" onSubmit={registraterValidation}>
+        <form className="register-form" onSubmit={registrationValidation}>
           <input className="register-form-item" type='text' id='first_name' name='first_name' placeholder='First Name' onChange={handleChange}></input>
           <input className="register-form-item" type='text' id='last_name' name='last_name' placeholder='Last Name' onChange={handleChange}></input>
           <input className="register-form-item" type='email' id='email' name='email' placeholder="Email" onChange={handleChange}></input>
