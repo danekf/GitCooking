@@ -13,9 +13,11 @@ export default function Login(event) {
 
   const [validationError, setvalidationError] = useState();
 
-  //form validation prior to submission
+  //form validation prior to submission, creates an error message
   const loginValidation = (event) => {
     event.preventDefault();
+    //clear error messages prior to setting new ones.
+    setvalidationError();
 
     if (formValue.username = ''){
       setvalidationError('Please enter an email before submitting');
