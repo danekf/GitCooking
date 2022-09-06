@@ -1,6 +1,5 @@
 import './login.scss';
 import { React, useState } from 'react';
-import password_hasher_bcrypt from "../helpers/password_hasher_bcrypt";
 import axios from 'axios';
 
 export default function Login(event) {  
@@ -19,16 +18,16 @@ export default function Login(event) {
     //clear error messages prior to setting new ones.
     setvalidationError();
 
-    if (formValue.username = ''){
+    //check each form field for blank before submission
+    if (formValue.username === ''){
       setvalidationError('Please enter an email before submitting');
-    } else if (formValue.password = ''){
-      setvalidationError({...validationError, "\nPlease enter a password before submission"});
+    } else if (formValue.password === ''){
+      setvalidationError("Please enter a password before submission");
     }
     else {
-      submitLogin;
+      submitLogin();
     }
-
-  }
+  };
 
   //login handler on button click
   const submitLogin = (event) => {
@@ -41,7 +40,6 @@ export default function Login(event) {
       .then ((response)=>{
         console.log(response);
       })
-
   }   
 
   const handleChange =(event) =>{
