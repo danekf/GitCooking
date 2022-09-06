@@ -34,16 +34,7 @@ export default function Register() {
 
    //registration handler on button click
    const submitRegistration = (event) => {
-    event.preventDefault();
 
-    axios({
-      method: "post",
-      url: "/api/login",
-      data: formValue,
-    })
-      .then ((response)=>{
-        console.log(response);
-      })
   }
 
   const handleChange =(event) =>{
@@ -74,6 +65,7 @@ export default function Register() {
         <div>
           {validationError}
         </div>
+        {}
         
         </div>
     </div>

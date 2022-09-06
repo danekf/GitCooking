@@ -3,7 +3,7 @@ const ENV = require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require("cors");
 
 //PG connection and database setup
 const { Pool } = require('pg');

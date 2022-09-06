@@ -38,9 +38,12 @@ export default function Login(event) {
       data: formValue,
     })
       .then ((response)=>{
-        console.log(response);
+        //if username not found, send error. Messages are curated by server
+        if(response.data.Error){
+          setvalidationError(response.data.Error);
+        }
       })
-  }   
+  } 
 
   const handleChange =(event) =>{
     setformValue({
