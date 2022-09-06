@@ -1,6 +1,7 @@
 // Mobile View (iphone 12 Pro):
 
 .profile-picture {
+  display: flex;
   border-style: solid;
   border: 1px solid transparent;
   box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
@@ -45,7 +46,6 @@
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.12);
-
 }
 
 ul li {
@@ -301,6 +301,7 @@ ul li {
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.12);
+
 }
 
 .bio-paragraph {

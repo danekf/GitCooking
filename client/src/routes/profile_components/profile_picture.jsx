@@ -6,6 +6,6 @@ export default function ProfilePicture () {
       <img className='profile-picture'
         src=''
         alt='Profile Picture' />
-  </div>
+    </div>
   );
 }

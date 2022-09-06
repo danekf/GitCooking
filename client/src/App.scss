@@ -1,14 +1,13 @@
-@import url(https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@100&display=swap);
-
 .App {
   text-align: center;
-  font-family: Montserrat;
-  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  color: #D9534F;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -25,12 +24,12 @@
   justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: #FFAD60;
-  font-family: Fredoka One;
+  font-family: 'Fredoka One', cursive;
   height: 100px;
 }
 
 .gitcooking-title {
-  font-family: Fredoka One;
+  font-family: 'Fredoka One', cursive;
 }
 
 .App-link {
@@ -77,10 +76,6 @@ a.badge-primary {
   }
 }
 
-
-
-
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -95,8 +90,8 @@ a.badge-primary {
   justify-content: center;
   width: 100%;
   height: 60px;
-  font-family: Montserrat;
-  background-color: #ffeead;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FAF1E6;
   bottom: 0;
   position: fixed;
   padding: 10px 10px 0px 10px;
@@ -125,7 +120,11 @@ a.badge-primary {
   justify-content: center;
 }
 
-.app-footer-nav-list-item{
+.app-footer-nav-list-item {
   color: #D9534F;
   text-shadow: 1px 1px #FFAD60;
+}
+
+.app-footer-nav-list-item:hover {
+  color: #FFAD60;
 }
