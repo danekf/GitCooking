@@ -1,10 +1,16 @@
-export default function CommentListItem() {
+import './CommentListItem_style.scss';
 
+export default function CommentListItem() {
   return (
     <>
-      <li>A Comment!</li>
-      <li>A Comment!</li>
-      <li>A Comment!</li>
+    <div className="comment-body">
+      <h6 className="comment-username">@shakespeare</h6>
+      <div>
+        <p className="comment-context">
+          He'll go along o'er the wide world with me; Leave me alone to woo him. 
+        </p>
+      </div>
+    </div>
     </>
   );
 }
