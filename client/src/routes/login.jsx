@@ -37,12 +37,15 @@ export default function Login(event) {
       url: "/api/login",
       data: formValue,
     })
-      .then ((response)=>{
-        //if username not found, send error. Messages are curated by server
-        if(response.data.Error){
-          setvalidationError(response.data.Error);
-        }
-      })
+    .then ((response)=>{
+      //if username not found, send error. Messages are curated by server
+      if(response.data.Error){
+        setvalidationError(response.data.Error);
+      }
+      else{
+        console.log(response.data)
+      }
+    })
   } 
 
   const handleChange =(event) =>{

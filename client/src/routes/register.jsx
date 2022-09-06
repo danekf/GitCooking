@@ -34,7 +34,20 @@ export default function Register() {
 
    //registration handler on button click
    const submitRegistration = (event) => {
-
+    axios({
+      method: "post",
+      url: "/api/register",
+      data: formValue,
+    })
+    .then ((response)=>{
+      //if username not found, send error. Messages are curated by server
+      if(response.data.error){
+        setvalidationError(response.data.error);
+      }
+      else{
+        console.log(response.data[0])
+      }
+    })
   }
 
   const handleChange =(event) =>{
@@ -64,9 +77,7 @@ export default function Register() {
         </form>
         <div>
           {validationError}
-        </div>
-        {}
-        
+        </div>     
         </div>
     </div>
   );
