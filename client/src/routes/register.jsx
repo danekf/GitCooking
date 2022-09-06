@@ -53,7 +53,8 @@ export default function Register() {
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
       if(response.data.error){
-        setvalidationError(response.data.error);
+        console.log(response.data.error)
+        toast.error(response.data.error);
       }
       else{
         console.log(response.data[0])
