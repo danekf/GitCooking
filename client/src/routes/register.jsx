@@ -3,6 +3,9 @@ import { React, useState } from 'react';
 import axios from 'axios';
 import './register.scss';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Register() {
   //state managed form data
   const [formValue, setformValue] = useState({
@@ -18,19 +21,27 @@ export default function Register() {
   //form validation prior to submission, creates an error message
   const registrationValidation = (event) => {
     event.preventDefault();
-    //clear error messages prior to setting new ones.
-    setvalidationError();
 
-    //check each form field for blank before submission
     if (formValue.username === ''){
-      setvalidationError('Please enter an email before submitting');
-    } else if (formValue.password === ''){
-      setvalidationError("Please enter a password before submission");
+      toast.error('Please enter a username before submitting');
+    }
+    if (formValue.password === ''){
+      toast.error('Please enter a password before submitting');
+    }
+    if (formValue.email === ''){
+      toast.error('Please enter an email before submitting');
+    }
+    if (formValue.first_name === ''){
+      toast.error('Please enter your first name before submitting');
+    }
+    if (formValue.last_name === ''){
+      toast.error('Please enter your last name before submitting');
     }
     else {
       submitRegistration();
     }
   };
+
 
    //registration handler on button click
    const submitRegistration = (event) => {
@@ -42,7 +53,8 @@ export default function Register() {
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
       if(response.data.error){
-        setvalidationError(response.data.error);
+        console.log(response.data.error)
+        toast.error(response.data.error);
       }
       else{
         console.log(response.data[0])
@@ -76,8 +88,12 @@ export default function Register() {
           <button className="register-btn-submit" type='submit' >Register</button>
         </form>
         <div>
-          {validationError}
-        </div>     
+          <ToastContainer 
+            position='top-center'
+            autoClose={5000}
+            closeOnClick
+          />
+        </div>    
         </div>
     </div>
   );
