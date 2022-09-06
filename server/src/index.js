@@ -38,11 +38,13 @@ app.use(express.json());
 // const db = require('./db');
 const recipes = require('./routes/recipes');
 const login = require('./routes/login');
+const register = require('./routes/register');
 
 
 // Mount all resource routes
 app.use("/api/recipes", recipes(db));
 app.use("/api/login", login(db));
+app.use("/api/register", register(db));
 
 
 //message on server start
