@@ -12,7 +12,6 @@ Create a database with the command `CREATE DATABASE gitcooking_development;`.
 
 Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
 
-
 ```
 PGHOST=localhost
 PGUSER=development
