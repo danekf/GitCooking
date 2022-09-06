@@ -1,6 +1,6 @@
 //index.js is main connection setup
 const ENV = require("dotenv").config();
-const PORT = process.env.PGPORT || 8080;
+const PORT = process.env.PORT || 8080;
 const express = require('express');
 const bodyParser = require('body-parser');
 
