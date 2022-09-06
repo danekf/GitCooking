@@ -1,22 +1,46 @@
 .register-title {
-  color: #FFAD60;
-  text-shadow: 2px 2px #D9534F;
-  font-size: xx-large;
-  font-family: Fredoka One;
-  padding: 30px;
+  font-family: 'Fredoka One', cursive;
+  color: #d9534f;
+  font-weight: 100;
+  padding: 1em;
+  box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
 }
 
 .register-to-login {
-  margin-bottom: 0;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2em;
 }
 
 .register-form-item {
   margin-bottom: 20px;
+  padding: 1em;
+}
+
+.upload-img {
+  margin-bottom: 2em;
+}
+
+.register-form-item-img {
+  border-bottom: none;
+}
+
+.register-card {
+  display: block;
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 5em;
+  border: 1px solid transparent;
+  box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
+  border-style: solid;
+  background-color: #fff;
 }
 
 .badge-primary {
@@ -32,12 +56,50 @@
   margin-top:15px;
 }
 
-.Register button{
-  color: #D9534F;
-  text-shadow: 2px 2px #FFAD60;
-  font-size: large;
-}
-
 #profile-picture {
   width: 210px;
+}
+
+.register-btn-submit {
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  background-color: #d9534f;
+  color: #fff;
+  padding: 0.3em;
+  box-sizing: border-box;
+  margin-top: 1em;
+  margin-bottom: 5em;
+  margin-right: 0em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+.register-btn-submit:hover {
+  background-color: #FFAD60; 
+}
+
+.login-btn {
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  background-color: #d9534f;
+  color: #fff;
+  padding: 0.3em;
+  box-sizing: border-box;
+  margin-top: 2em;
+  margin-bottom: 10em;
+  margin-right: 0em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+.login-btn:hover {
+  background-color: #FFAD60; 
 }
