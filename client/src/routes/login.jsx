@@ -1,8 +1,9 @@
 import './login.scss';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Login(event) {  
 
@@ -30,8 +31,7 @@ export default function Login(event) {
   };
 
   //login handler on button click
-  const submitLogin = (event) => {
-   
+  const submitLogin = () => {
     axios({
       method: "post",
       url: "/api/login",
@@ -43,10 +43,10 @@ export default function Login(event) {
         toast.error(response.data.error);
       }
       else{
-        console.log(response.data)
+        console.log(response.data[0]);
       }
     })
-  } 
+  }
 
   const handleChange =(event) =>{
     setformValue({

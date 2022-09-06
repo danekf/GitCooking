@@ -44,16 +44,15 @@ export default function Register() {
 
 
    //registration handler on button click
-   const submitRegistration = (event) => {
+   const submitRegistration = () => {
     axios({
       method: "post",
       url: "/api/register",
-      data: formValue,
+      data: formValue
     })
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
       if(response.data.error){
-        console.log(response.data.error)
         toast.error(response.data.error);
       }
       else{
