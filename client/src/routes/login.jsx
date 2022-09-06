@@ -1,8 +1,12 @@
 import './login.scss';
 import { React, useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login(event) {  
+
+
 
   //state managed form data
   const [formValue, setformValue] = useState({
@@ -10,19 +14,15 @@ export default function Login(event) {
     password: ''
   })
 
-  const [validationError, setvalidationError] = useState();
-
   //form validation prior to submission, creates an error message
   const loginValidation = (event) => {
     event.preventDefault();
-    //clear error messages prior to setting new ones.
-    setvalidationError();
 
-    //check each form field for blank before submission
     if (formValue.username === ''){
-      setvalidationError('Please enter an email before submitting');
-    } else if (formValue.password === ''){
-      setvalidationError("Please enter a password before submission");
+      toast.error('Please enter a username or email before submitting');
+    }
+    if (formValue.password === ''){
+      toast.error('Please enter a password before submitting');
     }
     else {
       submitLogin();
@@ -39,8 +39,8 @@ export default function Login(event) {
     })
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
-      if(response.data.Error){
-        setvalidationError(response.data.Error);
+      if(response.data.error){
+        toast.error(response.data.error);
       }
       else{
         console.log(response.data)
@@ -65,7 +65,11 @@ export default function Login(event) {
           <button className="login-btn" type='submit'>Login</button>
         </form>
         <div>
-          {validationError}
+          <ToastContainer 
+            position='top-center'
+            autoClose={5000}
+            closeOnClick
+          />
         </div>
       </div>
     </div>
