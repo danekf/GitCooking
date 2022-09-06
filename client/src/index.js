@@ -16,6 +16,7 @@ import NewRecipe from './routes/recipes/newRecipe';
 import Recipe from './routes/recipes/recipe';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
     <Routes>
