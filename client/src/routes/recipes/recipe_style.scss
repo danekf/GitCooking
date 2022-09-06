@@ -1,9 +1,12 @@
+.recipe-body {
+  background-color: #FFAD60;
+}
 .recipe-card {
   display: block;
   margin-top: 3em;
   margin-left: 1em;
   margin-right: 1em;
-  margin-bottom: 7em;
+  margin-bottom: 4em;
   border: 1px solid transparent;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
   border-style: solid;
@@ -56,11 +59,15 @@
   color: #d9534f;
 }
 
-.username {
-  color: #d9534f;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
+.username-heading span {
+  cursor: pointer;
 }
+
+.username-heading span:hover {
+  color: #FFAD60;
+  cursor: pointer;
+}
+
 .recipe-img {
   display: block;
   margin-top: 2em;
@@ -78,4 +85,25 @@
   margin-bottom: 2em;
   display: flex;
   justify-content: space-around;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+.heading-lists {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: black;
+  list-style-type: none;
+}
+
+.card-body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: black;
+}
+
+.tags-subheading {
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  font-weight: 900;
 }
