@@ -7,8 +7,6 @@ import Menu from './routes/menu';
 function App() {
   const { modalProps, getTriggerProps } = useModal();
 
-
-
   return (
     <div className='App'>
       <head>
@@ -17,6 +15,7 @@ function App() {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
+        
         {/* Font Awesome */}
         <link
           rel='stylesheet'

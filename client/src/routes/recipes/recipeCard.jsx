@@ -5,6 +5,7 @@ import Carousel from 'react-bootstrap/Carousel';
 export default function RecipeCard(props) {
   return (
     <>
+    <div className='recipe-card-body'>
       <Carousel fade>
         <Carousel.Item>
           <img
@@ -44,6 +45,7 @@ export default function RecipeCard(props) {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      </div>
     </>
   );  
 }

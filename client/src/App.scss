@@ -28,6 +28,7 @@
   color: #FFAD60;
   font-family: 'Fredoka One', cursive;
   height: 100px;
+  z-index: 25;
 }
 
 .gitcooking-title {
@@ -38,7 +39,7 @@
   color: #61dafb;
 }
 
-.app-header a{
+.app-header a {
   color: #FFAD60;
   text-shadow: 2px 2px #D9534F;
   font-size: x-large;
