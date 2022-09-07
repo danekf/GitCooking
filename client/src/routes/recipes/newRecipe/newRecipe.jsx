@@ -32,7 +32,10 @@ export default function NewRecipe(props) {
   }
 
 //ingredient handler
-  const [newIngredient, setNewIngredient]=useState({})
+  const [newIngredient, setNewIngredient]=useState({
+    ingredientQty: '',
+    ingredientName: ''
+  })
   const handleIngredient=(event)=>{
     setNewIngredient({
       ...newIngredient,
@@ -45,6 +48,10 @@ export default function NewRecipe(props) {
       ...formValue,
         ingredients: [...formValue.ingredients, newIngredient]
     });
+    setNewIngredient({
+      ingredientQty: '',
+      ingredientName: ''
+    })
   }
 
   return (
@@ -71,8 +78,8 @@ export default function NewRecipe(props) {
             <ul>
               <div className='add-item'>
                 <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add ingredient</i>
-                <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient}/>
-                <input type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient}/>
+                <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
+                <input type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
               {formValue.ingredients.map((item) => <li>{item.ingredientQty} - {item.ingredientName} </li>)}
             </ul>
