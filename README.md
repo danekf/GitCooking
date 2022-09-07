@@ -7,6 +7,9 @@ Community driven Recipes without the life story from the last 3 generations.
 Client:
 -React Router
 -React Js
+-Toastify
+-React Morphing Modal
+
 
 
 Server:
@@ -14,6 +17,7 @@ Server:
 -Morgan
 -Dot ENV
 -PG
+-
 
 server-Dev:
 -nodemon

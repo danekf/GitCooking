@@ -1,7 +1,14 @@
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
+import { useModal, Modal } from 'react-morphing-modal';
+import 'react-morphing-modal/dist/ReactMorphingModal.css';
+import SearchBar from './routes/components/searchBar';
 
 function App() {
+  const { modalProps, getTriggerProps } = useModal();
+
+
+
   return (
     <div className='App'>
       <head>
@@ -73,11 +80,13 @@ function App() {
               <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
             </Link>
           </li>
-          <li>
-            <Link to='/menu'>
-              <i class='fa-solid fa-bars app-footer-nav-list-item'></i>
-            </Link>
+          <li {...getTriggerProps({background: '#FAF1E6'})}>
+            <i class='fa-solid fa-bars app-footer-nav-list-item'></i>
           </li>
+          <Modal {...modalProps}>
+            <SearchBar />
+            Tags and other things can go here.
+          </Modal>
         </nav>
       </footer>
     </div>
