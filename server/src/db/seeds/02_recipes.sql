@@ -1,7 +1,8 @@
-INSERT INTO recipes (user_id, original_fork_id, ingredients, equipment_dependencies, instructions, recipe_photos, tags, forks)
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment_dependencies, instructions, recipe_photos, tags, forks)
 VALUES(
   1,
   null,
+  'Pasta',
   '[{
     "pasta": "1 handful",
     "pesto": "3TBsp",
@@ -37,10 +38,11 @@ VALUES(
 
 
 --fork of recipe 1, which changed pesto for tomato sauce and added meatballs.
-INSERT INTO recipes (user_id, original_fork_id, ingredients, equipment_dependencies, instructions,recipe_photos, tags, forks)
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment_dependencies, instructions,recipe_photos, tags, forks)
 VALUES(
   1,
   1, --forked from 1, so id of 1 referencing the original fork id. Client will provide number when needed and handle logic to reference it.
+  'Pasta with meatballs',
   '[{
     "pasta": "1 handful",
     "Tomato Sauce": "3TBsp",
