@@ -3,12 +3,21 @@ VALUES(
   1,
   null,
   'Pasta',
-  '[{
-    "pasta": "1 handful",
-    "pesto": "3TBsp",
-    "salt": "Enough, not too little"
-  }]',
-  '[{"pot": 1}]',
+  '[
+    {
+      "ingredient-name":"pasta", 
+      "ingredient-qty":"1 handful"
+    },
+    {
+      "ingredient-name":"pesto", 
+      "ingredient-qty":"3TBsp" 
+    },
+    {
+      "ingredient-name":"salt", 
+      "ingredient-qty":"Enough"
+    }
+  ]',
+  '[{"equipment-name": "Pot", "equipment-qty": "1"}]',
   '[
     {
       "estimated time": 1, 
@@ -43,13 +52,25 @@ VALUES(
   1,
   1, --forked from 1, so id of 1 referencing the original fork id. Client will provide number when needed and handle logic to reference it.
   'Pasta with meatballs',
-  '[{
-    "pasta": "1 handful",
-    "Tomato Sauce": "3TBsp",
-    "salt": "Enough, not too little",
-    "Meatballs": 5
-  }]',
-  '[{"pot": 1}]',
+  '[
+    {
+      "ingredient-name":"pasta",
+     "ingredient-qty":"1 handful"
+    },
+    {
+      "ingredient-name":"pesto",
+      "ingredient-qty":"3TBsp"
+    },
+    {
+      "ingredient-name":"salt", 
+      "ingredient-qty":"Enough"
+    },
+    {
+      "ingredient-name":"Meatballs",
+      "ingredient-qty":"5"
+    }
+  ]',
+  '[{"equipment-name": "Pot", "equipment-qty": "1"}]',
   '[
     {
       "estimated time": 1,

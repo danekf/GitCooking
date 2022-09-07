@@ -12,7 +12,7 @@ import Menu from './routes/menu';
 import UserProfile from './routes/userProfile';
 import Login from './routes/login';
 import Register from './routes/register';
-import NewRecipe from './routes/recipes/newRecipe';
+import NewRecipe from './routes/recipes/newRecipe/newRecipe';
 import Recipe from './routes/recipes/recipe';
 import { Favourites } from './routes/favourites';
 

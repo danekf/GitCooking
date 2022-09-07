@@ -2,19 +2,23 @@ import './newRecipe_style.scss'
 import { React, useState } from 'react';
 import axios from 'axios';
 
+
 import { TagsInput } from "react-tag-input-component";
+
 
 
 export default function NewRecipe(props) {
 
+  //tag handler
   const [tags, setTags]=useState([]);
 
+  //form handler for submission to server
   const [formValue, setformValue] = useState({
     id: '',
     user_id: '',
     original_fork_id: '',
     title: '',
-    ingredients: '',
+    ingredients: [],
     equipment_dependencies: '',
     instructions: '',
     tags: '',
@@ -27,7 +31,20 @@ export default function NewRecipe(props) {
     });
   }
 
+//ingredient handler
+  const [newIngredient, setNewIngredient]=useState({})
+  const handleIngredient=(event)=>{
+    setNewIngredient({
+      ...newIngredient,
+      [event.target.name]: event.target.value
+    });
+  }
 
+  const addIngredientToList = () =>{
+    setformValue.ingredients(
+      [...formValue.ingredients, ingredient]
+    )
+  }
 
   return (
     <>
@@ -51,32 +68,40 @@ export default function NewRecipe(props) {
 
             <h4>Ingredients:</h4>
             <ul>
-              <li>
-              <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="ingredients" id="ingredients" />
-              </li>
+              <div className='add-item'>
+                <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add ingredient</i>
+                <input type="text" name="ingredient-qty" placeholder='Enter Quantity' onChange={handleIngredient}/>
+                <input type="text" name="ingredient-name" placeholder='Enter Ingredient' onChange={handleIngredient}/>
+              </div>
+              {formValue.ingredients.map((item) => <li>{item.qty} - {item.name} </li>)}
             </ul>
 
             <h4>Equipments Required:</h4>
             <ul>
               <li>
-              <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="equipments" id="equipments" />
+                <div className='add-item'>
+                  <i class="fa-solid fa-plus"></i>
+                  <input type="list" name="equipments" id="equipments" />
+                </div>
               </li>
             </ul>
 
             <h4>Instructions:</h4>
             <ul>
               <li>
-              <div className='add-item'><i class="fa-solid fa-plus"></i></div><input type="list" name="instructions" id="instructions" />
+                <div className='add-item'>
+                  <i class="fa-solid fa-plus"></i>
+                  <input type="list" name="instructions" id="instructions" />
+                </div>
               </li>
             </ul>
             
             <h4>Tags:</h4>
-            {/* <input type="text" name="tags" id="tags" /> */}
             <div className='tags'>
               <TagsInput
+                name= 'tags'
                 value={tags}
                 onChange={setTags}
-                name="tags"
                 placeHolder="enter tags"
               /> 
             </div>
