@@ -7,12 +7,14 @@ Community driven Recipes without the life story from the last 3 generations.
 Client:
 -React Router
 -React Js
+-Toastify
 
 Server:
 -Express
 -Morgan
 -Dot ENV
 -PG
+-
 
 server-Dev:
 -nodemon
