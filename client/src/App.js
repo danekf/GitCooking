@@ -6,7 +6,7 @@ import SearchBar from './routes/components/searchBar';
 
 function App() {
   const { modalProps, getTriggerProps } = useModal();
-  //menu button
+
 
 
   return (
@@ -80,19 +80,13 @@ function App() {
               <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
             </Link>
           </li>
-          <li >
-          <button 
-          className='btn btn_menu'
-          {...getTriggerProps({
-            background: '#FAF1E6' 
-          })}          
-          >
+          <li {...getTriggerProps({background: '#FAF1E6'})}>
             <i class='fa-solid fa-bars app-footer-nav-list-item'></i>
-          </button>          
+          </li>
           <Modal {...modalProps}>
             <SearchBar />
+            Tags and other things can go here.
           </Modal>
-          </li>
         </nav>
       </footer>
     </div>
