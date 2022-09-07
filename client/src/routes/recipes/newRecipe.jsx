@@ -1,6 +1,29 @@
 import './newRecipe_style.scss'
+import { React, useState } from 'react';
+import axios from 'axios';
 
 export default function NewRecipe(props) {
+
+  const [formValue, setformValue] = useState({
+    id: '',
+    user_id: '',
+    original_fork_id: '',
+    title: '',
+    ingredients: '',
+    equipment_dependencies: '',
+    instructions: '',
+    tags: '',
+  })
+
+  const handleChange =(event) =>{
+    setformValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    });
+  }
+
+
+
   return (
     <>
       <main>
@@ -10,7 +33,7 @@ export default function NewRecipe(props) {
             <h1 className='recipe-title'>Create a New Recipe</h1>
 
             <h4>Recipe Title:</h4>
-            <input type="text" name="recipe-title" id="recipe-title" />
+            <input type="text" name="title" id="title" value={formValue.username} onChange={handleChange}/>
 
             <h4>Prep Time:</h4>
             <input className='prep-time' type="text" name="prep-time" id="prep-time" />

@@ -7,7 +7,7 @@ export default function Menu() {
     <>
     <h1>Whats on the menu?</h1>
     <SearchBar />   
-    tags 
+    tags   
     </>
 
     
