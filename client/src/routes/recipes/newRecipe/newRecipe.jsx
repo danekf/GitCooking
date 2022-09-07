@@ -6,22 +6,89 @@ import axios from 'axios';
 import { TagsInput } from "react-tag-input-component";
 
 
-
 export default function NewRecipe(props) {
 
+//ingredient handler
+const [newIngredient, setNewIngredient]=useState({
+  ingredientQty: '',
+  ingredientName: ''
+})
+const handleIngredient=(event)=>{
+  setNewIngredient({
+    ...newIngredient,
+    [event.target.name]: event.target.value
+  });
+}
+const addIngredientToList = (event) =>{
+  event.preventDefault();
+  setformValue({
+    ...formValue,
+      ingredients: [...formValue.ingredients, newIngredient]
+  });
+  setNewIngredient({
+    ingredientQty: '',
+    ingredientName: ''
+  })
+}
+
+//equipment handler
+  const [newEquipment, setNewEquipment]=useState({
+    equipmentQty: '',
+    equipmentName: ''
+  })
+  const handleEquipment=(event)=>{
+    setNewEquipment({
+      ...newEquipment,
+      [event.target.name]: event.target.value
+    });
+  }
+
+  const addEquipmentToList = () =>{
+    setformValue({
+      ...formValue,
+        equipment: [...formValue.equipment, newEquipment]
+    });
+    setNewEquipment({
+      equipmentQty: '',
+      equipmentName: ''
+    })
+  }
+
+  //instructions handler
+  const [newInstruction, setNewInstruction]=useState({
+    estimatedTime: '',
+    instruction: ''
+  })
+  const handleInstruction=(event)=>{
+    setNewInstruction({
+      ...newInstruction,
+      [event.target.name]: event.target.value
+    });
+  }
+   const addInstructionToList = () =>{
+    setformValue({
+      ...formValue,
+        instructions: [...formValue.instructions, newInstruction]
+    });
+    setNewInstruction({
+      estimatedTime: '',
+      instruction: ''
+    })
+  }
+  
   //tag handler
   const [tags, setTags]=useState([]);
 
-  //form handler for submission to server
+  //form submission handler for submission to server
   const [formValue, setformValue] = useState({
     id: '',
     user_id: '',
     original_fork_id: '',
     title: '',
     ingredients: [],
-    equipment_dependencies: '',
-    instructions: '',
-    tags: '',
+    equipment: [],
+    instructions: [],
+    tags: [],
   })
 
   const handleChange =(event) =>{
@@ -31,27 +98,8 @@ export default function NewRecipe(props) {
     });
   }
 
-//ingredient handler
-  const [newIngredient, setNewIngredient]=useState({
-    ingredientQty: '',
-    ingredientName: ''
-  })
-  const handleIngredient=(event)=>{
-    setNewIngredient({
-      ...newIngredient,
-      [event.target.name]: event.target.value
-    });
-  }
-
-  const addIngredientToList = () =>{
-    setformValue({
-      ...formValue,
-        ingredients: [...formValue.ingredients, newIngredient]
-    });
-    setNewIngredient({
-      ingredientQty: '',
-      ingredientName: ''
-    })
+  const submitRecipe = (event) => {
+    event.preventDefault();
   }
 
   return (
@@ -77,31 +125,31 @@ export default function NewRecipe(props) {
             <h4>Ingredients:</h4>
             <ul>
               <div className='add-item'>
-                <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add ingredient</i>
-                <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
-                <input type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
+                  <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
+                  <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
+                  <input type="text" name="ingredientName" placeholder='Enter Equipment + details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
               {formValue.ingredients.map((item) => <li>{item.ingredientQty} - {item.ingredientName} </li>)}
             </ul>
 
             <h4>Equipments Required:</h4>
             <ul>
-              <li>
-                <div className='add-item'>
-                  <i class="fa-solid fa-plus"></i>
-                  <input type="list" name="equipments" id="equipments" />
-                </div>
-              </li>
+              <div className='add-item'>
+                <i class="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
+                <input type="text" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
+                <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
+              </div>
+              {formValue.equipment.map((item) => <li>{item.equipmentQty} - {item.equipmentName} </li>)}
             </ul>
 
             <h4>Instructions:</h4>
             <ul>
-              <li>
-                <div className='add-item'>
-                  <i class="fa-solid fa-plus"></i>
-                  <input type="list" name="instructions" id="instructions" />
-                </div>
-              </li>
+            <div className='add-item'>
+                <i class="fa-solid fa-plus" onClick={addInstructionToList}>Add Instruction</i>
+                <input type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
+                <input type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
+              </div>
+              {formValue.instructions.map((item) => <li>Estimated Time:{item.estimatedTime} Step:{item.instruction}</li>)}
             </ul>
             
             <h4>Tags:</h4>
@@ -116,8 +164,7 @@ export default function NewRecipe(props) {
             <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
 
-            <button className='recipe-btn-submit' type="submit">Submit Recipe!</button>
-            <button className='recipe-btn-reset' type="reset">Reset Recipe Form</button>
+            <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
           </form>
         </div>
