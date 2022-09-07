@@ -8,6 +8,8 @@ Client:
 -React Router
 -React Js
 -Toastify
+-React Morphing Modal
+
 
 Server:
 -Express
