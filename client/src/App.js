@@ -81,7 +81,14 @@ function App() {
             </Link>
           </li>
           <li >
-          <button {...getTriggerProps()}><i class='fa-solid fa-bars app-footer-nav-list-item'></i></button>          
+          <button 
+          className='btn btn_menu'
+          {...getTriggerProps({
+            background: '#FAF1E6' 
+          })}          
+          >
+            <i class='fa-solid fa-bars app-footer-nav-list-item'></i>
+          </button>          
           <Modal {...modalProps}>
             <SearchBar />
           </Modal>
