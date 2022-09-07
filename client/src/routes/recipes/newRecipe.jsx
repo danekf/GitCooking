@@ -2,7 +2,12 @@ import './newRecipe_style.scss'
 import { React, useState } from 'react';
 import axios from 'axios';
 
+import { TagsInput } from "react-tag-input-component";
+
+
 export default function NewRecipe(props) {
+
+  const [tags, setTags]=useState([]);
 
   const [formValue, setformValue] = useState({
     id: '',
@@ -33,7 +38,7 @@ export default function NewRecipe(props) {
             <h1 className='recipe-title'>Create a New Recipe</h1>
 
             <h4>Recipe Title:</h4>
-            <input type="text" name="title" id="title" value={formValue.username} onChange={handleChange}/>
+            <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange}/>
 
             <h4>Prep Time:</h4>
             <input className='prep-time' type="text" name="prep-time" id="prep-time" />
@@ -66,8 +71,15 @@ export default function NewRecipe(props) {
             </ul>
             
             <h4>Tags:</h4>
-            <input type="text" name="tags" id="tags" />
-            
+            {/* <input type="text" name="tags" id="tags" /> */}
+            <div className='tags'>
+              <TagsInput
+                value={tags}
+                onChange={setTags}
+                name="tags"
+                placeHolder="enter tags"
+              /> 
+            </div>
             <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
 
