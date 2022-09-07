@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  
   //home page, just get recipes of the week, currently just getting ALL recipes
-  router.get('/', (request, response)=>{
-    
+  router.get('/', (request, response) => {
     const queryString = `
     SELECT *
     FROM recipes
@@ -16,9 +14,7 @@ module.exports = (db) => {
       .then(({ rows: recipes }) => {
         response.json(recipes);
       });
-    });
-
-
+  });
 
   return router;
-}
+};
