@@ -5,7 +5,7 @@ import Carousel from 'react-bootstrap/Carousel';
 export default function RecipeCard(props) {
   return (
     <>
-      {/* <Carousel fade>
+      <Carousel fade>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -43,7 +43,7 @@ export default function RecipeCard(props) {
             </p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel> */}
+      </Carousel>
     </>
   );  
 }
