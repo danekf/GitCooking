@@ -41,9 +41,10 @@ export default function NewRecipe(props) {
   }
 
   const addIngredientToList = () =>{
-    setformValue.ingredients(
-      [...formValue.ingredients, ingredient]
-    )
+    setformValue({
+      ...formValue,
+        ingredients: [...formValue.ingredients, newIngredient]
+    });
   }
 
   return (
@@ -70,10 +71,10 @@ export default function NewRecipe(props) {
             <ul>
               <div className='add-item'>
                 <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add ingredient</i>
-                <input type="text" name="ingredient-qty" placeholder='Enter Quantity' onChange={handleIngredient}/>
-                <input type="text" name="ingredient-name" placeholder='Enter Ingredient' onChange={handleIngredient}/>
+                <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient}/>
+                <input type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient}/>
               </div>
-              {formValue.ingredients.map((item) => <li>{item.qty} - {item.name} </li>)}
+              {formValue.ingredients.map((item) => <li>{item.ingredientQty} - {item.ingredientName} </li>)}
             </ul>
 
             <h4>Equipments Required:</h4>

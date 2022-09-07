@@ -5,19 +5,19 @@ VALUES(
   'Pasta',
   '[
     {
-      "ingredient-name":"pasta", 
-      "ingredient-qty":"1 handful"
+      "ingredientName":"pasta", 
+      "ingredientQty":"1 handful"
     },
     {
-      "ingredient-name":"pesto", 
-      "ingredient-qty":"3TBsp" 
+      "ingredientName":"pesto", 
+      "ingredientQty":"3TBsp" 
     },
     {
-      "ingredient-name":"salt", 
-      "ingredient-qty":"Enough"
+      "ingredientName":"salt", 
+      "ingredientQty":"Enough"
     }
   ]',
-  '[{"equipment-name": "Pot", "equipment-qty": "1"}]',
+  '[{"equipmentName": "Pot", "equipmentQty": "1"}]',
   '[
     {
       "estimated time": 1, 
@@ -54,23 +54,23 @@ VALUES(
   'Pasta with meatballs',
   '[
     {
-      "ingredient-name":"pasta",
-     "ingredient-qty":"1 handful"
+      "ingredientName":"pasta",
+     "ingredientQty":"1 handful"
     },
     {
-      "ingredient-name":"pesto",
-      "ingredient-qty":"3TBsp"
+      "ingredientName":"pesto",
+      "ingredientQty":"3TBsp"
     },
     {
-      "ingredient-name":"salt", 
-      "ingredient-qty":"Enough"
+      "ingredientName":"salt", 
+      "ingredientQty":"Enough"
     },
     {
-      "ingredient-name":"Meatballs",
-      "ingredient-qty":"5"
+      "ingredientName":"Meatballs",
+      "ingredientQty":"5"
     }
   ]',
-  '[{"equipment-name": "Pot", "equipment-qty": "1"}]',
+  '[{"equipmentName": "Pot", "equipment-qty": "1"}]',
   '[
     {
       "estimated time": 1,
