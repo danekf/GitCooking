@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 8080;
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const cookieSession = require('cookie-session');
 
 // PG connection and database setup
 const { Pool } = require('pg');
@@ -26,12 +27,20 @@ db.connect()
 const app = express();
 const server = require('http').Server(app);
 
-// //cors setup
+//cors setup
 app.use(cors());
 
 //Morgan setup
 const morgan = require('morgan');
 app.use(morgan('dev'));
+
+//Cookie session set up
+app.use(
+  cookieSession({
+    name: "session",
+    keys:["breakfast lunch and dinner", "cooking all the time"] //just some keys to cycle through
+  })
+);
 
 //body parser middleware and json handler
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,11 +51,13 @@ app.use(express.json());
 const recipes = require('./routes/recipes');
 const login = require('./routes/login');
 const register = require('./routes/register');
+const logout = require('./routes/logout');
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
 app.use('/api/login', login(db));
 app.use('/api/register', register(db));
+app.use('/api/logout', logout());
 
 //message on server start
 server.listen(PORT, () => {

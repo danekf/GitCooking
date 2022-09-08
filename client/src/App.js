@@ -1,11 +1,41 @@
+import React, { useState, useEffect } from "react";
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
+import axios from 'axios';
+import ProfilePicture from './routes/profile_components/profile_picture';
 
 function App() {
+  //menu handler
   const { modalProps, getTriggerProps } = useModal();
+
+  //user handler
+  const [user, setUser] = useState({user:'No User'});
+    //set user state based on cookie on page load.
+  useEffect(()=>{
+    axios({
+      method: "get",
+      url: "/api/login",
+    })
+    .then ((response)=>{
+      setUser({...response.data});
+    })
+  }, [])
+
+  const logout = () => {
+    axios({
+      method: "post",
+      url: "/api/logout",
+    })
+    .then (()=>{
+      window.location = "/";
+    })
+
+  }
+
+
 
   return (
     <div className='App'>
@@ -25,7 +55,7 @@ function App() {
           referrerPolicy='no-referrer'
         />
       </head>
-      <header className='app-header'>
+      <header className='app-header' >
         <Link to='/'>
           <img
             src='/GitCookingLogo.png'
@@ -35,25 +65,33 @@ function App() {
           ></img>
           GitCooking
         </Link>
-        {/* Condiditional render here for what to show */}
-        {/* Not logged in stuff */}
-
-        {/* <Link to='/register' className="badge badge-secondary">Register</Link> */}
-        {/* Add a redirect link on Register page for those who have a login
-      {/* <Link to='/login'>Login</Link> */}
-
-        {/* Logged in stuff here */}
-        {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
-        <Link to='/newRecipe' className='badge badge-secondary'>
-          <span class='mob-view'>Create</span>
-          <span class='normal-view'> a new recipe</span>
-        </Link>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-          width='50px'
-          alt='profilePic'
-        ></img>
-        {/* Implement "click to edit" on profile pick */}
+          
+          {/* Condiditional render here for what to show */}
+          {user.id ?
+            //Logged in stuff here
+          <><Link to='/newRecipe' className='badge badge-secondary'>
+              <span class='mob-view'>Create</span>
+              <span class='normal-view'> a new recipe</span>
+            </Link>
+            <ProfilePicture/>
+            {/* <img
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
+              width='50px'
+              alt='profilePic'
+            ></img> */}
+            <p>{user.username}</p>
+            {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
+            <button className="badge badge-secondary" onClick={logout}>Logout</button>
+            </>
+            
+            //Implement "click to edit" on profile pick
+          : 
+            // Not logged in stuff
+            <>
+            <Link to='/register' className="badge badge-secondary">Register</Link> 
+            <Link to='/login' className="badge badge-secondary">Login</Link> 
+            </>
+          }
       </header>
 
       <body>

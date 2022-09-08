@@ -33,7 +33,7 @@ module.exports = (db) => {
           `${username}`,
         ];
         db.query(queryString, queryValues).then((user) => {
-          console.log(user.rows);
+          req.session.userId=user[0].id;
           res.json(user.rows);
         });
       }
