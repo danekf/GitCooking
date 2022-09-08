@@ -24,6 +24,9 @@ export default function UserProfile() {
           <Bio/>
         </div>
         <div>
+          <div className='my-recipes-card'>
+          <h1 className='my-recipes-title '>My Recipes</h1>
+          </div>
           <RecipeList/>
         </div>
       </main>
