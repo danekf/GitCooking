@@ -32,9 +32,7 @@ function App() {
     .then (()=>{
       window.location = "/";
     })
-
   }
-
 
 
   return (
@@ -56,33 +54,41 @@ function App() {
         />
       </head>
       <header className='app-header' >
-        <Link to='/'>
-          <img
-            src='/GitCookingLogo.png'
-            width='50px'
-            alt='gitCookingLogo'
-            className='gitcooking-title'
-          ></img>
-          GitCooking
-        </Link>
+        <div className='gitcooking-title-and-logo'>
+          <Link to='/'>
+            <img
+              src='/GitCookingLogo.png'
+              width='50px'
+              alt='gitCookingLogo'
+              className='gitcooking-title'
+            ></img>
+            GitCooking
+          </Link>
+        </div>
           
           {/* Condiditional render here for what to show */}
           {user.id ?
             //Logged in stuff here
-          <><Link to='/newRecipe' className='badge badge-secondary'>
+          <>
+            <Link to='/newRecipe' className='badge badge-secondary'>
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>
-            <ProfilePicture/>
-            {/* <img
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-              width='50px'
-              alt='profilePic'
-            ></img> */}
-            <p>{user.username}</p>
-            {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-            <button className="badge badge-secondary" onClick={logout}>Logout</button>
-            </>
+            <div className="logged-in-header">
+              <ProfilePicture className="profile-pic-display"/>
+              {/* <img
+                src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
+                width='80px'
+                height='80px'
+                alt='profilePic'
+              ></img> */}
+              <div className="header-name-logout">
+                <p className="username-display">{user.username}</p>
+                {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
+                <button className="badge badge-secondary" onClick={logout}>Logout</button>
+              </div>
+            </div>
+          </>
             
             //Implement "click to edit" on profile pick
           : 
