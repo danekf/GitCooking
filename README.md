@@ -17,7 +17,8 @@ Server:
 -Morgan
 -Dot ENV
 -PG
--
+-Bcrypt
+-Cookie Session
 
 server-Dev:
 -nodemon

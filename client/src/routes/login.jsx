@@ -43,7 +43,7 @@ export default function Login(event) {
         toast.error(response.data.error);
       }
       else{
-        console.log(response.data[0]);
+        window.location ="/";
       }
     })
   }
