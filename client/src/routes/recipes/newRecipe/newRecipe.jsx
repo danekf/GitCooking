@@ -1,12 +1,20 @@
 import './newRecipe_style.scss'
 import { React, useState } from 'react';
 import axios from 'axios';
-
+import { useLocation } from "react-router-dom";
 
 import { TagsInput } from "react-tag-input-component";
 
 
 export default function NewRecipe(props) {
+const location = useLocation();
+
+const user = location.state?.user;
+const userID = location.state?.userId;
+
+console.log('User: ', user);
+console.log('UserId: ', userID);
+console.log('location: ', location);
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -108,8 +116,9 @@ const addIngredientToList = (event) =>{
         <div className='create-a-new-recipe-card'>
           <form action="">
 
-            <h1 className='recipe-title'>Create a New Recipe</h1>
 
+            <h1 className='recipe-title'>Create a New Recipe</h1>
+            
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange}/>
 
