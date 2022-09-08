@@ -8,7 +8,6 @@ import axios from 'axios';
 
 function App() {
   const { modalProps, getTriggerProps } = useModal();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [user, setUser] = useState({user:'No User'});
 
@@ -53,7 +52,7 @@ function App() {
         </Link>
           
           {/* Condiditional render here for what to show */}
-          {isLoggedIn ?
+          {user.id ?
             // {/* Logged in stuff here */}
             // {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
             <><Link to='/newRecipe' className='badge badge-secondary'>
@@ -65,6 +64,7 @@ function App() {
               width='50px'
               alt='profilePic'
             ></img>
+            <p>Logged in as {user.username}</p>
             </>
             // {/* Implement "click to edit" on profile pick */}
           : 
