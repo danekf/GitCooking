@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 module.exports = (db) => {
   router.post('/', (req, res) => {
     const { username, password } = req.body;
     //Password should be hashed on SERVER side when request is sent. Do it HERE, probably with a helper function for both register and login
-    const password_hash = password; //+ bcrypt stuff
+    const password_hash = bcrypt.hashSync(password, 10)
 
     //search string
     const queryString = `

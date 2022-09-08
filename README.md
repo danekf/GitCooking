@@ -17,7 +17,7 @@ Server:
 -Morgan
 -Dot ENV
 -PG
--
+-Bcrypt
 
 server-Dev:
 -nodemon
