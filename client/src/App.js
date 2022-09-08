@@ -5,12 +5,15 @@ import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
+import ProfilePicture from './routes/profile_components/profile_picture';
 
 function App() {
+  //menu handler
   const { modalProps, getTriggerProps } = useModal();
 
+  //user handler
   const [user, setUser] = useState({user:'No User'});
-
+    //set user state based on cookie on page load.
   useEffect(()=>{
     axios({
       method: "get",
@@ -19,8 +22,21 @@ function App() {
     .then ((response)=>{
       setUser({...response.data});
     })
-
   }, [])
+
+  const logout = () => {
+    axios({
+      method: "post",
+      url: "/api/logout",
+    })
+    .then (()=>{
+      setUser({user:'No User'});
+      window.location = "/";
+    })
+
+  }
+
+
 
   return (
     <div className='App'>
@@ -40,7 +56,7 @@ function App() {
           referrerPolicy='no-referrer'
         />
       </head>
-      <header className='app-header'>
+      <header className='app-header' >
         <Link to='/'>
           <img
             src='/GitCookingLogo.png'
@@ -53,25 +69,30 @@ function App() {
           
           {/* Condiditional render here for what to show */}
           {user.id ?
-            // {/* Logged in stuff here */}
-            // {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
-            <><Link to='/newRecipe' className='badge badge-secondary'>
+            //Logged in stuff here
+          <><Link to='/newRecipe' className='badge badge-secondary'>
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>
-            <img
+            <ProfilePicture/>
+            {/* <img
               src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
               width='50px'
               alt='profilePic'
-            ></img>
-            <p>Logged in as {user.username}</p>
+            ></img> */}
+            <p>{user.username}</p>
+            {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
+            <button className="badge badge-secondary" onClick={logout}>Logout</button>
             </>
-            // {/* Implement "click to edit" on profile pick */}
+            
+            //Implement "click to edit" on profile pick
           : 
-            // {/* Not logged in stuff */}
+            // Not logged in stuff
+            <>
             <Link to='/register' className="badge badge-secondary">Register</Link> 
+            <Link to='/login' className="badge badge-secondary">Login</Link> 
+            </>
           }
-          
       </header>
 
       <body>

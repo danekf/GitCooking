@@ -12,7 +12,6 @@ module.exports = (db) => {
     ]).then((data) => {
       if (data.rows[0]) {
         console.log('Rejecting registration');
-        console.log('data found: ', data.rows[0]);
         res.json({
           error:
             'Username or email already exists, please try logging in instead.',
@@ -34,6 +33,7 @@ module.exports = (db) => {
           `${username}`,
         ];
         db.query(queryString, queryValues).then((user) => {
+          req.session.userId=user[0].id;
           res.json(user.rows);
         });
       }

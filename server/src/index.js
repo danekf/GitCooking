@@ -51,11 +51,13 @@ app.use(express.json());
 const recipes = require('./routes/recipes');
 const login = require('./routes/login');
 const register = require('./routes/register');
+const logout = require('./routes/logout');
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
 app.use('/api/login', login(db));
 app.use('/api/register', register(db));
+app.use('/api/logout', logout());
 
 //message on server start
 server.listen(PORT, () => {
