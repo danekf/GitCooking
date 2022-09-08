@@ -162,7 +162,9 @@ a.badge-primary {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 200px;
+  height: 100px;
 }
 
 .username-display {
@@ -170,8 +172,9 @@ a.badge-primary {
 }
 
 #profile-pic-display {
-  height: 1em;
-  width: 1em;
+  height: 80px;
+  width: 80px;
   margin: 0;
   margin-right: 10px;
+  padding: 0;
 }
