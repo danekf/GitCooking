@@ -50,6 +50,22 @@
   text-decoration: none;
 }
 
+#profile-pic-display {
+  display: flex;
+  border-style: solid;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 2em;
+  height: 8em;
+  width: 8em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .badge-secondary {
   color: #FFAD60;
   text-shadow: 2px 2px #D9534F;

@@ -5,7 +5,6 @@ import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
-import ProfilePicture from './routes/profile_components/profile_picture';
 
 function App() {
   //menu handler
@@ -74,16 +73,11 @@ function App() {
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>
-            <div className="logged-in-header" id="profile-pic-display">
-              {/* <div id="profile-pic-display"> */}
-                {/* <ProfilePicture /> */}
-              {/* </div> */}
+            <div className="logged-in-header" >
               <img
-                src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-                width='80px'
-                height='80px'
-                alt='profilePic'
-              ></img>
+                id="profile-pic-display"
+                src=''
+              />
               <div className="header-name-logout">
                 <p className="username-display">{user.username}</p>
                 {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
