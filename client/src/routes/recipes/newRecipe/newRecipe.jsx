@@ -10,11 +10,7 @@ export default function NewRecipe(props) {
 const location = useLocation();
 
 const user = location.state?.user;
-const userID = location.state?.userId;
-
-console.log('User: ', user);
-console.log('UserId: ', userID);
-console.log('location: ', location);
+const original_fork = location.state?.original_fork
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -89,9 +85,8 @@ const addIngredientToList = (event) =>{
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
-    id: '',
-    user_id: '',
-    original_fork_id: '',
+    user_id: user.id,
+    original_fork_id: original_fork,
     title: '',
     ingredients: [],
     equipment: [],
