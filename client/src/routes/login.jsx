@@ -5,9 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function Login(event) {  
-
-
+export default function Login(event) { 
 
   //state managed form data
   const [formValue, setformValue] = useState({
