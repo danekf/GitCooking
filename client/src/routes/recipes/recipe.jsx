@@ -18,7 +18,7 @@ export default function Recipe() {
           
           <h5 className='username-heading'>This recipe is made with love by: <span>@Shakespeare</span></h5>
 
-          <img className="recipe-img"src="" alt="Recipe Image" />
+          <img className="recipe-img"src="" alt="Recipe" />
 
           <div className='recipe-stat'>
             <h6>Prep Time:</h6>

@@ -1,6 +1,6 @@
 import './newRecipe_style.scss'
-import { React, useState } from 'react';
-import axios from 'axios';
+import { React, useState, useEffect } from 'react';
+// import axios from 'axios';
 import { useLocation } from "react-router-dom";
 
 import { TagsInput } from "react-tag-input-component";
@@ -10,7 +10,9 @@ export default function NewRecipe(props) {
 const location = useLocation();
 
 const user = location.state?.user;
-const original_fork = location.state?.original_fork
+const original_fork = location.state?.original_fork || '';
+
+
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -63,6 +65,7 @@ const addIngredientToList = (event) =>{
     estimatedTime: '',
     instruction: ''
   })
+
   const handleInstruction=(event)=>{
     setNewInstruction({
       ...newInstruction,
@@ -74,12 +77,14 @@ const addIngredientToList = (event) =>{
       ...formValue,
         instructions: [...formValue.instructions, newInstruction]
     });
+
     setNewInstruction({
       estimatedTime: '',
       instruction: ''
     })
-  }
+  }   
   
+
   //tag handler
   const [tags, setTags]=useState([]);
 
@@ -94,7 +99,7 @@ const addIngredientToList = (event) =>{
     tags: [],
   })
 
-  const handleChange =(event) =>{
+  const handleChange =(event) => {
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value
@@ -104,6 +109,23 @@ const addIngredientToList = (event) =>{
   const submitRecipe = (event) => {
     event.preventDefault();
   }
+
+
+//cook time handler
+const [cookTime, setCookTime] = useState(0);
+
+useEffect(() =>{
+  let time = 0;
+  formValue.instructions.map((step) => {
+    time += parseFloat(step.estimatedTime);    
+  })
+  //round to nearest half minute
+  time = Math.round(time*2)/2;
+
+  setCookTime(time);    
+
+}, [formValue.instructions])
+
 
   return (
     <>
@@ -115,13 +137,13 @@ const addIngredientToList = (event) =>{
             <h1 className='recipe-title'>Create a New Recipe</h1>
             
             <h4>Recipe Title:</h4>
-            <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange}/>
+            <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
 
             <h4>Prep Time:</h4>
             <input className='prep-time' type="text" name="prep-time" id="prep-time" />
             
             <h4>Cooking Time:</h4>
-            <input className='cooking-time' type="text" name="cooking-time" id="cooking-time" />
+            <input className='cooking-time' type="text" name="cooking-time" value={cookTime} disabled />
             
             <h4>Servings:</h4>
             <input className='servings' type="text" name="servings" id="servings" />
