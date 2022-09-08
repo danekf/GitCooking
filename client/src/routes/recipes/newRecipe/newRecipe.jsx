@@ -149,7 +149,7 @@ const addIngredientToList = (event) =>{
                 <input type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
                 <input type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
               </div>
-              {formValue.instructions.map((item) => <li>Estimated Time:{item.estimatedTime} Step:{item.instruction}</li>)}
+              {formValue.instructions.map((item) => <li>Estimated Time:{item.estimatedTime} minutes. Step:{item.instruction}</li>)}
             </ul>
             
             <h4>Tags:</h4>
