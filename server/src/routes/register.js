@@ -18,7 +18,7 @@ module.exports = (db) => {
         });
       } else {
         //Password should be hashed on SERVER side when request is sent. Do it HERE, probably with a helper function for both register and login
-        const password_hash = bcrypt.hashSync(req.body.password, 10)
+        const password_hash = bcrypt.hashSync(password, 10)
         const queryString = `
           INSERT INTO users
           (first_name, last_name, email, password_hash, username)

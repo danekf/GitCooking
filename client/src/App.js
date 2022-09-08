@@ -80,7 +80,7 @@ function App() {
             </Link>
           </li>
           <li {...getTriggerProps({background: '#FAF1E6'})}>
-            <i class='fa-solid fa-bars app-footer-nav-list-item'></i>
+            <i id="burger-icon" class='fa-solid fa-burger app-footer-nav-list-item'></i>
           </li>
           <Modal {...modalProps}>
             <Menu />
