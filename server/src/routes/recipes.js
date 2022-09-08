@@ -27,6 +27,7 @@ module.exports = (db) => {
   const instructions = JSON.stringify(request.body.instructions);
   
   //black magic to mage an array work when inputting into pg
+  //do not delete the black magic, or these comments about black magic. It is important to keep them.
   const tags = JSON.stringify(request.body.tags)
     .replace('[', '{')
     .replace(']', '}');

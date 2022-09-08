@@ -11,12 +11,12 @@ export default function NewRecipe(props) {
 const location = useLocation();
 
 const user = location.state?.user;
-const original_fork = location.state?.original_fork || '';
+const original_fork = location.state?.original_fork || 0;
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
     user_id: user.id,
-    original_fork_id: original_fork,
+    original_fork_id: 0,
     title: '',
     ingredients: [],
     equipment: [],
@@ -171,16 +171,16 @@ const addIngredientToList = (event) =>{
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
           
             <h4>Cooking Time:</h4>
-            <input className='cooking-time' type="text" name="cooking-time" value={cookTime} disabled />
+            <input className='cooking-time' type="number" name="cooking-time" value={cookTime} disabled />
             
             <h4>Servings:</h4>
-            <input className='servings' type="text" name="servings" id="servings" onChange={handleChange} value={formValue.servings} />
+            <input className='servings' type="number" name="servings" onChange={handleChange} value={formValue.servings} />
 
             <h4>Ingredients:</h4>
             <ul>
               <div className='add-item'>
                   <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
-                  <input type="text" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
+                  <input type="number" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
                   <input type="text" name="ingredientName" placeholder='Enter Equipment + details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
               {formValue.ingredients.map((item) => <li>{item.ingredientQty} - {item.ingredientName} </li>)}
@@ -190,7 +190,7 @@ const addIngredientToList = (event) =>{
             <ul>
               <div className='add-item'>
                 <i class="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
-                <input type="text" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
+                <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
                 <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
               </div>
               {formValue.equipment.map((item) => <li>{item.equipmentQty} - {item.equipmentName} </li>)}
