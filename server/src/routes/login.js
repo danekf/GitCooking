@@ -4,19 +4,19 @@ const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 
 module.exports = (db) => {
-  // router.get('/' , (req, res) => {
-  // //if user already logged in, just send user data
-  //   const queryString = `
-  //   SELECT *
-  //   FROM users
-  //   WHERE id = $1`;
-  //   const queryValues = [`${req.session.userId}`];
-  //   db.query(queryString, queryValues)
-  //     .then(({rows:users})=>      
-  //     res.json(users[0]))
-  //     res.redirect('/')
-
-  // });
+  router.get('/' , (req, res) => {
+    //if user already logged in, just send user data
+    if(req.session.userId){
+        const queryString = `
+        SELECT *
+        FROM users
+        WHERE id = $1`;
+        const queryValues = [`${req.session.userId}`];
+        db.query(queryString, queryValues)
+          .then(({rows:users})=>      
+          res.json(users[0]))
+    }
+  });
 
   router.post('/', (req, res) => {
     
@@ -41,7 +41,7 @@ module.exports = (db) => {
         } else {
           //pass, return user data
           req.session.userId=users[0].id;
-          res.redirect("/");
+          res.json(users[0]);
         }
       })
       .catch((error) => console.log(error));

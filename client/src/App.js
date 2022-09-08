@@ -10,7 +10,7 @@ function App() {
   const { modalProps, getTriggerProps } = useModal();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({user:'No User'});
 
   useEffect(()=>{
     axios({
@@ -18,7 +18,7 @@ function App() {
       url: "/api/login",
     })
     .then ((response)=>{
-      setUser({...response.userId});
+      setUser({...response.data});
     })
 
   }, [])
