@@ -74,14 +74,16 @@ function App() {
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>
-            <div className="logged-in-header">
-              <ProfilePicture id="profile-pic-display"/>
-              {/* <img
+            <div className="logged-in-header" id="profile-pic-display">
+              {/* <div id="profile-pic-display"> */}
+                {/* <ProfilePicture /> */}
+              {/* </div> */}
+              <img
                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
                 width='80px'
                 height='80px'
                 alt='profilePic'
-              ></img> */}
+              ></img>
               <div className="header-name-logout">
                 <p className="username-display">{user.username}</p>
                 {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
