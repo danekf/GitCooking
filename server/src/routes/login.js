@@ -20,6 +20,7 @@ module.exports = (db) => {
 
     db.query(queryString, queryValues)
       .then(({ rows: users }) => {
+        //set session cookie, with the logged in users username
         if (!users[0]) {
           res.json({ error: 'Username or email not found.' });
         } else if (password_hash != users[0].password_hash) {

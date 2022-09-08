@@ -1,11 +1,14 @@
+import React, { useState } from "react";
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 
+
 function App() {
   const { modalProps, getTriggerProps } = useModal();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className='App'>
@@ -35,25 +38,27 @@ function App() {
           ></img>
           GitCooking
         </Link>
-        {/* Condiditional render here for what to show */}
-        {/* Not logged in stuff */}
-
-        {/* <Link to='/register' className="badge badge-secondary">Register</Link> */}
-        {/* Add a redirect link on Register page for those who have a login
-      {/* <Link to='/login'>Login</Link> */}
-
-        {/* Logged in stuff here */}
-        {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
-        <Link to='/newRecipe' className='badge badge-secondary'>
-          <span class='mob-view'>Create</span>
-          <span class='normal-view'> a new recipe</span>
-        </Link>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-          width='50px'
-          alt='profilePic'
-        ></img>
-        {/* Implement "click to edit" on profile pick */}
+          
+          {/* Condiditional render here for what to show */}
+          {isLoggedIn ?
+            // {/* Logged in stuff here */}
+            // {/* Change "Create" in mobile view to "Create a new recipe" in desktop view */}
+            <><Link to='/newRecipe' className='badge badge-secondary'>
+              <span class='mob-view'>Create</span>
+              <span class='normal-view'> a new recipe</span>
+            </Link>
+            <img
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
+              width='50px'
+              alt='profilePic'
+            ></img>
+            </>
+            // {/* Implement "click to edit" on profile pick */}
+          : 
+            // {/* Not logged in stuff */}
+            <Link to='/register' className="badge badge-secondary">Register</Link> 
+          }
+          
       </header>
 
       <body>

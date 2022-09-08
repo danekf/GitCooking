@@ -27,12 +27,20 @@ db.connect()
 const app = express();
 const server = require('http').Server(app);
 
-// //cors setup
+//cors setup
 app.use(cors());
 
 //Morgan setup
 const morgan = require('morgan');
 app.use(morgan('dev'));
+
+//Cookie session set up
+app.use(
+  cookieSession({
+    name: "session",
+    keys:["breakfast lunch and dinner", "cooking all the time"] //just some keys to cycle through
+  })
+);
 
 //body parser middleware and json handler
 app.use(bodyParser.urlencoded({ extended: true }));
