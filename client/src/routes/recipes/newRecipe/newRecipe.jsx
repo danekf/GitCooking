@@ -12,7 +12,17 @@ const location = useLocation();
 const user = location.state?.user;
 const original_fork = location.state?.original_fork || '';
 
-
+  //form submission handler for submission to server
+  const [formValue, setformValue] = useState({
+    user_id: user.id,
+    original_fork_id: original_fork,
+    title: '',
+    ingredients: [],
+    equipment: [],
+    instructions: [],
+    tags: [],
+    servings: '',
+  })
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -82,23 +92,21 @@ const addIngredientToList = (event) =>{
       estimatedTime: '',
       instruction: ''
     })
-  }   
-  
+  } 
 
   //tag handler
-  const [tags, setTags]=useState([]);
+  const [recipeTags, setRecipeTags]=useState([]);
 
-  //form submission handler for submission to server
-  const [formValue, setformValue] = useState({
-    user_id: user.id,
-    original_fork_id: original_fork,
-    title: '',
-    ingredients: [],
-    equipment: [],
-    instructions: [],
-    tags: [],
-  })
+  useEffect(() =>{
 
+    setformValue({
+      ...formValue,
+    tags: recipeTags}); 
+  }, [recipeTags])
+  
+
+
+  //handles all changes to components into the form for submission
   const handleChange =(event) => {
     setformValue({
       ...formValue,
@@ -106,10 +114,10 @@ const addIngredientToList = (event) =>{
     });
   }
 
+  //recipe submission
   const submitRecipe = (event) => {
     event.preventDefault();
   }
-
 
 //cook time handler
 const [cookTime, setCookTime] = useState(0);
@@ -121,9 +129,7 @@ useEffect(() =>{
   })
   //round to nearest half minute
   time = Math.round(time*2)/2;
-
-  setCookTime(time);    
-
+  setCookTime(time); 
 }, [formValue.instructions])
 
 
@@ -138,15 +144,12 @@ useEffect(() =>{
             
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
-
-            <h4>Prep Time:</h4>
-            <input className='prep-time' type="text" name="prep-time" id="prep-time" />
-            
+          
             <h4>Cooking Time:</h4>
             <input className='cooking-time' type="text" name="cooking-time" value={cookTime} disabled />
             
             <h4>Servings:</h4>
-            <input className='servings' type="text" name="servings" id="servings" />
+            <input className='servings' type="text" name="servings" id="servings" onChange={handleChange} value={formValue.servings} />
 
             <h4>Ingredients:</h4>
             <ul>
@@ -180,10 +183,10 @@ useEffect(() =>{
             
             <h4>Tags:</h4>
             <div className='tags'>
-              <TagsInput
+            <TagsInput
                 name= 'tags'
-                value={tags}
-                onChange={setTags}
+                value={recipeTags}
+                onChange={setRecipeTags}
                 placeHolder="enter tags"
               /> 
             </div>
