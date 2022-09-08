@@ -37,8 +37,8 @@ app.use(morgan('dev'));
 //Cookie session set up
 app.use(
   cookieSession({
-    name: "session",
-    keys:["breakfast lunch and dinner", "cooking all the time"] //just some keys to cycle through
+    name: 'session',
+    keys: ['breakfast lunch and dinner', 'cooking all the time'], //just some keys to cycle through
   })
 );
 
