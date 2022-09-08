@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
-
+import axios from 'axios';
 
 function App() {
   const { modalProps, getTriggerProps } = useModal();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [user, setUser] = useState({});
+
+  useEffect(()=>{
+    axios({
+      method: "get",
+      url: "/api/login",
+    })
+    .then ((response)=>{
+      setUser({...response.userId});
+    })
+
+  }, [])
 
   return (
     <div className='App'>
