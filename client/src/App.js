@@ -69,8 +69,7 @@ function App() {
           {/* Condiditional render here for what to show */}
           {user.id ?
             //Logged in stuff here
-          <>
-            <Link to='/newRecipe' className='badge badge-secondary'>
+          <><Link to='/newRecipe' state = {{user: user, userId: user.id}} className='badge badge-secondary'>
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>

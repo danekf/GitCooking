@@ -16,7 +16,7 @@ export default function Register() {
     last_name: ''
   })
 
-  const [validationError, setvalidationError] = useState();
+  // const [validationError, setvalidationError] = useState();
 
   //form validation prior to submission, creates an error message
   const registrationValidation = (event) => {
@@ -89,7 +89,7 @@ export default function Register() {
         <div>
           <ToastContainer 
             position='top-center'
-            autoClose={5000}
+            autoClose={3000}
             closeOnClick
           />
         </div>    

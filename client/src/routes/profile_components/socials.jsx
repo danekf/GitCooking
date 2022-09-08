@@ -5,19 +5,19 @@ export default function Socials () {
       <div className="socials-list-item">
         <ul>
           <li>
-            <i class="fa-brands fa-instagram"><a href=""></a></i> 
+           <a href="www.google.com"><i class="fa-brands fa-instagram"></i> </a>
           </li>
           <li>
-            <i class="fa-brands fa-youtube"><a ahref=""></a></i>
+            <a href="www.google.com"><i class="fa-brands fa-youtube"></i></a>
           </li>
           <li>
-            <i class="fa-brands fa-tiktok"><a hraef=""></a></i>
+            <a href="www.google.com"><i class="fa-brands fa-tiktok"></i></a>
           </li>
           <li>
-            <i class="fa-brands fa-twitter"><a hraef=""></a></i>
+            <a href="www.google.com"><i class="fa-brands fa-twitter"></i></a>
           </li>
           <li>
-            <i class="fa-brands fa-linkedin"><a href=""></a></i>
+            <a href="www.google.com"><i class="fa-brands fa-linkedin"></i></a>
           </li>
         </ul>
       </div>
