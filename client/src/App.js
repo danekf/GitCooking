@@ -75,7 +75,7 @@ function App() {
               <span class='normal-view'> a new recipe</span>
             </Link>
             <div className="logged-in-header">
-              <ProfilePicture className="profile-pic-display"/>
+              <ProfilePicture id="profile-pic-display"/>
               {/* <img
                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
                 width='80px'
@@ -95,7 +95,9 @@ function App() {
             // Not logged in stuff
             <>
             <Link to='/register' className="badge badge-secondary">Register</Link> 
-            <Link to='/login' className="badge badge-secondary">Login</Link> 
+            <div className="logged-in-header">
+              <Link to='/login' className="badge badge-secondary">Login</Link> 
+            </div>
             </>
           }
       </header>
