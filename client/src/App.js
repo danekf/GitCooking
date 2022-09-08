@@ -30,7 +30,6 @@ function App() {
       url: "/api/logout",
     })
     .then (()=>{
-      setUser({user:'No User'});
       window.location = "/";
     })
 
