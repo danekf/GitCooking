@@ -67,7 +67,7 @@ export default function Login(event) {
         <div>
           <ToastContainer 
             position='top-center'
-            autoClose={5000}
+            autoClose={3000}
             closeOnClick
           />
         </div>

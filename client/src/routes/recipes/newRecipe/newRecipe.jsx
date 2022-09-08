@@ -2,8 +2,9 @@ import './newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
 // import axios from 'axios';
 import { useLocation } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
+import axios from 'axios';
 
 
 export default function NewRecipe(props) {
@@ -22,6 +23,7 @@ const original_fork = location.state?.original_fork || '';
     instructions: [],
     tags: [],
     servings: '',
+    recipe_photos: 'dummy_URL'
   })
 
 //ingredient handler
@@ -98,10 +100,10 @@ const addIngredientToList = (event) =>{
   const [recipeTags, setRecipeTags]=useState([]);
 
   useEffect(() =>{
-
     setformValue({
       ...formValue,
-    tags: recipeTags}); 
+    tags: recipeTags}) 
+    // eslint-disable-next-line 
   }, [recipeTags])
   
 
@@ -114,29 +116,52 @@ const addIngredientToList = (event) =>{
     });
   }
 
+  //cook time handler
+  const [cookTime, setCookTime] = useState(0);
+
+  useEffect(() =>{
+    let time = 0;
+    // eslint-disable-next-line 
+    formValue.instructions.map((step) => {
+      time += parseFloat(step.estimatedTime);    
+    })
+    //round to nearest half minute
+    time = Math.round(time*2)/2;
+    setCookTime(time); 
+  }, [formValue.instructions])
+
   //recipe submission
   const submitRecipe = (event) => {
     event.preventDefault();
+    axios({
+      method: "post",
+      url: "/api/recipes/new",
+      data: formValue
+    })
+    .then ((response)=>{
+      //if username not found, send error. Messages are curated by server
+      if(response.data.error){
+        toast.error(response.data.error);
+      }
+      else{
+        console.log(response.data)
+      }
+    })
   }
-
-//cook time handler
-const [cookTime, setCookTime] = useState(0);
-
-useEffect(() =>{
-  let time = 0;
-  formValue.instructions.map((step) => {
-    time += parseFloat(step.estimatedTime);    
-  })
-  //round to nearest half minute
-  time = Math.round(time*2)/2;
-  setCookTime(time); 
-}, [formValue.instructions])
 
 
   return (
     <>
       <main>
+      
         <div className='create-a-new-recipe-card'>
+        <div>
+          <ToastContainer 
+            position='top-center'
+            autoClose={3000}
+            closeOnClick
+          />
+        </div>
           <form action="">
 
 
