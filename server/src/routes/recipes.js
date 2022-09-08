@@ -17,9 +17,27 @@ module.exports = (db) => {
       });
   });
 
+  router.get('/:userid', (request, response)=>{
+    const user_id = request.session.userId;
+
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE user_id = 1
+    ;`;
+
+    const queryValues=[`${user_id}`];
+
+    db.query(queryString)
+      //return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+
+  });
+
   router.post('/new', (request, response)=>{
     const {user_id, original_fork_id, title, recipe_photos, servings } = request.body;
-    console.log(request.body)  
 
   //black magic to make it work with pg, more greyish white magic actually.
   const ingredients = JSON.stringify(request.body.ingredients);

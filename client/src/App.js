@@ -115,7 +115,7 @@ function App() {
           {/* Add Login for conditional rendering if someone clicks on Profile in footernav & is not logged in */}
           {/* <Link to='/login'>Login</Link> */}
           <li>
-            <Link to='/favourites'>
+            <Link to='/favourites' state = {{user: user}}>
               <i class='fa-solid fa-star app-footer-nav-list-item'></i>
             </Link>
           </li>
