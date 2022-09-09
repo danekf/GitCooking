@@ -103,5 +103,30 @@ VALUES(
   'No Photos yet',
   ARRAY ['Pasta', 'Simple', 'Quick', 'Easy', 'Budget', 'Meatballs', 'Tomato Sauce'],
   4,
-  ARRAY [2]
+  null
+);
+
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
+VALUES(
+  2,
+  null,
+  'Water',
+  '[
+    {
+      "ingredientName":"water", 
+      "ingredientQty":"1"
+    }    
+  ]',
+  '[{"equipmentName": "Cup", "equipmentQty": "1"}]',
+  '[
+    {
+      "estimatedTime": 1, 
+      "instruction": "Add water to cup"
+    }
+  ]',
+  1,
+  'No Photos yet',
+  ARRAY ['water'],
+  1,
+  null
 );

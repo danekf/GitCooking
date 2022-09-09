@@ -57,6 +57,7 @@ module.exports = (db) => {
 
   });
 
+  //save a new recipe to the db
   router.post('/new', (request, response)=>{
     const {user_id, original_fork_id, title, recipe_photos, servings } = request.body;
 
