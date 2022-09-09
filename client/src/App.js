@@ -5,6 +5,8 @@ import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
+import LoggedInHeaderDropdown from "./routes/components/loggedInHeaderDropdown";
+import NotLoggedInHeaderDropdown from "./routes/components/notLoggedInHeaderDropdown";
 
 function App() {
   //menu handler
@@ -35,6 +37,7 @@ function App() {
 
 
   return (
+    <html lang="en">
     <div className='App'>
       <head>
         <meta charSet='UTF-8' />
@@ -42,6 +45,12 @@ function App() {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
+
+
+        {/* Bootstrap */}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+              
         
         {/* Font Awesome */}
         <link
@@ -51,6 +60,8 @@ function App() {
           crossOrigin='anonymous'
           referrerPolicy='no-referrer'
         />
+
+
       </head>
       <header className='app-header' >
         <div className='gitcooking-title-and-logo'>
@@ -98,15 +109,52 @@ function App() {
             }
           </div>
 
+            {user.id ? <LoggedInHeaderDropdown /> : <NotLoggedInHeaderDropdown /> }
+
         <div className="dropdown">
-          <button type="button" id="mobile-dropdown-menu-button" class="btn btn-secondary dropdown-toggle" >
-          <i class="fa-solid fa-right-to-bracket"></i>
+          <button type="button" id="mobile-dropdown-menu-button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" >
+            <i class="fa-solid fa-right-to-bracket"></i>
           </button>
           <ul className="dropdown-menu">
-          <li></li>
+            {user.id ?
+            // If user is logged in show buttons below
+            <>
+              <li>
+                <a><Link to='/newRecipe' className='badge badge-secondary'>
+                  <span class='mob-view'>Create</span>
+                </ Link>
+                </a>
+              </li>
+
+              <li>
+                <img
+                  id="profile-pic-display"
+                  src=''
+                />
+              </li>
+
+              <li>
+
+                <p className="username-display">{user.username}</p>
+              </li>
+
+              <li>
+                  <button className="badge badge-secondary" onClick={logout}>Logout</button>
+              </li>
+            </>
+            :
+            // If user is not logged in show buttons below
+            <>
+              <li>
+                <Link to='/register' className="badge badge-secondary">Register</Link>
+              </li>
+              <li>
+                  <Link to='/login' className="badge badge-secondary">Login</Link> 
+              </li>
+            </>
+            }
           </ul>
         </div>
-
 
       </header>
 
@@ -142,6 +190,7 @@ function App() {
         </nav>
       </footer>
     </div>
+  </html>
   );
 }
 
