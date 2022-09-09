@@ -20,34 +20,32 @@ export default function UserProfile() {
 
   return (
     <>
-      <main>
-        {editMode ? (
+      {editMode ? (
+        <div>
+          <EditProfile changeStateToFalse={changeStateToFalse}/>
+        </div> )
+      : (
+        <>
+          <div className="profile-card">
           <div>
-            <EditProfile changeStateToFalse={changeStateToFalse}/>
-          </div> )
-        : (
-          <>
-            <div className="profile-card">
-            <div>
-              <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(true)}></i>
+            <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(true)}></i>
+          </div>
+            <ProfilePicture/>
+            <Badges/>
+            <Username/>
+            <ProfileButtons/>
+            <Socials/>
+            <Qualifications/>
+            <Bio/>
+          </div>
+          <div>
+            <div className='my-recipes-card'>
+            <h1 className='my-recipes-title '>My Recipes</h1>
             </div>
-              <ProfilePicture/>
-              <Badges/>
-              <Username/>
-              <ProfileButtons/>
-              <Socials/>
-              <Qualifications/>
-              <Bio/>
-            </div>
-            <div>
-              <div className='my-recipes-card'>
-              <h1 className='my-recipes-title '>My Recipes</h1>
-              </div>
-              <RecipeList/>
-            </div>
-          </>
-        )} 
-      </main>
+            <RecipeList/>
+          </div>
+        </>
+      )} 
     </>
   );  
 }

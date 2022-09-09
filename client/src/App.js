@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
@@ -12,25 +12,28 @@ function App() {
   const { modalProps, getTriggerProps } = useModal();
 
   //user handler
-  const [user, setUser] = useState({ user: 'No User' });
-  //set user state based on cookie on page load.
-  useEffect(() => {
+  const [user, setUser] = useState({user:'No User'});
+    //set user state based on cookie on page load.
+  useEffect(()=>{
     axios({
-      method: 'get',
-      url: '/api/login',
-    }).then((response) => {
-      setUser({ ...response.data });
-    });
-  }, []);
+      method: "get",
+      url: "/api/login",
+    })
+    .then ((response)=>{
+      setUser({...response.data});
+    })
+  }, [])
 
   const logout = () => {
     axios({
-      method: 'post',
-      url: '/api/logout',
-    }).then(() => {
-      window.location = '/';
-    });
-  };
+      method: "post",
+      url: "/api/logout",
+    })
+    .then (()=>{
+      window.location = "/";
+    })
+  }
+
 
   return (
     <div className='App'>
@@ -40,7 +43,7 @@ function App() {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
-
+        
         {/* Font Awesome */}
         <link
           rel='stylesheet'
@@ -50,7 +53,7 @@ function App() {
           referrerPolicy='no-referrer'
         />
       </head>
-      <header className='app-header'>
+      <header className='app-header' >
         <div className='gitcooking-title-and-logo'>
           <Link to='/'>
             <img
@@ -62,80 +65,67 @@ function App() {
             GitCooking
           </Link>
         </div>
-
-        {/* Condiditional render here for what to show */}
-        {user.id ? (
-          //Logged in stuff here
-          <>
-            <Link
-              to='/newRecipe'
-              state={{ user: user }}
-              className='badge badge-secondary'
-            >
-              <span className='mob-view'>Create</span>
-              <span className='normal-view'> a new recipe</span>
+          
+          {/* Condiditional render here for what to show */}
+          {user.id ?
+            //Logged in stuff here
+          <><Link to='/newRecipe' state = {{user: user}} className='badge badge-secondary'>
+              <span class='mob-view'>Create</span>
+              <span class='normal-view'> a new recipe</span>
             </Link>
-            <div className='logged-in-header'>
-              <ProfilePicture id='profile-pic-display' />
+            <div className="logged-in-header">
+              <ProfilePicture id="profile-pic-display"/>
               {/* <img
                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
                 width='80px'
                 height='80px'
                 alt='profilePic'
               ></img> */}
-              <div className='header-name-logout'>
-                <p className='username-display'>{user.username}</p>
+              <div className="header-name-logout">
+                <p className="username-display">{user.username}</p>
                 {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-                <button className='badge badge-secondary' onClick={logout}>
-                  Logout
-                </button>
+                <button className="badge badge-secondary" onClick={logout}>Logout</button>
               </div>
             </div>
           </>
-        ) : (
-          //Implement "click to edit" on profile pick
-          // Not logged in stuff
-          <>
-            <Link to='/register' className='badge badge-secondary'>
-              Register
-            </Link>
-            <div className='logged-in-header'>
-              <Link to='/login' className='badge badge-secondary'>
-                Login
-              </Link>
+            
+            //Implement "click to edit" on profile pick
+          : 
+            // Not logged in stuff
+            <>
+            <Link to='/register' className="badge badge-secondary">Register</Link> 
+            <div className="logged-in-header">
+              <Link to='/login' className="badge badge-secondary">Login</Link> 
             </div>
-          </>
-        )}
+            </>
+          }
       </header>
 
       <body>
         <Outlet />
       </body>
 
-      <footer className='app-footer'>
-        <nav className='app-footer-nav'>
+      <footer class='app-footer'>
+        <nav class='app-footer-nav'>
           <li>
             <Link to='/users/:userName'>
-              <i className='fa-solid fa-user app-footer-nav-list-item'></i>
+              <i class='fa-solid fa-user app-footer-nav-list-item'></i>
             </Link>
           </li>
           {/* Add Login for conditional rendering if someone clicks on Profile in footernav & is not logged in */}
           {/* <Link to='/login'>Login</Link> */}
           <li>
             <Link to='/favourites'>
-              <i className='fa-solid fa-star app-footer-nav-list-item'></i>
+              <i class='fa-solid fa-star app-footer-nav-list-item'></i>
             </Link>
           </li>
           <li>
             <Link to='/chat'>
-              <i className='fa-solid fa-comment app-footer-nav-list-item'></i>
+              <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
             </Link>
           </li>
-          <li {...getTriggerProps({ background: '#FAF1E6' })}>
-            <i
-              id='burger-icon'
-              className='fa-solid fa-burger app-footer-nav-list-item'
-            ></i>
+          <li {...getTriggerProps({background: '#FAF1E6'})}>
+            <i id="burger-icon" class='fa-solid fa-burger app-footer-nav-list-item'></i>
           </li>
           <Modal {...modalProps}>
             <Menu />

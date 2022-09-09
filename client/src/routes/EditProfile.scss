@@ -1,0 +1,101 @@
+.edit-profile-body {
+  background-color: #FFAD60;
+}
+
+.edit-profile-title {
+  font-family: 'Fredoka One', cursive;
+  color: #d9534f;
+  font-weight: 100;
+  padding: 1em;
+  box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.edit-form-item {
+  margin-bottom: 20px;
+  padding: 1em;
+}
+
+.upload-img {
+  margin-bottom: 2em;
+}
+
+.edit-form-item-img {
+  border-bottom: none;
+}
+
+.edit-profile-card {
+  display: block;
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 5em;
+  border: 1px solid transparent;
+  box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
+  border-style: solid;
+  background-color: #fff;
+}
+
+.badge-primary {
+  color: #D9534F;
+  text-shadow: 2px 2px #FFAD60;
+  background-color: #FAF1E6;
+  background-image: radial-gradient(#FAF1E6, #96CEB4);
+  box-shadow: 0px 0px 5px 0px grey;
+  border: grey;
+  font-size: large;
+  font-family: Fredoka One;
+  margin-bottom:20px;
+  margin-top:15px;
+}
+
+#profile-picture {
+  width: 210px;
+}
+
+.edit-btn-submit {
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  background-color: #d9534f;
+  color: #fff;
+  padding: 0.3em;
+  box-sizing: border-box;
+  margin-top: 1em;
+  margin-bottom: 5em;
+  margin-right: 0em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+.go-back-button {
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  background-color: #d9534f;
+  color: #fff;
+  padding: 0.3em;
+  box-sizing: border-box;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: 0em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+.edit-btn-submit:hover {
+  background-color: #FFAD60; 
+}
+
