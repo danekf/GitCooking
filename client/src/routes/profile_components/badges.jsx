@@ -5,13 +5,13 @@ export default function Badges () {
         <p className="badges">Badges</p>
         <ul>
           <li>
-            <i class="fa-solid fa-bowl-rice"></i>
+            <i className="fa-solid fa-bowl-rice"></i>
           </li>
           <li>
-          <i class="fa-solid fa-cookie-bite"></i>
+          <i className="fa-solid fa-cookie-bite"></i>
           </li>
           <li>
-          <i class="fa-solid fa-burger"></i>
+          <i className="fa-solid fa-burger"></i>
           </li>
 
         </ul>

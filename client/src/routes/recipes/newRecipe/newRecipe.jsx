@@ -179,7 +179,7 @@ const addIngredientToList = (event) =>{
             <h4>Ingredients:</h4>
             <ul>
               <div className='add-item'>
-                  <i class="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
+                  <i className="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
                   <input type="number" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
                   <input type="text" name="ingredientName" placeholder='Enter Equipment + details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
@@ -189,7 +189,7 @@ const addIngredientToList = (event) =>{
             <h4>Equipments Required:</h4>
             <ul>
               <div className='add-item'>
-                <i class="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
+                <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
                 <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
                 <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
               </div>
@@ -199,7 +199,7 @@ const addIngredientToList = (event) =>{
             <h4>Instructions:</h4>
             <ul>
             <div className='add-item'>
-                <i class="fa-solid fa-plus" onClick={addInstructionToList}>Add Instruction</i>
+                <i className="fa-solid fa-plus" onClick={addInstructionToList}>Add Instruction</i>
                 <input type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
                 <input type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
               </div>
