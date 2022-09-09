@@ -31,7 +31,7 @@ export default function HeaderDropdownMenu(props) {
       } */}
 
       {userExists && 
-        <Dropdown.Item id="dropdown-text" href="/users/:userName">{props.user.username}</Dropdown.Item>
+        <Dropdown.Item id="dropdown-text" href="/users/profile">{props.user.username}</Dropdown.Item>
       }     
 
       {userExists && 

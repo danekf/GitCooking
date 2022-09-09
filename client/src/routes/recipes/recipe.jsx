@@ -54,6 +54,7 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
+          
           <i class="fa-solid fa-spoon"></i>
           <i class="fa-solid fa-utensils"></i>
 
