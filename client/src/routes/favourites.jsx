@@ -4,6 +4,7 @@ import './favourites.scss'
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { useState,useEffect } from "react";
+import RecipeCard from "./recipes/recipeCard";
 
 export function Favourites () {
 
@@ -27,19 +28,16 @@ export function Favourites () {
   }, [])
 
 
-
-
-
-
   return (
     <>
       <div className="favourites-body">
         <h1 className="favourites-title">Favourites</h1>
         <ul>
-        {recipes.map((recipe) => <li>{recipe.title}</li>)}
-
+          {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
         </ul>
       </div>
+
+      
     </>
   )
 }
