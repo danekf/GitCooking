@@ -1,3 +1,4 @@
+import './menu.scss';
 import SearchBar from "./components/searchBar";
 // import { Link } from "react-router-dom";
 
