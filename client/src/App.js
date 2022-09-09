@@ -61,9 +61,10 @@ function App() {
           referrerPolicy='no-referrer'
         />
 
-
       </head>
       <header className='app-header' >
+        <div className='app-header-desktop-buttons' >
+
         <div className='gitcooking-title-and-logo'>
           <Link to='/'>
             <img
@@ -107,6 +108,7 @@ function App() {
               </div>
               </>
             }
+          </div>
           </div>
 
           <HeaderDropdownMenu user={user}/>
