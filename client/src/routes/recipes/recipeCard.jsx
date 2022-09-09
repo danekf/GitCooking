@@ -7,8 +7,6 @@ export default function RecipeCard(props) {
   console.log('Recipe is: ', recipe);
 
   const instructionstep = 1;
-
-  console.log(recipe.estimatedtime)
  
 
   //hover handler

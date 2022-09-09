@@ -10,7 +10,7 @@ export default function NewRecipe(props) {
 const location = useLocation();
 
 const user = location.state?.user;
-const original_fork = location.state?.original_fork || 0;
+// const original_fork = location.state?.original_fork || 0;
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
@@ -25,6 +25,7 @@ const original_fork = location.state?.original_fork || 0;
     recipe_photos: 'dummy_URL',
     estimatedTime: 0,
   })
+
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -128,6 +129,7 @@ const addIngredientToList = (event) =>{
     setformValue({
       ...formValue,
       estimatedTime: time});
+    // eslint-disable-next-line
   }, [formValue.instructions])
 
   //recipe submission
