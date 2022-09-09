@@ -5,7 +5,8 @@ import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
-import ProfilePicture from './routes/profile_components/profile_picture';
+import HeaderDropdownMenu from "./routes/components/dropdownMenu";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 function App() {
   //menu handler
@@ -36,6 +37,7 @@ function App() {
 
 
   return (
+    <html lang="en">
     <div className='App'>
       <head>
         <meta charSet='UTF-8' />
@@ -43,6 +45,12 @@ function App() {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
+
+
+        {/* Bootstrap */}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+              
         
         {/* Font Awesome */}
         <link
@@ -52,8 +60,11 @@ function App() {
           crossOrigin='anonymous'
           referrerPolicy='no-referrer'
         />
+
       </head>
       <header className='app-header' >
+        <div className='app-header-desktop-buttons' >
+
         <div className='gitcooking-title-and-logo'>
           <Link to='/'>
             <img
@@ -65,44 +76,49 @@ function App() {
             GitCooking
           </Link>
         </div>
-          
-          {/* Condiditional render here for what to show */}
-          {user.id ?
-            //Logged in stuff here
-          <><Link to='/newRecipe' state = {{user: user}} className='badge badge-secondary'>
-              <span class='mob-view'>Create</span>
-              <span class='normal-view'> a new recipe</span>
-            </Link>
-            <div className="logged-in-header">
-              <ProfilePicture id="profile-pic-display"/>
-              {/* <img
-                src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-                width='80px'
-                height='80px'
-                alt='profilePic'
-              ></img> */}
-              <div className="header-name-logout">
-                <p className="username-display">{user.username}</p>
-                {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-                <button className="badge badge-secondary" onClick={logout}>Logout</button>
-              </div>
-            </div>
-          </>
-            
-            //Implement "click to edit" on profile pick
-          : 
-            // Not logged in stuff
+
+          <div className="app-header desktop-view-menu-buttons">
+            {/* Condiditional render here for what to show */}
+            {user.id ?
+              //Logged in stuff here
             <>
-            <Link to='/register' className="badge badge-secondary">Register</Link> 
-            <div className="logged-in-header">
-              <Link to='/login' className="badge badge-secondary">Login</Link> 
-            </div>
+              <Link to='/newRecipe' state = {{user: user}} className='badge badge-secondary create-new-recipe-button'>
+                <span class='mob-view'>Create</span>
+                <span class='normal-view'> a new recipe</span>
+              </Link>
+              <div className="logged-in-header" >
+                <img
+                  id="profile-pic-display"
+                  src=''
+                />
+                <div className="header-name-logout">
+                  <p className="username-display">{user.username}</p>
+                  {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
+                  <button className="badge badge-secondary" onClick={logout}>Logout</button>
+                </div>
+              </div>
             </>
-          }
+              //Implement "click to edit" on profile pic
+            : 
+              // Not logged in stuff
+              <>
+              <Link to='/register' className="badge badge-secondary register-user-button">Register</Link> 
+              <div className="logged-in-header">
+                <Link to='/login' className="badge badge-secondary">Login</Link> 
+              </div>
+              </>
+            }
+          </div>
+          </div>
+
+          <HeaderDropdownMenu user={user}/>
+
       </header>
 
       <body>
         <Outlet />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+         
       </body>
 
       <footer class='app-footer'>
@@ -133,6 +149,7 @@ function App() {
         </nav>
       </footer>
     </div>
+  </html>
   );
 }
 

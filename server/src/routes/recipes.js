@@ -14,7 +14,7 @@ module.exports = (db) => {
     ;`;
 
     db.query(queryString)
-      //return an array of objects, grouped by recipe ID.
+      // Return an array of objects, grouped by recipe ID.
       .then(({ rows: recipes }) => {
         response.json(recipes);
       });

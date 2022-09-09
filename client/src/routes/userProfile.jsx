@@ -9,6 +9,7 @@ import Socials from "./profile_components/socials";
 import Bio from "./profile_components/bio";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import RecipeCard from './recipes/recipeCard';
 
 
 
@@ -16,7 +17,7 @@ import { useState, useEffect } from 'react';
 export default function UserProfile() {
 
   //get all of a users recipes
-  const [userRecipes, setUserRecipes]= useState();
+  const [recipes, setRecipes] = useState([]);
   useEffect(()=>{
     axios.get(`/api/recipes/user`)
     .then((response)=>{
@@ -24,7 +25,7 @@ export default function UserProfile() {
       for (let key in response.data){
         tempArray.push(response.data[key])
       }
-      setUserRecipes(tempArray);
+      setRecipes(tempArray);
     })
     // eslint-disable-next-line
   }, [])
@@ -42,7 +43,14 @@ export default function UserProfile() {
           <Bio/>
         </div>
         <div>
-          
+          <div className='my-recipes-card'>
+            <h1 className='my-recipes-title '>My Recipes</h1>
+          </div>
+          <div className='my-recipes-card'>
+            <ul>
+              {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+            </ul>
+          </div>
         </div>
       </main>
     </>
