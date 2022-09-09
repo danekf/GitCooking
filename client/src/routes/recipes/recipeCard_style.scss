@@ -19,10 +19,14 @@
 .container {
   position: relative;
   text-align: center;
-  color: red;
-  text-shadow: 1px 1px green;
+  color: #d9534f;
   font-size: large;
   
+}
+.text-border{
+  background-color: #96CEB4;
+  border-radius: 30%;
+  border: 2px solid transparent;
 }
 
 /* Bottom left text */

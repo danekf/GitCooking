@@ -31,10 +31,10 @@ export default function RecipeCard(props) {
       <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
       {!hover && (
         <>
-        <div className='bottom-center' >
+        <div className='bottom-center text-border' >
           {recipe.title}
         </div>
-        <div className='bottom-right' >
+        <div className='bottom-right text-border' >
           Estimated time : {recipe.estimatedtime} minutes.
         </div>
         </>
@@ -42,11 +42,13 @@ export default function RecipeCard(props) {
 
       {hover && (
         <>
-        <div classname='center'>
-        <div className='bottom-left' >
+        <div className='bottom-center text-border' >
+          {recipe.title}
+        </div>
+        <div className='bottom-left text-border' >
           Tags : {recipe.tags}
         </div>
-        </div>
+        
       </>
       )}    
     </div>
