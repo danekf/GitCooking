@@ -1,4 +1,5 @@
 import Dropdown from 'react-bootstrap/Dropdown';
+import './dropdownMenu.scss'
 import axios from 'axios';
 
 
@@ -17,8 +18,8 @@ export default function HeaderDropdownMenu(props) {
   }
 
   return (
-    <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic mobile-dropdown-menu-button" className="dropdown">
+    <Dropdown className="dropdown-header">
+      <Dropdown.Toggle variant="success" id="mobile-dropdown-menu-button" className="dropdown">
       <i className="fa-solid fa-right-to-bracket"></i>
       </Dropdown.Toggle>
 
@@ -30,7 +31,7 @@ export default function HeaderDropdownMenu(props) {
       } */}
 
       {userExists && 
-        <Dropdown.Item href="/users/:userName">{props.user.username}</Dropdown.Item>
+        <Dropdown.Item id="dropdown-text" href="/users/:userName">{props.user.username}</Dropdown.Item>
       }     
 
       {userExists && 
@@ -55,8 +56,6 @@ export default function HeaderDropdownMenu(props) {
         <Dropdown.Item href="#/action-1"></Dropdown.Item>
       }
         
-
-
       </Dropdown.Menu>
     </Dropdown>
   );

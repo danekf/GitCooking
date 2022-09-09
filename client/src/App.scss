@@ -51,6 +51,13 @@
   text-decoration: none;
 }
 
+.app-header .gitcooking-title-and-logo a:hover {
+  color: #FFAD60;
+  text-shadow: 2px 2px #D9534F;
+  font-size: x-large;
+  text-decoration: none;
+}
+
 #profile-pic-display {
   display: flex;
   border-style: solid;
@@ -216,4 +223,3 @@ a.badge-primary {
   background-color: #FFAD60;
   border: none;
 }
-

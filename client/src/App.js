@@ -109,52 +109,7 @@ function App() {
             }
           </div>
 
-            <HeaderDropdownMenu user={user}/>
-
-        <div className="dropdown">
-          <button type="button" id="mobile-dropdown-menu-button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" >
-            <i class="fa-solid fa-right-to-bracket"></i>
-          </button>
-          <ul className="dropdown-menu">
-            {user.id ?
-            // If user is logged in show buttons below
-            <>
-              <li>
-                <a><Link to='/newRecipe' className='badge badge-secondary'>
-                  <span class='mob-view'>Create</span>
-                </ Link>
-                </a>
-              </li>
-
-              <li>
-                <img
-                  id="profile-pic-display"
-                  src=''
-                />
-              </li>
-
-              <li>
-
-                <p className="username-display">{user.username}</p>
-              </li>
-
-              <li>
-                  <button className="badge badge-secondary" onClick={logout}>Logout</button>
-              </li>
-            </>
-            :
-            // If user is not logged in show buttons below
-            <>
-              <li>
-                <Link to='/register' className="badge badge-secondary">Register</Link>
-              </li>
-              <li>
-                  <Link to='/login' className="badge badge-secondary">Login</Link> 
-              </li>
-            </>
-            }
-          </ul>
-        </div>
+          <HeaderDropdownMenu user={user}/>
 
       </header>
 
