@@ -6,8 +6,17 @@ import SearchBar from "./components/searchBar";
 export default function Menu() {
   return (
     <>
-    <h1>Whats on the menu?</h1>
-    <SearchBar />   
+    <h1 className="menu-title">What's on the menu?</h1>
+
+    <h1>Its Searching Time!</h1>
+
+
+      <div className="search-bar-feature">
+        <SearchBar />  
+      </div>
+
+    <h2 className='advanced-search-title'>Advanced search</h2>
+   
     tags   
     </>
 

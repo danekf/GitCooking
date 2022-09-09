@@ -1,4 +1,5 @@
 import './home.scss';
+import SearchBar from "./components/searchBar";
 
 import RecipeList from './recipes/recipeList'
 
@@ -6,7 +7,13 @@ export default function Home() {
   return (
     <>
       <div className='home-page-body'>
-        <h2 className='home-page-title'>Get ready to GitCooking!</h2>
+        
+        <h2 className='home-page-title'>Get ready to GitCooking!
+        <div className="search-bar-feature">
+            <SearchBar />  
+          </div>
+        </h2>
+
           <div className='grouped-recipes'>
             <h3 className='home-page-subheading'>Top 10 Recipes of the Week</h3>
             <RecipeList/>
