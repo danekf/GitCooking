@@ -23,26 +23,26 @@ db.connect()
   .then(() => console.log(`Connected to ${dbParams.database}`))
   .catch((error) => console.log(`Error connecting to database. ${error}`));
 
-//main application folder once connection setup
+// Main application folder once connection setup
 const app = express();
 const server = require('http').Server(app);
 
-//cors setup
+// CORS setup
 app.use(cors());
 
-//Morgan setup
+// Morgan setup
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
-//Cookie session set up
+// Cookie session set up
 app.use(
   cookieSession({
     name: 'session',
-    keys: ['breakfast lunch and dinner', 'cooking all the time'], //just some keys to cycle through
+    keys: ['breakfast lunch and dinner', 'cooking all the time'], // Just some keys to cycle through
   })
 );
 
-//body parser middleware and json handler
+// Body parser middleware and json handler
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -59,7 +59,7 @@ app.use('/api/login', login(db));
 app.use('/api/register', register(db));
 app.use('/api/logout', logout());
 
-//message on server start
+// Message on server start
 server.listen(PORT, () => {
   console.log("Its servin' Time!");
   console.log(`Port: ${PORT}, Mode: .`, ENV);

@@ -7,6 +7,7 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
+  profile_picture VARCHAR(255),
   bio VARCHAR (500),
   contact_email VARCHAR(255),
   social_URLS JSONB,
