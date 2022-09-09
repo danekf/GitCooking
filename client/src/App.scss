@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FFAD60;
   font-family: 'Fredoka One', cursive;
@@ -43,7 +43,17 @@
 }
 
 .gitcooking-title-and-logo {
-  width: 200px
+  width: 200px;
+}
+
+.create-new-recipe-button {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.register-user-button {
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 .App-link {
@@ -108,14 +118,22 @@
   color: #FFAD60;
 }
 
-
-@media screen and (max-width:680px) {
+@media screen and (max-width:840px) {
   .mob-view {
     display:block;
   }
   .normal-view {
     display:none;
   }
+}
+
+@media screen and (max-width:680px) {
+  // .mob-view {
+  //   display:block;
+  // }
+  // .normal-view {
+  //   display:none;
+  // }
 
   .desktop-view-menu-buttons {
     display: none;
@@ -234,4 +252,5 @@
   color: #D9534F;
   background-color: #FFAD60;
   border: none;
+  margin-left: 200px;
 }

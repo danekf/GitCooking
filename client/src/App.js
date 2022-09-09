@@ -82,7 +82,7 @@ function App() {
             {user.id ?
               //Logged in stuff here
             <>
-              <Link to='/newRecipe' className='badge badge-secondary'>
+              <Link to='/newRecipe' className='badge badge-secondary create-new-recipe-button'>
                 <span class='mob-view'>Create</span>
                 <span class='normal-view'> a new recipe</span>
               </Link>
@@ -102,7 +102,7 @@ function App() {
             : 
               // Not logged in stuff
               <>
-              <Link to='/register' className="badge badge-secondary">Register</Link> 
+              <Link to='/register' className="badge badge-secondary register-user-button">Register</Link> 
               <div className="logged-in-header">
                 <Link to='/login' className="badge badge-secondary">Login</Link> 
               </div>
@@ -112,6 +112,8 @@ function App() {
           </div>
 
           <HeaderDropdownMenu user={user}/>
+
+          
 
       </header>
 
