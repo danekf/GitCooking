@@ -1,11 +1,67 @@
 import './recipeCard_style.scss';
-
+import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function RecipeCard(props) {
+  const recipe = props.recipe;
+  console.log('Recipe is: ', recipe);
+
+  const instructionstep = 1;
+ 
+
+  //hover handler
+  const[hover, setHover]= useState(false)
+
   return (
-    <>
-    <div className='recipe-card-body'>
+    <div>
+      <h1>{recipe.title}</h1>
+      {!hover && (
+        <div onMouseEnter={() => setHover(true)}>
+          Estimated time : {recipe.estimatedtime}
+        </div>
+      )}
+
+      {hover && (
+        <div onMouseLeave={() => setHover(false)}>
+        <ul> 
+          <li>Tags: {recipe.tags.map((tag)=> `${tag},`)}</li>
+        </ul>
+      
+      </div>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {/* <div className='recipe-card-body'>
       <Carousel fade>
         <Carousel.Item>
           <img
@@ -45,7 +101,8 @@ export default function RecipeCard(props) {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      </div>
-    </>
+      </div> */}
+
+    </div>
   );  
 }
