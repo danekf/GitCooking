@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+const [user, setUser] = useState(false)
+
 export default function ProfileButtons () {
   return (
     <>
@@ -5,15 +8,9 @@ export default function ProfileButtons () {
         <button className="message-button">
           Message
         </button>
-        {(user.id) ? 
         <button className="report-button">
           Report
         </button>
-        : 
-        <button className="favourites-button">
-          Favourites
-        </button>
-        }
       </div>
     </>
   );
