@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FFAD60;
   font-family: 'Fredoka One', cursive;
@@ -31,12 +31,29 @@
   z-index: 25;
 }
 
+.app-header-desktop-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .gitcooking-title {
   font-family: 'Fredoka One', cursive;
 }
 
 .gitcooking-title-and-logo {
-  width: 200px
+  width: 200px;
+}
+
+.create-new-recipe-button {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.register-user-button {
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 .App-link {
@@ -50,6 +67,29 @@
   text-decoration: none;
 }
 
+.app-header .gitcooking-title-and-logo a:hover {
+  color: #FFAD60;
+  text-shadow: 2px 2px #D9534F;
+  font-size: x-large;
+  text-decoration: none;
+}
+
+#profile-pic-display {
+  display: flex;
+  border-style: solid;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 2em;
+  height: 8em;
+  width: 8em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .badge-secondary {
   color: #FFAD60;
   text-shadow: 2px 2px #D9534F;
@@ -58,6 +98,8 @@
   box-shadow: 0px 0px 5px 0px grey;
   border: grey;
 }
+
+
 
 .badge-primary {
   color: #D9534F;
@@ -71,17 +113,40 @@
   margin-top: 20px;
 }
 
-a.badge-primary {
-  color: #D9534F;
-  text-decoration: none;
+
+.app-header a:hover {
+  color: #FFAD60;
 }
 
-@media screen and (max-width:680px) {
+@media screen and (max-width:840px) {
   .mob-view {
     display:block;
   }
   .normal-view {
     display:none;
+  }
+}
+
+@media screen and (max-width:680px) {
+  // .mob-view {
+  //   display:block;
+  // }
+  // .normal-view {
+  //   display:none;
+  // }
+
+  .desktop-view-menu-buttons {
+    display: none;
+  }
+
+  #mobile-dropdown-menu-button {
+    display: block;
+  }
+}
+
+@media screen and (min-width:680px) {
+  #mobile-dropdown-menu-button {
+    display: none;
   }
 }
 
@@ -177,4 +242,15 @@ a.badge-primary {
   margin: 0;
   margin-right: 10px;
   padding: 0;
+}
+
+.fa-right-to-bracket {
+  color: #D9534F;
+}
+
+#mobile-dropdown-menu-button {
+  color: #D9534F;
+  background-color: #FFAD60;
+  border: none;
+  margin-left: 200px;
 }

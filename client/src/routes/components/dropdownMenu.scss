@@ -1,0 +1,19 @@
+.dropdown-header{
+  position: absolute;
+  :hover {
+    color: #D9534F;
+  }
+  a {
+    color: #D9534F;
+    text-shadow: none;
+  }
+} 
+
+.app-header .dropdown-item:focus, .app-header .dropdown-item:hover {
+  color: #96CEB4;
+  text-shadow: 1px 1px grey;
+}
+
+.app-header .dropdown-item.active, .app-header .dropdown-item:active {
+  background-color: #e9ecef;
+}
