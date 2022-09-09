@@ -22,7 +22,8 @@ const original_fork = location.state?.original_fork || 0;
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: 'dummy_URL'
+    recipe_photos: 'dummy_URL',
+    estimatedTime: 0,
   })
 
 //ingredient handler
@@ -116,8 +117,6 @@ const addIngredientToList = (event) =>{
   }
 
   //cook time handler
-  const [cookTime, setCookTime] = useState(0);
-
   useEffect(() =>{
     let time = 0;
     // eslint-disable-next-line 
@@ -126,7 +125,9 @@ const addIngredientToList = (event) =>{
     })
     //round to nearest half minute
     time = Math.round(time*2)/2;
-    setCookTime(time); 
+    setformValue({
+      ...formValue,
+      estimatedTime: time});
   }, [formValue.instructions])
 
   //recipe submission
@@ -170,7 +171,7 @@ const addIngredientToList = (event) =>{
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
           
             <h4>Cooking Time:</h4>
-            <input className='cooking-time' type="number" name="cooking-time" value={cookTime} disabled />
+            <input className='cooking-time' type="number" name="cooking-time" value={formValue.estimatedTime} disabled />
             
             <h4>Servings:</h4>
             <input className='servings' type="number" name="servings" onChange={handleChange} value={formValue.servings} />

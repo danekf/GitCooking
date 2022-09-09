@@ -7,8 +7,9 @@ export default function RecipeCard(props) {
   console.log('Recipe is: ', recipe);
 
   const instructionstep = 1;
-  console.log('type of: ', typeof recipe.instructions)
 
+  console.log(recipe.estimatedtime)
+ 
 
   //hover handler
   const[hover, setHover]= useState(false)
@@ -18,14 +19,14 @@ export default function RecipeCard(props) {
       <h1>{recipe.title}</h1>
       {!hover && (
         <div onMouseEnter={() => setHover(true)}>
-          {recipe.id}
+          Estimated time : {recipe.estimatedtime}
         </div>
       )}
 
       {hover && (
         <div onMouseLeave={() => setHover(false)}>
         <ul> 
-          Instructions:
+          <li>Tags: {recipe.tags.map((tag)=> `${tag},`)}</li>
         </ul>
       
       </div>

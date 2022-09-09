@@ -15,15 +15,15 @@ export function Favourites () {
 
   const [recipes, setRecipes] = useState([]);
 
+  //get users favourite recipes
   useEffect(()=>{
-    axios.get(`/api/recipes/${userId}`)
+    axios.get(`/api/recipes/${userId}/favourites`)
     .then((response)=>{
       const tempArray=[]
       for (let key in response.data){
         tempArray.push(response.data[key])
       }
       setRecipes(tempArray);
-      console.log(tempArray)
     })
   }, [])
 

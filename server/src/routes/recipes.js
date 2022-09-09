@@ -17,7 +17,28 @@ module.exports = (db) => {
       });
   });
 
+  //get all of a users created recipes
   router.get('/:userid', (request, response)=>{
+    const user_id = request.session.userId;
+
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE user_id = 1
+    ;`;
+
+    const queryValues=[`${user_id}`];
+
+    db.query(queryString)
+      //return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+
+  });
+
+  //get a users FAVOURITE recipes
+  router.get('/:userid/favourites', (request, response)=>{
     const user_id = request.session.userId;
 
     const queryString = `
