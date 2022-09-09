@@ -13,9 +13,6 @@ export function Favourites () {
   useEffect(()=>{
     axios.get(`/api/recipes/favourites`)
     .then((response)=>{
-      //////DELETE ME////////////
-      console.log(response.data);
-      ///////////////////////////
       const tempArray=[]
       for (let key in response.data){
         tempArray.push(response.data[key])

@@ -1,34 +1,25 @@
 import './recipeCard_style.scss';
 import { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import 'react-morphing-modal/dist/ReactMorphingModal.css';
+import {useNavigate} from 'react-router-dom';
 
 export default function RecipeCard(props) {
   const recipe = props.recipe;
-  console.log('Recipe is: ', recipe);
-
-  const instructionstep = 1;
- 
+  let navigate = useNavigate();
 
   //hover handler
   const[hover, setHover]= useState(false)
 
+  //recipe modal
+
+
   return (
-  //   <div class="container">
-  //     <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
-  //     <div class="bottom-left">Bottom Left</div>
-  //     <div class="top-left">Top Left</div>
-  //     <div class="top-right">Top Right</div>
-  //     <div class="bottom-right">Bottom Right</div>
-  //     <div class="centered">Centered</div>
-  // </div>
-
-
 
     <div className='container'
     onMouseEnter={() => setHover(true)}
-    onMouseLeave={() => setHover(false)}
+    onMouseLeave={() => setHover(false)}    
     >
-      <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
+      <img className="image-recipe" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
       {!hover && (
         <>
         <div className='bottom-center text-border' >
@@ -48,6 +39,9 @@ export default function RecipeCard(props) {
         <div className='bottom-left text-border' >
           Tags : {recipe.tags}
         </div>
+        <div className="centered text-border" onClick={()=>navigate("/recipes/" + recipe.id)}>Click here to see full recipe</div> 
+
+
         
       </>
       )}    
