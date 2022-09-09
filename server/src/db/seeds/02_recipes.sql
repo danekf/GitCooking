@@ -130,3 +130,28 @@ VALUES(
   1,
   null
 );
+
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
+VALUES(
+  2,
+  null,
+  'Water++',
+  '[
+    {
+      "ingredientName":"water", 
+      "ingredientQty":"2"
+    }    
+  ]',
+  '[{"equipmentName": "Cup", "equipmentQty": "2"}]',
+  '[
+    {
+      "estimatedTime": 1, 
+      "instruction": "Add water to cup"
+    }
+  ]',
+  1,
+  'No Photos yet',
+  ARRAY ['water'],
+  2,
+  null
+);
