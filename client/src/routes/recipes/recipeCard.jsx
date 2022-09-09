@@ -17,7 +17,8 @@ export default function RecipeCard(props) {
 
     <div className='container'
     onMouseEnter={() => setHover(true)}
-    onMouseLeave={() => setHover(false)}    
+    onMouseLeave={() => setHover(false)}
+    onClick={()=>navigate("/recipes/" + recipe.id)}    
     >
       <img className="image-recipe" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
       {!hover && (
@@ -39,7 +40,7 @@ export default function RecipeCard(props) {
         <div className='bottom-left text-border' >
           Tags : {recipe.tags}
         </div>
-        <div className="centered text-border" onClick={()=>navigate("/recipes/" + recipe.id)}>Click here to see full recipe</div> 
+        <div className="centered text-border" >Click to see full recipe</div> 
 
 
         

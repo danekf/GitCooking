@@ -72,7 +72,7 @@ VALUES(
       "ingredientQty":"5"
     }
   ]',
-  '[{"equipmentName": "Pot", "equipment-qty": "1"}]',
+  '[{"equipmentName": "Pot", "equipmentQty": "1"}]',
   '[
     {
       "estimatedTime": 1,
