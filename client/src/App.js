@@ -64,38 +64,50 @@ function App() {
             GitCooking
           </Link>
         </div>
-          
-          {/* Condiditional render here for what to show */}
-          {user.id ?
-            //Logged in stuff here
-          <>
-            <Link to='/newRecipe' className='badge badge-secondary'>
-              <span class='mob-view'>Create</span>
-              <span class='normal-view'> a new recipe</span>
-            </Link>
-            <div className="logged-in-header" >
-              <img
-                id="profile-pic-display"
-                src=''
-              />
-              <div className="header-name-logout">
-                <p className="username-display">{user.username}</p>
-                {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-                <button className="badge badge-secondary" onClick={logout}>Logout</button>
-              </div>
-            </div>
-          </>
-            
-            //Implement "click to edit" on profile pick
-          : 
-            // Not logged in stuff
+
+          <div className="app-header desktop-view-menu-buttons">
+            {/* Condiditional render here for what to show */}
+            {user.id ?
+              //Logged in stuff here
             <>
-            <Link to='/register' className="badge badge-secondary">Register</Link> 
-            <div className="logged-in-header">
-              <Link to='/login' className="badge badge-secondary">Login</Link> 
-            </div>
+              <Link to='/newRecipe' className='badge badge-secondary'>
+                <span class='mob-view'>Create</span>
+                <span class='normal-view'> a new recipe</span>
+              </Link>
+              <div className="logged-in-header" >
+                <img
+                  id="profile-pic-display"
+                  src=''
+                />
+                <div className="header-name-logout">
+                  <p className="username-display">{user.username}</p>
+                  {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
+                  <button className="badge badge-secondary" onClick={logout}>Logout</button>
+                </div>
+              </div>
             </>
-          }
+              //Implement "click to edit" on profile pick
+            : 
+              // Not logged in stuff
+              <>
+              <Link to='/register' className="badge badge-secondary">Register</Link> 
+              <div className="logged-in-header">
+                <Link to='/login' className="badge badge-secondary">Login</Link> 
+              </div>
+              </>
+            }
+          </div>
+
+        <div className="dropdown">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
+          <ul className="dropdown-menu">
+          <li></li>
+          </ul>
+        </div>
+
+
       </header>
 
       <body>
