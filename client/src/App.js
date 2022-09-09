@@ -99,7 +99,7 @@ function App() {
           </div>
 
         <div className="dropdown">
-          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+          <button type="button" id="mobile-dropdown-menu-button" class="btn btn-secondary dropdown-toggle" >
           <i class="fa-solid fa-right-to-bracket"></i>
           </button>
           <ul className="dropdown-menu">
