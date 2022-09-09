@@ -4,7 +4,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 export default function NotLoggedInHeaderDropdown() {
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic mobile-dropdown-menu-button" className="dropdown">
+      <Dropdown.Toggle variant="success" id="mobile-dropdown-menu-button" className="dropdown mobile-dropdown-menu-button">
       <i class="fa-solid fa-right-to-bracket"></i>
       </Dropdown.Toggle>
 

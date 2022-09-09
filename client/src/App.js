@@ -5,8 +5,8 @@ import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
-import LoggedInHeaderDropdown from "./routes/components/loggedInHeaderDropdown";
-import NotLoggedInHeaderDropdown from "./routes/components/notLoggedInHeaderDropdown";
+import HeaderDropdownMenu from "./routes/components/dropdownMenu";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 function App() {
   //menu handler
@@ -109,7 +109,7 @@ function App() {
             }
           </div>
 
-            {user.id ? <LoggedInHeaderDropdown /> : <NotLoggedInHeaderDropdown /> }
+            <HeaderDropdownMenu user={user}/>
 
         <div className="dropdown">
           <button type="button" id="mobile-dropdown-menu-button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" >
@@ -160,6 +160,8 @@ function App() {
 
       <body>
         <Outlet />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+         
       </body>
 
       <footer class='app-footer'>
