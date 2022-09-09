@@ -82,7 +82,7 @@ function App() {
             {user.id ?
               //Logged in stuff here
             <>
-              <Link to='/newRecipe' className='badge badge-secondary create-new-recipe-button'>
+              <Link to='/newRecipe' state = {{user: user}} className='badge badge-secondary create-new-recipe-button'>
                 <span class='mob-view'>Create</span>
                 <span class='normal-view'> a new recipe</span>
               </Link>
@@ -98,7 +98,7 @@ function App() {
                 </div>
               </div>
             </>
-              //Implement "click to edit" on profile pick
+              //Implement "click to edit" on profile pic
             : 
               // Not logged in stuff
               <>
@@ -112,8 +112,6 @@ function App() {
           </div>
 
           <HeaderDropdownMenu user={user}/>
-
-          
 
       </header>
 
