@@ -8,6 +8,7 @@ CREATE TABLE recipes (
   ingredients JSONB,
   equipment JSONB,
   instructions JSONB,
+  estimatedTime INTEGER,
   recipe_photos varchar(50), --THIS WILL BE CHANGED ONCE WE KNOW HOW WE ARE GOING TO STORE PHOTOS! PLACEHOLDER FOR NOW
   tags text[],
   forks INTEGER[],

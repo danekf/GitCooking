@@ -1,4 +1,4 @@
-INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, recipe_photos, tags, servings, forks)
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
 VALUES(
   1,
   null,
@@ -40,6 +40,7 @@ VALUES(
       "instruction": "Serve."
     }
   ]',
+  16,
   'No Photos yet',
   ARRAY ['Pasta', 'Simple', 'Quick', 'Easy', 'Budget'],
   4,
@@ -48,7 +49,7 @@ VALUES(
 
 
 --fork of recipe 1, which changed pesto for tomato sauce and added meatballs.
-INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions,recipe_photos, tags, servings, forks)
+INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
 VALUES(
   1,
   1, --forked from 1, so id of 1 referencing the original fork id. Client will provide number when needed and handle logic to reference it.
@@ -98,6 +99,7 @@ VALUES(
       "instruction": "Serve."
     }
   ]',
+  23,
   'No Photos yet',
   ARRAY ['Pasta', 'Simple', 'Quick', 'Easy', 'Budget', 'Meatballs', 'Tomato Sauce'],
   4,
