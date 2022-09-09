@@ -23,8 +23,11 @@ root.render(
     <Routes>
       <Route path='/' element={<App />}>
         <Route index element={<Home />} />
-        <Route path='users/:userName' element={<UserProfile />} />
-        <Route path='users/:userName/:recipeId' element={<Recipe />} />
+        <Route path='users/profile' element={<UserProfile />} />
+        {/* <Route path='users/:userName/:recipeId' element={<Recipe />} /> */}
+        <Route path='recipes' >
+          <Route path=':recipeId' element={<Recipe />}/>
+        </Route>
         <Route path='chat' element={<Chat />} />
         <Route path='menu' element={<Menu />} />
         <Route path='login' element={<Login />} />

@@ -2,7 +2,7 @@ import './CommentListItem_style.scss';
 
 import CommentListItem from "./commentListItem";
 
-export default function CommentList() {
+export default function CommentList(props) {
     return(
       <>
       <div>

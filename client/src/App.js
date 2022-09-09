@@ -124,7 +124,7 @@ function App() {
       <footer class='app-footer'>
         <nav class='app-footer-nav'>
           <li>
-            <Link to='/users/:userName'>
+            <Link to='/users/profile'>
               <i class='fa-solid fa-user app-footer-nav-list-item'></i>
             </Link>
           </li>

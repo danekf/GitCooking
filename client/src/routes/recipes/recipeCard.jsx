@@ -1,108 +1,51 @@
 import './recipeCard_style.scss';
 import { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import 'react-morphing-modal/dist/ReactMorphingModal.css';
+import {useNavigate} from 'react-router-dom';
 
 export default function RecipeCard(props) {
   const recipe = props.recipe;
-  console.log('Recipe is: ', recipe);
-
-  const instructionstep = 1;
- 
+  let navigate = useNavigate();
 
   //hover handler
   const[hover, setHover]= useState(false)
 
+  //recipe modal
+
+
   return (
-    <div>
-      <h1>{recipe.title}</h1>
+
+    <div className='container'
+    onMouseEnter={() => setHover(true)}
+    onMouseLeave={() => setHover(false)}
+    onClick={()=>navigate("/recipes/" + recipe.id)}    
+    >
+      <img className="image-recipe" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
       {!hover && (
-        <div onMouseEnter={() => setHover(true)}>
-          Estimated time : {recipe.estimatedtime}
+        <>
+        <div className='bottom-center text-border' >
+          {recipe.title}
         </div>
+        <div className='bottom-right text-border' >
+          Estimated time : {recipe.estimatedtime} minutes.
+        </div>
+        </>
       )}
 
       {hover && (
-        <div onMouseLeave={() => setHover(false)}>
-        <ul> 
-          <li>Tags: {recipe.tags.map((tag)=> `${tag},`)}</li>
-        </ul>
-      
-      </div>
-      )}
+        <>
+        <div className='bottom-center text-border' >
+          {recipe.title}
+        </div>
+        <div className='bottom-left text-border' >
+          Tags : {recipe.tags}
+        </div>
+        <div className="centered text-border" >Click to see full recipe</div> 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {/* <div className='recipe-card-body'>
-      <Carousel fade>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1001451_6-c8d72b8.jpg?resize=960,872?quality=90&webp=true&resize=600,545"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=960,872?quality=90&webp=true&resize=600,545"
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/meatball-lasagne-e64e936.jpg?resize=960,872?quality=90&webp=true&resize=600,545"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-      </div> */}
-
+        
+      </>
+      )}    
     </div>
   );  
 }
