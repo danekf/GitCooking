@@ -13,11 +13,11 @@ export default function EditProfile({changeStateToFalse}) {
           <input className="edit-form-item" type='text' id='first_name' name='first_name' placeholder='First Name'></input>
           <input className="edit-form-item" type='text' id='last_name' name='last_name' placeholder='Last Name'></input>
           <input className="edit-form-item" type='password' id='password' name='password' placeholder='Password'></input>
-          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Instagram' /><i className="fa-brands fa-instagram"></i> 
-          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='YouTube' /><i className="fa-brands fa-youtube"></i>
-          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='TikTok' /><i className="fa-brands fa-tiktok"></i>
-          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Twitter' /><i className="fa-brands fa-twitter"></i>
-          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='LinkedIn' /><i className="fa-brands fa-linkedin"></i>
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Instagram URL' /><i className="fa-brands fa-instagram"></i> 
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='YouTube URL' /><i className="fa-brands fa-youtube"></i>
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='TikTok URL' /><i className="fa-brands fa-tiktok"></i>
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Twitter URL' /><i className="fa-brands fa-twitter"></i>
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='LinkedIn URL' /><i className="fa-brands fa-linkedin"></i>
           <input className="edit-form-item" type="text" name="qualifications" placeholder= "Qualifications" id="qualifications" />
           <input className="edit-form-item" type="text" name="bio" id="bio" placeholder='Bio'/>
           <h6 className="upload-img">Change Profile Picture:</h6>
