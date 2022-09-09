@@ -217,6 +217,11 @@
   justify-content: center;
 }
 
+.app-header .logout-button {
+  color:#D9534F;
+  text-shadow: 1px 1px #FFAD60;
+}
+
 .logged-in-header {
   display: flex;
   flex-direction: row;
