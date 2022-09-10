@@ -7,7 +7,7 @@ import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function EditRecipe({recipe, returnToRecipe, title }) {  
+export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
  
  
 const { user} = useApplicationData();  
@@ -147,28 +147,28 @@ const deleteItem = (index, event, name)=>{
     // eslint-disable-next-line
   }, [formValue.instructions])
 
-  //recipe submission
-  const submitRecipe = (event) => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: "/api/recipes/edit",
-      data: formValue
-    })
-    .then ((response)=>{
-      //if username not found, send error. Messages are curated by server
-      if(response.data.error){
-        toast.error(response.data.error);
-      }
-      else{
-        toast.success(`Submitted ${formValue.title} sucessfully!`)
-        setTimeout(()=>{
-          returnToRecipe();
-          window.location = `/recipes/${recipe.id}`
-        }, 2000)       
-      }
-    })
-  }
+    //recipe submission
+    const submitRecipe = (event) => {
+      event.preventDefault();
+      axios({
+        method: "post",
+        url: submissionURL,
+        data: formValue
+      })
+      .then ((response)=>{
+        //if username not found, send error. Messages are curated by server
+        if(response.data.error){
+          toast.error(response.data.error);
+        }
+        else{
+          toast.success(`Submitted ${formValue.title} sucessfully!`)
+          setTimeout(()=>{
+            returnToRecipe();
+            window.location = `/recipes/${recipe.id}`
+          }, 2000)       
+        }
+      })
+    }
 
 
   return (

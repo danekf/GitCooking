@@ -63,7 +63,6 @@ export default function Recipe() {
   const forkRecipe = () =>{
     window.scroll(0,0); 
     setEditMode(FORK);
-
   }
 
 
@@ -125,9 +124,9 @@ export default function Recipe() {
       </div>
     }
     {/* Edit Recipe Mode */}
-    {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" />}
+    {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" URL = "/api/recipes/edit" />}
 
-    {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" />}
+    {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" URL = "" />}
 
     </>
   );
