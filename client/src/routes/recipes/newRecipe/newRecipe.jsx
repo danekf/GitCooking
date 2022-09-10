@@ -10,7 +10,7 @@ import useApplicationData from '../../../hooks/userHook';
 export default function NewRecipe(props) {  
  
 const { user, setUser, logout } = useApplicationData();  
-// const original_fork = location.state?.original_fork || 0;
+
 
 
   //form submission handler for submission to server
