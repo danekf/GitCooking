@@ -1,21 +1,37 @@
 // Mobile View (iphone 12 Pro):
 
+// Edit profile page Button:
+.fa-pen-to-square {
+  color: #d9534f;
+  font-weight: 900;
+  font-size: larger;
+  float: right;
+  margin-right: 1em;
+  margin-top: 0.5em;
+}
+
+.fa-pen-to-square:hover {
+  cursor: pointer;
+  color: #FFAD60;
+}
+
 .profile-picture {
   display: flex;
   border-style: solid;
   border: 1px solid transparent;
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.12);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   padding: 2em;
-  height: 8em;
-  width: 8em;
+  height: 10em;
+  width: 10em;
   border-radius: 50%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-left: 1em;
   margin-top: 2em;
+  margin-bottom: 2em;
   background-color: #96CEB4;
   }
   
@@ -32,35 +48,31 @@
   border: 1px solid transparent;
   box-sizing: border-box;
   text-decoration: none #6B7280 solid;
-  flex: 0 0 auto;
   line-height: 1.5rem;
-  text-decoration-thickness: auto;
-  transition-duration: .2s;
-  transition-property: background-color,border-color,color,fill,stroke;
-  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   background-color: #d9534f;
   color: #fff;
-  width: auto;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.12);
 }
 
+@media screen (min-width {
+  
+}
+
+.badges-list {
+}
 .badges-list-item li {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   font-size: 1rem;
   padding: 1em;
   color: black;
-  margin-left: 0em;
-  margin-right: 0em;
-  margin-top: 0em;
-  margin-bottom: 0em;
+  padding: 0.25em;
+  justify-content: space-between;
 }
 
+// All unordered lists with an li will have this styling:
 ul li {
   list-style-type: none;
   display: inline;
@@ -372,20 +384,6 @@ ul li {
   color: black;
   font-size: 1rem;
   margin-top: -2em;
-}
-
-.fa-pen-to-square {
-  color: #d9534f;
-  font-weight: 900;
-  font-size: larger;
-  float: right;
-  margin-right: 1em;
-  margin-top: 0.5em;
-}
-
-.fa-pen-to-square:hover {
-  cursor: pointer;
-  color: #FFAD60;
 }
 
 // //colors:

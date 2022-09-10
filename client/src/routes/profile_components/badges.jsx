@@ -3,8 +3,10 @@ export default function Badges (props) {
   return (
     <div>
       <p className="badges">Badges</p>
-      <ul className="badges-list-item">
+      <ul className="badges-list">
+        <div className="badges-list-item">
         {badges && badges.map((badge)=><li>{badge}</li>)}
+        </div>
       </ul>
     </div>
   );
