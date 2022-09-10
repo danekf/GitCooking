@@ -7,10 +7,29 @@ import Badges from "./profile_components/badges";
 import Qualifications from "./profile_components/qualifications";
 import Socials from "./profile_components/socials";
 import Bio from "./profile_components/bio";
-import RecipeList from "./recipes/recipeList"
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import RecipeCard from './recipes/recipeCard';
+
+
 
 
 export default function UserProfile() {
+
+  //get all of a users recipes
+  const [recipes, setRecipes] = useState([]);
+  useEffect(()=>{
+    axios.get(`/api/recipes/user`)
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setRecipes(tempArray);
+    })
+    // eslint-disable-next-line
+  }, [])
+  
   return (
     <>
       <main>
@@ -25,9 +44,13 @@ export default function UserProfile() {
         </div>
         <div>
           <div className='my-recipes-card'>
-          <h1 className='my-recipes-title '>My Recipes</h1>
+            <h1 className='my-recipes-title '>My Recipes</h1>
           </div>
-          <RecipeList/>
+          <div className='my-recipes-card'>
+            <ul>
+              {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+            </ul>
+          </div>
         </div>
       </main>
     </>

@@ -1,6 +1,5 @@
 import './newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
-// import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
@@ -11,7 +10,7 @@ export default function NewRecipe(props) {
 const location = useLocation();
 
 const user = location.state?.user;
-const original_fork = location.state?.original_fork || 0;
+// const original_fork = location.state?.original_fork || 0;
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
@@ -23,8 +22,10 @@ const original_fork = location.state?.original_fork || 0;
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: 'dummy_URL'
+    recipe_photos: 'dummy_URL',
+    estimatedTime: 0,
   })
+
 
 //ingredient handler
 const [newIngredient, setNewIngredient]=useState({
@@ -117,8 +118,6 @@ const addIngredientToList = (event) =>{
   }
 
   //cook time handler
-  const [cookTime, setCookTime] = useState(0);
-
   useEffect(() =>{
     let time = 0;
     // eslint-disable-next-line 
@@ -127,7 +126,10 @@ const addIngredientToList = (event) =>{
     })
     //round to nearest half minute
     time = Math.round(time*2)/2;
-    setCookTime(time); 
+    setformValue({
+      ...formValue,
+      estimatedTime: time});
+    // eslint-disable-next-line
   }, [formValue.instructions])
 
   //recipe submission
@@ -171,7 +173,7 @@ const addIngredientToList = (event) =>{
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
           
             <h4>Cooking Time:</h4>
-            <input className='cooking-time' type="number" name="cooking-time" value={cookTime} disabled />
+            <input className='cooking-time' type="number" name="cooking-time" value={formValue.estimatedTime} disabled />
             
             <h4>Servings:</h4>
             <input className='servings' type="number" name="servings" onChange={handleChange} value={formValue.servings} />

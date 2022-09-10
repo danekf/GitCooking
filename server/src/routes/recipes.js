@@ -3,7 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  // Home page, just get recipes of the week, currently just getting ALL recipes
+  //home page, just get recipes of the week, 
+  ////////////////////////////////////
+  //currently just getting ALL recipes
+  ////////////////////////////////////
   router.get('/', (request, response) => {
     const queryString = `
     SELECT *
@@ -17,9 +20,77 @@ module.exports = (db) => {
       });
   });
 
+  //get all of a users created recipes
+  router.get('/user', (request, response)=>{
+    const user_id = request.session.userId;
+
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE user_id = $1
+    ;`;
+
+    const queryValues=[`${user_id}`];
+
+    db.query(queryString, queryValues)
+      //return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+
+  });
+
+  //get a users FAVOURITE recipes
+  router.get('/favourites', (request, response)=>{
+    const user_id = request.session.userId;
+
+    const queryString = `
+    SELECT favourite_recipes
+    FROM users
+    WHERE id = $1
+    ;`;
+
+    const queryValues=[`${user_id}`];
+
+    db.query(queryString, queryValues)
+      //returns the users favourite recipe IDs
+      .then(({rows: data}) => {
+        const favourites = (data[0].favourite_recipes); 
+        //[1,2,3]^
+    
+        const queryString = `
+        SELECT *
+        FROM recipes
+        WHERE id = ANY ($1)
+        ;`;        
+
+      //returns the recipe data for favourite recipes
+      db.query(queryString, [favourites])
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });     
+      })
+  });
+
+  router.post('/recipeId', (request, response) => {
+    const {recipeId} = request.body;
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE id = $1
+    ;`;
+
+
+    db.query(queryString, [`${recipeId}`])
+      // Return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+  });
+
+  //save a new recipe to the db
   router.post('/new', (request, response)=>{
     const {user_id, original_fork_id, title, recipe_photos, servings } = request.body;
-    console.log(request.body)  
 
   //black magic to make it work with pg, more greyish white magic actually.
   const ingredients = JSON.stringify(request.body.ingredients);

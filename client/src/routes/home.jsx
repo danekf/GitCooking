@@ -1,28 +1,35 @@
 import './home.scss';
 import SearchBar from "./components/searchBar";
-
-import RecipeList from './recipes/recipeList'
+import axios from 'axios';
+import { useState,useEffect } from "react";
+import RecipeCarousel from './recipeCarousel';
 
 export default function Home() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(()=>{
+    axios.get(`/api/recipes`)
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setRecipes(tempArray);
+    })
+    // eslint-disable-next-line
+  }, [])
   return (
     <>
       <div className='home-page-body'>
-        
         <h2 className='home-page-title'>Get ready to GitCooking!
-        <div className="search-bar-feature">
+          <div className="search-bar-feature">
             <SearchBar />  
           </div>
         </h2>
-
-          <div className='grouped-recipes'>
-            <h3 className='home-page-subheading'>Top 10 Recipes of the Week</h3>
-            <RecipeList/>
-            <h3 className='home-page-subheading'>Popular Recipes</h3>
-            <RecipeList/>
-            <h3 className='home-page-subheading'>Most Spooned Recipes</h3>
-            <RecipeList/>
-          </div>
-        </div>
+      </div>
+      <div>
+        <RecipeCarousel recipes={recipes}/>
+      </div>
     </>
   );  
 }

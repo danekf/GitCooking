@@ -13,5 +13,6 @@ CREATE TABLE users (
   social_URLS JSONB,
   badges JSONB,
   qualifications JSONB,
+  favourite_recipes JSONB,
   login_method VARCHAR(50)
 );
