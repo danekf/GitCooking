@@ -126,7 +126,7 @@ module.exports = (db) => {
 
   //edit an existing recipe
   router.post('/edit', (request, response)=>{
-    const {user_id, original_fork_id, title, recipe_photos, servings } = request.body;
+    const {id, original_fork_id, title, recipe_photos, servings } = request.body;
 
     //black magic to make it work with pg, more greyish white magic actually.
     const ingredients = JSON.stringify(request.body.ingredients);
@@ -157,7 +157,7 @@ module.exports = (db) => {
       id = $1 `
       ;
 
-      const queryValues = [`${user_id}`,`${title}`,`${ingredients}`,`${equipment}`,`${instructions}`,`${recipe_photos}`,`${tags}`,`${servings}`];
+      const queryValues = [`${id}`,`${title}`,`${ingredients}`,`${equipment}`,`${instructions}`,`${recipe_photos}`,`${tags}`,`${servings}`];
       console.log(queryValues)
 
       db.query(queryString, queryValues)

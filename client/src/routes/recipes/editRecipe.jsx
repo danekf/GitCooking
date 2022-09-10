@@ -8,6 +8,7 @@ import useApplicationData from '../../hooks/userHook';
 
 
 export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
+
  
  
 const { user} = useApplicationData();  
@@ -160,11 +161,19 @@ const deleteItem = (index, event, name)=>{
         if(response.data.error){
           toast.error(response.data.error);
         }
-        else{
+        //if we were editing do something different than if forking
+        if(title==='Edit'){
           toast.success(`Submitted ${formValue.title} sucessfully!`)
           setTimeout(()=>{
             returnToRecipe();
             window.location = `/recipes/${recipe.id}`
+          }, 2000)       
+        }        
+        if(title==='Fork'){
+          toast.success(`Submitted ${formValue.title} sucessfully!`)
+          const recipeId = response.data[0].id; 
+          setTimeout(()=>{
+            window.location = `/recipes/${recipeId}`
           }, 2000)       
         }
       })
