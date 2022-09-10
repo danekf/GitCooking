@@ -74,16 +74,17 @@ export default function EditProfile({returnToProfile, user}) {
         toast.error(response.data.error);
       }
       else if(response.status === 200){
-        toast.
-        window.location = '/users/profile'        
+        toast.success("Update Successful, redirecting to profile...")
+        setTimeout(()=>{
+          window.location = '/users/profile'
+        }, 2000)
       }
     })
   }
 
-
-
   return (
     <>
+
     
     <div className='edit-profile-body'>
       <div className='edit-profile-card'>
@@ -140,6 +141,11 @@ export default function EditProfile({returnToProfile, user}) {
         </form>
       </div>
     </div>
+    <ToastContainer 
+      position='top-center'
+      autoClose={2000}
+      closeOnClick
+    />
   </>
   );
 }
