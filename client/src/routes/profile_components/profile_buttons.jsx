@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useApplicationData from "../../hooks/userHook";
 
 export default function ProfileButtons () {
@@ -8,7 +8,7 @@ export default function ProfileButtons () {
     <>
     {/* Conditional Rendering, if a user is logged in show the favourites button, if a user is not logged in show the report button */}
     {!user ? 
-      <div>
+      <div className="buttons-container">
         <button className="message-button">
           Message
         </button>
@@ -17,7 +17,7 @@ export default function ProfileButtons () {
         </button>
       </div>
     :
-      <div>
+      <div className="buttons-container">
         <button className="message-button">
           Message
         </button>
