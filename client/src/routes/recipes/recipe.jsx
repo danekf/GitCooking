@@ -51,7 +51,7 @@ export default function Recipe() {
       })
     })
     // eslint-disable-next-line
-  }, [])
+  }, [editMode])
 
   const returnToRecipe = () =>{
     setEditMode(SHOW)
