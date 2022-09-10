@@ -8,24 +8,15 @@ import useApplicationData from '../../hooks/userHook';
 
 
 export default function EditRecipe(props) {  
+  const recipe = props.recipe;
+  console.log('recipe: ', recipe);
  
 const { user, setUser, logout } = useApplicationData();  
 // const original_fork = location.state?.original_fork || 0;
 
 
   //form submission handler for submission to server
-  const [formValue, setformValue] = useState({
-    user_id: 0,
-    original_fork_id: 0,
-    title: '',
-    ingredients: [],
-    equipment: [],
-    instructions: [],
-    tags: [],
-    servings: '',
-    recipe_photos: 'dummy_URL',
-    estimatedTime: 0,
-  })
+  const [formValue, setformValue] = useState({...recipe})
 
   useEffect(()=>{
     setformValue({
@@ -198,7 +189,7 @@ const deleteItem = (index, event, name)=>{
           <form action="">
 
 
-            <h1 className='recipe-title'>Create a New Recipe</h1>
+            <h1 className='recipe-title'>Edit Recipe</h1>
             
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />

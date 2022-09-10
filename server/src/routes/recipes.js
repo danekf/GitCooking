@@ -72,21 +72,21 @@ module.exports = (db) => {
       })
   });
 
-  // router.post('/recipeId', (request, response) => {
-  //   const {recipeId} = request.body;
-  //   const queryString = `
-  //   SELECT *
-  //   FROM recipes
-  //   WHERE id = $1
-  //   ;`;
+  router.post('/recipeId', (request, response) => {
+    const {recipeId} = request.body;
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE id = $1
+    ;`;
 
 
-  //   db.query(queryString, [`${recipeId}`])
-  //     // Return an array of objects, grouped by recipe ID.
-  //     .then(({ rows: recipes }) => {
-  //       response.json(recipes);
-  //     });
-  // });
+    db.query(queryString, [`${recipeId}`])
+      // Return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+  });
 
   //save a new recipe to the db
   router.post('/new', (request, response)=>{
