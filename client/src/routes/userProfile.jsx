@@ -55,7 +55,7 @@ export default function UserProfile() {
             <Badges badges={user.badges}/>
             <h6 className='username'>@{user.username}</h6>
             <ProfileButtons/>
-            <h6>{user.first_name} {user.last_name}</h6>
+            <h6 className='full-name'>{user.first_name} {user.last_name}</h6>
             <Socials />
             <Qualifications qualifications={user.qualifications}/>
             <div>

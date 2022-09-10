@@ -190,7 +190,7 @@ ul li {
   .socials-list-item ul {
     display: flex;
     margin-left: -0.5em;
-    margin-top: -1.5em;
+    margin-top: -1em;
   }
 
   .socials-list-item ul li i {
@@ -340,10 +340,12 @@ ul li {
   }
 }
 
+ // General styling for links:
 .link-favourites {
   text-decoration: none;
 }
 
+// Qualifications:
 .qualifications {
   display: flex;
   margin-left: 1em;
@@ -425,9 +427,18 @@ ul li {
   margin-top: -2em;
 }
 
-// //colors:
-// // green: 96CEB4
-// // linen: FAF1E6
-// //champagne/ yellow: FFEEAD
-// // red: D9534F
-// // orange: FFAD60
+@media screen and (max-width: 400px){
+  .qualifications {
+    margin-top: -1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+  }
+
+  .bio {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+  }
+}
