@@ -10,7 +10,12 @@ CREATE TABLE users (
   profile_picture VARCHAR(255),
   bio VARCHAR (500),
   contact_email VARCHAR(255),
-  social_URLS JSONB,
+  facebook VARCHAR(50),
+  instagram VARCHAR(50),
+  tiktok VARCHAR(50),
+  youtube VARCHAR(50),
+  twitter VARCHAR(50),
+  linkedin VARCHAR(50),
   badges JSONB,
   qualifications JSONB,
   login_method VARCHAR(50)
