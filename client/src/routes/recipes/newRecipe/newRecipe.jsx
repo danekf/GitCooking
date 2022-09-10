@@ -50,6 +50,8 @@ const addIngredientToList = (event) =>{
   })
 }
 
+
+
 //equipment handler
   const [newEquipment, setNewEquipment]=useState({
     equipmentQty: '',
@@ -107,8 +109,6 @@ const addIngredientToList = (event) =>{
     // eslint-disable-next-line 
   }, [recipeTags])
   
-
-
   //handles all changes to components into the form for submission
   const handleChange =(event) => {
     setformValue({
@@ -116,6 +116,27 @@ const addIngredientToList = (event) =>{
       [event.target.name]: event.target.value
     });
   }
+  
+  //handles update of created items
+const updateRecipe = (index, event, name)=>{
+  let tempArray = [...formValue[name]];    
+  tempArray[index][event.target.name]= event.target.value; 
+
+  setformValue({
+    ...formValue,
+    [name]: tempArray
+  })
+}
+
+const deleteItem = (index, event, name)=>{
+  let tempArray = [...formValue[name]];    
+  tempArray.splice(index, 1)
+
+  setformValue({
+    ...formValue,
+    [name]: tempArray
+  })
+}
 
   //cook time handler
   useEffect(() =>{
@@ -180,15 +201,25 @@ const addIngredientToList = (event) =>{
 
             <h4>Ingredients:</h4>
             <ul>
+              {formValue.ingredients.map((item, index) => 
+                <li> 
+                  <input className="" type="number" key={index} name="ingredientQty" placeholder= "Add Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+
+                  <input className="" type="text" key={index} name="ingredientName" placeholder= "Enter Equipment + details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+
+                  <div className='delete-ingredient'>
+                    <i onClick={(event)=>deleteItem(index, event, "ingredients")}class="fa-solid fa-trash"></i>
+                  </div>
+                </li>            
+              )} 
               <div className='add-item'>
                   <i className="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
                   <input type="number" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
                   <input type="text" name="ingredientName" placeholder='Enter Equipment + details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
-              {formValue.ingredients.map((item) => <li>{item.ingredientQty} - {item.ingredientName} </li>)}
             </ul>
 
-            <h4>Equipments Required:</h4>
+            <h4>Equipment Required:</h4>
             <ul>
               <div className='add-item'>
                 <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
