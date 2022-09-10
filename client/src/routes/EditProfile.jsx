@@ -17,6 +17,7 @@ export default function EditProfile({returnToProfile}) {
           <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='YouTube URL' /><i className="fa-brands fa-youtube"></i>
           <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='TikTok URL' /><i className="fa-brands fa-tiktok"></i>
           <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Twitter URL' /><i className="fa-brands fa-twitter"></i>
+          <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='Facebook URL' /><i className="fa-brands fa-facebook"></i>
           <input className="edit-form-item" type="URL" id='URL' name='URL' placeholder='LinkedIn URL' /><i className="fa-brands fa-linkedin"></i>
           <input className="edit-form-item" type="text" name="qualifications" placeholder= "Qualifications" id="qualifications" />
           <input className="edit-form-item" type="text" name="bio" id="bio" placeholder='Bio'/>

@@ -1,11 +1,10 @@
-export default function Qualifications () {
+export default function Qualifications (props) {
+  const qualifications = props.qualifications;
   return (
     <div>
       <p className="qualifications">Qualifications</p>
       <ul className="qualifications-list-item">
-        <li>X</li>
-        <li>Y</li>
-        <li>Z</li>
+        {qualifications && qualifications.map((qualification)=><li>{qualification}</li>)}
       </ul>
     </div>
   );

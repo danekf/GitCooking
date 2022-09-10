@@ -13,6 +13,10 @@ function App() {
   const { modalProps, getTriggerProps } = useModal();
   const { user, setUser, logout } = useApplicationData();
 
+  /////////////////////////////
+  //Leaving this here for now until we are sure useApplication data doesnt break everything
+  ////////////////////////////
+
   //user handler
   // const [user, setUser] = useState({ user: 'No User' });
   //set user state based on cookie on page load.
