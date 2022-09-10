@@ -1,6 +1,5 @@
 import './newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
@@ -9,16 +8,14 @@ import useApplicationData from '../../../hooks/userHook';
 
 
 export default function NewRecipe(props) {  
-const location = useLocation();
 
-const user = location.state?.user;
+const { user, setUser, logout } = useApplicationData();  
 // const original_fork = location.state?.original_fork || 0;
-
 
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
-    user_id: user.id,
+    user_id: 0,
     original_fork_id: 0,
     title: '',
     ingredients: [],
@@ -29,6 +26,14 @@ const user = location.state?.user;
     recipe_photos: 'dummy_URL',
     estimatedTime: 0,
   })
+
+  useEffect(()=>{
+    setformValue({
+      ...formValue,
+      user_id: user.id
+    })
+    
+  }, [user])
 
 
 //ingredient handler

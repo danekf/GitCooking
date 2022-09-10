@@ -35,7 +35,6 @@ export default function Recipe() {
       data: recipeId
     })
     .then ((response)=>{
-      console.log('response is: ', response.data)
       setRecipe(response.data[0]);
       const tempChef={userId: response.data[0].user_id};
       //get user id that created the recipe
