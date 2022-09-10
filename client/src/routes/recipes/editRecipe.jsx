@@ -185,9 +185,7 @@ const deleteItem = (index, event, name)=>{
             closeOnClick
           />
         </div>
-         <button onClick={() => returnToRecipe()} >Return to recipe</button>
           <form action="">
-
 
             <h1 className='recipe-title'>Edit Recipe</h1>
             
