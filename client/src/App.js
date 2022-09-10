@@ -94,7 +94,7 @@ function App() {
                 <div className="header-name-logout">
                   <p className="username-display">{user.username}</p>
                   {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-                  <button className="badge badge-secondary" onClick={logout}>Logout</button>
+                  <button className="badge badge-secondary logout-button" onClick={logout}>Logout</button>
                 </div>
               </div>
             </>

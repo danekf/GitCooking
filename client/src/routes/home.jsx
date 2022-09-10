@@ -1,4 +1,5 @@
 import './home.scss';
+import SearchBar from "./components/searchBar";
 import axios from 'axios';
 import { useState,useEffect } from "react";
 import RecipeCarousel from './recipeCarousel';
@@ -20,7 +21,11 @@ export default function Home() {
   return (
     <>
       <div className='home-page-body'>
-        <h2 className='home-page-title'>Get ready to GitCooking!</h2>
+        <h2 className='home-page-title'>Get ready to GitCooking!
+          <div className="search-bar-feature">
+            <SearchBar />  
+          </div>
+        </h2>
       </div>
       <div>
         <RecipeCarousel recipes={recipes}/>
