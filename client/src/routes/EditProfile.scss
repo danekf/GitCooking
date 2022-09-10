@@ -90,6 +90,7 @@ h6 {
   }
 }
 
+
 @media screen and (min-width: 800px) {
   .fa-trash {
     margin-right: -10em;
@@ -100,6 +101,18 @@ h6 {
     margin-bottom: -2em;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .add-q {
+    margin-left: 17em;
+    margin-bottom: -2em;
+  }
+  .fa-trash {
+    margin-right: 11em;
+    margin-left: 28em;
+  }
+}
+
 .edit-form-item-qualifications {
   margin-top: 1em;
   margin-bottom: 1em;
