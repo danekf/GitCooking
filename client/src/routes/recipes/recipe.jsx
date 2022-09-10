@@ -7,6 +7,7 @@ import { useState, useEffect} from 'react';
 import useApplicationData from '../../hooks/userHook';
 import EditRecipe from './editRecipe';
 
+
 export default function Recipe() {
   const params = useParams();
   const {user} = useApplicationData();
@@ -27,6 +28,7 @@ export default function Recipe() {
 
   const SHOW = 'SHOW'
   const EDIT = 'EDIT'
+  const FORK = 'FORK'
 
   const [editMode, setEditMode] = useState(SHOW);
 
@@ -57,6 +59,12 @@ export default function Recipe() {
     setEditMode(SHOW)
   }
 
+  const forkRecipe = () =>{
+    
+    setEditMode(FORK);
+
+  }
+
 
 
   return (
@@ -67,8 +75,8 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon"></i>
-          <i className="fa-solid fa-utensils"></i>
+          <i className="fa-solid fa-spoon">Spoon it</i>
+          <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>
 
@@ -117,6 +125,8 @@ export default function Recipe() {
     }
     {/* Edit Recipe Mode */}
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} />}
+
+    {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} />}
 
     </>
   );

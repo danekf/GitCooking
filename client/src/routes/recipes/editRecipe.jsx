@@ -7,12 +7,10 @@ import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function EditRecipe({recipe, returnToRecipe}) {  
+export default function EditRecipe({recipe, returnToRecipe, }) {  
  
  
 const { user} = useApplicationData();  
-// const original_fork = location.state?.original_fork || 0;
-
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({...recipe})
@@ -270,7 +268,7 @@ const deleteItem = (index, event, name)=>{
             </div>
             <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
-
+            <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
             <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
           </form>
