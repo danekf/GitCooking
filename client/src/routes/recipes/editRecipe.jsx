@@ -7,7 +7,7 @@ import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function EditRecipe({recipe, returnToRecipe, }) {  
+export default function EditRecipe({recipe, returnToRecipe, title }) {  
  
  
 const { user} = useApplicationData();  
@@ -185,7 +185,7 @@ const deleteItem = (index, event, name)=>{
         </div>
           <form action="">
 
-            <h1 className='recipe-title'>Edit Recipe</h1>
+            <h1 className='recipe-title'>{title} Recipe</h1>
             
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
