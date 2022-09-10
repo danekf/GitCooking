@@ -1,8 +1,8 @@
 import { useLocation, Link } from "react-router-dom";
+import useApplicationData from "../../hooks/userHook";
 
 export default function ProfileButtons () {
-  const location = useLocation();
-  const user = location.state?.user
+  const { user, setUser} = useApplicationData();
 
   return (
     <>

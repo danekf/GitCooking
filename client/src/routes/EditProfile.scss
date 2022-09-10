@@ -1,8 +1,8 @@
-.register-body {
+.edit-profile-body {
   background-color: #FFAD60;
 }
 
-.register-title {
+.edit-profile-title {
   font-family: 'Fredoka One', cursive;
   color: #d9534f;
   font-weight: 100;
@@ -10,21 +10,17 @@
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
 }
 
-.register-to-login {
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-
-.register-form {
+.edit-profile-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2em;
 }
 
-.register-form-item {
+.edit-form-item {
   margin-bottom: 20px;
   padding: 1em;
+  outline: none;
 }
 
 .upload-img {
@@ -33,11 +29,46 @@
   font-weight: 900
 }
 
-.register-form-item-img {
+.add-q-heading {
+  display: flex;
+
+}
+
+h6 {
+  margin-bottom: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900
+}
+
+.fa-plus {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0em;
+  margin-bottom: -1.7em;
+}
+
+.delete-q {
+  display: flex;
+}
+.fa-trash {
+  display: flex;
+  justify-content: flex-end;  
+  margin-left: 24em;
+  margin-bottom: -8em;
+  margin-top: -2.1em;
+  color: #D9534F;
+}
+
+.edit-form-item-qualifications {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.edit-form-item-img {
   border-bottom: none;
 }
 
-.register-card {
+.edit-profile-card {
   display: block;
   margin-top: 1em;
   margin-left: 2em;
@@ -66,7 +97,7 @@
   width: 210px;
 }
 
-.register-btn-submit {
+.edit-btn-submit {
   border: 1px solid transparent;
   border-radius: .75rem;
   font-family: 'Montserrat', sans-serif;
@@ -84,11 +115,7 @@
   flex: 0 0 auto;
 }
 
-.register-btn-submit:hover {
-  background-color: #FFAD60; 
-}
-
-.login-btn {
+.go-back-button {
   border: 1px solid transparent;
   border-radius: .75rem;
   font-family: 'Montserrat', sans-serif;
@@ -97,16 +124,25 @@
   color: #fff;
   padding: 0.3em;
   box-sizing: border-box;
-  margin-top: 2em;
-  margin-bottom: 10em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   margin-right: 0em;
   text-align: center;
   cursor: pointer;
   font-size: 1rem;
   flex: 0 0 auto;
-  text-decoration: none;
 }
 
-.login-btn:hover {
+.edit-btn-submit:hover {
   background-color: #FFAD60; 
+}
+
+.edit-form-item-bio {
+  height: 20em;
+  margin-bottom: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 1em;
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #D9534F;
 }

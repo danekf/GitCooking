@@ -53,6 +53,7 @@ const login = require('./routes/login');
 const register = require('./routes/register');
 const logout = require('./routes/logout');
 const users = require('./routes/users');
+const profiles = require('./routes/profiles');
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
@@ -60,6 +61,7 @@ app.use('/api/login', login(db));
 app.use('/api/register', register(db));
 app.use('/api/logout', logout());
 app.use('/api/users', users(db));
+app.use('/api/profile', profiles(db));
 
 // Message on server start
 server.listen(PORT, () => {

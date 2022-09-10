@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
@@ -7,34 +7,13 @@ import Menu from './routes/menu';
 import axios from 'axios';
 import HeaderDropdownMenu from "./routes/components/dropdownMenu";
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+import ProfilePicture from './routes/profile_components/profile_picture';
+import useApplicationData from './hooks/userHook';
 
 function App() {
   //menu handler
   const { modalProps, getTriggerProps } = useModal();
-
-  //user handler
-  const [user, setUser] = useState({user:'No User'});
-    //set user state based on cookie on page load.
-  useEffect(()=>{
-    axios({
-      method: "get",
-      url: "/api/login",
-    })
-    .then ((response)=>{
-      setUser({...response.data});
-    })
-  }, [])
-
-  const logout = () => {
-    axios({
-      method: "post",
-      url: "/api/logout",
-    })
-    .then (()=>{
-      window.location = "/";
-    })
-  }
-
+  const { user, setUser, logout } = useApplicationData();
 
   return (
     <html lang="en">
@@ -64,7 +43,6 @@ function App() {
       </head>
       <header className='app-header' >
         <div className='app-header-desktop-buttons' >
-
         <div className='gitcooking-title-and-logo'>
           <Link to='/'>
             <img
@@ -86,11 +64,11 @@ function App() {
                 <span class='mob-view'>Create</span>
                 <span class='normal-view'> a new recipe</span>
               </Link>
-              <div className="logged-in-header" >
-                <img
-                  id="profile-pic-display"
-                  src=''
-                />
+              <div className='logged-in-header'>
+              <ProfilePicture
+                profile_picture={user.profile_picture}
+                id='profile-pic-display'
+              />
                 <div className="header-name-logout">
                   <p className="username-display">{user.username}</p>
                   {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
@@ -140,8 +118,11 @@ function App() {
               <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
             </Link>
           </li>
-          <li {...getTriggerProps({background: '#FAF1E6'})}>
-            <i id="burger-icon" class='fa-solid fa-burger app-footer-nav-list-item'></i>
+          <li {...getTriggerProps({ background: '#FAF1E6' })}>
+            <i
+              id='burger-icon'
+              class='fa-solid fa-burger app-footer-nav-list-item'
+            ></i>
           </li>
           <Modal {...modalProps}>
             <Menu />
