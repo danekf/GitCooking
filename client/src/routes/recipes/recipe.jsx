@@ -1,12 +1,16 @@
 import './recipe_style.scss';
 
 import CommentList from "../comments/commentList";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import axios from 'axios';
 import { useState, useEffect} from 'react';
+import useApplicationData from '../../hooks/userHook';
+import EditRecipe from './editRecipe';
+
 
 export default function Recipe() {
   const params = useParams();
+  const {user} = useApplicationData();
 
   const recipeId = {recipeId: params.recipeId};
   const [recipe, setRecipe] = useState({
@@ -22,6 +26,12 @@ export default function Recipe() {
   });
   const [chef, setChef] = useState([]);
 
+  const SHOW = 'SHOW'
+  const EDIT = 'EDIT'
+  const FORK = 'FORK'
+
+  const [editMode, setEditMode] = useState(SHOW);
+
   useEffect(()=>{
     //get recipe info
     axios({
@@ -30,7 +40,6 @@ export default function Recipe() {
       data: recipeId
     })
     .then ((response)=>{
-      console.log('response is: ', response.data)
       setRecipe(response.data[0]);
       const tempChef={userId: response.data[0].user_id};
       //get user id that created the recipe
@@ -44,24 +53,38 @@ export default function Recipe() {
       })
     })
     // eslint-disable-next-line
-  }, [])
+  }, [editMode])
+
+  const returnToRecipe = () =>{
+    window.scroll(0,0); 
+    setEditMode(SHOW)
+  }
+
+  const forkRecipe = () =>{
+    window.scroll(0,0); 
+    setEditMode(FORK);
+  }
 
 
 
   return (
     <>
+    {/* Show recipe mode */}
+      {editMode === SHOW && 
       <div className='recipe-body'>
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon"></i>
-          <i className="fa-solid fa-utensils"></i>
+          <i className="fa-solid fa-spoon">Spoon it</i>
+          <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>
 
           <h1 className='recipe-title'>{recipe.title}</h1>
           
           <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
+          
+          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
           <img className="recipe-img"src="" alt="Recipe" />
 
@@ -99,6 +122,12 @@ export default function Recipe() {
           </ul>
         </div>
       </div>
+    }
+    {/* Edit Recipe Mode */}
+    {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
+
+    {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
+
     </>
   );
 }

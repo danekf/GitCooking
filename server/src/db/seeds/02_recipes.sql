@@ -1,20 +1,20 @@
 INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
 VALUES(
   1,
-  null,
+  0,
   'Pasta',
   '[
     { 
       "ingredientName":"pasta", 
-      "ingredientQty":"1 handful"
+      "ingredientQty":"1"
     },
     {
-      "ingredientName":"pesto", 
-      "ingredientQty":"3TBsp" 
+      "ingredientName":"TBsp pesto", 
+      "ingredientQty":"3" 
     },
     {
-      "ingredientName":"salt", 
-      "ingredientQty":"Enough"
+      "ingredientName":"tbsp salt", 
+      "ingredientQty":"1"
     }
   ]',
   '[{"equipmentName": "Pot", "equipmentQty": "1"}]',
@@ -56,16 +56,16 @@ VALUES(
   'Pasta with meatballs',
   '[
     {
-      "ingredientName":"pasta",
-     "ingredientQty":"1 handful"
+      "ingredientName":"handful pasta",
+     "ingredientQty":"1 "
     },
     {
-      "ingredientName":"pesto",
-      "ingredientQty":"3TBsp"
+      "ingredientName":"TBsppesto",
+      "ingredientQty":"3"
     },
     {
-      "ingredientName":"salt", 
-      "ingredientQty":"Enough"
+      "ingredientName":"TBsp salt", 
+      "ingredientQty":"1"
     },
     {
       "ingredientName":"Meatballs",
@@ -109,7 +109,7 @@ VALUES(
 INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
 VALUES(
   2,
-  null,
+  0,
   'Water',
   '[
     {
@@ -134,7 +134,7 @@ VALUES(
 INSERT INTO recipes (user_id, original_fork_id, title, ingredients, equipment, instructions, estimatedTime, recipe_photos, tags, servings, forks)
 VALUES(
   2,
-  null,
+  0,
   'Water++',
   '[
     {

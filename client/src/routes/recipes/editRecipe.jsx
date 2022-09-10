@@ -1,32 +1,20 @@
-import './newRecipe_style.scss'
+import './newRecipe/newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
-import useApplicationData from '../../../hooks/userHook';
+import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function NewRecipe(props) {  
+export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
+
  
-const { user, setUser, logout } = useApplicationData();  
-const original_fork_id = props.original_fork_id || 0;
-
-
+ 
+const { user} = useApplicationData();  
 
   //form submission handler for submission to server
-  const [formValue, setformValue] = useState({
-    user_id: 0,
-    original_fork_id: original_fork_id,
-    title: '',
-    ingredients: [],
-    equipment: [],
-    instructions: [],
-    tags: [],
-    servings: '',
-    recipe_photos: 'dummy_URL',
-    estimatedTime: 0,
-  })
+  const [formValue, setformValue] = useState({...recipe})
 
   useEffect(()=>{
     setformValue({
@@ -160,28 +148,36 @@ const deleteItem = (index, event, name)=>{
     // eslint-disable-next-line
   }, [formValue.instructions])
 
-  //recipe submission
-  const submitRecipe = (event) => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: "/api/recipes/new",
-      data: formValue
-    })
-    .then ((response)=>{
-      //if username not found, send error. Messages are curated by server
-      if(response.data.error){
-        toast.error(response.data.error);
-      }
-      else{
-        toast.success(`Submitted ${formValue.title} sucessfully!`)
-        const recipeId = response.data[0].id; 
-        setTimeout(()=>{
-          window.location = `/recipes/${recipeId}`
-        }, 2000)       
-      }
-    })
-  }
+    //recipe submission
+    const submitRecipe = (event) => {
+      event.preventDefault();
+      axios({
+        method: "post",
+        url: submissionURL,
+        data: formValue
+      })
+      .then ((response)=>{
+        //if username not found, send error. Messages are curated by server
+        if(response.data.error){
+          toast.error(response.data.error);
+        }
+        //if we were editing do something different than if forking
+        if(title==='Edit'){
+          toast.success(`Submitted ${formValue.title} sucessfully!`)
+          setTimeout(()=>{
+            returnToRecipe();
+            window.location = `/recipes/${recipe.id}`
+          }, 2000)       
+        }        
+        if(title==='Fork'){
+          toast.success(`Submitted ${formValue.title} sucessfully!`)
+          const recipeId = response.data[0].id; 
+          setTimeout(()=>{
+            window.location = `/recipes/${recipeId}`
+          }, 2000)       
+        }
+      })
+    }
 
 
   return (
@@ -198,8 +194,7 @@ const deleteItem = (index, event, name)=>{
         </div>
           <form action="">
 
-
-            <h1 className='recipe-title'>Create a New Recipe</h1>
+            <h1 className='recipe-title'>{title} Recipe</h1>
             
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
@@ -244,7 +239,7 @@ const deleteItem = (index, event, name)=>{
                   </li>            
               )}              
               <div className='add-item'>
-                <i className="fa-solid fa-plus plus-recipe" onClick={addEquipmentToList}>Add Equipment</i>
+                <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
                 <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
                 <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
               </div>
@@ -282,7 +277,7 @@ const deleteItem = (index, event, name)=>{
             </div>
             <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
-
+            <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
             <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
           </form>
