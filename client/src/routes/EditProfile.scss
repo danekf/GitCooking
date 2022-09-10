@@ -20,6 +20,7 @@
 .edit-form-item {
   margin-bottom: 20px;
   padding: 1em;
+  outline: none;
 }
 
 .upload-img {
@@ -46,8 +47,16 @@ h6 {
   margin-bottom: -1.7em;
 }
 
+.fa-trash {
+  display: flex;
+  justify-content: flex-end;  
+  margin-left: 24em;
+  margin-bottom: -3em;
+  color: #D9534F;
+}
+
 .edit-form-item-qualifications {
-  margin-top: 0.001em;
+  margin-top: 1em;
   margin-bottom: 1em;
 }
 

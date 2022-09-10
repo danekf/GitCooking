@@ -36,7 +36,7 @@ export default function EditProfile({returnToProfile, user}) {
     event.preventDefault();
   }
 
-
+  //handle specific qualifications
   const updateQualification = (index, event)=>{
     let tempArray = [...newObj.qualifications];    
     tempArray[index]= event.target.value; 
@@ -46,6 +46,17 @@ export default function EditProfile({returnToProfile, user}) {
       qualifications: tempArray
     })
   }
+
+  const deleteQualification = (index, event)=>{
+    let tempArray = [...newObj.qualifications];    
+    tempArray.splice(index, 1)
+
+    setNewObj({
+      ...newObj,
+      qualifications: tempArray
+    })
+  }
+
 
 
   return (
@@ -75,12 +86,21 @@ export default function EditProfile({returnToProfile, user}) {
           <input className="edit-form-item" type="URL" name='linkedin' placeholder='LinkedIn URL' value={newObj.linkedin} onChange={handleChange}/>
 
           <h6>Qualifications</h6>
-          {newObj.qualifications.map((qualification, index) =>    
+          {/* WHATEVER YOU DO, DO NOT DELETE THIS MAPPING BLACK MAGIC!!!! */}
+          {newObj.qualifications.map((qualification, index) => 
+            <>   
             <input className="edit-form-item-qualifications" type="text" key={index} name="qualification" placeholder= "Add qualification" value={newObj.qualifications[index]} 
-            onChange={(event)=>updateQualification(index, event)} />
+            onChange={(event)=>updateQualification(index, event)}/> 
+            <div className='delete-q'>
+            <i onClick={(event)=>deleteQualification(index, event)}class="fa-solid fa-trash"></i>
+            </div>
+            </>
+
             
-          )}
-          {/* MAP DOESNT WORK WELL, need to update with keys in db if we want to be able to update the qualifications*/}
+
+            
+            
+          )}   
           <div>
             <div className='add-q-heading'>
             <i className="fa-solid fa-plus" onClick={addQualification}></i>
