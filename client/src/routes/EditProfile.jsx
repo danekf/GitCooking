@@ -9,7 +9,7 @@ import './EditProfile.scss';
 export default function EditProfile({returnToProfile, user}) {  
   const [newObj, setNewObj] = useState({...user})
 
-  //qualification handler
+  // Qualification handler
   const [newQualification, setNewQualification] = useState('');
 
   const handleQualification = (event) => {
@@ -47,7 +47,7 @@ export default function EditProfile({returnToProfile, user}) {
     })
   }
 
-  //handles all basic changes to components into the form for submission
+  // Handles all basic changes to components into the form for submission
   const handleChange =(event) => {
       setNewObj({
         ...newObj,
@@ -59,8 +59,7 @@ export default function EditProfile({returnToProfile, user}) {
     event.preventDefault();
   }
 
-
-  //profile submission handler
+  // Profile submission handler
   const updateProfile = (event) => {
     event.preventDefault();
     axios({
@@ -69,7 +68,7 @@ export default function EditProfile({returnToProfile, user}) {
       data: newObj
     })
     .then ((response)=>{
-      //if username not found, send error. Messages are curated by server
+      // If username not found, send error. Messages are curated by server
       if(response.data.error){
         toast.error(response.data.error);
       }
@@ -83,9 +82,7 @@ export default function EditProfile({returnToProfile, user}) {
   }
 
   return (
-    <>
-
-    
+    <>    
     <div className='edit-profile-body'>
       <div className='edit-profile-card'>
         <h1 className='edit-profile-title'>Edit Profile</h1>

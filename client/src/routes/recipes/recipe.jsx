@@ -75,7 +75,7 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon">Spoon it</i>
+          <i className="fa-solid fa-spoon">Spoon Recipe</i>
           <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>
