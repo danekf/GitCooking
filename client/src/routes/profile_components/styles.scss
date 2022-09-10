@@ -374,16 +374,24 @@ ul li {
   margin-top: -2em;
 }
 
+.edit-icon {
+  margin-left: 50em;
+  margin-right: -50em;
+}
+
 .fa-pen-to-square {
-  // color: #d9534f;
+  color: #d9534f;
   font-weight: 900;
   display: flex;
   justify-content: flex-end;
+  font-size: larger;
+  margin-right: -65em;
 }
 
 .fa-pen-to-square:hover {
   cursor: pointer;
 }
+
 
 // //colors:
 // // green: 96CEB4
