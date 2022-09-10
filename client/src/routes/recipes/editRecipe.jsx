@@ -1,31 +1,21 @@
-import './newRecipe_style.scss'
+import './newRecipe/newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
-import useApplicationData from '../../../hooks/userHook';
+import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function NewRecipe(props) {  
+export default function EditRecipe({recipe, returnToRecipe}) {  
  
-const { user, setUser, logout } = useApplicationData();  
-
+ 
+const { user} = useApplicationData();  
+// const original_fork = location.state?.original_fork || 0;
 
 
   //form submission handler for submission to server
-  const [formValue, setformValue] = useState({
-    user_id: 0,
-    original_fork_id: 0,
-    title: '',
-    ingredients: [],
-    equipment: [],
-    instructions: [],
-    tags: [],
-    servings: '',
-    recipe_photos: 'dummy_URL',
-    estimatedTime: 0,
-  })
+  const [formValue, setformValue] = useState({...recipe})
 
   useEffect(()=>{
     setformValue({
@@ -164,7 +154,7 @@ const deleteItem = (index, event, name)=>{
     event.preventDefault();
     axios({
       method: "post",
-      url: "/api/recipes/new",
+      url: "/api/recipes/edit",
       data: formValue
     })
     .then ((response)=>{
@@ -174,9 +164,9 @@ const deleteItem = (index, event, name)=>{
       }
       else{
         toast.success(`Submitted ${formValue.title} sucessfully!`)
-        const recipeId = response.data[0].id; 
         setTimeout(()=>{
-          window.location = `/recipes/${recipeId}`
+          returnToRecipe();
+          window.location = `/recipes/${recipe.id}`
         }, 2000)       
       }
     })
@@ -197,8 +187,7 @@ const deleteItem = (index, event, name)=>{
         </div>
           <form action="">
 
-
-            <h1 className='recipe-title'>Create a New Recipe</h1>
+            <h1 className='recipe-title'>Edit Recipe</h1>
             
             <h4>Recipe Title:</h4>
             <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
