@@ -1,4 +1,5 @@
 import './userProfile.scss';
+import './profile_components/styles.scss';
 
 import ProfilePicture from "./profile_components/profile_picture";
 import ProfileButtons from "./profile_components/profile_buttons";
@@ -52,7 +53,7 @@ export default function UserProfile() {
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
             <Badges badges={user.badges}/>
-            <h6>@{user.username}</h6>
+            <h6 className='username'>@{user.username}</h6>
             <ProfileButtons/>
             <h6>{user.first_name} {user.last_name}</h6>
             <Socials />

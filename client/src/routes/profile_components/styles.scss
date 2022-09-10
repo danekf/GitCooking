@@ -15,6 +15,7 @@
   color: #FFAD60;
 }
 
+// Profile Picture:
 .profile-picture {
   display: flex;
   border-style: solid;
@@ -35,6 +36,7 @@
   background-color: #96CEB4;
   }
 
+  // Badges:
   .badges-container {
     margin-top: -10em;
   }
@@ -68,6 +70,15 @@
   margin-bottom: 2em;
 }
 
+.badges-list-item li {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  padding: 0.5em;
+  color: black;
+  padding: 0.25em;
+}
+
 @media screen and (max-width: 400px) {
   .badges-list {
     display: flex;
@@ -83,16 +94,6 @@
     display: flex;
     margin-left: 4em;
   }
-  
-}
-
-.badges-list-item li {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 1rem;
-  padding: 0.5em;
-  color: black;
-  padding: 0.25em;
 }
 
 // All unordered lists with an li will have this styling:
@@ -101,25 +102,10 @@ ul li {
   display: inline;
 }
 
-.fa-bowl-rice {
-  color: #96CEB4;
-  padding: 0.4em;
-  margin-left: 7em;
-  margin-bottom: 1em;
-}
-
-.fa-cookie-bite {
-  color: #96CEB4;
-  padding: 0.4em;
-}
-
-.fa-burger {
-  color: #96CEB4;
-  padding: 0.4em;
-}
+// Username:
 
 .username {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   line-height: 1;
   font-weight: 900;
   display: flex;
@@ -130,7 +116,24 @@ ul li {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: black;
-  font-size: 1rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 400px){
+  .username {
+    margin-bottom: 1rem;
+    line-height: 1;
+    font-weight: 900;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1.5em;
+    margin-top: -1em;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 20px;
+  }
 }
 
 .message-button {
