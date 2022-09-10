@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 module.exports = (db) => {
   router.post('/', (req, res) => {
     const { userId } = req.body;
@@ -14,11 +13,10 @@ module.exports = (db) => {
 
     const queryValues = [`${userId}`];
 
-    db.query(queryString, queryValues)
-      .then(({ rows: users }) => {
-          res.json(users[0]);
-        })
-      })
+    db.query(queryString, queryValues).then(({ rows: users }) => {
+      res.json(users[0]);
+    });
+  });
 
   return router;
 };

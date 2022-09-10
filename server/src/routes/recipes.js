@@ -128,26 +128,26 @@ module.exports = (db) => {
     });
   });
 
-  //edit an existing recipe
-  router.post('/edit', (request, response)=>{
-    const {id, user_id, original_fork_id, title, recipe_photos, servings } = request.body;
-    
-    //black magic to make it work with pg, more greyish white magic actually.
+  // Edit an existing recipe
+  router.post('/edit', (request, response) => {
+    const { id, user_id, original_fork_id, title, recipe_photos, servings } =
+      request.body;
+
+    // Black magic to make it work with pg, more greyish white magic actually.
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
-    
-    //black magic to mage an array work when inputting into pg
-    //do not delete the black magic, or these comments about black magic. It is important to keep them.
+
+    // Black magic to mage an array work when inputting into pg
+    // Do not delete the black magic, or these comments about black magic. It is important to keep them.
     const tags = JSON.stringify(request.body.tags)
       .replace('[', '{')
       .replace(']', '}');
 
+    console.log('type of: ', typeof tags);
+    console.log(tags);
 
-     console.log('type of: ', typeof tags);
-     console.log(tags);
-
-      const queryString = `
+    const queryString = `
       UPDATE recipes
       SET
         title = $2, 
@@ -158,19 +158,25 @@ module.exports = (db) => {
         tags = $7,
         servings = $8
       WHERE
-      id = $1 `
-      ;
+      id = $1 `;
+    const queryValues = [
+      `${id}`,
+      `${title}`,
+      `${ingredients}`,
+      `${equipment}`,
+      `${instructions}`,
+      `${recipe_photos}`,
+      `${tags}`,
+      `${servings}`,
+    ];
+    console.log(queryValues);
 
-      const queryValues = [`${id}`,`${title}`,`${ingredients}`,`${equipment}`,`${instructions}`,`${recipe_photos}`,`${tags}`,`${servings}`];
-      console.log(queryValues)
-
-      db.query(queryString, queryValues)
-        .then(() => {
-          response.sendStatus(200)
-        })
-        .catch((error) => console.log(error));
+    db.query(queryString, queryValues)
+      .then(() => {
+        response.sendStatus(200);
+      })
+      .catch((error) => console.log(error));
   });
-
 
   return router;
 };
