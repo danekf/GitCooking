@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  //home page, just get recipes of the week, 
+  // Home page, just get recipes of the week,
   ////////////////////////////////////
-  //currently just getting ALL recipes
+  // Currently just getting ALL recipes
   ////////////////////////////////////
   router.get('/', (request, response) => {
     const queryString = `
@@ -20,8 +20,8 @@ module.exports = (db) => {
       });
   });
 
-  //get all of a users created recipes
-  router.get('/user', (request, response)=>{
+  // Get all of a users created recipes
+  router.get('/user', (request, response) => {
     const user_id = request.session.userId;
 
     const queryString = `
@@ -30,18 +30,17 @@ module.exports = (db) => {
     WHERE user_id = $1
     ;`;
 
-    const queryValues=[`${user_id}`];
+    const queryValues = [`${user_id}`];
 
     db.query(queryString, queryValues)
-      //return an array of objects, grouped by recipe ID.
+      // Return an array of objects, grouped by recipe ID.
       .then(({ rows: recipes }) => {
         response.json(recipes);
       });
-
   });
 
-  //get a users FAVOURITE recipes
-  router.get('/favourites', (request, response)=>{
+  // Get a users FAVOURITE recipes
+  router.get('/favourites', (request, response) => {
     const user_id = request.session.userId;
 
     const queryString = `
@@ -50,78 +49,83 @@ module.exports = (db) => {
     WHERE id = $1
     ;`;
 
-    const queryValues=[`${user_id}`];
+    const queryValues = [`${user_id}`];
 
     db.query(queryString, queryValues)
-      //returns the users favourite recipe IDs
-      .then(({rows: data}) => {
-        const favourites = (data[0].favourite_recipes); 
+      // Returns the users favourite recipe IDs
+      .then(({ rows: data }) => {
+        const favourites = data[0].favourite_recipes;
         //[1,2,3]^
-    
+
         const queryString = `
         SELECT *
         FROM recipes
         WHERE id = ANY ($1)
-        ;`;        
+        ;`;
 
-      //returns the recipe data for favourite recipes
-      db.query(queryString, [favourites])
-      .then(({ rows: recipes }) => {
-        response.json(recipes);
-      });     
-      })
+        // Returns the recipe data for favourite recipes
+        db.query(queryString, [favourites]).then(({ rows: recipes }) => {
+          response.json(recipes);
+        });
+      });
   });
 
   router.post('/recipeId', (request, response) => {
-    const {recipeId} = request.body;
+    const { recipeId } = request.body;
     const queryString = `
     SELECT *
     FROM recipes
     WHERE id = $1
     ;`;
 
-
     db.query(queryString, [`${recipeId}`])
-      // Return an array of objects, grouped by recipe ID.
+      // Returns an array of objects, grouped by recipe ID.
       .then(({ rows: recipes }) => {
         response.json(recipes);
       });
   });
 
-  //save a new recipe to the db
-  router.post('/new', (request, response)=>{
-    const {user_id, original_fork_id, title, recipe_photos, servings } = request.body;
+  // Save a new recipe to the db
+  router.post('/new', (request, response) => {
+    const { user_id, original_fork_id, title, recipe_photos, servings } =
+      request.body;
 
-  //black magic to make it work with pg, more greyish white magic actually.
-  const ingredients = JSON.stringify(request.body.ingredients);
-  const equipment = JSON.stringify(request.body.equipment);
-  const instructions = JSON.stringify(request.body.instructions);
-  
-  //black magic to mage an array work when inputting into pg
-  //do not delete the black magic, or these comments about black magic. It is important to keep them.
-  const tags = JSON.stringify(request.body.tags)
-    .replace('[', '{')
-    .replace(']', '}');
+    // Black magic to make it work with pg, more greyish white magic actually.
+    const ingredients = JSON.stringify(request.body.ingredients);
+    const equipment = JSON.stringify(request.body.equipment);
+    const instructions = JSON.stringify(request.body.instructions);
 
+    // Black magic to mage an array work when inputting into pg
+    // Do not delete the black magic, or these comments about black magic. It is important to keep them.
+    const tags = JSON.stringify(request.body.tags)
+      .replace('[', '{')
+      .replace(']', '}');
 
-   console.log('type of: ', typeof tags);
-   console.log(tags);
+    console.log('type of: ', typeof tags);
+    console.log(tags);
 
     const queryString = `
     INSERT INTO recipes
       (user_id, original_fork_id, title, ingredients, equipment, instructions, recipe_photos, tags, servings)
     VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    RETURNING *;`
-    ;
+    RETURNING *;`;
+    const queryValues = [
+      `${user_id}`,
+      `${original_fork_id}`,
+      `${title}`,
+      `${ingredients}`,
+      `${equipment}`,
+      `${instructions}`,
+      `${recipe_photos}`,
+      `${tags}`,
+      `${servings}`,
+    ];
+    console.log(queryValues);
 
-    const queryValues = [`${user_id}`, `${original_fork_id}`, `${title}`, `${ingredients}`, `${equipment}`, `${instructions}`, `${recipe_photos}`, `${tags}`, `${servings}`];
-    console.log(queryValues)
-
-    db.query(queryString, queryValues)
-      .then(({ rows: recipe }) =>{
-        response.json(recipe)
-      });
+    db.query(queryString, queryValues).then(({ rows: recipe }) => {
+      response.json(recipe);
+    });
   });
 
   return router;

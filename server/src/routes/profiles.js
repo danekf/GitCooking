@@ -19,7 +19,7 @@ module.exports = (db) => {
     } = req.body;
     const userId = req.session.userId;
 
-    //black magic to make it work with pg, more greyish white magic actually.
+    // Black magic to make it work with pg, more greyish white magic actually.
     const qualifications = JSON.stringify(req.body.qualifications);
 
     // Search string
@@ -60,7 +60,7 @@ module.exports = (db) => {
 
     db.query(queryString, queryValues)
       .then((response) => {
-        res.sendStatus(200)
+        res.sendStatus(200);
       })
       .catch((error) => console.log(error));
   });

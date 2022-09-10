@@ -1,4 +1,4 @@
-// index.js is main connection setup
+// Index.js is main connection setup
 const ENV = require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 const express = require('express');
