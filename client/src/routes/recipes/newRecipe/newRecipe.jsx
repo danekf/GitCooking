@@ -3,14 +3,18 @@ import { React, useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
-import axios from 'axios';
+import axios from 'axios'; 
+import useApplicationData from '../../../hooks/userHook';
 
 
-export default function NewRecipe(props) {
+
+export default function NewRecipe(props) {  
 const location = useLocation();
 
 const user = location.state?.user;
 // const original_fork = location.state?.original_fork || 0;
+
+
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
@@ -49,8 +53,6 @@ const addIngredientToList = (event) =>{
     ingredientName: ''
   })
 }
-
-
 
 //equipment handler
   const [newEquipment, setNewEquipment]=useState({
@@ -167,7 +169,11 @@ const deleteItem = (index, event, name)=>{
         toast.error(response.data.error);
       }
       else{
-        console.log(response.data)
+        toast.success(`Submitted ${formValue.title} sucessfully!`)
+        const recipeId = response.data[0].id; 
+        setTimeout(()=>{
+          window.location = `/recipes/${recipeId}`
+        }, 2000)       
       }
     })
   }
@@ -181,7 +187,7 @@ const deleteItem = (index, event, name)=>{
         <div>
           <ToastContainer 
             position='top-center'
-            autoClose={3000}
+            autoClose={2000}
             closeOnClick
           />
         </div>
@@ -203,7 +209,7 @@ const deleteItem = (index, event, name)=>{
             <ul>
               {formValue.ingredients.map((item, index) => 
                 <li> 
-                  <input className="" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+                  <input className="" min="0" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
                   <input className="" type="text" key={index} name="ingredientName" placeholder= "Enter Ingredient measurement and details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
@@ -214,7 +220,7 @@ const deleteItem = (index, event, name)=>{
               )} 
               <div className='add-item'>
                   <i className="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
-                  <input type="number" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
+                  <input type="number"  min="0"name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
                   <input type="text" name="ingredientName" placeholder='Enter Ingredient measurement and details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
             </ul>
@@ -223,9 +229,9 @@ const deleteItem = (index, event, name)=>{
             <ul>
               {formValue.equipment.map((item, index) => 
                   <li> 
-                    <input className="" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+                    <input className="" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
-                    <input className="" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment + details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+                    <input className="" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment + details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
                     <div className='delete-ingredient'>
                       <i onClick={(event)=>deleteItem(index, event, "equipment")}class="fa-solid fa-trash"></i>
@@ -241,12 +247,23 @@ const deleteItem = (index, event, name)=>{
 
             <h4>Instructions:</h4>
             <ul>
+            {formValue.instructions.map((item, index) => 
+                  <li> 
+                    <input className="" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Enter Time Required (in minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+
+                    <input className="" type="text" key={index} name="instruction" placeholder= "Enter Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+
+                    <div className='delete-ingredient'>
+                      <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash"></i>
+                    </div>
+                  </li>            
+              )}   
             <div className='add-item'>
                 <i className="fa-solid fa-plus" onClick={addInstructionToList}>Add Instruction</i>
                 <input type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
                 <input type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
               </div>
-              {formValue.instructions.map((item) => <li>Estimated Time:{item.estimatedTime} minutes. Step:{item.instruction}</li>)}
+        
             </ul>
             
             <h4>Tags:</h4>

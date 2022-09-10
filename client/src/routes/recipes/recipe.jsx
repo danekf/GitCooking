@@ -1,12 +1,15 @@
 import './recipe_style.scss';
 
 import CommentList from "../comments/commentList";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import axios from 'axios';
 import { useState, useEffect} from 'react';
+import useApplicationData from '../../hooks/userHook';
+import NewRecipe from './newRecipe/newRecipe';
 
 export default function Recipe() {
   const params = useParams();
+  const {user} = useApplicationData();
 
   const recipeId = {recipeId: params.recipeId};
   const [recipe, setRecipe] = useState({
@@ -21,6 +24,8 @@ export default function Recipe() {
     estimatedTime: 0,
   });
   const [chef, setChef] = useState([]);
+
+  const [mode, setMode] = useState('SHOW');
 
   useEffect(()=>{
     //get recipe info
@@ -46,10 +51,17 @@ export default function Recipe() {
     // eslint-disable-next-line
   }, [])
 
+  const editRecipe = () =>{
+    console.log('editing')
+    setMode('EDIT')
+  }
+
 
 
   return (
     <>
+    {/* Show recipe mode */}
+      {mode === "SHOW" && 
       <div className='recipe-body'>
         <div className='recipe-card'>
 
@@ -62,6 +74,8 @@ export default function Recipe() {
           <h1 className='recipe-title'>{recipe.title}</h1>
           
           <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
+          
+          {user.id === recipe.user_id && <div onClick={editRecipe}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
           <img className="recipe-img"src="" alt="Recipe" />
 
@@ -99,6 +113,10 @@ export default function Recipe() {
           </ul>
         </div>
       </div>
+    }
+    {/* Edit Recipe Mode */}
+    {mode === "EDIT" && <NewRecipe recipe = {recipe} />}
+
     </>
   );
 }
