@@ -7,11 +7,10 @@ import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function EditRecipe(props) {  
-  const recipe = props.recipe;
-  console.log('recipe: ', recipe);
+export default function EditRecipe({recipe, returnToRecipe}) {  
  
-const { user, setUser, logout } = useApplicationData();  
+ 
+const { user} = useApplicationData();  
 // const original_fork = location.state?.original_fork || 0;
 
 
@@ -155,7 +154,7 @@ const deleteItem = (index, event, name)=>{
     event.preventDefault();
     axios({
       method: "post",
-      url: "/api/recipes/new",
+      url: "/api/recipes/edit",
       data: formValue
     })
     .then ((response)=>{
@@ -165,9 +164,9 @@ const deleteItem = (index, event, name)=>{
       }
       else{
         toast.success(`Submitted ${formValue.title} sucessfully!`)
-        const recipeId = response.data[0].id; 
         setTimeout(()=>{
-          window.location = `/recipes/${recipeId}`
+          returnToRecipe();
+          window.location = `/recipes/${recipe.id}`
         }, 2000)       
       }
     })
@@ -186,6 +185,7 @@ const deleteItem = (index, event, name)=>{
             closeOnClick
           />
         </div>
+         <button onClick={() => returnToRecipe()} >Return to recipe</button>
           <form action="">
 
 

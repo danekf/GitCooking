@@ -161,8 +161,8 @@ module.exports = (db) => {
       console.log(queryValues)
 
       db.query(queryString, queryValues)
-        .then((response) => {
-          res.sendStatus(200)
+        .then(() => {
+          response.sendStatus(200)
         })
         .catch((error) => console.log(error));
   });

@@ -25,7 +25,10 @@ export default function Recipe() {
   });
   const [chef, setChef] = useState([]);
 
-  const [mode, setMode] = useState('SHOW');
+  const SHOW = 'SHOW'
+  const EDIT = 'EDIT'
+
+  const [editMode, setEditMode] = useState(SHOW);
 
   useEffect(()=>{
     //get recipe info
@@ -50,13 +53,16 @@ export default function Recipe() {
     // eslint-disable-next-line
   }, [])
 
+  const returnToRecipe = () =>{
+    setEditMode(SHOW)
+  }
 
 
 
   return (
     <>
     {/* Show recipe mode */}
-      {mode === "SHOW" && 
+      {editMode === SHOW && 
       <div className='recipe-body'>
         <div className='recipe-card'>
 
@@ -70,7 +76,7 @@ export default function Recipe() {
           
           <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
           
-          {user.id === recipe.user_id && <div onClick={setMode('EDIT')}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
+          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
           <img className="recipe-img"src="" alt="Recipe" />
 
@@ -110,7 +116,7 @@ export default function Recipe() {
       </div>
     }
     {/* Edit Recipe Mode */}
-    {mode === "EDIT" && <EditRecipe  recipe = {recipe} />}
+    {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} />}
 
     </>
   );
