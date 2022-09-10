@@ -74,7 +74,8 @@ export default function EditProfile({returnToProfile, user}) {
         toast.error(response.data.error);
       }
       else if(response.status === 200){
-        
+        toast.
+        window.location = '/users/profile'        
       }
     })
   }
