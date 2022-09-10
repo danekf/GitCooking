@@ -203,9 +203,9 @@ const deleteItem = (index, event, name)=>{
             <ul>
               {formValue.ingredients.map((item, index) => 
                 <li> 
-                  <input className="" type="number" key={index} name="ingredientQty" placeholder= "Add Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+                  <input className="" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
-                  <input className="" type="text" key={index} name="ingredientName" placeholder= "Enter Equipment + details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+                  <input className="" type="text" key={index} name="ingredientName" placeholder= "Enter Ingredient measurement and details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
                   <div className='delete-ingredient'>
                     <i onClick={(event)=>deleteItem(index, event, "ingredients")}class="fa-solid fa-trash"></i>
@@ -215,18 +215,28 @@ const deleteItem = (index, event, name)=>{
               <div className='add-item'>
                   <i className="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
                   <input type="number" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
-                  <input type="text" name="ingredientName" placeholder='Enter Equipment + details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
+                  <input type="text" name="ingredientName" placeholder='Enter Ingredient measurement and details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
               </div>
             </ul>
 
             <h4>Equipment Required:</h4>
             <ul>
+              {formValue.equipment.map((item, index) => 
+                  <li> 
+                    <input className="" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+
+                    <input className="" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment + details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+
+                    <div className='delete-ingredient'>
+                      <i onClick={(event)=>deleteItem(index, event, "equipment")}class="fa-solid fa-trash"></i>
+                    </div>
+                  </li>            
+              )}              
               <div className='add-item'>
                 <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
                 <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
                 <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
               </div>
-              {formValue.equipment.map((item) => <li>{item.equipmentQty} - {item.equipmentName} </li>)}
             </ul>
 
             <h4>Instructions:</h4>
