@@ -10,13 +10,14 @@ import useApplicationData from '../../../hooks/userHook';
 export default function NewRecipe(props) {  
  
 const { user, setUser, logout } = useApplicationData();  
+const original_fork_id = props.original_fork_id || 0;
 
 
 
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
     user_id: 0,
-    original_fork_id: 0,
+    original_fork_id: original_fork_id,
     title: '',
     ingredients: [],
     equipment: [],
