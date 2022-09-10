@@ -5,7 +5,7 @@ import {useParams, Link} from "react-router-dom";
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import useApplicationData from '../../hooks/userHook';
-import NewRecipe from './newRecipe/newRecipe';
+import EditRecipe from './editRecipe';
 
 export default function Recipe() {
   const params = useParams();
@@ -50,10 +50,6 @@ export default function Recipe() {
     // eslint-disable-next-line
   }, [])
 
-  const editRecipe = () =>{
-    console.log('editing')
-    setMode('EDIT')
-  }
 
 
 
@@ -74,7 +70,7 @@ export default function Recipe() {
           
           <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
           
-          {user.id === recipe.user_id && <div onClick={editRecipe}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
+          {user.id === recipe.user_id && <div onClick={setMode('EDIT')}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
           <img className="recipe-img"src="" alt="Recipe" />
 
@@ -114,7 +110,7 @@ export default function Recipe() {
       </div>
     }
     {/* Edit Recipe Mode */}
-    {mode === "EDIT" && <NewRecipe recipe = {recipe} />}
+    {mode === "EDIT" && <EditRecipe  recipe = {recipe} />}
 
     </>
   );

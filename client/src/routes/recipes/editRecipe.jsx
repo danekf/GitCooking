@@ -1,13 +1,13 @@
-import './newRecipe_style.scss'
+import './newRecipe/newRecipe_style.scss'
 import { React, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
-import useApplicationData from '../../../hooks/userHook';
+import useApplicationData from '../../hooks/userHook';
 
 
 
-export default function NewRecipe(props) {  
+export default function EditRecipe(props) {  
  
 const { user, setUser, logout } = useApplicationData();  
 // const original_fork = location.state?.original_fork || 0;
