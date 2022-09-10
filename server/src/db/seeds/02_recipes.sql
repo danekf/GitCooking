@@ -4,7 +4,7 @@ VALUES(
   null,
   'Pasta',
   '[
-    {
+    { 
       "ingredientName":"pasta", 
       "ingredientQty":"1 handful"
     },

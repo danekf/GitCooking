@@ -7,7 +7,7 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
-  profile_picture VARCHAR(255),
+  profile_picture VARCHAR(255) DEFAULT 'https://e7.pngegg.com/pngimages/261/957/png-clipart-chef-s-uniform-hat-chef-hat-white-hand.png',
   bio VARCHAR (500),
   contact_email VARCHAR(255),
   facebook VARCHAR(50),
