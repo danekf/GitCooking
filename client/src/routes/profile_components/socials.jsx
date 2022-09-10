@@ -1,11 +1,7 @@
 import useApplicationData from "../../hooks/userHook";
 
 export default function Socials () {
-
   const { user, setUser, logout } = useApplicationData();
-  console.log('socials are: ', user)
-
-
 
   return (
     <div>
@@ -18,7 +14,6 @@ export default function Socials () {
           {user.twitter && <li><a href={user.twitter}><i className="fa-brands fa-twitter"></i></a></li>}
           {user.linkedin && <li><a href={user.linkedin}><i className="fa-brands fa-linkedin"></i></a></li>}
           {user.facebook && <li><a href={user.facebook}><i className="fa-brands fa-facebook"></i></a></li>}
-          
         </ul>
       </div>
     </div>

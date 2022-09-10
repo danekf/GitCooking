@@ -12,7 +12,6 @@ import { useState } from 'react';
 import EditProfile from './EditProfile';
 import useApplicationData from '../hooks/userHook';
 
-
 export default function UserProfile() {
   const { user, setUser, logout } = useApplicationData();  
 
@@ -28,15 +27,14 @@ export default function UserProfile() {
       {/* Controls whether we are showing the edit view, or the regular profile */}
       {editMode ? (
         <div>
-          <EditProfile returnToProfile={returnToProfile}/>
+          <EditProfile user={user} returnToProfile={returnToProfile}/>
         </div> )
       : (
         <>
           <div className="profile-card">
-
-          {/* {user === user.id && <div>
+          <div>
             <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(true)}></i>
-          </div>} */}
+          </div>
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
             <Badges badges={user.badges}/>

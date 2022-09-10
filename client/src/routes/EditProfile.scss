@@ -28,6 +28,29 @@
   font-weight: 900
 }
 
+.add-q-heading {
+  display: flex;
+
+}
+
+h6 {
+  margin-bottom: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900
+}
+
+.fa-plus {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0em;
+  margin-bottom: -1.7em;
+}
+
+.edit-form-item-qualifications {
+  margin-top: 0.001em;
+  margin-bottom: 1em;
+}
+
 .edit-form-item-img {
   border-bottom: none;
 }
@@ -101,3 +124,12 @@
   background-color: #FFAD60; 
 }
 
+.edit-form-item-bio {
+  height: 20em;
+  margin-bottom: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 1em;
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #D9534F;
+}
