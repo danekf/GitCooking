@@ -191,7 +191,7 @@ const addIngredientToList = (event) =>{
             <h4>Equipments Required:</h4>
             <ul>
               <div className='add-item'>
-                <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
+                <i className="fa-solid fa-plus plus-recipe" onClick={addEquipmentToList}>Add Equipment</i>
                 <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
                 <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
               </div>

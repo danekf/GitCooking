@@ -121,8 +121,8 @@ export default function EditProfile({returnToProfile, user}) {
             </>            
           )}   
           <div>
-            <div className='add-q-heading'>
-            <i className="fa-solid fa-plus" onClick={addQualification}></i>
+            <div className='add-q'>
+            <i className="fa-solid fa-plus plus-profile" onClick={addQualification}></i>
             </div>
             <input className="edit-form-item-qualifications" type="text" name="qualification" placeholder='Add a qualification' onChange={handleQualification} value = {newQualification}/>
           </div>
