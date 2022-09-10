@@ -25,10 +25,22 @@
   margin-bottom: 50px;
 }
 
-
+.top-center {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-size: xx-large;
+  font-family: Montserrat;
+}
 .text-border{
-  background-color: #96CEB4;
-  border-radius: 30%;
+  font-family: Fredoka One;
+  font-weight: 1000;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  background: rgba(225, 225, 225, 0.4);
+  // border-radius: 30%;
   border: 2px solid transparent;
 }
 
@@ -38,6 +50,8 @@
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-size: large;
 }
 
 
@@ -72,7 +86,9 @@
 /* Centered text */
 .centered {
   position: absolute;
+  color: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: xx-large;
 }

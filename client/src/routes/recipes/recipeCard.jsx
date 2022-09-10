@@ -20,21 +20,28 @@ export default function RecipeCard(props) {
     onMouseLeave={() => setHover(false)}
     onClick={()=>navigate("/recipes/" + recipe.id)}    
     >
-      <img className="image-recipe" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow" width="100%"/>
+      <img className="image-recipe" src="https://media.discordapp.net/attachments/1012375567519186984/1018280969951772782/Mapo_Tofu.jpeg?width=1624&height=1082" alt="Snow" width="100%"/>
       {!hover && (
         <>
-        <div className='bottom-center text-border' >
+        <div className='top-center text-border' >
           {recipe.title}
         </div>
         <div className='bottom-right text-border' >
-          Estimated time : {recipe.estimatedtime} minutes.
+
+          {recipe.estimatedtime == 1 && 
+            "Estimated time : 1 minute."
+          }
+
+          {recipe.estimatedtime > 1 && 
+          `Estimated time : ${recipe.estimatedtime} minutes.`
+          }
         </div>
         </>
       )}
 
       {hover && (
         <>
-        <div className='bottom-center text-border' >
+        <div className='top-center text-border' >
           {recipe.title}
         </div>
         <div className='bottom-left text-border' >
