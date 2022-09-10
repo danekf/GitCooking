@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
@@ -6,34 +6,34 @@ import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
 import axios from 'axios';
 import ProfilePicture from './routes/profile_components/profile_picture';
+import useApplicationData from './hooks/userHook';
 
 function App() {
   //menu handler
   const { modalProps, getTriggerProps } = useModal();
+  const { user, setUser, logout } = useApplicationData();
 
   //user handler
-  const [user, setUser] = useState({user:'No User'});
-    //set user state based on cookie on page load.
-  useEffect(()=>{
-    axios({
-      method: "get",
-      url: "/api/login",
-    })
-    .then ((response)=>{
-      setUser({...response.data});
-    })
-  }, [])
+  // const [user, setUser] = useState({ user: 'No User' });
+  //set user state based on cookie on page load.
+  // useEffect(()=>{
+  //   axios({
+  //     method: "get",
+  //     url: "/api/login",
+  //   })
+  //   .then ((response)=>{
+  //     setUser({...response.data});
+  //   })
+  // }, [])
 
-  const logout = () => {
-    axios({
-      method: "post",
-      url: "/api/logout",
-    })
-    .then (()=>{
-      window.location = "/";
-    })
-  }
-
+  // const logout = () => {
+  //   axios({
+  //     method: 'post',
+  //     url: '/api/logout',
+  //   }).then(() => {
+  //     window.location = '/';
+  //   });
+  // };
 
   return (
     <div className='App'>
@@ -43,7 +43,7 @@ function App() {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
-        
+
         {/* Font Awesome */}
         <link
           rel='stylesheet'
@@ -53,7 +53,7 @@ function App() {
           referrerPolicy='no-referrer'
         />
       </head>
-      <header className='app-header' >
+      <header className='app-header'>
         <div className='gitcooking-title-and-logo'>
           <Link to='/'>
             <img
@@ -65,40 +65,44 @@ function App() {
             GitCooking
           </Link>
         </div>
-          
-          {/* Condiditional render here for what to show */}
-          {user.id ?
-            //Logged in stuff here
-          <><Link to='/newRecipe' state = {{user: user}} className='badge badge-secondary'>
+
+        {/* Condiditional render here for what to show */}
+        {user.id ? (
+          //Logged in stuff here
+          <>
+            <Link
+              to='/newRecipe'
+              state={{ user: user }}
+              className='badge badge-secondary'
+            >
               <span class='mob-view'>Create</span>
               <span class='normal-view'> a new recipe</span>
             </Link>
-            <div className="logged-in-header">
-              <ProfilePicture id="profile-pic-display"/>
-              {/* <img
-                src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Small-dark-green-circle.svg/1200px-Small-dark-green-circle.svg.png'
-                width='80px'
-                height='80px'
-                alt='profilePic'
-              ></img> */}
-              <div className="header-name-logout">
-                <p className="username-display">{user.username}</p>
+            <div className='logged-in-header'>
+              <ProfilePicture id='profile-pic-display' />
+              <div className='header-name-logout'>
+                <p className='username-display'>{user.username}</p>
                 {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
-                <button className="badge badge-secondary" onClick={logout}>Logout</button>
+                <button className='badge badge-secondary' onClick={logout}>
+                  Logout
+                </button>
               </div>
             </div>
           </>
-            
-            //Implement "click to edit" on profile pick
-          : 
-            // Not logged in stuff
-            <>
-            <Link to='/register' className="badge badge-secondary">Register</Link> 
-            <div className="logged-in-header">
-              <Link to='/login' className="badge badge-secondary">Login</Link> 
+        ) : (
+          //Implement "click to edit" on profile pick
+          // Not logged in stuff
+          <>
+            <Link to='/register' className='badge badge-secondary'>
+              Register
+            </Link>
+            <div className='logged-in-header'>
+              <Link to='/login' className='badge badge-secondary'>
+                Login
+              </Link>
             </div>
-            </>
-          }
+          </>
+        )}
       </header>
 
       <body>
@@ -124,8 +128,11 @@ function App() {
               <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
             </Link>
           </li>
-          <li {...getTriggerProps({background: '#FAF1E6'})}>
-            <i id="burger-icon" class='fa-solid fa-burger app-footer-nav-list-item'></i>
+          <li {...getTriggerProps({ background: '#FAF1E6' })}>
+            <i
+              id='burger-icon'
+              class='fa-solid fa-burger app-footer-nav-list-item'
+            ></i>
           </li>
           <Modal {...modalProps}>
             <Menu />

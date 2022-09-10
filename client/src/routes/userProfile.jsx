@@ -10,26 +10,36 @@ import Bio from "./profile_components/bio";
 import RecipeList from "./recipes/recipeList"
 import { useState } from 'react';
 import EditProfile from './EditProfile';
+import { useLocation } from 'react-router-dom';
 
 
 export default function UserProfile() {
+  const location = useLocation();
+  const user = location.state?.user
+  console.log('user: ', user)
+
   const [editMode, SetEditMode] = useState(false);
-  const changeStateToFalse = () => {
+  // CB function sets edit profile page to false:
+  const returnToProfile = () => {
     SetEditMode(false);
   }
 
   return (
-    <>
+    <> 
+    
+      {/* Controls whether we are showing the edit view, or the regular profile */}
       {editMode ? (
         <div>
-          <EditProfile changeStateToFalse={changeStateToFalse}/>
+          <EditProfile returnToProfile={returnToProfile}/>
         </div> )
       : (
         <>
           <div className="profile-card">
-          <div>
+
+          {/* {user === user.id && <div>
             <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(true)}></i>
-          </div>
+          </div>} */}
+
             <ProfilePicture/>
             <Badges/>
             <Username/>
@@ -44,7 +54,8 @@ export default function UserProfile() {
             </div>
             <RecipeList/>
           </div>
-        </>
+      :
+      </>
       )} 
     </>
   );  

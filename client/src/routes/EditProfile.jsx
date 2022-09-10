@@ -2,13 +2,13 @@ import React from 'react';
 
 import './EditProfile.scss';
 
-export default function EditProfile({changeStateToFalse}) {
+export default function EditProfile({returnToProfile}) {
   return (
     <>
     <div className='edit-profile-body'>
       <div className='edit-profile-card'>
         <h1 className='edit-profile-title'>Edit Profile</h1>
-        <button className="go-back-button" onClick={() => changeStateToFalse()}>Go Back</button>
+        <button className="go-back-button" onClick={() => returnToProfile()}>Go Back</button>
         <form className='edit-profile-form'>
           <input className="edit-form-item" type='text' id='first_name' name='first_name' placeholder='First Name'></input>
           <input className="edit-form-item" type='text' id='last_name' name='last_name' placeholder='Last Name'></input>
