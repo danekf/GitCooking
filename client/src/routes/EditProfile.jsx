@@ -91,25 +91,25 @@ export default function EditProfile({returnToProfile, user}) {
         <h1 className='edit-profile-title'>Edit Profile</h1>
         <button className="go-back-button" onClick={() => returnToProfile()}>Go Back</button>
         <form className='edit-profile-form' onSubmit={submitForm}>
-          <h6>First Name</h6>
+          <h6>First Name:</h6>
           <input className="edit-form-item" type='text' name='first_name' placeholder='First Name' value={newObj.first_name} onChange={handleChange} ></input>
-          <h6>Last Name</h6>
+          <h6>Last Name:</h6>
           <input className="edit-form-item" type='text' name='last_name' placeholder='Last Name' value={newObj.last_name} onChange={handleChange}></input>
           {/* <input className="edit-form-item" type='password' name='password' placeholder='Password'></input> not updating password just yet, needs more logic*/}
-          <h6>Instagram</h6>
+          <h6>Instagram:</h6>
           <input className="edit-form-item" type="URL" name='instagram' placeholder='Instagram URL' value={newObj.instagram} onChange={handleChange}/>
-          <h6>Youtube</h6>
+          <h6>Youtube:</h6>
           <input className="edit-form-item" type="URL" name='youtube' placeholder='YouTube URL' value={newObj.youtube} onChange={handleChange}/>
-          <h6>Tik Tok</h6>
+          <h6>Tik Tok:</h6>
           <input className="edit-form-item" type="URL" name='tiktok' placeholder='TikTok URL' value={newObj.tiktok} onChange={handleChange}/>
-          <h6>Twitter</h6>
+          <h6>Twitter:</h6>
           <input className="edit-form-item" type="URL" name='twitter' placeholder='Twitter URL' value={newObj.twitter} onChange={handleChange}/>
-          <h6>Facebook</h6>
+          <h6>Facebook:</h6>
           <input className="edit-form-item" type="URL" name='facebook' placeholder='Facebook URL' value={newObj.facebook} onChange={handleChange}/>
-          <h6>LinkedIn</h6>
+          <h6>LinkedIn:</h6>
           <input className="edit-form-item" type="URL" name='linkedin' placeholder='LinkedIn URL' value={newObj.linkedin} onChange={handleChange}/>
 
-          <h6>Qualifications</h6>
+          <h6>Qualifications:</h6>
           {/* WHATEVER YOU DO, DO NOT DELETE THIS MAPPING BLACK MAGIC!!!! */}
           {newObj.qualifications.map((qualification, index) => 
             <>   
@@ -128,10 +128,10 @@ export default function EditProfile({returnToProfile, user}) {
           </div>
 
 
-          <h6>Bio</h6>
-          <textarea className="edit-form-item-bio" type="text" name="bio" value={newObj.bio} placeholder='Bio' onChange={handleChange}/>
+          <h6>Bio:</h6>
+          <textarea className="edit-form-item-bio" rows="2" cols="72" type="text" name="bio" value={newObj.bio} placeholder='Bio' onChange={handleChange}/>
 
-          <h6>Change Contact Email</h6>
+          <h6>Change Contact Email:</h6>
           <input className="edit-form-item" type='email' name='contact_email' placeholder='Email' value={newObj.contact_email} onChange={handleChange}></input>
           
 

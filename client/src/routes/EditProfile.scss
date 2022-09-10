@@ -1,3 +1,22 @@
+// General CSS Rules:
+
+input {
+  outline: none;
+  caret-color: #D9534F;
+}
+textarea {
+  outline: none;
+  caret-color: #D9534F;
+}
+
+@media screen and (max-width: 400px) {
+  textarea {
+    resize: both;
+    width: 80%;
+  }
+  
+}
+
 .edit-profile-body {
   background-color: #FFAD60;
 }
@@ -37,7 +56,8 @@
 h6 {
   margin-bottom: 1em;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 900
+  font-weight: 900;
+  color: black
 }
 
 .fa-plus {
@@ -50,6 +70,7 @@ h6 {
 .delete-q {
   display: flex;
 }
+
 .fa-trash {
   display: flex;
   justify-content: flex-end;  
@@ -143,6 +164,8 @@ h6 {
   margin-left: 1em;
   margin-right: 1em;
   padding: 1em;
+  border: none;
   border-bottom: 2px solid transparent;
   border-bottom-color: #D9534F;
+  outline: none;
 }
