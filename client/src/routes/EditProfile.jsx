@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './EditProfile.scss';
 
@@ -24,19 +27,6 @@ export default function EditProfile({returnToProfile, user}) {
     setNewQualification('');
   }
 
-  //handles all basic changes to components into the form for submission
-  const handleChange =(event) => {
-      setNewObj({
-        ...newObj,
-        [event.target.name]: event.target.value
-      })
-    };
-
-  const submitForm = (event)=>{
-    event.preventDefault();
-  }
-
-  //handle specific qualifications
   const updateQualification = (index, event)=>{
     let tempArray = [...newObj.qualifications];    
     tempArray[index]= event.target.value; 
@@ -54,6 +44,38 @@ export default function EditProfile({returnToProfile, user}) {
     setNewObj({
       ...newObj,
       qualifications: tempArray
+    })
+  }
+
+  //handles all basic changes to components into the form for submission
+  const handleChange =(event) => {
+      setNewObj({
+        ...newObj,
+        [event.target.name]: event.target.value
+      })
+    };
+
+  const submitForm = (event)=>{
+    event.preventDefault();
+  }
+
+
+  //profile submission handler
+  const updateProfile = (event) => {
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: "/api/profile/update",
+      data: newObj
+    })
+    .then ((response)=>{
+      //if username not found, send error. Messages are curated by server
+      if(response.data.error){
+        toast.error(response.data.error);
+      }
+      else if(response.status === 200){
+        
+      }
     })
   }
 
@@ -94,12 +116,7 @@ export default function EditProfile({returnToProfile, user}) {
             <div className='delete-q'>
             <i onClick={(event)=>deleteQualification(index, event)}class="fa-solid fa-trash"></i>
             </div>
-            </>
-
-            
-
-            
-            
+            </>            
           )}   
           <div>
             <div className='add-q-heading'>
@@ -112,9 +129,13 @@ export default function EditProfile({returnToProfile, user}) {
           <h6>Bio</h6>
           <textarea className="edit-form-item-bio" type="text" name="bio" value={newObj.bio} placeholder='Bio' onChange={handleChange}/>
 
+          <h6>Change Contact Email</h6>
+          <input className="edit-form-item" type='email' name='contact_email' placeholder='Email' value={newObj.contact_email} onChange={handleChange}></input>
+          
+
           <h6 className="upload-img">Change Profile Picture:</h6>
           <input className='edit-form-item-img' type="file" name="image-upload" id="image-upload" />
-          <button className="edit-btn-submit" type='submit'>Save Changes</button>
+          <button className="edit-btn-submit" type='submit' onClick={updateProfile}>Save Changes</button>
         </form>
       </div>
     </div>

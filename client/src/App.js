@@ -83,7 +83,10 @@ function App() {
               <span class='normal-view'> a new recipe</span>
             </Link>
             <div className='logged-in-header'>
-              <ProfilePicture id='profile-pic-display' />
+              <ProfilePicture
+                profile_picture={user.profile_picture}
+                id='profile-pic-display'
+              />
               <div className='header-name-logout'>
                 <p className='username-display'>{user.username}</p>
                 {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
@@ -116,7 +119,7 @@ function App() {
       <footer class='app-footer'>
         <nav class='app-footer-nav'>
           <li>
-            <Link to='/users/:userName'>
+            <Link to='/users/profile'>
               <i class='fa-solid fa-user app-footer-nav-list-item'></i>
             </Link>
           </li>

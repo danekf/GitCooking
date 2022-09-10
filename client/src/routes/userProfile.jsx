@@ -1,12 +1,10 @@
 import './userProfile.scss';
 
 import ProfilePicture from "./profile_components/profile_picture";
-import Username from "./profile_components/username";
 import ProfileButtons from "./profile_components/profile_buttons";
 import Badges from "./profile_components/badges";
 import Qualifications from "./profile_components/qualifications";
 import Socials from "./profile_components/socials";
-import Bio from "./profile_components/bio";
 import RecipeList from "./recipes/recipeList"
 import { useState } from 'react';
 import EditProfile from './EditProfile';
@@ -38,16 +36,20 @@ export default function UserProfile() {
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
             <Badges badges={user.badges}/>
-            <Username username={user.username}/>
+            <h6>@{user.username}</h6>
             <ProfileButtons/>
+            <h6>{user.first_name} {user.last_name}</h6>
             <Socials />
             <Qualifications qualifications={user.qualifications}/>
-            <Bio bio={user.bio}/>
+            <div>
+              <p className="bio">Bio</p>
+              <p className="bio-paragraph">{user.bio}</p>
+            </div>
           </div>
           <div>
             <div className='my-recipes-card'>
             <h1 className='my-recipes-title '>My Recipes</h1>
-            </div>
+          </div>
             <RecipeList/>
           </div>
       :
