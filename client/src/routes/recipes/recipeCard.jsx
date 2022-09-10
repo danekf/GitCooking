@@ -27,7 +27,14 @@ export default function RecipeCard(props) {
           {recipe.title}
         </div>
         <div className='bottom-right text-border' >
-          Estimated time : {recipe.estimatedtime} minutes.
+
+          {recipe.estimatedtime == 1 && 
+            "Estimated time : 1 minute."
+          }
+
+          {recipe.estimatedtime > 1 && 
+          `Estimated time : ${recipe.estimatedtime} minutes.`
+          }
         </div>
         </>
       )}
