@@ -14,8 +14,11 @@ export default function RecipeCard(props) {
 
   let tags = recipe.tags;
   let tagsList = tags.map(function(tag){
-    return <li>{tag}</li>;
-  })
+    if (tags.length == 1) {
+      return <li>{tag}</li>
+    } 
+    return <li>{tag}, </li>;
+  });
 
   return (
 
@@ -48,14 +51,11 @@ export default function RecipeCard(props) {
         <div className='top-center text-border' >
           {recipe.title}
         </div>
-        <div className='bottom-left text-border' >
-          Tags : { tagsList }
+        <div className='tag-list bottom-left text-border' >
+          Tags : <ul>{ tagsList }</ul>
           {/* {recipe.tags} */}
         </div>
         <div className="centered text-border" >Click to see full recipe</div> 
-
-
-        
       </>
       )}    
     </div>
