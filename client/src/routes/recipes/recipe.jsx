@@ -75,7 +75,8 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon">Spoon it </i>
+          {/* If favourited, make it conditionally */}
+          <i className="fa-solid fa-spoon">Spoon it </i> 
           <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>
