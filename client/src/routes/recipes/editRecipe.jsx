@@ -279,7 +279,7 @@ const deleteItem = (index, event, name)=>{
                   placeHolder="enter tags"
                 /> 
               </div>
-              <h6 className='edit-recipe-heading' className="upload-img">Upload an Image:</h6>
+              <h6 className="upload-img">Upload an Image:</h6>
               <input className='edit-recipe-item-img' type="file" name="image-upload" />
               <div className='recipe-btn-container'>
                 <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>

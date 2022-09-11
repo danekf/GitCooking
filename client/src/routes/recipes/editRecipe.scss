@@ -187,9 +187,7 @@ textarea {
   margin-top: -1em;
 }
 
-.equipments-list-item-container {
-  
-}
+
 
 .add-eq-container {
   display: flex;
@@ -197,6 +195,7 @@ textarea {
 }
 
 .trash-icon-eq {
+  display: flex;
   margin-left: -13em;
 }
 
@@ -207,9 +206,14 @@ textarea {
 
 .ingredients-list-item-container {
   display: flex;
-
 }
 
+@media screen and (max-width: 400px) {
+  ul.ingredients-container {
+  //  margin: 0
+  }
+  
+}
 .ingredients-item {
   display: flex;
   justify-content: center;
@@ -221,6 +225,33 @@ textarea {
   margin-top: -1em;
   margin-bottom: 0em;
   margin-left: -12em;
+}
+
+@media screen and (max-width: 1024px) {
+  .trash-icon {
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 2em;
+  }
+
+  ul.ingredients-container {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .add-ing-container {
+    margin-left: 4em;
+    margin-right: 1em;
+  }
+
+  i.fa-solid.fa-plus.add-icon-ing {
+    margin-left: 0em;
+    margin-right: 0em;
+    margin-bottom: 0em;
+    margin-top: 2em;
+  }
+
+  
 }
 
 .add-ing-container {

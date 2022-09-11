@@ -143,7 +143,7 @@ const deleteItem = (index, event, name)=>{
   // Cook time handler
   useEffect(() =>{
     let time = 0;
-    // eslint-disable-next-line 
+    // Eslint-disable-next-line 
     formValue.instructions.map((step) => {
       time += parseFloat(step.estimatedTime);    
     })
@@ -192,16 +192,16 @@ const deleteItem = (index, event, name)=>{
 
           <h1 className='recipe-title'>Create a New Recipe</h1>
           
-          <h4>Recipe Title:</h4>
-          <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
+          <h4 className='create-new-heading'>Recipe Title:</h4>
+          <input type="text" name="title" value={formValue.title} onChange={handleChange} />
         
-          <h4>Cooking Time:</h4>
+          <h4 className='create-new-heading'>Cooking Time:</h4>
           <input className='cooking-time' type="number" name="cooking-time" value={formValue.estimatedTime} disabled />
           
-          <h4>Servings:</h4>
+          <h4 className='create-new-heading'>Servings:</h4>
           <input className='servings' type="number" name="servings" onChange={handleChange} value={formValue.servings} />
 
-          <h4>Ingredients:</h4>
+          <h4 className='create-new-heading'>Ingredients:</h4>
           <ul>
             {formValue.ingredients.map((item, index) => 
               <li> 
@@ -221,7 +221,7 @@ const deleteItem = (index, event, name)=>{
             </div>
           </ul>
 
-          <h4>Equipment Required:</h4>
+          <h4 className='create-new-heading'>Equipment Required:</h4>
           <ul>
             {formValue.equipment.map((item, index) => 
                 <li> 
@@ -241,7 +241,7 @@ const deleteItem = (index, event, name)=>{
             </div>
           </ul>
 
-          <h4>Instructions:</h4>
+          <h4 className='create-new-heading'>Instructions:</h4>
           <ul>
           {formValue.instructions.map((item, index) => 
                 <li> 
@@ -262,7 +262,7 @@ const deleteItem = (index, event, name)=>{
       
           </ul>
           
-          <h4>Tags:</h4>
+          <h4 className='create-new-heading'>Tags:</h4>
           <div className='tags'>
           <TagsInput
               name= 'tags'
@@ -271,8 +271,8 @@ const deleteItem = (index, event, name)=>{
               placeHolder="enter tags"
             /> 
           </div>
-          <h4>Upload an Image:</h4>
-          <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
+          <h4 className='create-new-heading'>Upload an Image:</h4>
+          <input className='recipe-btn-upload' type="file" name="image-upload"/>
 
           <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
