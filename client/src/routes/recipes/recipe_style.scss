@@ -141,9 +141,15 @@ ul li {
   justify-content: center;
 }
 
-ul.card-body.tags-body {
+.tags-body {
   display: flex;
   justify-content: center;
+}
+
+.list-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
 }
 
 ul li.tags {
@@ -169,7 +175,8 @@ ul li.tags {
   ul.card-body.tags-body {
     margin-left: -2em;
     margin-right: -15em;
-    flex-wrap: wrap;
+    display: flex;
+    overflow-wrap: break-word;
   }
   
   ul li.tags {

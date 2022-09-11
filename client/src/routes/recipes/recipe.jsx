@@ -106,9 +106,11 @@ export default function Recipe() {
           </ul>
 
           <h5 className='tags-subheading'>Tags:</h5>
-          <ul className='card-body tags-body'>
-            {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
-          </ul>
+          <div className='tags-body'>
+            <ul className='list-container'>
+              {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
+            </ul>
+          </div>
 
         </div>
         
