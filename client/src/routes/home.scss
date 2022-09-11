@@ -25,6 +25,7 @@
   flex-direction: row;
   justify-content: space-around;
   padding-top: 25px;
+  // box-shadow: 0px 1px 10px #888;
 }
 
 .home-page-button-summary {
@@ -72,4 +73,5 @@
 .home-page-body {
   display: flex;
   justify-content: center;
+  box-shadow: 0px 8px 10px -8px #888;
 }
