@@ -7,7 +7,6 @@ import { useState, useEffect} from 'react';
 import useApplicationData from '../../hooks/userHook';
 import EditRecipe from './editRecipe';
 
-
 export default function Recipe() {
   const params = useParams();
   const {user} = useApplicationData();
@@ -24,6 +23,7 @@ export default function Recipe() {
     recipe_photos: 'dummy_URL',
     estimatedTime: 0,
   });
+
   const [chef, setChef] = useState([]);
 
   const SHOW = 'SHOW'
@@ -33,7 +33,7 @@ export default function Recipe() {
   const [editMode, setEditMode] = useState(SHOW);
 
   useEffect(()=>{
-    //get recipe info
+    // Get recipe info
     axios({
       method: "post",
       url: "/api/recipes/recipeId",
@@ -42,7 +42,7 @@ export default function Recipe() {
     .then ((response)=>{
       setRecipe(response.data[0]);
       const tempChef={userId: response.data[0].user_id};
-      //get user id that created the recipe
+      // Get user id that created the recipe
       axios({
         method: "post",
         url: "/api/users",
@@ -52,7 +52,7 @@ export default function Recipe() {
         setChef(response.data)
       })
     })
-    // eslint-disable-next-line
+    // Eslint-disable-next-line
   }, [editMode])
 
   const returnToRecipe = () =>{
@@ -65,8 +65,6 @@ export default function Recipe() {
     setEditMode(FORK);
   }
 
-
-
   return (
     <>
     {/* Show recipe mode */}
@@ -75,16 +73,16 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon">Spoon Recipe</i>
-          <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
+          <i className="fa-solid fa-spoon"> <span className='spoon-recipe'>Spoon Recipe</span> </i>
+          <i className="fa-solid fa-utensils" onClick={forkRecipe}> <span className='fork-recipe'> Fork Recipe</span> </i>
 
           </div>
 
           <h1 className='recipe-title'>{recipe.title}</h1>
           
-          <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
+          <h5 className='username-heading'>This recipe is made with love by: <span>@{chef.username}</span></h5>
           
-          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
+          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}><i className="fa-regular fa-pen-to-square edit-recipe-icon"></i></div>}
 
           <img className="recipe-img"src="" alt="Recipe" />
 
@@ -111,7 +109,7 @@ export default function Recipe() {
 
           <h5 className='tags-subheading'>Tags:</h5>
           <ul className='card-body'>
-            {recipe.tags.map((tag) => <li>{tag} </li>)}
+            {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
           </ul>
 
         </div>
