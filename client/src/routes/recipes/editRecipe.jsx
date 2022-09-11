@@ -1,4 +1,4 @@
-import './newRecipe/newRecipe_style.scss'
+import './editRecipe.scss';
 import { React, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
@@ -182,107 +182,104 @@ const deleteItem = (index, event, name)=>{
 
   return (
     <>
-      <main>
-      
-        <div className='create-a-new-recipe-card'>
-        <div>
-          <ToastContainer 
-            position='top-center'
-            autoClose={2000}
-            closeOnClick
-          />
-        </div>
-          <form action="">
-
-            <h1 className='recipe-title'>{title} Recipe</h1>
+      <div className='edit-recipe-body'>
+        <div className='edit-recipe-card'>
+          <div>
+            <ToastContainer 
+              position='top-center'
+              autoClose={2000}
+              closeOnClick
+            />
+          </div>
+          <h1 className='edit-recipe-title'> Edit Recipe</h1>
+          <form action="" className="edit-recipe-form">
+              <h6>Recipe Title:</h6>
+              <input className="edit-recipe-item" type="text" name="title" value={formValue.title} onChange={handleChange} />
             
-            <h4>Recipe Title:</h4>
-            <input type="text" name="title" id="title" value={formValue.title} onChange={handleChange} />
+              <h6>Cooking Time:</h6>
+              <input className="edit-recipe-item" type="number" name="cooking-time" value={formValue.estimatedTime} disabled />
+              
+              <h6>Servings:</h6>
+              <input className="edit-recipe-item" type="number" name="servings" onChange={handleChange} value={formValue.servings} />
+
+              <h6>Ingredients:</h6>
+              <ul className='ingredients-container'>
+                {formValue.ingredients.map((item, index) => 
+                  <li className='ingredients-item'> 
+                    <input min="0" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+
+                    <input type="text" key={index} name="ingredientName" placeholder= "Enter Ingredient measurement and details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
+
+                    <div className='delete-ingredient'>
+                      <i onClick={(event)=>deleteItem(index, event, "ingredients")} className="fa-solid fa-trash trash-icon"></i>
+                    </div>
+                  </li>            
+                )} 
+                <div className='add-icon'>
+                    <i className="fa-solid fa-plus" onClick={addIngredientToList}></i>
+                    <input type="number"  min="0"name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
+                    <input type="text" name="ingredientName" placeholder='Enter Ingredient measurement and details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
+                </div>
+              </ul>
+
+              <h6>Equipment Required:</h6>
+              <ul>
+                {formValue.equipment.map((item, index) => 
+                    <li> 
+                      <input className="edit-recipe-item" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+
+                      <input className="edit-recipe-item" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment + details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+
+                      <div className='trash-icon'>
+                        <i onClick={(event)=>deleteItem(index, event, "equipment")}class="fa-solid fa-trash"></i>
+                      </div>
+                    </li>            
+                )}              
+                <div className='add-icon'>
+                  <i className="fa-solid fa-plus" onClick={addEquipmentToList}></i>
+                  <input className="edit-recipe-item" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
+                  <input className="edit-recipe-item" type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
+                </div>
+              </ul>
+
+              <h6>Instructions:</h6>
+              <ul>
+              {formValue.instructions.map((item, index) => 
+                    <li> 
+                      <input className="edit-recipe-item" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Enter Time Required (in minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+
+                      <input className="edit-recipe-item" type="text" key={index} name="instruction" placeholder= "Enter Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+
+                      <div className='trash-icon'>
+                        <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash"></i>
+                      </div>
+                    </li>            
+                )}   
+              <div className='add-icon'>
+                  <i className="fa-solid fa-plus" onClick={addInstructionToList}></i>
+                  <input className="edit-recipe-item" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
+                  <input className="edit-recipe-item" type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
+                </div>
           
-            <h4>Cooking Time:</h4>
-            <input className='cooking-time' type="number" name="cooking-time" value={formValue.estimatedTime} disabled />
-            
-            <h4>Servings:</h4>
-            <input className='servings' type="number" name="servings" onChange={handleChange} value={formValue.servings} />
-
-            <h4>Ingredients:</h4>
-            <ul>
-              {formValue.ingredients.map((item, index) => 
-                <li> 
-                  <input className="" min="0" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
-
-                  <input className="" type="text" key={index} name="ingredientName" placeholder= "Enter Ingredient measurement and details" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
-
-                  <div className='delete-ingredient'>
-                    <i onClick={(event)=>deleteItem(index, event, "ingredients")}class="fa-solid fa-trash"></i>
-                  </div>
-                </li>            
-              )} 
-              <div className='add-item'>
-                  <i className="fa-solid fa-plus" onClick={addIngredientToList}>Add Ingredient</i>
-                  <input type="number"  min="0"name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/>
-                  <input type="text" name="ingredientName" placeholder='Enter Ingredient measurement and details' onChange={handleIngredient} value = {newIngredient.ingredientName}/>
+              </ul>
+              
+              <h6>Tags:</h6>
+              <div className='tags'>
+              <TagsInput
+                  name= 'tags'
+                  value={recipeTags}
+                  onChange={setRecipeTags}
+                  placeHolder="enter tags"
+                /> 
               </div>
-            </ul>
+              <h6>Upload an Image:</h6>
+              <input className='recipe-btn-upload' type="file" name="image-upload" />
+              <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
+              <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
-            <h4>Equipment Required:</h4>
-            <ul>
-              {formValue.equipment.map((item, index) => 
-                  <li> 
-                    <input className="" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
-
-                    <input className="" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment + details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
-
-                    <div className='delete-ingredient'>
-                      <i onClick={(event)=>deleteItem(index, event, "equipment")}class="fa-solid fa-trash"></i>
-                    </div>
-                  </li>            
-              )}              
-              <div className='add-item'>
-                <i className="fa-solid fa-plus" onClick={addEquipmentToList}>Add Equipment</i>
-                <input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/>
-                <input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/>
-              </div>
-            </ul>
-
-            <h4>Instructions:</h4>
-            <ul>
-            {formValue.instructions.map((item, index) => 
-                  <li> 
-                    <input className="" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Enter Time Required (in minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
-
-                    <input className="" type="text" key={index} name="instruction" placeholder= "Enter Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
-
-                    <div className='delete-ingredient'>
-                      <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash"></i>
-                    </div>
-                  </li>            
-              )}   
-            <div className='add-item'>
-                <i className="fa-solid fa-plus" onClick={addInstructionToList}>Add Instruction</i>
-                <input type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
-                <input type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
-              </div>
-        
-            </ul>
-            
-            <h4>Tags:</h4>
-            <div className='tags'>
-            <TagsInput
-                name= 'tags'
-                value={recipeTags}
-                onChange={setRecipeTags}
-                placeHolder="enter tags"
-              /> 
-            </div>
-            <h4>Upload an Image:</h4>
-            <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
-            <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
-            <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
-
-          </form>
-        </div>
-      </main>
-    </>
-  );  
-}
+            </form>
+          </div>
+          </div>
+      </>
+    );  
+  }

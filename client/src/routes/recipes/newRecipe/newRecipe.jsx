@@ -190,7 +190,6 @@ const deleteItem = (index, event, name)=>{
       </div>
         <form action="">
 
-
           <h1 className='recipe-title'>Create a New Recipe</h1>
           
           <h4>Recipe Title:</h4>
