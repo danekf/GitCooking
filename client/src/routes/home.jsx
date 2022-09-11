@@ -30,17 +30,25 @@ export default function Home() {
       </div>
 
       <div className="home-page-button-write-up">
-        <h3>Spoon it
-            <h5 className='home-page-button-summary'>to Favourite</h5>
-        </h3>
         
-        <h3>Fork it
-            <h5 className='home-page-button-summary'>to Save & Edit</h5>
-        </h3>
+        <div>
+          <i className='fa-solid fa-spoon'></i>
+          <h3>Spoon it</h3>
+          <h5 className='home-page-button-summary'>to Favourite</h5>
+        </div>
 
-        <h3>Create it
-            <h5 className='home-page-button-summary'>to Share</h5>
-        </h3>
+        <div>
+          <i className='fa-solid fa-utensils'></i>
+          <h3>Fork it</h3>
+            <h5 className='home-page-button-summary'>to Save & Edit</h5>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-share"></i>
+          <h3>Create it</h3>
+          <h5 className='home-page-button-summary'>to Share</h5>
+        </div>
+
       </div>
 
       <div>
