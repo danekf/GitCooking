@@ -12,13 +12,9 @@ export default function RecipeCard(props) {
 
   //recipe modal
 
+  // loop through recipe tags to print a list separated by commas
   let tags = recipe.tags;
-  let tagsList = tags.map(function(tag){
-    if (tags.length == 1) {
-      return <li>{tag}</li>
-    } 
-    return <li>{tag}, </li>;
-  });
+  let tagsList = tags.join(", ")
 
   return (
 
@@ -35,7 +31,7 @@ export default function RecipeCard(props) {
         </div>
         <div className='bottom-right text-border' >
 
-          {recipe.estimatedtime == 1 && 
+          {recipe.estimatedtime === 1 && 
             "Estimated time : 1 minute."
           }
 
@@ -51,9 +47,8 @@ export default function RecipeCard(props) {
         <div className='top-center text-border' >
           {recipe.title}
         </div>
-        <div className='tag-list bottom-left text-border' >
-          Tags : <ul>{ tagsList }</ul>
-          {/* {recipe.tags} */}
+        <div className='bottom-left text-border' >
+          Tags: <ul className="tag-list">{ tagsList }</ul>
         </div>
         <div className="centered text-border" >Click to see full recipe</div> 
       </>
