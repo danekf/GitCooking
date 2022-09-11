@@ -8,12 +8,12 @@ textarea {
   caret-color: #D9534F;
 }
 
-@media screen and (max-width: 400px) {
-  textarea {
-    resize: both;
-    width: 80%;
-  }
-}
+// @media screen and (max-width: 400px) {
+//   textarea {
+//     resize: both;
+//     width: 80%;
+//   }
+// }
 
 // General Setup:
 .edit-recipe-card {
@@ -200,6 +200,15 @@ h6 {
 
 .add-ing {
   display: flex;
+  margin-right: 2em;
+}
+
+@media screen and (min-width: 400px) {
+  ul input.edit-recipe-item {
+    margin: 0.2em 0em 02em 0;
+    padding: 0.2em;
+  }
+
 }
 
 .add-ing-item {
@@ -219,4 +228,15 @@ h6 {
   margin-left: -5.5em;
   margin-right: 5em;
   margin-top: 1em;
+}
+
+// Buttons: 
+
+.recipe-btn-container {
+  display: flex;
+}
+
+.tags {
+  margin-left: 1em;
+  margin-right: 2em;
 }

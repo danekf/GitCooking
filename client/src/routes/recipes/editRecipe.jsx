@@ -201,12 +201,12 @@ const deleteItem = (index, event, name)=>{
               <h6>Ingredients:</h6>
               <ul>
                 {formValue.ingredients.map((item, index) => 
-                  <li className='ingredients-item'> 
+                  <li> 
                     <input className="edit-recipe-item" min="0" type="number" key={index} name="ingredientQty" placeholder= "Enter Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
                     <input className="edit-recipe-item" type="text" key={index} name="ingredientName" placeholder= "Enter Ingredient" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> 
 
-                    <div className='delete-ingredient'>
+                    <div>
                       <i onClick={(event)=>deleteItem(index, event, "ingredients")} className="fa-solid fa-trash trash-icon"></i>
                     </div>
                   </li>            
@@ -214,9 +214,9 @@ const deleteItem = (index, event, name)=>{
                 </ul>
                 <div className='add-ing'>
                   <ul>
-                    <li className='add-ing-item-li'><input className="edit-recipe-item" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
+                    <li><input className="edit-recipe-item" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                     
-                    <li className='add-ing-item-li'><input className="edit-recipe-item" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
+                    <li><input className="edit-recipe-item" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
                     <div>
                       <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}></i>
                     </div>
@@ -274,8 +274,10 @@ const deleteItem = (index, event, name)=>{
               </div>
               <h6 className="upload-img">Upload an Image:</h6>
               <input className='edit-recipe-item-img' type="file" name="image-upload" />
-              <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
-              <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+              <div className='recipe-btn-container'>
+                <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+                <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
+              </div>
 
             </form>
           </div>

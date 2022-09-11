@@ -56,6 +56,10 @@
   .fork-recipe {
     display: none;
   }
+
+  .edit-recipe-icon {
+    margin-right: 5em;
+  }
 }
 
 .fa-spoon {
@@ -149,4 +153,6 @@ ul li.tags {
   background-color: #FFAD60;
   color: #fff;
   font-family: 'Fredoka One', cursive;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
 }
