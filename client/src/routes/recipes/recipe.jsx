@@ -71,11 +71,9 @@ export default function Recipe() {
       {editMode === SHOW && 
       <div className='recipe-body'>
         <div className='recipe-card'>
-
           <div className='recipe-icons'>
           <i className="fa-solid fa-spoon"> <span className='spoon-recipe'>Spoon Recipe</span> </i>
           <i className="fa-solid fa-utensils" onClick={forkRecipe}> <span className='fork-recipe'> Fork Recipe</span> </i>
-
           </div>
 
           <h1 className='recipe-title'>{recipe.title}</h1>
@@ -104,7 +102,7 @@ export default function Recipe() {
           </ul>
           <h5 className='heading-lists'>Instructions:</h5>
           <ul className='card-body'>
-            {recipe.instructions.map((item) => <li>{item.estimatedTime} - {item.instruction} </li>)}
+            {recipe.instructions.map((item) => <li>{/*item.estimatedTime*/}{item.instruction} </li>)}
           </ul>
 
           <h5 className='tags-subheading'>Tags:</h5>
@@ -123,9 +121,7 @@ export default function Recipe() {
     }
     {/* Edit Recipe Mode */}
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
-
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
-
     </>
   );
 }
