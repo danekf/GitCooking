@@ -16,7 +16,7 @@
 }
 
 /* Container holding the image and the text */
-.container {
+.recipe-card-container {
   position: relative;
   text-align: center;
   color: #d9534f;
@@ -91,4 +91,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: xx-large;
+}
+
+.fa-angles-right {
+  font-size: xx-large;
+  border-radius: 10px;
+}
+
+.fa-angles-left {
+  font-size: xx-large;
+}
+
+.fa-angles-right {
+  font-size: xx-large;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.tag-list {
+  display: inline-block;
 }

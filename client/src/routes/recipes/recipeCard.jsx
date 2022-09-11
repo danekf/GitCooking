@@ -12,10 +12,17 @@ export default function RecipeCard(props) {
 
   //recipe modal
 
+  let tags = recipe.tags;
+  let tagsList = tags.map(function(tag){
+    if (tags.length == 1) {
+      return <li>{tag}</li>
+    } 
+    return <li>{tag}, </li>;
+  });
 
   return (
 
-    <div className='container'
+    <div className='recipe-card-container'
     onMouseEnter={() => setHover(true)}
     onMouseLeave={() => setHover(false)}
     onClick={()=>navigate("/recipes/" + recipe.id)}    
@@ -44,13 +51,11 @@ export default function RecipeCard(props) {
         <div className='top-center text-border' >
           {recipe.title}
         </div>
-        <div className='bottom-left text-border' >
-          Tags : {recipe.tags}
+        <div className='tag-list bottom-left text-border' >
+          Tags : <ul>{ tagsList }</ul>
+          {/* {recipe.tags} */}
         </div>
         <div className="centered text-border" >Click to see full recipe</div> 
-
-
-        
       </>
       )}    
     </div>
