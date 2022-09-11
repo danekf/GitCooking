@@ -15,7 +15,7 @@ export default function RecipeCard(props) {
 
   return (
 
-    <div className='container'
+    <div className='recipe-card-container'
     onMouseEnter={() => setHover(true)}
     onMouseLeave={() => setHover(false)}
     onClick={()=>navigate("/recipes/" + recipe.id)}    
