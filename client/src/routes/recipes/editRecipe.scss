@@ -237,6 +237,17 @@ h6 {
 }
 
 .tags {
-  margin-left: 1em;
-  margin-right: 2em;
+  width: 100em;
+}
+
+@media screen and (max-width: 400px) {
+  .tags {
+    width: 18em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tags {
+    width: 50em;
+  }
 }

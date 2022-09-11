@@ -257,7 +257,7 @@ const deleteItem = (index, event, name)=>{
                 )}   
               <div className='add-icon'>
                   <i className="fa-solid fa-plus" onClick={addInstructionToList}></i>
-                  <input className="edit-recipe-item" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
+                  <input className="edit-recipe-item" width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
                   <input className="edit-recipe-item" type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
                 </div>
           

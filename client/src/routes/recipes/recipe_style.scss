@@ -141,8 +141,12 @@ ul li {
   justify-content: center;
 }
 
+ul.card-body.tags-body {
+  display: flex;
+  justify-content: center;
+}
+
 ul li.tags {
-  display: inline-block;
   font-weight: 100;
   font-size: 1.1em;
   border: 2px solid transparent;
@@ -155,4 +159,31 @@ ul li.tags {
   font-family: 'Fredoka One', cursive;
   margin-top: 0.5em;
   margin-right: 0.5em;
+  width:fit-content;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  ul.card-body.tags-body {
+    margin-left: -2em;
+    margin-right: -15em;
+    flex-wrap: wrap;
+  }
+  
+  ul li.tags {
+    font-size: 1em;
+    padding: 0.1em;
+    margin-left: 0.5em;
+    background-color: #FFAD60;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    margin-right: 0.5em;
+    width:fit-content;
+  }
+  
+  
 }
