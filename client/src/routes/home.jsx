@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <div className='home-page-body'>
         <h1 className='home-page-title'>Get ready to GitCooking!
-          <h3 className="home-page-subtitle">Community driven recipes without the life story from the last 3 generations.</h3>
+          <h5 className="home-page-subtitle">Community driven recipes without the life story from the last 3 generations.</h5>
           <div className="search-bar-feature">
             <SearchBar />  
           </div>
@@ -30,30 +30,37 @@ export default function Home() {
       </div>
 
       <div className="home-page-button-write-up">
-        
         <div>
           <i className='fa-solid fa-spoon'></i>
           <h3>Spoon it</h3>
           <h5 className='home-page-button-summary'>to Favourite</h5>
         </div>
-
-        <div>
+        <div className="home-page-summary-fork">
           <i className='fa-solid fa-utensils'></i>
           <h3>Fork it</h3>
             <h5 className='home-page-button-summary'>to Save & Edit</h5>
         </div>
-
         <div>
           <i class="fa-solid fa-share"></i>
           <h3>Create it</h3>
           <h5 className='home-page-button-summary'>to Share</h5>
         </div>
-
       </div>
 
-      <div>
+
+      <div className='grouped-recipes'>
+            <h3 className='home-page-subheading'>Top 10 Recipes of the Week</h3>
+            <RecipeCarousel recipes={recipes}/>
+            <h3 className='home-page-subheading'>Popular Recipes</h3>
+            <RecipeCarousel recipes={recipes}/>
+            <h3 className='home-page-subheading'>Most Spooned Recipes</h3>
+            <RecipeCarousel recipes={recipes}/>
+          </div>
+      {/* <div>
         <RecipeCarousel recipes={recipes}/>
-      </div>
+      </div> */}
+
+      <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
     </>
   );  
 }
