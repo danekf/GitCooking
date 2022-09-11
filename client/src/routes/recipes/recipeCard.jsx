@@ -12,6 +12,10 @@ export default function RecipeCard(props) {
 
   //recipe modal
 
+  let tags = recipe.tags;
+  let tagsList = tags.map(function(tag){
+    return <li>{tag}</li>;
+  })
 
   return (
 
@@ -45,7 +49,8 @@ export default function RecipeCard(props) {
           {recipe.title}
         </div>
         <div className='bottom-left text-border' >
-          Tags : {recipe.tags}
+          Tags : { tagsList }
+          {/* {recipe.tags} */}
         </div>
         <div className="centered text-border" >Click to see full recipe</div> 
 
