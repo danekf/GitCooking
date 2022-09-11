@@ -1,41 +1,36 @@
 import './editRecipe.scss';
+
 import { React, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
 import useApplicationData from '../../hooks/userHook';
 
-
-
 export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
+  const { user } = useApplicationData();  
 
- 
- 
-const { user} = useApplicationData();  
-
-  //form submission handler for submission to server
+// Form submission handler for submission to server
   const [formValue, setformValue] = useState({...recipe})
 
-  useEffect(()=>{
+  useEffect(() => {
     setformValue({
       ...formValue,
       user_id: user.id
     })
-    
   }, [user])
 
-//ingredient handler
-const [newIngredient, setNewIngredient]=useState({
+// Ingredient handler
+const [newIngredient, setNewIngredient] = useState({
   ingredientQty: '',
   ingredientName: ''
 })
-const handleIngredient=(event)=>{
+const handleIngredient = (event) => {
   setNewIngredient({
     ...newIngredient,
     [event.target.name]: event.target.value
   });
 }
-const addIngredientToList = (event) =>{
+const addIngredientToList = (event) => {
   event.preventDefault();
   setformValue({
     ...formValue,
@@ -47,7 +42,7 @@ const addIngredientToList = (event) =>{
   })
 }
 
-//equipment handler
+// Equipment handler
   const [newEquipment, setNewEquipment]=useState({
     equipmentQty: '',
     equipmentName: ''
@@ -70,7 +65,7 @@ const addIngredientToList = (event) =>{
     })
   }
 
-  //instructions handler
+  // Instructions handler
   const [newInstruction, setNewInstruction]=useState({
     estimatedTime: '',
     instruction: ''
@@ -82,6 +77,7 @@ const addIngredientToList = (event) =>{
       [event.target.name]: event.target.value
     });
   }
+
    const addInstructionToList = () =>{
     setformValue({
       ...formValue,
@@ -94,17 +90,18 @@ const addIngredientToList = (event) =>{
     })
   } 
 
-  //tag handler
+  // Tag handler
   const [recipeTags, setRecipeTags]=useState([]);
 
   useEffect(() =>{
     setformValue({
       ...formValue,
     tags: recipeTags}) 
-    // eslint-disable-next-line 
+
+    // Eslint-disable-next-line 
   }, [recipeTags])
   
-  //handles all changes to components into the form for submission
+  // Handles all changes to components into the form for submission
   const handleChange =(event) => {
     setformValue({
       ...formValue,
@@ -112,8 +109,8 @@ const addIngredientToList = (event) =>{
     });
   }
   
-  //handles update of created items
-const updateRecipe = (index, event, name)=>{
+  // Handles update of created items
+  const updateRecipe = (index, event, name)=>{
   let tempArray = [...formValue[name]];    
   tempArray[index][event.target.name]= event.target.value; 
 
@@ -133,22 +130,22 @@ const deleteItem = (index, event, name)=>{
   })
 }
 
-  //cook time handler
+// Cook time handler
   useEffect(() =>{
     let time = 0;
-    // eslint-disable-next-line 
+    // Eslint-disable-next-line 
     formValue.instructions.map((step) => {
       time += parseFloat(step.estimatedTime);    
     })
-    //round to nearest half minute
+    // Round to nearest half minute
     time = Math.round(time*2)/2;
     setformValue({
       ...formValue,
       estimatedTime: time});
-    // eslint-disable-next-line
+    // Eslint-disable-next-line
   }, [formValue.instructions])
 
-    //recipe submission
+    // Recipe submission
     const submitRecipe = (event) => {
       event.preventDefault();
       axios({
@@ -157,11 +154,11 @@ const deleteItem = (index, event, name)=>{
         data: formValue
       })
       .then ((response)=>{
-        //if username not found, send error. Messages are curated by server
+        // If username not found, send error. Messages are curated by server
         if(response.data.error){
           toast.error(response.data.error);
         }
-        //if we were editing do something different than if forking
+        // If we we're editing do something different than if forking
         if(title==='Edit'){
           toast.success(`Submitted ${formValue.title} sucessfully!`)
           setTimeout(()=>{
@@ -178,7 +175,6 @@ const deleteItem = (index, event, name)=>{
         }
       })
     }
-
 
   return (
     <>
