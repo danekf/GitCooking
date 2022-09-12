@@ -35,7 +35,7 @@ module.exports = (db) => {
         ];
         db.query(queryString, queryValues).then((user) => {
           console.log(user.rows[0])
-          req.session.userId = user[0].id;
+          req.session.userId = user.rows[0].id;
           res.json(user.rows);
         });
       }
