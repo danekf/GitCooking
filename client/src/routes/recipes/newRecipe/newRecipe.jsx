@@ -242,8 +242,8 @@ const deleteItem = (index, event, name)=>{
             </ul>        
             <div className='new-add-eq-container'>
               <ul>
-              <li><input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
-              <li><input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
+              <li><input className="new-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
+              <li><input className="new-recipe-item-add-eq" type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
               <div>
                 <i className="fa-solid fa-plus new-add-icon-eq" onClick={addEquipmentToList}></i>
               </div>
@@ -288,9 +288,9 @@ const deleteItem = (index, event, name)=>{
             /> 
           </div>
           <h6 className='new-create-heading'>Upload an Image:</h6>
-          <input className='recipe-btn-upload' type="file" name="image-upload"/>
+          <input className='new-btn-upload' type="file" name="image-upload"/>
 
-          <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+          <button className='new-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
         </form>
       </div>

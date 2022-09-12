@@ -2,12 +2,11 @@
 input {
   outline: none;
   caret-color: #D9534F;
-  border: none;
 }
+
 textarea {
   outline: none;
   caret-color: #D9534F;
-  border: none;
 }
 
 // General Setup:
@@ -42,7 +41,7 @@ textarea {
   margin-top: 2em;
 }
 
-.new-recipe-heading {
+.new-create-heading {
   margin-bottom: 1em;
   margin-top: 1em;
   font-family: 'Montserrat', sans-serif;
@@ -50,54 +49,51 @@ textarea {
   color: black
 }
 
+.new-recipe-item {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
 // CSS: Ingredients:
 .new-ingredients-container {
   display: flex;
   flex-direction: column;
-}
-
-.new-list-item-container {
-  display: flex;
-  margin-left: 6em;
+  margin-left: 8em;
 }
 
 .new-item-ing-add {
-  justify-content: center;
-  margin-right: -2em;
-  margin-left: 3em;
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   width: 9em;
+  margin-left: 0em;
+  margin-right: -1em;
+}
+
+.new-item-ing-add {
+  margin-left: 1em;
+  margin-right: 0.2em;
+
+}
+
+.new-item-ing-add-ing {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 i.fa-solid.fa-trash.new-trash-icon {
-  margin-left: 1em;
-  margin-top: -1em;
+  margin-left: -1em;
+  margin-top: 0em;
 }
 
-@media screen and (min-width: 600px) { 
-  .ingredients-list-item-container {
-    display: flex;
-    margin-left: 6em;
-  }
-}
 
-@media screen and (min-width: 1024px) { 
-  .ingredients-list-item-container {
-    display: flex;
-  }
 
-  .new-recipe-item-add {
-    justify-content: center;
-    margin-right: 4em;
-    margin-left: -3em;
-    width: 20em;
-  }
-
-  i.fa-solid.fa-trash.trash-icon {
-    margin-left: -20em;
-  }
-}
-
-  .add-ing-container {
+  .new-item-ing-add-ing-container {
     //border: 2px solid transparent;
     //border-color: #d9534f;
     display: flex;
@@ -109,52 +105,45 @@ i.fa-solid.fa-trash.new-trash-icon {
     margin-left: 1em;  
   }
 
-  .new-recipe-item-add-ing {
+  .new-item-ing-add-ing {
     justify-content: center;
     align-items: center;
   }
 
-  div i.fa-solid.fa-plus.add-icon-ing {
-    margin-right: -0.4em;
-    margin-top: 0.5em;
-    justify-content: center;
-  }
-
-  @media screen and (min-width: 1024px) {
-    .add-ing-container {
-      display: flex;
-      margin-right: 8em;
-      margin-left: 0em;
-    }
-  
-    div i.fa-solid.fa-plus.add-icon-ing {
-      margin-left: 6em;
-    }
+  div i.fa-solid.fa-plus.-eq {
+    margin-right: em;
+    margin-top: 1em;
+    justify-content: center; 
+    color: #D9534F;
+    font-size: 1.2em;
+    font-weight: 900;
   }
 
 // CSS Equipment
 
-.equipments-container {
+.new-equipments-container {
   display: flex;
   flex-direction: column;
 }
 
-.equipments-list-item-container {
-  margin-left: 8em;
+.new-equipments-list-item-container {
+  //margin-left: 3em;
 }
 
 input.new-recipe-item-add-eq-add {
   justify-content: center;
   margin-right: 0em;
   margin-left: 1em;
-  width: 9em;
+  width: 2em;
 }
 
-input.new-recipe-item-add-eq {
-  justify-content: center;
-  margin-right: 0em;
-  margin-left: 5em;
-  width: 17em;
+input.new-recipe-item-eq-add {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 12.3em;
+  margin-left: 17em;
 }
 
 .fa-solid.fa-trash.trash-icon-eq {
@@ -172,51 +161,27 @@ input.new-recipe-item-add-eq {
   margin-left: -3em;
 }
 
-.fa-solid.fa-plus.add-icon-eq {
+.fa-solid.fa-plus.new-add-icon-eq {
   margin-right: 1em;
-  margin-left: 3.5em;
+  margin-left: -0.5em;
   margin-top: 0.5em;
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #D9534F;
 }
 
-@media screen and (min-width: 1024px) {
-  
-  .equipments-list-item-container {
-    margin-left: -1.5em;
-  }
-  
-  input.new-recipe-item-add-eq-add {
-    margin-right: 0em;
-    margin-left: 1em;
-    width: 20em;
-  }
-  
-  input.new-recipe-item-add-eq {
-    justify-content: center;
-    margin-right: 0em;
-    margin-left: 5em;
-    width: 42em;
-  }
-  
-  .fa-solid.fa-trash.trash-icon-eq {
-    margin-left: -11.5em;
-    margin-top: -1em;
-  }
-  
-  .add-eq-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    margin-right: 3em;
-    margin-left: -3em;
-  }
-  
-  .fa-solid.fa-plus.add-icon-eq {
-    margin-right: 1em;
-    margin-left: 6em;
-    margin-top: 0.5em;
-  }
+.new-recipe-item-add-instr {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none; 
+}
+
+.new-recipe-item-add-instr-box {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none; 
 }
 
 // Instructions:
@@ -281,68 +246,16 @@ input.new-recipe-item-add-instr-add {
   margin-top: -1em;
 }
 
-.fa-solid.fa-plus.add-icon-instr {
+.fa-solid.fa-plus.new-add-icon-instr {
   margin-right: 1em;
   margin-left: 1.3em;
   margin-top: 0.5em;
-}
-
-@media screen and (min-width: 1024px) {  
-  .instructions-list-item-container {
-    margin-left: -2em;
-  }
-  
-  input.new-recipe-item-add-instr-add {
-    margin-right: 0em;
-    margin-left: 1em;
-    width: 2em;
-  }
-  
-  .new-recipe-item-add-instr-add-box {
-    margin-right: 1em;
-    margin-left: 1em;
-    width: 40em;
-    height: 10em;
-    padding: 1.2em;
-  }
-  
-  .add-instr-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .new-recipe-item-add-instr {
-    margin-right: 0em;
-    margin-left: -2em;
-    width: 40em;
-    border-top: 1em;
-  }
-  
-  .new-recipe-item-add-instr-box {
-    margin-right: 3.9em;
-    margin-left: 2em;
-    width: 40em;
-    overflow-wrap: break-word;
-    overflow: scroll;
-    height: 8em;
-    padding: 1em;
-    border-bottom: #D9534F;
-    border: 2px solid transparent;
-  }
-  
-  .fa-solid.fa-trash.trash-icon-instr {
-    margin-left: -13.4em;
-    margin-top: -1em;
-  }
-  
-  .fa-solid.fa-plus.add-icon-instr {
-    margin-right: 1em;
-    margin-left: 1.3em;
-    margin-top: 0.5em;
-  }
-
+  margin-right: 1em;
+  margin-left: 1.3em;
+  margin-top: 0.5em;
+  font-size: 1.2em;
+  font-size: 900;
+  color: #D9534F ;
 }
 
 // Buttons: 
@@ -369,15 +282,11 @@ input.new-recipe-item-add-instr-add {
   background-color: #FFAD60; 
 }
 
-@media screen and (min-width:400px) {
-  .new-form-item-bio {
-    width: 50%;
-  }
-}
-
 .recipe-btn-container {
   display: flex;
 }
+
+// Tags:
 
 .tags {
   width: 17em;
