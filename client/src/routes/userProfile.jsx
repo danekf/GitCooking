@@ -16,20 +16,29 @@ import {useParams} from "react-router-dom";
 
 export default function UserProfile() {
   const params = useParams();
+  const currentProfile = params.username;
+  console.log('Viewing profile for :', currentProfile);
   
   const { user, setUser, logout } = useApplicationData();  
+  const SHOW = 'SHOW';
+  const EDIT = 'EDIT';
+  const PUBLIC = 'PUBLIC';
+  const [mode, setMode] = useState();
 
-  // const profileData = () =>{
-  //   axios.get
-  // }
-
-  const SHOW = 'SHOW'
-  const EDIT = 'EDIT'
-  const [editMode, SetEditMode] = useState(SHOW);
+  //if it is our profile, show normal view, else show public mode
+  useEffect(()=>{
+    console.log('Current Profile: ',currentProfile, 'username: ', user.username);
+    if (currentProfile === user.username){
+      setMode(SHOW);
+    }
+    else{
+      setMode(PUBLIC);
+    }
+  }, [user])
 
   // CB function sets edit profile page to false:
   const returnToProfile = () => {
-    SetEditMode(SHOW);
+    setMode(SHOW);
   }
 
   //get all of a users recipes
@@ -49,13 +58,13 @@ export default function UserProfile() {
   return (
     <>     
       {/* Controls whether we are showing the edit view, or the regular profile */}
-      {editMode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
+      {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
 
-      {editMode === SHOW && 
+      {mode === SHOW && 
         <>
           <div className="profile-card">
           <div>
-            <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(EDIT)}></i>
+            <i className="fa-regular fa-pen-to-square" onClick={() => setMode(EDIT)}></i>
           </div>
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
@@ -78,7 +87,33 @@ export default function UserProfile() {
               {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
             </ul>
           </div>
-      </>
+        </>
+      }
+      
+      {mode === PUBLIC && 
+        <>
+          <div className="profile-card">
+            <ProfilePicture profile_picture = {user.profile_picture}/>
+            <Badges badges={user.badges}/>
+            <h6 className='username'>@{user.username}</h6>
+            <ProfileButtons/>
+            <h6 className='full-name'>{user.first_name} {user.last_name}</h6>
+            <Socials />
+            <Qualifications qualifications={user.qualifications}/>
+            <div>
+              <p className="bio">Bio</p>
+              <p className="bio-paragraph">{user.bio}</p>
+            </div>
+          </div>
+          <div>
+            <div className='my-recipes-card'>
+            <h1 className='my-recipes-title '>My Recipes</h1>
+          </div>
+            <ul>
+              {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+            </ul>
+          </div>
+        </>
       }
     </>
   ); 
