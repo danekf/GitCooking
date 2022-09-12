@@ -145,10 +145,10 @@ export default function Recipe() {
 
           <div className='recipe-icons'>
 
-          {isFavourite && <i className="fa-solid fa-spoon icon-hover 1em-right" onClick={toggleFavourite}>Remove favourite </i>}
-          {!isFavourite && <i className="fa-solid fa-spoon icon-hover 1em-right" onClick={toggleFavourite}>Spoon it </i>}           
-          <i className="fa-solid fa-utensils icon-hover 1em-right" onClick={forkRecipe}> Fork Recipe</i>
-          <i className="fa-solid fa-bowl-food icon-hover 1em-right" onClick={shareRecipe}>Share Recipe</i>
+          {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Remove favourite </i>}
+          {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Spoon it </i>}           
+          <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
+          <i className="fa-solid fa-bowl-food icon-hover" onClick={shareRecipe}>Share Recipe</i>
 
           </div>
 
