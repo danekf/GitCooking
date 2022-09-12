@@ -1,3 +1,5 @@
+// General CSS rules:
+
 .recipe-body {
   background-color: #FFAD60;
 }
@@ -15,6 +17,7 @@
   
 }
 
+// Comments section CSS:
 .comment-list-card-in-recipe {
   display: block;
   margin-top: 3em;
@@ -35,14 +38,30 @@
   margin-top: -1em;
 }
 
+// Recipe Icons:
 .recipe-icons {
   color: #d9534f;
   font-size: 1em;
   display: flex;
   justify-content:flex-end;
+  margin-top: 1em;
   margin-right: 2em;
   cursor: pointer;
   
+}
+
+@media screen and (max-width: 400px) {
+  .spoon-recipe {
+    display: none;
+  }
+
+  .fork-recipe {
+    display: none;
+  }
+
+  .edit-recipe-icon {
+    margin-right: 5em;
+  }
 }
 
 .fa-spoon {
@@ -65,6 +84,13 @@
 .fa-regular{
   font-size:medium
 }
+
+.edit-recipe-icon {
+  margin-right: 0.2em;
+  margin-top: -1.5em;
+}
+
+// CSS for username:
 
 .username-heading {
   font-family: 'Fredoka One', cursive;
@@ -118,4 +144,64 @@
   font-family: 'Montserrat', sans-serif;
   color: black;
   font-weight: 900;
+}
+
+ul li {
+  display: flex;
+  padding: 0.4em;
+  justify-content: center;
+}
+
+.tags-body {
+  display: flex;
+  justify-content: center;
+}
+
+.list-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+ul li.tags {
+  font-weight: 100;
+  font-size: 1.1em;
+  border: 2px solid transparent;
+  border-color: #FFAD60;
+  border-radius: 10%;
+  padding: 0.2em;
+  margin-left: 0.5em;
+  background-color: #FFAD60;
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  width:fit-content;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  ul.card-body.tags-body {
+    margin-left: -2em;
+    margin-right: -15em;
+    display: flex;
+    overflow-wrap: break-word;
+  }
+  
+  ul li.tags {
+    font-size: 1em;
+    padding: 0.1em;
+    margin-left: 0.5em;
+    background-color: #FFAD60;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    margin-right: 0.5em;
+    width:fit-content;
+  }
+  
+  
 }

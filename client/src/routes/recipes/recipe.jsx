@@ -28,6 +28,7 @@ export default function Recipe() {
     recipe_photos: 'dummy_URL',
     estimatedTime: 0,    
   });
+
   const [chef, setChef] = useState([]);
 
   const SHOW = 'SHOW'
@@ -39,6 +40,7 @@ export default function Recipe() {
 
   //load recipe info whenever state changes
   useEffect(()=>{
+    // Get recipe info
     axios({
       method: "post",
       url: "/api/recipes/recipeId",
@@ -47,7 +49,7 @@ export default function Recipe() {
     .then ((response)=>{
       setRecipe(response.data[0]);
       const tempChef={userId: response.data[0].user_id};
-      //get user id that created the recipe
+      // Get user id that created the recipe
       axios({
         method: "post",
         url: "/api/users",
@@ -57,7 +59,7 @@ export default function Recipe() {
         setChef(response.data)
       })
     })
-    // eslint-disable-next-line
+    // Eslint-disable-next-line
   }, [editMode])
 
     //favourite checker on page load
@@ -163,7 +165,9 @@ export default function Recipe() {
           </div>
             {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           
+          <h5 className='username-heading'>This recipe is made with love by: <span>@{chef.username}</span></h5>
           
+          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}><i className="fa-regular fa-pen-to-square edit-recipe-icon"></i></div>}
 
           <img className="recipe-img"src="" alt="photo" />
 
@@ -185,13 +189,15 @@ export default function Recipe() {
           </ul>
           <h5 className='heading-lists'>Instructions:</h5>
           <ul className='card-body'>
-            {recipe.instructions.map((item) => <li>{item.estimatedTime} - {item.instruction} </li>)}
+            {recipe.instructions.map((item) => <li>{/*item.estimatedTime*/}{item.instruction} </li>)}
           </ul>
 
           <h5 className='tags-subheading'>Tags:</h5>
-          <ul className='card-body'>
-            {recipe.tags.map((tag) => <li>{tag} </li>)}
-          </ul>
+          <div className='tags-body'>
+            <ul className='list-container'>
+              {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
+            </ul>
+          </div>
 
         </div>
         
@@ -204,7 +210,6 @@ export default function Recipe() {
     }
     {/* Edit Recipe Mode */}
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
-
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
 
     <ToastContainer 

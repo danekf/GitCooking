@@ -7,7 +7,7 @@ export default function Socials () {
     <div>
       <p className="socials">Socials</p>
       <div className="socials-list-item">
-        <ul>
+        <ul className="socials-ul">
           {user.instagram && <li><a href={user.instagram}><i className="fa-brands fa-instagram"></i></a></li>}
           {user.youtube &&<li><a href={user.youtube}><i className="fa-brands fa-youtube"></i></a></li>}
           {user.tiktok && <li><a href={user.tiktok}><i className="fa-brands fa-tiktok"></i></a></li>}

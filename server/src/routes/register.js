@@ -11,6 +11,7 @@ module.exports = (db) => {
       username,
     ]).then((data) => {
       if (data.rows[0]) {
+        console.log(data.rows[0])
         console.log('Rejecting registration');
         res.json({
           error:
@@ -33,7 +34,8 @@ module.exports = (db) => {
           `${username}`,
         ];
         db.query(queryString, queryValues).then((user) => {
-          req.session.userId = user[0].id;
+          console.log(user.rows[0])
+          req.session.userId = user.rows[0].id;
           res.json(user.rows);
         });
       }

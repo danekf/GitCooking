@@ -19,7 +19,7 @@ export default function ProfileButtons () {
     :
       <div className="buttons-container">
         <button className="message-button">
-          Message
+          Messages
         </button>
         <Link to='/favourites' className="link-favourites">
         <button className="favourites-button">
