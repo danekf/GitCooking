@@ -10,8 +10,11 @@ import EditRecipe from './editRecipe';
 
 export default function Recipe() {
   const params = useParams();
-  const {user} = useApplicationData();
+  const {user, setUser} = useApplicationData();
 
+
+
+  //recipe handler
   const recipeId = {recipeId: params.recipeId};
   const [recipe, setRecipe] = useState({
     user_id: '',
@@ -22,7 +25,7 @@ export default function Recipe() {
     tags: [],
     servings: '',
     recipe_photos: 'dummy_URL',
-    estimatedTime: 0,
+    estimatedTime: 0,    
   });
   const [chef, setChef] = useState([]);
 
@@ -32,8 +35,9 @@ export default function Recipe() {
 
   const [editMode, setEditMode] = useState(SHOW);
 
+
+  //load recipe info whenever state changes
   useEffect(()=>{
-    //get recipe info
     axios({
       method: "post",
       url: "/api/recipes/recipeId",
@@ -55,6 +59,20 @@ export default function Recipe() {
     // eslint-disable-next-line
   }, [editMode])
 
+    //favourite checker on page load
+    const [isFavourite, setIsFavourite] = useState(false)
+
+    useEffect(()=>{
+      if(user.favourite_recipes){
+        user.favourite_recipes.map((index)=>{
+          if(index === recipe.id){
+            setIsFavourite(true);
+          }
+        })
+      }
+  
+    }, [user])
+
   const returnToRecipe = () =>{
     window.scroll(0,0); 
     setEditMode(SHOW)
@@ -63,6 +81,34 @@ export default function Recipe() {
   const forkRecipe = () =>{
     window.scroll(0,0); 
     setEditMode(FORK);
+  }
+
+  const toggleFavourite = () =>{
+
+
+    if(!isFavourite){
+      axios({
+        method: "post",
+        url: "/api/recipes/favourite",
+        data: {favourite_recipes: [...user.favourite_recipes, recipe.id]}
+      })
+      .then((response)=>{
+        setIsFavourite(true)
+      })
+    }
+    else if (isFavourite){
+      const tempArray = [...user.favourite_recipes]
+      tempArray.pop();
+      axios({
+        method: "post",
+        url: "/api/recipes/favourite",
+        data: {favourite_recipes: tempArray}
+      })
+      .then((response)=>{
+        setIsFavourite(false)
+      })
+     
+    }
   }
 
 
@@ -76,7 +122,9 @@ export default function Recipe() {
 
           <div className='recipe-icons'>
           {/* If favourited, make it conditionally */}
-          <i className="fa-solid fa-spoon">Spoon it </i> 
+          {isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Remove favourite </i>}
+          {!isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Spoon it </i>}
+           
           <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>

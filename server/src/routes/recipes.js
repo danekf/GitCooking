@@ -178,5 +178,23 @@ module.exports = (db) => {
       .catch((error) => console.log(error));
   });
 
+  //update favourites
+  router.post('/favourite', (request, response) =>{
+    const user_id = request.session.userId;
+    const {id, favourite_recipes} = request.body;
+    console.log(favourite_recipes);
+
+    // const queryString = `
+    //   UPDATE users
+    //   SET
+    //     favourite_recipes = $1
+    //   WHERE
+    //     id = $2
+    //   ;`;
+
+    response.sendStatus(200);
+
+  });
+
   return router;
 };
