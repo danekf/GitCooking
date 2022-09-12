@@ -16,7 +16,6 @@ import {useParams} from "react-router-dom";
 
 export default function UserProfile() {
   const params = useParams();
-  const profileUsername = params.username;
 
   const { user, setUser, logout } = useApplicationData();  
 
