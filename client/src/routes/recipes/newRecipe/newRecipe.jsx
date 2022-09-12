@@ -245,7 +245,7 @@ const deleteItem = (index, event, name)=>{
               <li><input type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
               <li><input type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
               <div>
-                <i className="fa-solid fa-plus new-add-icon-eq" onClick={addEquipmentToList}>Add Equipment</i>
+                <i className="fa-solid fa-plus new-add-icon-eq" onClick={addEquipmentToList}></i>
               </div>
               </ul>
             </div>
@@ -275,7 +275,7 @@ const deleteItem = (index, event, name)=>{
             </ul>
             </div>
             <div>
-              <i className="fa-solid fa-plus new-add-icon-instr" onClick={addInstructionToList}>Add Instruction</i>
+              <i className="fa-solid fa-plus new-add-icon-instr" onClick={addInstructionToList}></i>
             </div>
               
           <h6 className='new-create-heading'>Tags:</h6>
