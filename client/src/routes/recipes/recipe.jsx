@@ -91,6 +91,7 @@ export default function Recipe() {
 
 
     if(!isFavourite){
+      setFavourites([...favourites, recipe.id])
       axios({
         method: "post",
         url: "/api/recipes/favourite",
@@ -108,11 +109,11 @@ export default function Recipe() {
           tempArray.push(index)
         }        
       })
-      setFavourites(tempArray)
+      setFavourites(tempArray)      
       axios({
         method: "post",
         url: "/api/recipes/favourite",
-        data: {favourite_recipes: favourites}
+        data: {favourite_recipes: tempArray}
       })
       .then((response)=>{
         setIsFavourite(false)
