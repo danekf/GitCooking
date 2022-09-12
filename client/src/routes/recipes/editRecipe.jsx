@@ -228,9 +228,9 @@ const deleteItem = (index, event, name)=>{
                 {formValue.equipment.map((item, index) => 
                   <div className='equipments-list-item-container'>
                     <li> 
-                      <input className="edit-recipe-item-add" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+                      <input className="edit-recipe-item-add-eq" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
-                      <input className="edit-recipe-item-add" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment and Details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+                      <input className="edit-recipe-item-add-eq" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment and Details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
                       <div>
                         <i onClick={(event)=>deleteItem(index, event, "equipment")} class="fa-solid fa-trash trash-icon-eq"></i>
@@ -238,10 +238,10 @@ const deleteItem = (index, event, name)=>{
                     </li>            
                   </div>
                 )}              
-                <div>
-                  <ul className='add-eq-container'>
-                    <li><input className="edit-recipe-item-add" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
-                    <li><input className="edit-recipe-item-add" type="text" name="equipmentName" placeholder="Enter Equipment and Details" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
+                <div className='add-eq-container'>
+                  <ul>
+                    <li><input className="edit-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
+                    <li><input className="edit-recipe-item-add-eq" type="text" name="equipmentName" placeholder="Enter Equipment and Details" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
                     <div><i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}></i></div>
                   </ul>
                 </div>
