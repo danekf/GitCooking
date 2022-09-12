@@ -7,12 +7,13 @@ import { useState, useEffect} from 'react';
 import useApplicationData from '../../hooks/userHook';
 import EditRecipe from './editRecipe';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Recipe() {
   const params = useParams();
   const {user, setUser} = useApplicationData();
-
-
 
   //recipe handler
   const recipeId = {recipeId: params.recipeId};
@@ -99,6 +100,7 @@ export default function Recipe() {
       })
       .then((response)=>{
         setIsFavourite(true)
+        toast.success('Added to favourites')
       })
     }
     else if (isFavourite){
@@ -117,8 +119,8 @@ export default function Recipe() {
       })
       .then((response)=>{
         setIsFavourite(false)
-      })
-     
+        toast.success('Removed from favourites')
+      })     
     }
   }
 
@@ -187,6 +189,12 @@ export default function Recipe() {
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
 
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
+
+    <ToastContainer 
+      position='top-center'
+      autoClose={2000}
+      closeOnClick
+    />
 
     </>
   );
