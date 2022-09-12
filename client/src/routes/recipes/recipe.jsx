@@ -124,6 +124,8 @@ export default function Recipe() {
 
   //get comments
   const [comments, setComments] = useState([]);
+  
+
   useEffect(()=>{
   axios({
     method: 'post',
@@ -134,7 +136,6 @@ export default function Recipe() {
     setComments(response.data);
   })
 },[])
-
 
   const shareRecipe = () =>{
     const el = document.createElement('input');
@@ -196,7 +197,7 @@ export default function Recipe() {
         
         <div className='comment-list-card-in-recipe'>
           <ul>
-          <CommentList comments = {comments}/>
+          <CommentList comments = {comments} recipeId = {recipeId.recipeId}/>
           </ul>
         </div>
       </div>

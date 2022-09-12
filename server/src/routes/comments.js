@@ -28,7 +28,25 @@ module.exports = (db) => {
   });
 
   //post a new comment to a supplied recipe ID
-  router.post('/add', (response,request)=>{
+  router.post('/add', (request, response)=>{
+    const {comment, recipeId} = request.body;
+    const user_id = request.session.userId;
+    
+    const queryString = `
+    INSERT INTO recipe_comments (user_id, recipe_id, comment, created_at)
+    VALUES(
+    $1,
+    $2,
+    $3,
+    NOW()
+    );`
+
+    const queryValues = [`${user_id}`,`${recipeId}`,`${comment}`]
+
+    db.query(queryString, queryValues)
+      .then(()=>{
+        response.sendStatus(200);
+      })
 
   });
 
