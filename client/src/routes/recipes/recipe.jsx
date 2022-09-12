@@ -90,8 +90,6 @@ export default function Recipe() {
   }
 
   const toggleFavourite = () =>{
-
-
     if(!isFavourite){
       setFavourites([...favourites, recipe.id])
       axios({
@@ -125,6 +123,17 @@ export default function Recipe() {
     }
   }
 
+  const shareRecipe = () =>{
+    const el = document.createElement('input');
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    toast.success("Link to recipe copied to clipboard.")
+  }
+
 
 
   return (
@@ -135,11 +144,11 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          {/* If favourited, make it conditionally */}
-          {isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Remove favourite </i>}
-          {!isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Spoon it </i>}
-           
-          <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
+
+          {isFavourite && <i className="fa-solid fa-spoon icon-hover 1em-right" onClick={toggleFavourite}>Remove favourite </i>}
+          {!isFavourite && <i className="fa-solid fa-spoon icon-hover 1em-right" onClick={toggleFavourite}>Spoon it </i>}           
+          <i className="fa-solid fa-utensils icon-hover 1em-right" onClick={forkRecipe}> Fork Recipe</i>
+          <i className="fa-solid fa-bowl-food icon-hover 1em-right" onClick={shareRecipe}>Share Recipe</i>
 
           </div>
 
