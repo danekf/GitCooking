@@ -23,7 +23,9 @@ root.render(
     <Routes>
       <Route path='/' element={<App />}>
         <Route index element={<Home />} />
-        <Route path='users/profile' element={<UserProfile />} />
+        <Route path='profile' >
+          <Route path=':username' element={<UserProfile />}/>
+        </Route>
         {/* <Route path='users/:userName/:recipeId' element={<Recipe />} /> */}
         <Route path='recipes' >
           <Route path=':recipeId' element={<Recipe />}/>

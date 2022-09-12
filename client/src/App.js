@@ -4,13 +4,16 @@ import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
-import axios from 'axios';
 import HeaderDropdownMenu from "./routes/components/dropdownMenu";
-import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import ProfilePicture from './routes/profile_components/profile_picture';
 import useApplicationData from './hooks/userHook';
+import {useNavigate} from 'react-router-dom';
+
+import axios from 'axios';
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 function App() {
+  let navigate = useNavigate();
   //menu handler
   const { modalProps, getTriggerProps } = useModal();
   const { user, setUser, logout } = useApplicationData();
@@ -101,10 +104,8 @@ function App() {
 
       <footer class='app-footer'>
         <nav class='app-footer-nav'>
-          <li>
-            <Link to='/users/profile'>
+          <li onClick={()=>navigate("/profile/" + user.username)} >
               <i class='fa-solid fa-user app-footer-nav-list-item'></i>
-            </Link>
           </li>
           {/* Add Login for conditional rendering if someone clicks on Profile in footernav & is not logged in */}
           {/* <Link to='/login'>Login</Link> */}

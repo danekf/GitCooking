@@ -9,12 +9,15 @@ import Socials from "./profile_components/socials";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import RecipeCard from './recipes/recipeCard';
-import RecipeList from "./recipes/recipeList"
 import EditProfile from './EditProfile';
 import useApplicationData from '../hooks/userHook';
+import {useParams} from "react-router-dom";
 
 
 export default function UserProfile() {
+  const params = useParams();
+  const profileUsername = params.username;
+
   const { user, setUser, logout } = useApplicationData();  
 
   const [editMode, SetEditMode] = useState(false);
