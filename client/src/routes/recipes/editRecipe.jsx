@@ -5,12 +5,13 @@ import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
 import useApplicationData from '../../hooks/userHook';
 
+// import multer from 'multer';
+// const multer = require("multer");
 
 
 export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
 
- 
- 
+
 const { user} = useApplicationData();  
 
   //form submission handler for submission to server
@@ -275,8 +276,23 @@ const deleteItem = (index, event, name)=>{
                 placeHolder="enter tags"
               /> 
             </div>
-            <h4>Upload an Image:</h4>
+
+
+            {/* upload multiple recipe photos using multer */}
+
+            <form method="POST" action="/recipe-upload-multiple" enctype="multipart/form-data">
+                <div>
+                    <h4>Upload an Image:</h4>
+                    <input type="file" name="recipe-files" required multiple  />
+                </div>
+                {/* <div>
+                    <input type="submit" value="Upload" />
+                </div> */}
+            </form>
+            {/* <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
+             */}
+            
             <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
             <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
