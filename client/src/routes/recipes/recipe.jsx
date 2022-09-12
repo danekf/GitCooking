@@ -61,8 +61,12 @@ export default function Recipe() {
 
     //favourite checker on page load
     const [isFavourite, setIsFavourite] = useState(false)
+    const [favourites, setFavourites] = useState();
+
 
     useEffect(()=>{
+      setFavourites(user.favourite_recipes)
+      
       if(user.favourite_recipes){
         user.favourite_recipes.map((index)=>{
           if(index === recipe.id){
@@ -90,19 +94,25 @@ export default function Recipe() {
       axios({
         method: "post",
         url: "/api/recipes/favourite",
-        data: {favourite_recipes: [...user.favourite_recipes, recipe.id]}
+        data: {favourite_recipes: [...favourites, recipe.id]}
       })
       .then((response)=>{
         setIsFavourite(true)
       })
     }
     else if (isFavourite){
-      const tempArray = [...user.favourite_recipes]
-      tempArray.pop();
+      const tempArray = [];
+      //no other method was working... should be re-written with a filter or splice
+      favourites.forEach((index)=>{
+        if(index !== recipe.id){
+          tempArray.push(index)
+        }        
+      })
+      setFavourites(tempArray)
       axios({
         method: "post",
         url: "/api/recipes/favourite",
-        data: {favourite_recipes: tempArray}
+        data: {favourite_recipes: favourites}
       })
       .then((response)=>{
         setIsFavourite(false)
