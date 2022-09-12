@@ -142,17 +142,15 @@ export default function Recipe() {
       {editMode === SHOW && 
       <div className='recipe-body'>
         <div className='recipe-card'>
-
+        <h1 className='recipe-title'>{recipe.title}</h1>
           <div className='recipe-icons'>
-
-          {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Remove favourite </i>}
-          {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Spoon it </i>}           
-          <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
-          <i className="fa-solid fa-bowl-food icon-hover" onClick={shareRecipe}>Share Recipe</i>
-
+            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Remove favourite </i>}
+            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Spoon it </i>}           
+            <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
+            <i className="fa-solid fa-bowl-food icon-hover" onClick={shareRecipe}>Share Recipe</i>
           </div>
 
-          <h1 className='recipe-title'>{recipe.title}</h1>
+          
           
           <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
           
