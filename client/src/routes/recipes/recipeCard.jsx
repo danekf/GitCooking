@@ -12,10 +12,13 @@ export default function RecipeCard(props) {
 
   //recipe modal
 
+  // loop through recipe tags to print a list separated by commas
+  let tags = recipe.tags;
+  let tagsList = tags.join(", ")
 
   return (
 
-    <div className='container'
+    <div className='recipe-card-container'
     onMouseEnter={() => setHover(true)}
     onMouseLeave={() => setHover(false)}
     onClick={()=>navigate("/recipes/" + recipe.id)}    
@@ -28,7 +31,7 @@ export default function RecipeCard(props) {
         </div>
         <div className='bottom-right text-border' >
 
-          {recipe.estimatedtime == 1 && 
+          {recipe.estimatedtime === 1 && 
             "Estimated time : 1 minute."
           }
 
@@ -45,12 +48,9 @@ export default function RecipeCard(props) {
           {recipe.title}
         </div>
         <div className='bottom-left text-border' >
-          Tags : {recipe.tags}
+          Tags: <ul className="tag-list">{ tagsList }</ul>
         </div>
         <div className="centered text-border" >Click to see full recipe</div> 
-
-
-        
       </>
       )}    
     </div>

@@ -14,6 +14,7 @@
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
   border-style: solid;
   background-color: #fff;
+  
 }
 
 // Comments section CSS:
@@ -46,6 +47,7 @@
   margin-top: 1em;
   margin-right: 2em;
   cursor: pointer;
+  
 }
 
 @media screen and (max-width: 400px) {
@@ -65,13 +67,22 @@
 .fa-spoon {
   margin-right: 1em;
 }
+.fa-utensils{
+  margin-right: 1em;
+}
+.fa-pen-to-square{
+  padding-right: 1em;
+}
 
-.fa-spoon:hover {
+.icon-hover:hover {
   color: #FFAD60;
 }
 
-.fa-utensils:hover {
-  color: #FFAD60;
+.fa-solid{
+  font-size:medium
+}
+.fa-regular{
+  font-size:medium
 }
 
 .edit-recipe-icon {

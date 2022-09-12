@@ -144,9 +144,6 @@ module.exports = (db) => {
       .replace('[', '{')
       .replace(']', '}');
 
-    console.log('type of: ', typeof tags);
-    console.log(tags);
-
     const queryString = `
       UPDATE recipes
       SET
@@ -176,6 +173,30 @@ module.exports = (db) => {
         response.sendStatus(200);
       })
       .catch((error) => console.log(error));
+  });
+
+  //update favourites
+  router.post('/favourite', (request, response) =>{
+    const user_id = request.session.userId;
+    const {id} = request.body;
+    const favourite_recipes = JSON.stringify(request.body.favourite_recipes);
+    
+    
+
+    const queryString = `
+      UPDATE users
+      SET
+        favourite_recipes = $1
+      WHERE
+        id = $2
+      ;`;
+
+      const queryValues = [`${favourite_recipes}`, `${user_id}`];
+
+      db.query(queryString, queryValues)
+        .then(()=>{
+          response.sendStatus(200);
+        })
   });
 
   return router;
