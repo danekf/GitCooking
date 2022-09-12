@@ -8,26 +8,32 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function CommentList(props) {
-  const {comments, recipeId} = props;
-
-    //post comment
-    const [commentValue, setCommentValue] =  useState();
-    const submitComment = (event) =>{
-      event.preventDefault();
-      axios({
-        method: "post",
-        url: "/api/comments/add",
-        data: {comment: commentValue, recipeId: recipeId}
-      })
-      .then((response)=>{
-        if(response.status===200){
-          setCommentValue('');
-          toast.success('Comment Addedd')
-        }
-      })   
-    }
-    
-
+  const {comments, setComments, recipeId, username} = props;
+  //reverse so that latest is shown first, always
+  const commentList = comments.slice(0).reverse();
+  
+  //post comment
+  const [commentValue, setCommentValue] =  useState();
+  const submitComment = (event) =>{
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: "/api/comments/add",
+      data: {comment: commentValue, recipeId: recipeId}
+    })
+    .then((response)=>{
+      if(response.status===200){
+        const time = new Date().toISOString();
+        setComments([...comments, {
+          comment: commentValue,
+          created_at: time,
+          username: username,
+        }])
+        setCommentValue('');
+        toast.success('Comment Addedd')        
+      }
+    })   
+  }
 
     return(
       <>
@@ -41,7 +47,7 @@ export default function CommentList(props) {
         </form>
 
         <ul className="comment-list">
-          {comments.map( (comment) => <li><CommentListItem comment={comment}/></li>)}            
+          {commentList.map( (comment) => <li><CommentListItem comment={comment}/></li>)}            
         </ul>
       </div>
       <ToastContainer 
