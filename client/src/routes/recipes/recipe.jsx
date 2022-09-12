@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Recipe() {
   const params = useParams();
   const {user, setUser} = useApplicationData();
+  window.scroll(0,0); 
 
   //recipe handler
   const recipeId = {recipeId: params.recipeId};
