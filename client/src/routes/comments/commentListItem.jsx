@@ -6,7 +6,7 @@ export default function CommentListItem(props) {
   return (
     <>
     <div className="comment-body">
-      <h6 className="comment-username">@{comment.user_id}</h6>
+      <h6 className="comment-username">@{comment.username}</h6>
       <div>
         <p className="comment-context">
           {comment.comment}

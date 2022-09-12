@@ -10,9 +10,11 @@ module.exports = (db) => {
   router.post('/get', (request,response)=>{
     const {recipeId} = request.body;
 
+
     const queryString = `
-    SELECT DISTINCT *
+    SELECT recipe_comments.id, users.username, recipe_comments.recipe_id, recipe_comments.created_at, recipe_comments.comment
     FROM recipe_comments
+    INNER JOIN users ON users.id = user_id
     WHERE
     recipe_id = $1
     ;`;
@@ -21,11 +23,8 @@ module.exports = (db) => {
 
     db.query(queryString, queryValues)
       .then(({rows: comments}) => {
-        console.log(comments);
         response.send(comments);
       });
-
-
   });
 
   //post a new comment to a supplied recipe ID
