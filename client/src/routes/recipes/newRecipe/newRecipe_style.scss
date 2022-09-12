@@ -56,6 +56,22 @@ textarea {
   border-right: none;
 }
 
+.fa-solid.fa-plus.new-add-icon {
+  color: #D9534F;
+  font-weight: 900;
+  font-size: 1.2em;
+  margin-top: 1em;
+
+}
+
+.new-recipe-item-add-eq {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-left: -2em;
+}
+
 // CSS: Ingredients:
 .new-ingredients-container {
   display: flex;
@@ -91,8 +107,22 @@ i.fa-solid.fa-trash.new-trash-icon {
   margin-top: 0em;
 }
 
+.new-recipe-item-eq-add {
+  border-bottom-color: #D9534F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
 
+.new-equipments-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4em;
+}
 
+.new-recipe-item-eq-add {
+  margin-left: 20em;
+}
   .new-item-ing-add-ing-container {
     //border: 2px solid transparent;
     //border-color: #d9534f;
@@ -119,12 +149,6 @@ i.fa-solid.fa-trash.new-trash-icon {
     font-weight: 900;
   }
 
-// CSS Equipment
-
-.new-equipments-container {
-  display: flex;
-  flex-direction: column;
-}
 
 .new-equipments-list-item-container {
   //margin-left: 3em;
@@ -182,6 +206,10 @@ input.new-recipe-item-eq-add {
   border-top: none;
   border-left: none;
   border-right: none; 
+}
+
+.fa-solid.fa-trash-new-trsh-icon-instr {
+  margin-right: 2em;
 }
 
 // Instructions:
