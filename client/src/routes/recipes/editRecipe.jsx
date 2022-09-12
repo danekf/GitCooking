@@ -214,10 +214,10 @@ const deleteItem = (index, event, name)=>{
                 </div>
                 )} 
                 </ul>
-                <div>
-                  <ul className='add-ing-container'>
-                    <li><input className="edit-recipe-item-add" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
-                    <li><input className="edit-recipe-item-add" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
+                <div className='add-ing-container'>
+                  <ul>
+                    <li><input className="edit-recipe-item-add-ing" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
+                    <li><input className="edit-recipe-item-add-ing" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
                     <div>
                       <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}></i>
                     </div>
