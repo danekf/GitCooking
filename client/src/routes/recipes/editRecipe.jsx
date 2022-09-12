@@ -228,48 +228,51 @@ const deleteItem = (index, event, name)=>{
                 {formValue.equipment.map((item, index) => 
                   <div className='equipments-list-item-container'>
                     <li> 
-                      <input className="edit-recipe-item-add-eq" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+                      <input className="edit-recipe-item-add-eq-add" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Enter Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
-                      <input className="edit-recipe-item-add-eq" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment and Details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
+                      <input className="edit-recipe-item-add-eq-add" type="text" key={index} name="equipmentName" placeholder= "Enter Equipment and Details" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/> 
 
                       <div>
-                        <i onClick={(event)=>deleteItem(index, event, "equipment")} class="fa-solid fa-trash trash-icon-eq"></i>
+                        <i onClick={(event)=>deleteItem(index, event, "equipment")} className="fa-solid fa-trash trash-icon-eq"></i>
                       </div>
                     </li>            
                   </div>
                 )}              
+              </ul>
                 <div className='add-eq-container'>
                   <ul>
                     <li><input className="edit-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                     <li><input className="edit-recipe-item-add-eq" type="text" name="equipmentName" placeholder="Enter Equipment and Details" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
-                    <div><i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}></i></div>
+                    <div>
+                      <i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}></i>
+                    </div>
                   </ul>
                 </div>
-              </ul>
-
               <h6 className='edit-recipe-heading'>Instructions:</h6>
-              <ul>
+              <ul className='instructions-container'>
               {formValue.instructions.map((item, index) => 
-                <div className='ingredients-list-item-container'>
+                <div className='instructions-list-item-container'>
                   <li> 
-                    <input className="edit-recipe-item-add" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Enter Time Required (in minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+                    <input className="edit-recipe-item-add-instr-add" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Enter Time Required (in minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
 
-                    <input className="edit-recipe-item-add" type="text" key={index} name="instruction" placeholder= "Enter Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
+                    <textarea className="edit-recipe-item-add-instr-add-box" type="text" key={index} name="instruction" placeholder= "Enter Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/> 
 
-                      <div className='trash-icon'>
-                        <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash"></i>
+                      <div>
+                        <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash trash-icon-instr"></i>
                       </div>
                     </li>            
                     </div>
-                )}   
-              <div className='add-icon'>
-                  <i className="fa-solid fa-plus" onClick={addInstructionToList}></i>
-                  <input className="edit-recipe-item" width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/>
-                  <input className="edit-recipe-item" type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
-                </div>
-          
-              </ul>
-              
+                )}  
+                </ul> 
+              <div className='add-instr-container'>
+                <ul>
+                  <li><input className="edit-recipe-item-add-instr" width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/></li>
+                  <li><textarea className="edit-recipe-item-add-instr-box" type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/></li>
+                </ul>
+              </div>
+              <div>
+                <i className="fa-solid fa-plus add-icon-instr" onClick={addInstructionToList}></i>
+              </div>              
               <h6 className='edit-recipe-heading'>Tags:</h6>
               <div className='tags'>
               <TagsInput
