@@ -16,13 +16,20 @@ import {useParams} from "react-router-dom";
 
 export default function UserProfile() {
   const params = useParams();
-
+  
   const { user, setUser, logout } = useApplicationData();  
 
-  const [editMode, SetEditMode] = useState(false);
+  // const profileData = () =>{
+  //   axios.get
+  // }
+
+  const SHOW = 'SHOW'
+  const EDIT = 'EDIT'
+  const [editMode, SetEditMode] = useState(SHOW);
+
   // CB function sets edit profile page to false:
   const returnToProfile = () => {
-    SetEditMode(false);
+    SetEditMode(SHOW);
   }
 
   //get all of a users recipes
@@ -42,15 +49,13 @@ export default function UserProfile() {
   return (
     <>     
       {/* Controls whether we are showing the edit view, or the regular profile */}
-      {editMode ? (
-        <div>
-          <EditProfile user={user} returnToProfile={returnToProfile}/>
-        </div> )
-      : (
+      {editMode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
+
+      {editMode === SHOW && 
         <>
           <div className="profile-card">
           <div>
-            <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(true)}></i>
+            <i className="fa-regular fa-pen-to-square" onClick={() => SetEditMode(EDIT)}></i>
           </div>
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
@@ -74,7 +79,7 @@ export default function UserProfile() {
             </ul>
           </div>
       </>
-      )}
+      }
     </>
   ); 
 } 
