@@ -54,6 +54,7 @@ const register = require('./routes/register');
 const logout = require('./routes/logout');
 const users = require('./routes/users');
 const profiles = require('./routes/profiles');
+const comments = require('./routes/comments');
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
@@ -62,6 +63,7 @@ app.use('/api/register', register(db));
 app.use('/api/logout', logout());
 app.use('/api/users', users(db));
 app.use('/api/profile', profiles(db));
+app.use('/api/comments', comments(db));
 
 // Message on server start
 server.listen(PORT, () => {
