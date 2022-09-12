@@ -12,6 +12,7 @@
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
   border-style: solid;
   background-color: #fff;
+  
 }
 
 .comment-list-card-in-recipe {
@@ -41,6 +42,7 @@
   justify-content:flex-end;
   margin-right: 2em;
   cursor: pointer;
+  
 }
 
 .fa-spoon {
@@ -49,9 +51,19 @@
 .fa-utensils{
   margin-right: 1em;
 }
+.fa-pen-to-square{
+  padding-right: 1em;
+}
 
 .icon-hover:hover {
   color: #FFAD60;
+}
+
+.fa-solid{
+  font-size:medium
+}
+.fa-regular{
+  font-size:medium
 }
 
 .username-heading {
