@@ -7,11 +7,15 @@ import { useState, useEffect} from 'react';
 import useApplicationData from '../../hooks/userHook';
 import EditRecipe from './editRecipe';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Recipe() {
   const params = useParams();
-  const {user} = useApplicationData();
+  const {user, setUser} = useApplicationData();
 
+  //recipe handler
   const recipeId = {recipeId: params.recipeId};
   const [recipe, setRecipe] = useState({
     user_id: '',
@@ -22,7 +26,7 @@ export default function Recipe() {
     tags: [],
     servings: '',
     recipe_photos: 'dummy_URL',
-    estimatedTime: 0,
+    estimatedTime: 0,    
   });
   const [chef, setChef] = useState([]);
 
@@ -32,8 +36,9 @@ export default function Recipe() {
 
   const [editMode, setEditMode] = useState(SHOW);
 
+
+  //load recipe info whenever state changes
   useEffect(()=>{
-    //get recipe info
     axios({
       method: "post",
       url: "/api/recipes/recipeId",
@@ -55,6 +60,24 @@ export default function Recipe() {
     // eslint-disable-next-line
   }, [editMode])
 
+    //favourite checker on page load
+    const [isFavourite, setIsFavourite] = useState(false)
+    const [favourites, setFavourites] = useState();
+
+
+    useEffect(()=>{
+      setFavourites(user.favourite_recipes)
+      
+      if(user.favourite_recipes){
+        user.favourite_recipes.map((index)=>{
+          if(index === recipe.id){
+            setIsFavourite(true);
+          }
+        })
+      }
+  
+    }, [user])
+
   const returnToRecipe = () =>{
     window.scroll(0,0); 
     setEditMode(SHOW)
@@ -63,6 +86,42 @@ export default function Recipe() {
   const forkRecipe = () =>{
     window.scroll(0,0); 
     setEditMode(FORK);
+  }
+
+  const toggleFavourite = () =>{
+
+
+    if(!isFavourite){
+      setFavourites([...favourites, recipe.id])
+      axios({
+        method: "post",
+        url: "/api/recipes/favourite",
+        data: {favourite_recipes: [...favourites, recipe.id]}
+      })
+      .then((response)=>{
+        setIsFavourite(true)
+        toast.success('Added to favourites')
+      })
+    }
+    else if (isFavourite){
+      const tempArray = [];
+      //no other method was working... should be re-written with a filter or splice
+      favourites.forEach((index)=>{
+        if(index !== recipe.id){
+          tempArray.push(index)
+        }        
+      })
+      setFavourites(tempArray)      
+      axios({
+        method: "post",
+        url: "/api/recipes/favourite",
+        data: {favourite_recipes: tempArray}
+      })
+      .then((response)=>{
+        setIsFavourite(false)
+        toast.success('Removed from favourites')
+      })     
+    }
   }
 
 
@@ -75,7 +134,10 @@ export default function Recipe() {
         <div className='recipe-card'>
 
           <div className='recipe-icons'>
-          <i className="fa-solid fa-spoon">Spoon it</i>
+          {/* If favourited, make it conditionally */}
+          {isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Remove favourite </i>}
+          {!isFavourite && <i className="fa-solid fa-spoon" onClick={toggleFavourite}>Spoon it </i>}
+           
           <i className="fa-solid fa-utensils" onClick={forkRecipe}> Fork Recipe</i>
 
           </div>
@@ -127,6 +189,12 @@ export default function Recipe() {
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
 
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
+
+    <ToastContainer 
+      position='top-center'
+      autoClose={2000}
+      closeOnClick
+    />
 
     </>
   );
