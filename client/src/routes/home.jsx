@@ -41,7 +41,7 @@ export default function Home() {
             <h5 className='home-page-button-summary'>to Save & Edit</h5>
         </div>
         <div>
-          <i class="fa-solid fa-share"></i>
+          <i className="fa-solid fa-share"></i>
           <h3>Create it</h3>
           <h5 className='home-page-button-summary'>to Share</h5>
         </div>

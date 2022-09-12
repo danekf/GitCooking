@@ -134,8 +134,6 @@ export default function Recipe() {
     toast.success("Link to recipe copied to clipboard.")
   }
 
-
-
   return (
     <>
     {/* Show recipe mode */}
@@ -145,10 +143,10 @@ export default function Recipe() {
         <h1 className='recipe-title'>{recipe.title}</h1>
         <h5 className='username-heading'>This recipe is made with love by: {chef.username}</h5>
           <div className='recipe-icons'>
-            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Remove favourite </i>}
-            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Spoon it </i>}           
+            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Remove favourite </i>}
+            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Spoon it </i>}           
             <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
-            <i className="fa-solid fa-bowl-food icon-hover" onClick={shareRecipe}>Share Recipe</i>
+            <i className="fa-solid fa-share icon-hover" onClick={shareRecipe}> Share Recipe</i>
           </div>
             {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           
