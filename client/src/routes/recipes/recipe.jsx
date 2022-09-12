@@ -10,7 +10,6 @@ import EditRecipe from './editRecipe';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export default function Recipe() {
   const params = useParams();
   const {user, setUser} = useApplicationData();
@@ -123,6 +122,20 @@ export default function Recipe() {
     }
   }
 
+  //get comments
+  const [comments, setComments] = useState([]);
+  useEffect(()=>{
+  axios({
+    method: 'post',
+    url: '/api/comments/get',
+    data: {recipeId: recipeId.recipeId}
+  })
+  .then((response)=>{
+    setComments(response.data);
+  })
+},[])
+
+
   const shareRecipe = () =>{
     const el = document.createElement('input');
     el.value = window.location.href;
@@ -130,7 +143,6 @@ export default function Recipe() {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-
     toast.success("Link to recipe copied to clipboard.")
   }
 
@@ -184,7 +196,7 @@ export default function Recipe() {
         
         <div className='comment-list-card-in-recipe'>
           <ul>
-          <CommentList />
+          <CommentList comments = {comments}/>
           </ul>
         </div>
       </div>
