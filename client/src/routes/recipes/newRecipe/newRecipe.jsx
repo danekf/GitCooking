@@ -164,7 +164,6 @@ const deleteItem = (index, event, name)=>{
       method: 'post',
       url: '/api/recipes/uploadfile', 
       data: image,
-      header: {"Content-Type": "multipart/form-data"}
     })
     .then((response)=>{
       setformValue({
