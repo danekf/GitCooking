@@ -57,6 +57,7 @@ const logout = require('./routes/logout');
 const users = require('./routes/users');
 const profiles = require('./routes/profiles');
 const { fstat } = require('fs');
+const comments = require('./routes/comments');
 
 
 // Mount all resource routes
@@ -66,6 +67,8 @@ app.use('/api/register', register(db));
 app.use('/api/logout', logout());
 app.use('/api/users', users(db));
 app.use('/api/profile', profiles(db));
+app.use('/api/comments', comments(db));
+
 
 //static folder for images
 app.use(express.static('public'));
