@@ -1,7 +1,11 @@
-
+import './chat.scss';
 
 export default function Chat() {
   return (
-    <header><h1>Chatty Group</h1></header>
+    <>
+    <div className='messages-body'>
+    <h1 className='messages-title'>Messages</h1>
+    </div>
+    </>
   );  
 }

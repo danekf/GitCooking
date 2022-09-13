@@ -1,10 +1,14 @@
+.comment-title {
+  display: flex;
+  justify-content: center;
+}
+
 .comment-form {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-left: 1em;
+  margin-left: 0em;
 }
-
 
 .comment-text-area {
   margin-top: 1em;

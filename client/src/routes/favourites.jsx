@@ -27,7 +27,7 @@ export function Favourites () {
     <>
       <div className="favourites-body">
         <h1 className="favourites-title">Favourites</h1>
-        <ul>
+        <ul className='recipe-list-fave-container'>
           {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
         </ul>
       </div>

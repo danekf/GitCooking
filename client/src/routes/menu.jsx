@@ -15,9 +15,9 @@ export default function Menu() {
         <SearchBar />  
       </div>
 
-    <h2 className='advanced-search-title'>Advanced search</h2>
+    {/* <h2 className='advanced-search-title'>Advanced search</h2>
    
-    tags   
+    tags    */}
     </>
 
     

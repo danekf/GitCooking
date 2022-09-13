@@ -79,6 +79,15 @@ textarea {
   margin-left: 8em;
 }
 
+@media screen and (min-width:1024px) {
+  .new-ingredients-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: -4em;
+  }
+  
+}
+
 .new-item-ing-add {
   border-bottom-color: #D9534F;
   border-top: none;
