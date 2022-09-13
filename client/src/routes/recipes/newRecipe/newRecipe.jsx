@@ -167,13 +167,21 @@ const deleteItem = (index, event, name)=>{
     axios({
       method: 'post',
       url: '/api/recipes/uploadfile', 
-      data: image
+      data: image,
+      header: {"Content-Type": "multipart/form-data"}
+    })
+    .then((response)=>{
+      setformValue({
+        ...formValue,
+        recipe_photos: `/recipePhotos/${response.data.filepath.filename}`
+      })
     })
 
   }
 
   //recipe submission
   const submitRecipe = (event) => {
+
 
     // event.preventDefault();
     axios({
@@ -192,20 +200,17 @@ const deleteItem = (index, event, name)=>{
         toast.success(`Submitted ${formValue.title} sucessfully!`)
         const recipeId = response.data[0].id; 
         setTimeout(()=>{
-          window.location = `/recipes/${recipeId}`
+          window.location = `recipes/${recipeId}`
         }, 2000)       
       }
     })
   }
-
-  
 
   const handleImage = (event) =>{
     setformValue({
       ...formValue,
       recipe_photos: event.target.files[0]
     })
-    console.log(formValue.recipe_photos);
   }
 
 
@@ -309,9 +314,11 @@ const deleteItem = (index, event, name)=>{
             <button className='recipe-btn-submit' type="submit">Submit Recipe!</button>           
             </form>
 
+            <img src={formValue.recipe_photos} width= '30%' />
+            
             <form onSubmit={submitImage}> 
               <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
-              <input type="submit" value="Upload a file"/>
+              <input type="submit" value="Upload file"/>
             </form>       
             
         </div>

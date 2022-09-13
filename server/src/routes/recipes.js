@@ -8,33 +8,25 @@ const fs = require('file-system');
 module.exports = (db) => {
    //multer settings for new recipe
    const recipeStorage = multer.diskStorage({
-    destination: 'photos/recipes',
+    destination: 'public/recipePhotos',
     filename: (req, file, cb) => {
       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
   });
-  const profilePicStorage = multer.diskStorage({
-    destination: 'photos/avatar',
-    filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    }
-  });
+
   const upload = multer({ storage: recipeStorage });
 
   ///////////////////////////////
   //TEST
   ///////////////////////////////
   router.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-    const {recipeId} =  req.body;
-    console.log('recipeId: ', req.body);
     const file = req.file; 
     if (!file) {
       const error = new Error('Please upload a file')
       error.httpStatusCode = 400
       return next(error)
     }
-      console.log('filepath: ',file.path);
-    
+      res.json({filepath: file})    
   })
   ///////////////////////////////
   ///////////////////////////////
