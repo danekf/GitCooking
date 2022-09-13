@@ -68,7 +68,7 @@ app.use('/api/users', users(db));
 app.use('/api/profile', profiles(db));
 
 //static folder for images
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 
 // Message on server start
@@ -78,55 +78,6 @@ server.listen(PORT, () => {
 });
 
 
-// Multer file upload
-
-// app.get('/uploadFile', upload.single('avatar'), function (req, res) {
-//   let fileType = req.file.mimetype.split("/")[1];
-//   let newFileName = req.file.filename + "." + fileType
-
-//   fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function() {
-//     res.send("200");
-//   })
-
-//   // req.file is the `avatar` file
-//   // req.body will hold the text fields, if there were any
-// })
-
-
-// Tell multer where to upload images
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, '../../client/uploads')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname)
-//   }
-// })
-// const upload = multer({ storage: storage })
-
-
 app.use(express.static(__dirname + '/public'));
 app.use('/uploads', express.static('uploads'));
 
-// app.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
-//   // req.file is the `profile-file` file
-//   // req.body will hold the text fields, if there were any
-//   console.log(JSON.stringify(req.file))
-//   let response = '<a href="/">Home</a><br>'
-//   response += "Files uploaded successfully.<br>"
-//   response += `<img src="${req.file.path}" /><br>`
-//   return res.send(response)
-// })
-
-
-// app.post('/recipe-upload', upload.array('recipe-files', 3), function (req, res, next) {
-//   // req.files is array of `profile-files` files
-//   // req.body will contain the text fields, if there were any
-//   let response = '<a href="/">Home</a><br>'
-//   response += "Files uploaded successfully.<br>"
-//   for(let i=0;i<req.files.length;i++){
-//       response += `<img src="${req.files[i].path}" /><br>`
-//   }
-  
-//   return res.send(response)
-// })

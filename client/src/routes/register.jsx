@@ -60,7 +60,10 @@ export default function Register() {
         toast.error(response.data.error);
       }
       else{
-        console.log(response.data[0])
+        toast.success("Registration sucessful, redirecting...")
+        setTimeout(()=>{
+          window.location = '/';
+        }, 1500)
       }
     })
   }
@@ -105,7 +108,7 @@ export default function Register() {
         <div>
           <ToastContainer 
             position='top-center'
-            autoClose={3000}
+            autoClose={1500}
             closeOnClick
           />
         </div>    

@@ -10,8 +10,10 @@ import EditRecipe from './editRecipe';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import {useNavigate} from 'react-router-dom';
 
 export default function Recipe() {
+  let navigate = useNavigate();
   const params = useParams();
   const {user, setUser} = useApplicationData();
   window.scroll(0,0); 
@@ -30,6 +32,7 @@ export default function Recipe() {
     recipe_photos: 'No Photos yet',
     estimatedTime: 0,    
   });
+
   const [chef, setChef] = useState([]);
 
   const SHOW = 'SHOW'
@@ -41,6 +44,7 @@ export default function Recipe() {
 
   //load recipe info whenever state changes
   useEffect(()=>{
+    // Get recipe info
     axios({
       method: "post",
       url: "/api/recipes/recipeId",
@@ -49,7 +53,7 @@ export default function Recipe() {
     .then ((response)=>{
       setRecipe(response.data[0]);
       const tempChef={userId: response.data[0].user_id};
-      //get user id that created the recipe
+      // Get user id that created the recipe
       axios({
         method: "post",
         url: "/api/users",
@@ -59,7 +63,7 @@ export default function Recipe() {
         setChef(response.data)
       })
     })
-    // eslint-disable-next-line
+    // Eslint-disable-next-line
   }, [editMode])
 
     //favourite checker on page load
@@ -124,6 +128,21 @@ export default function Recipe() {
     }
   }
 
+  //get comments
+  const [comments, setComments] = useState([]);
+  
+
+  useEffect(()=>{
+  axios({
+    method: 'post',
+    url: '/api/comments/get',
+    data: {recipeId: recipeId.recipeId}
+  })
+  .then((response)=>{
+    setComments(response.data);
+  })
+},[])
+
   const shareRecipe = () =>{
     const el = document.createElement('input');
     el.value = window.location.href;
@@ -131,11 +150,11 @@ export default function Recipe() {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-
     toast.success("Link to recipe copied to clipboard.")
   }
 
 
+  
 
   return (
     <>
@@ -143,21 +162,16 @@ export default function Recipe() {
       {editMode === SHOW && 
       <div className='recipe-body'>
         <div className='recipe-card'>
-
+        <h1 className='recipe-title'>{recipe.title}</h1>
           <div className='recipe-icons'>
-
-          {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Remove favourite </i>}
-          {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}>Spoon it </i>}           
-          <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
-          <i className="fa-solid fa-bowl-food icon-hover" onClick={shareRecipe}>Share Recipe</i>
-
+            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Remove favourite </i>}
+            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Spoon it </i>}           
+            <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
+            <i className="fa-solid fa-share icon-hover" onClick={shareRecipe}> Share Recipe</i>
           </div>
-
-          <h1 className='recipe-title'>{recipe.title}</h1>
+            {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           
-          <h5 className='username-heading'>This recipe is made with love by: <span>{chef.username}</span></h5>
-          
-          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
+          <h5 className='username-heading'>This recipe is made with love by: <span onClick={()=>navigate("/profile/" + chef.username)}>@{chef.username}</span></h5>
 
           {recipe.recipe_photos !== 'No Photos yet' && <img className="recipe-img" src={recipe.recipe_photos} alt="Recipe" width= '35%'/>}
           {recipe.recipe_photos === 'No Photos yet' && <div>No Photos Yet</div>}
@@ -181,26 +195,27 @@ export default function Recipe() {
           </ul>
           <h5 className='heading-lists'>Instructions:</h5>
           <ul className='card-body'>
-            {recipe.instructions.map((item) => <li>{item.estimatedTime} - {item.instruction} </li>)}
+            {recipe.instructions.map((item) => <li>{/*item.estimatedTime*/}{item.instruction} </li>)}
           </ul>
 
           <h5 className='tags-subheading'>Tags:</h5>
-          <ul className='card-body'>
-            {recipe.tags.map((tag) => <li>{tag} </li>)}
-          </ul>
-         
+          <div className='tags-body'>
+            <ul className='list-container'>
+              {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
+            </ul>
+          </div>
+
         </div>
         
         <div className='comment-list-card-in-recipe'>
-          <ul>
-          <CommentList />
+          <ul className='comment-body-recipe'>
+          <CommentList comments = {comments} recipeId = {recipeId.recipeId} setComments={setComments} username={user.username}/>
           </ul>
         </div>
       </div>
     }
     {/* Edit Recipe Mode */}
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
-
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
 
     <ToastContainer 

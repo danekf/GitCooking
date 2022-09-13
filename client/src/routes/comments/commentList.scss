@@ -1,0 +1,53 @@
+.comment-form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-left: 1em;
+}
+
+
+.comment-text-area {
+  margin-top: 1em;
+  width: 19em;
+  height: 4em;
+  margin-bottom: 1em;
+  outline: none;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 2x solid transparent;
+  border-bottom-color: #d9534f;
+}
+
+.fa-message-comment {
+  color: #d9534f;
+  cursor: pointer;
+}
+
+.fa-message-comment:hover {
+  color: #FFAD60;
+}
+
+@media screen and (min-width: 550px) {
+  .comment-text-area {
+    width: 30em;
+  }
+}
+
+@media screen and (min-width: 710px) {
+  .comment-text-area {
+    width: 40em;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .comment-text-area {
+    width: 48em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .comment-text-area {
+    width: 55em;
+  }
+}
