@@ -78,6 +78,9 @@ export default function UserProfile() {
         }
       })
     }
+    //scroll to top anytime mode changes, better user usability
+    window.scroll(0,0); 
+    
   }, [mode])
 
 
