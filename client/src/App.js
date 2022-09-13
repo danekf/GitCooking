@@ -4,13 +4,14 @@ import './App.scss';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
 import Menu from './routes/menu';
-import axios from 'axios';
-import HeaderDropdownMenu from './routes/components/dropdownMenu';
-import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
+import HeaderDropdownMenu from "./routes/components/dropdownMenu";
 import ProfilePicture from './routes/profile_components/profile_picture';
 import useApplicationData from './hooks/userHook';
+import {useNavigate} from 'react-router-dom';
+
 
 function App() {
+  let navigate = useNavigate();
   //menu handler
   const { modalProps, getTriggerProps } = useModal();
   const { user, setUser, logout } = useApplicationData();
@@ -113,38 +114,36 @@ function App() {
           <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js'></script>
         </body>
 
-        <footer class='app-footer'>
-          <nav class='app-footer-nav'>
-            <li>
-              <Link to='/users/profile'>
-                <i class='fa-solid fa-user app-footer-nav-list-item'></i>
-              </Link>
-            </li>
-            {/* Add Login for conditional rendering if someone clicks on Profile in footernav & is not logged in */}
-            {/* <Link to='/login'>Login</Link> */}
-            <li>
-              <Link to='/favourites' state={{ user: user }}>
-                <i class='fa-solid fa-star app-footer-nav-list-item'></i>
-              </Link>
-            </li>
-            <li>
-              <Link to='/chat'>
-                <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
-              </Link>
-            </li>
-            <li {...getTriggerProps({ background: '#FAF1E6' })}>
-              <i
-                id='burger-icon'
-                class='fa-solid fa-burger app-footer-nav-list-item'
-              ></i>
-            </li>
-            <Modal {...modalProps}>
-              <Menu />
-            </Modal>
-          </nav>
-        </footer>
-      </div>
-    </html>
+      <footer class='app-footer'>
+        <nav class='app-footer-nav'>
+          <li onClick={()=>navigate("/profile/" + user.username)} >
+              <i class='fa-solid fa-user app-footer-nav-list-item'></i>
+          </li>
+          {/* Add Login for conditional rendering if someone clicks on Profile in footernav & is not logged in */}
+          {/* <Link to='/login'>Login</Link> */}
+          <li>
+            <Link to='/favourites' state = {{user: user}}>
+              <i class='fa-solid fa-star app-footer-nav-list-item'></i>
+            </Link>
+          </li>
+          <li>
+            <Link to='/chat'>
+              <i class='fa-solid fa-comment app-footer-nav-list-item'></i>
+            </Link>
+          </li>
+          <li {...getTriggerProps({ background: '#FAF1E6' })}>
+            <i
+              id='burger-icon'
+              class='fa-solid fa-burger app-footer-nav-list-item'
+            ></i>
+          </li>
+          <Modal {...modalProps}>
+            <Menu />
+          </Modal>
+        </nav>
+      </footer>
+    </div>
+  </html>
   );
 }
 

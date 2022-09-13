@@ -3,6 +3,19 @@ const router = express.Router();
 const cookieSession = require('cookie-session');
 
 module.exports = (db) => {
+
+  router.post('/username', (request, response) =>{
+    const {username} = request.body;
+    const queryString= `SELECT * FROM users WHERE username = $1`;
+    const queryValues= [`${username}`];
+
+    db.query(queryString, queryValues)
+      .then((data)=>{
+        response.send(data.rows);
+      })    
+  });
+
+  //update user profile
   router.post('/update', (req, res) => {
     const {
       first_name,

@@ -10,7 +10,10 @@ import EditRecipe from './editRecipe';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import {useNavigate} from 'react-router-dom';
+
 export default function Recipe() {
+  let navigate = useNavigate();
   const params = useParams();
   const {user, setUser} = useApplicationData();
   window.scroll(0,0); 
@@ -149,6 +152,9 @@ export default function Recipe() {
     toast.success("Link to recipe copied to clipboard.")
   }
 
+
+  
+
   return (
     <>
     {/* Show recipe mode */}
@@ -156,7 +162,6 @@ export default function Recipe() {
       <div className='recipe-body'>
         <div className='recipe-card'>
         <h1 className='recipe-title'>{recipe.title}</h1>
-        <h5 className='username-heading'>This recipe is made with love by: {chef.username}</h5>
           <div className='recipe-icons'>
             {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Remove favourite </i>}
             {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Spoon it </i>}           
@@ -165,9 +170,7 @@ export default function Recipe() {
           </div>
             {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           
-          <h5 className='username-heading'>This recipe is made with love by: <span>@{chef.username}</span></h5>
-          
-          {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}><i className="fa-regular fa-pen-to-square edit-recipe-icon"></i></div>}
+          <h5 className='username-heading'>This recipe is made with love by: <span onClick={()=>navigate("/profile/" + chef.username)}>@{chef.username}</span></h5>
 
           <img className="recipe-img"src="" alt="photo" />
 
