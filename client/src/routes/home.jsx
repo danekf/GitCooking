@@ -21,12 +21,11 @@ export default function Home() {
   return (
     <>
       <div className='home-page-body'>
-        <h1 className='home-page-title'>Get ready to GitCooking!
+        <h1 className='home-page-title'>Get ready to GitCooking! </h1>
           <h5 className="home-page-subtitle">Community driven recipes without the life story from the last 3 generations.</h5>
           <div className="search-bar-feature">
             <SearchBar />  
           </div>
-        </h1>
       </div>
 
       <div className="home-page-button-write-up">

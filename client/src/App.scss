@@ -71,7 +71,7 @@
   text-decoration: none;
 }
 
-#profile-pic-display {
+#profile-pic-display-header {
   display: flex;
   border-style: solid;
   border: 1px solid transparent;
@@ -79,12 +79,17 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   padding: 2em;
-  height: 8em;
-  width: 8em;
+  height: 2em;
+  width: 2em;
   border-radius: 50%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.header-profile-picture {
+  height: -10em;
+  width: -10em;
 }
 
 .badge-secondary {
