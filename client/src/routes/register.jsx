@@ -89,6 +89,7 @@ export default function Register() {
           <input className='register-form-item-img' type="file" name="image-upload" id="image-upload" />
           <button className="register-btn-submit" type='submit' >Register</button>
         </form>
+        
         <div>
           <ToastContainer 
             position='top-center'
@@ -96,7 +97,17 @@ export default function Register() {
             closeOnClick
           />
         </div>    
+        </div><div className='connect-with-us-body'>
+        <h3 className="home-page-connect-with-us">Connect with us!</h3>
+        <div className="home-page-socials-icons">
+          <i class="fa-brands fa-instagram social-icon"></i>
+          <i class="fa-brands fa-tiktok social-icon"></i>
+          <i class="fa-brands fa-twitter social-icon"></i>
+          <i class="fa-brands fa-pinterest social-icon"></i>
         </div>
+      </div>
+
+      <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
     </div>
   );
 }

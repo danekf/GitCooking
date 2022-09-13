@@ -5,6 +5,7 @@ export default function Chat() {
     <>
     <div className='messages-body'>
     <h1 className='messages-title'>Messages</h1>
+
     </div>
     </>
   );  

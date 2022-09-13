@@ -12,6 +12,7 @@ import RecipeCard from './recipes/recipeCard';
 import EditProfile from './EditProfile';
 import useApplicationData from '../hooks/userHook';
 import {useParams} from "react-router-dom";
+import Register from './register';
 
 
 export default function UserProfile() {
@@ -94,7 +95,7 @@ export default function UserProfile() {
     <>     
     <div className='my-profile-body'>
       {/* Controls whether we are showing the edit view, or the regular profile */}
-      {mode === LOADING && <h1 className='my-recipes-title '>Loading Profile...</h1>}
+      {mode === LOADING && <Register/>}
       {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
       {mode === SHOW && 
         <>
