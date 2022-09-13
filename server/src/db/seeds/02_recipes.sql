@@ -41,7 +41,7 @@ VALUES(
     }
   ]',
   16,
-  'No Photos yet',
+  '/recipePhotos/Default.jpg',
   ARRAY ['Pasta', 'Simple', 'Quick', 'Easy', 'Budget'],
   4,
   ARRAY [2]
@@ -100,7 +100,7 @@ VALUES(
     }
   ]',
   23,
-  'No Photos yet',
+  '/recipePhotos/Default.jpg',
   ARRAY ['Pasta', 'Simple', 'Quick', 'Easy', 'Budget', 'Meatballs', 'Tomato Sauce'],
   4,
   null
@@ -125,7 +125,7 @@ VALUES(
     }
   ]',
   1,
-  'No Photos yet',
+  '/recipePhotos/Default.jpg',
   ARRAY ['water'],
   1,
   null
@@ -150,7 +150,7 @@ VALUES(
     }
   ]',
   1,
-  'No Photos yet',
+  '/recipePhotos/Default.jpg',
   ARRAY ['water'],
   2,
   null
