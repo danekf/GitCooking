@@ -16,23 +16,35 @@ import {useParams} from "react-router-dom";
 
 export default function UserProfile() {
   const params = useParams();
-  const currentProfile = params.username;
-  console.log('Viewing profile for :', currentProfile);
-  
+  const currentProfile = params.username;  
   const { user, setUser, logout } = useApplicationData();  
+  const [profile, setProfile] = useState({
+    badges: [],
+    qualifications: [],
+    favourite_recipes: [],
+  })
   const SHOW = 'SHOW';
   const EDIT = 'EDIT';
   const PUBLIC = 'PUBLIC';
-  const [mode, setMode] = useState();
+  const LOADING = 'LOADING';
+
+  const [mode, setMode] = useState(LOADING);
 
   //if it is our profile, show normal view, else show public mode
   useEffect(()=>{
-    console.log('Current Profile: ',currentProfile, 'username: ', user.username);
     if (currentProfile === user.username){
       setMode(SHOW);
     }
     else{
       setMode(PUBLIC);
+      axios({
+        method: 'post',
+        url: '/api/profile/username',
+        data: {username: currentProfile}
+      })
+      .then((response)=>{
+        console.log(response.data)
+      })
     }
   }, [user])
 
@@ -58,6 +70,7 @@ export default function UserProfile() {
   return (
     <>     
       {/* Controls whether we are showing the edit view, or the regular profile */}
+      {mode === LOADING && <h1 className='my-recipes-title '>Loading Profile...</h1>}
       {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
 
       {mode === SHOW && 
