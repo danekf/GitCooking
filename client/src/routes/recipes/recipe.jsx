@@ -205,7 +205,7 @@ export default function Recipe() {
         </div>
         
         <div className='comment-list-card-in-recipe'>
-          <ul>
+          <ul className='comment-body-recipe'>
           <CommentList comments = {comments} recipeId = {recipeId.recipeId} setComments={setComments} username={user.username}/>
           </ul>
         </div>

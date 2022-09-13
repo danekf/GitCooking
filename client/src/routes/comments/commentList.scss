@@ -19,6 +19,15 @@
   border-bottom-color: #d9534f;
 }
 
+.fa-message-comment {
+  color: #d9534f;
+  cursor: pointer;
+}
+
+.fa-message-comment:hover {
+  color: #FFAD60;
+}
+
 @media screen and (min-width: 550px) {
   .comment-text-area {
     width: 30em;

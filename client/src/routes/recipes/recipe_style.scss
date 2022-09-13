@@ -202,6 +202,9 @@ ul li.tags {
     margin-right: 0.5em;
     width:fit-content;
   }
-  
-  
+}
+
+.comment-body-recipe {
+  display: flex;
+  justify-content: flex-start;
 }

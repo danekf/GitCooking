@@ -1,14 +1,20 @@
-.comment-body {
+.comment-list {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   font-family: 'Montserrat', sans-serif;
   color: black;
   font-weight: 900;
-  border-bottom: 1px solid transparent;
-  border-bottom-color: #d9534f;
-  border-right: 1px solid transparent;
-  margin-right: 4em;
   padding: 1em;
+  margin-left: -1em;
 }
 
 .comment-username {
@@ -24,6 +30,7 @@
   padding: 0.1em;
   justify-content: flex-start;
   text-align: left;
+  margin-top: 1em;
 }
 
 .comment-title {
