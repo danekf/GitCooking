@@ -52,20 +52,32 @@ export default function UserProfile() {
   }, [params])
 
   useEffect(()=>{
-    let tempId = ''
-    if(mode==='PUBLIC'){
-      tempId = profile.id;
+    let tempId = '';
+    if(mode !== 'LOADING'){
+      if(mode==='PUBLIC'){
+        tempId = profile.id;
+      }
+      else{
+        tempId = user.id;
+      }
+      axios({
+        method: 'post',
+        url: '/api/recipes/user',
+        data: {user_id: tempId}
+      })
+      .then((response)=>{
+        const tempArray=[]
+        if(response.data.rowCount>0){
+          for (let key in response.data.rows){
+            tempArray.push(response.data.rows[key])
+          }
+          setRecipes(tempArray);
+        }        
+        else{
+          setRecipes([]);
+        }
+      })
     }
-    else{
-      tempId = user.id;
-    }
-    console.log(tempId)
-    axios({
-      method: 'post',
-      url: '/api/recipes/user',
-      data: {user_id: tempId}
-    })
-
   }, [mode])
 
 
