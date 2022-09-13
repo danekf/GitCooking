@@ -92,6 +92,7 @@ export default function UserProfile() {
 
   return (
     <>     
+    <div className='my-profile-body'>
       {/* Controls whether we are showing the edit view, or the regular profile */}
       {mode === LOADING && <h1 className='my-recipes-title '>Loading Profile...</h1>}
       {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
@@ -119,7 +120,7 @@ export default function UserProfile() {
             <h1 className='my-recipes-title '>My Recipes</h1>
           </div>
             <ul>
-              {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+              {recipes.map((recipe) => <li className='recipe-profile-list'><RecipeCard recipe={recipe}/></li>)}
             </ul>
           </div>
         </>
@@ -140,15 +141,18 @@ export default function UserProfile() {
             </div>
           </div>
           <div>
+            <div className='my-recipes-section'>
             <div className='my-recipes-card'>
             <h1 className='my-recipes-title '>{profile.username}'s Recipes</h1>
           </div>
-            <ul>
-              {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+            <ul className='recipe-profile'>
+              {recipes.map((recipe) => <li className='recipe-profile-list'><RecipeCard recipe={recipe}/></li>)}
             </ul>
+          </div>
           </div>
         </>
       }
+      </div>
     </>
   ); 
 } 
