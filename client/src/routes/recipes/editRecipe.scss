@@ -2,10 +2,16 @@
 input {
   outline: none;
   caret-color: #D9534F;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #D9534F;
 }
 textarea {
   outline: none;
   caret-color: #D9534F;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #D9534F;
 }
 
 // General Setup:
@@ -403,4 +409,8 @@ input.edit-recipe-item-add-instr-add {
     width: 45em;
     margin-bottom: 1em;
   }
+}
+
+.new-btn-upload {
+  border: none;
 }
