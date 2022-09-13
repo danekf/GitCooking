@@ -1,5 +1,7 @@
 const { response } = require('express');
 const express = require('express');
+const multer = require('multer');
+const upload = multer ({ dest: './uploads/'})
 const router = express.Router();
 
 module.exports = (db) => {
@@ -87,13 +89,14 @@ module.exports = (db) => {
 
   // Save a new recipe to the db
   router.post('/new', (request, response) => {
-    const { user_id, original_fork_id, title, recipe_photos, servings } =
+    const { user_id, original_fork_id, title, servings } =
       request.body;
 
     // Black magic to make it work with pg, more greyish white magic actually.
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
+    const recipe_photos = JSON.stringify(request.body.recipe_photos);
 
     // Black magic to mage an array work when inputting into pg
     // Do not delete the black magic, or these comments about black magic. It is important to keep them.
@@ -129,14 +132,17 @@ module.exports = (db) => {
   });
 
   // Edit an existing recipe
-  router.post('/edit', (request, response) => {
-    const { id, user_id, original_fork_id, title, recipe_photos, servings } =
+  router.post('/edit', upload.single('recipe_photos'), (request, response) => {
+    console.log(request.body);
+    const { id, user_id, original_fork_id, title, servings } =
       request.body;
 
     // Black magic to make it work with pg, more greyish white magic actually.
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
+    const recipe_photos = JSON.stringify(request.body.recipe_photos);
+
 
     // Black magic to mage an array work when inputting into pg
     // Do not delete the black magic, or these comments about black magic. It is important to keep them.
@@ -166,8 +172,7 @@ module.exports = (db) => {
       `${tags}`,
       `${servings}`,
     ];
-    console.log(queryValues);
-
+ 
     db.query(queryString, queryValues)
       .then(() => {
         response.sendStatus(200);
@@ -201,3 +206,5 @@ module.exports = (db) => {
 
   return router;
 };
+
+

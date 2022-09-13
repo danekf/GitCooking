@@ -24,7 +24,7 @@ const original_fork_id = props.original_fork_id || 0;
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: 'dummy_URL',
+    recipe_photos: '',
     estimatedTime: 0,
   })
 
@@ -281,21 +281,11 @@ const deleteItem = (index, event, name)=>{
               /> 
             </div>
 
-            {/* upload multiple recipe photos using multer */}
-
-            <form method="POST" action="/recipe-upload-multiple" enctype="multipart/form-data">
-                <div>
+            <div>
                     <h4>Upload an Image:</h4>
-                    <input type="file" name="recipe-files" required multiple  />
+                    <input type="file" value={formValue.recipe_photos} onChange={handleChange} name="recipe_photos" id="recipe_photos"/>
                 </div>
-                {/* <div>
-                    <input type="submit" value="Upload" />
-                </div> */}
-            </form>
-            {/* <h4>Upload an Image:</h4>
-            <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
-             */}
-             
+
             <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
           </form>

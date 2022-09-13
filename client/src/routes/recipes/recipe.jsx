@@ -26,7 +26,7 @@ export default function Recipe() {
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: 'dummy_URL',
+    recipe_photos: '',
     estimatedTime: 0,    
   });
   const [chef, setChef] = useState([]);
@@ -162,7 +162,7 @@ export default function Recipe() {
 
           <div className='recipe-stat'>
             <h6>Cook Time:</h6>
-            <p>{recipe.estimatedtime} mintues</p>
+            <p>{recipe.estimatedtime} minutes</p>
             
             <h6>Servings:</h6>
             <p>{recipe.servings}</p>
@@ -184,6 +184,13 @@ export default function Recipe() {
           <h5 className='tags-subheading'>Tags:</h5>
           <ul className='card-body'>
             {recipe.tags.map((tag) => <li>{tag} </li>)}
+          </ul>
+
+          <h5 className='images-subheading'>Images:</h5>
+          <ul className='card-body'>  
+          {recipe.recipe_photos}  
+
+            
           </ul>
 
         </div>

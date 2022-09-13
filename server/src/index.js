@@ -2,10 +2,10 @@
 const ENV = require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 const express = require('express');
-const multer = require('multer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
+const fs = require('fs');
 
 
 // PG connection and database setup
@@ -56,6 +56,7 @@ const register = require('./routes/register');
 const logout = require('./routes/logout');
 const users = require('./routes/users');
 const profiles = require('./routes/profiles');
+const { fstat } = require('fs');
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
@@ -70,3 +71,57 @@ server.listen(PORT, () => {
   console.log("Its servin' Time!");
   console.log(`Port: ${PORT}, Mode: .`, ENV);
 });
+
+
+// Multer file upload
+
+// app.get('/uploadFile', upload.single('avatar'), function (req, res) {
+//   let fileType = req.file.mimetype.split("/")[1];
+//   let newFileName = req.file.filename + "." + fileType
+
+//   fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function() {
+//     res.send("200");
+//   })
+
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+// })
+
+
+// Tell multer where to upload images
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, '../../client/uploads')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname)
+//   }
+// })
+// const upload = multer({ storage: storage })
+
+
+app.use(express.static(__dirname + '/public'));
+app.use('/uploads', express.static('uploads'));
+
+// app.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
+//   // req.file is the `profile-file` file
+//   // req.body will hold the text fields, if there were any
+//   console.log(JSON.stringify(req.file))
+//   let response = '<a href="/">Home</a><br>'
+//   response += "Files uploaded successfully.<br>"
+//   response += `<img src="${req.file.path}" /><br>`
+//   return res.send(response)
+// })
+
+
+// app.post('/recipe-upload', upload.array('recipe-files', 3), function (req, res, next) {
+//   // req.files is array of `profile-files` files
+//   // req.body will contain the text fields, if there were any
+//   let response = '<a href="/">Home</a><br>'
+//   response += "Files uploaded successfully.<br>"
+//   for(let i=0;i<req.files.length;i++){
+//       response += `<img src="${req.files[i].path}" /><br>`
+//   }
+  
+//   return res.send(response)
+// })

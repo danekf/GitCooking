@@ -5,9 +5,6 @@ import { TagsInput } from "react-tag-input-component";
 import axios from 'axios'; 
 import useApplicationData from '../../hooks/userHook';
 
-// import multer from 'multer';
-// const multer = require("multer");
-
 
 export default function EditRecipe({recipe, returnToRecipe, title, submissionURL }) {  
 
@@ -18,9 +15,10 @@ const { user} = useApplicationData();
   const [formValue, setformValue] = useState({...recipe})
 
   useEffect(()=>{
+    console.log(formValue);
     setformValue({
       ...formValue,
-      user_id: user.id
+      user_id: user.id,
     })
     
   }, [user])
@@ -104,14 +102,30 @@ const addIngredientToList = (event) =>{
     tags: recipeTags}) 
     // eslint-disable-next-line 
   }, [recipeTags])
-  
+
+
+  //photo handler
+  // const [recipePhoto, setRecipePhoto]=useState([]);
+  // console.log(recipePhoto);
+  //     useEffect(() =>{
+  //       setformValue({
+  //         ...formValue,
+  //         recipe_photos: ''}) 
+  //       // eslint-disable-next-line 
+  //     }, '')
+
   //handles all changes to components into the form for submission
   const handleChange =(event) => {
+  
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value
     });
   }
+
+  
+    
+
   
   //handles update of created items
 const updateRecipe = (index, event, name)=>{
@@ -152,18 +166,21 @@ const deleteItem = (index, event, name)=>{
     //recipe submission
     const submitRecipe = (event) => {
       event.preventDefault();
+
       axios({
         method: "post",
         url: submissionURL,
         data: formValue
       })
       .then ((response)=>{
+  
         //if username not found, send error. Messages are curated by server
         if(response.data.error){
           toast.error(response.data.error);
         }
         //if we were editing do something different than if forking
         if(title==='Edit'){
+
           toast.success(`Submitted ${formValue.title} sucessfully!`)
           setTimeout(()=>{
             returnToRecipe();
@@ -193,7 +210,7 @@ const deleteItem = (index, event, name)=>{
             closeOnClick
           />
         </div>
-          <form action="">
+          <form action="" enctype="multipart/form-data">
 
             <h1 className='recipe-title'>{title} Recipe</h1>
             
@@ -278,17 +295,13 @@ const deleteItem = (index, event, name)=>{
             </div>
 
 
+            <div>
+                    <h4>Upload an Image:</h4>
+                    <input type="file" value={formValue.recipe_photos} onChange={handleChange} name="recipe_photos" id="recipe_photos"/>
+                </div>
+
             {/* upload multiple recipe photos using multer */}
 
-            <form method="POST" action="/recipe-upload-multiple" enctype="multipart/form-data">
-                <div>
-                    <h4>Upload an Image:</h4>
-                    <input type="file" name="recipe-files" required multiple  />
-                </div>
-                {/* <div>
-                    <input type="submit" value="Upload" />
-                </div> */}
-            </form>
             {/* <h4>Upload an Image:</h4>
             <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
              */}
