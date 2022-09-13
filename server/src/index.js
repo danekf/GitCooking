@@ -5,6 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
+const fs = require('fs');
+
 
 // PG connection and database setup
 const { Pool } = require('pg');
@@ -54,7 +56,9 @@ const register = require('./routes/register');
 const logout = require('./routes/logout');
 const users = require('./routes/users');
 const profiles = require('./routes/profiles');
+const { fstat } = require('fs');
 const comments = require('./routes/comments');
+
 
 // Mount all resource routes
 app.use('/api/recipes', recipes(db));
@@ -65,8 +69,18 @@ app.use('/api/users', users(db));
 app.use('/api/profile', profiles(db));
 app.use('/api/comments', comments(db));
 
+
+//static folder for images
+app.use(express.static('public'));
+
+
 // Message on server start
 server.listen(PORT, () => {
   console.log("Its servin' Time!");
   console.log(`Port: ${PORT}, Mode: .`, ENV);
 });
+
+
+app.use(express.static(__dirname + '/public'));
+app.use('/uploads', express.static('uploads'));
+

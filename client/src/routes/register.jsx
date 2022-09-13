@@ -6,7 +6,11 @@ import './register.scss';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 export default function Register() {
+
+
   //state managed form data
   const [formValue, setformValue] = useState({
     username: '',
@@ -85,8 +89,20 @@ export default function Register() {
           <input className="register-form-item" type='email' id='email' name='email' placeholder="Email" onChange={handleChange}></input>
           <input className="register-form-item" type='text' id='username' name='username' placeholder='Username' onChange={handleChange}></input>
           <input className="register-form-item" type='password' id='password' name='password' placeholder='Password' onChange={handleChange}></input>
-          <h6 className="upload-img">Upload a Profile Picture:</h6>
-          <input className='register-form-item-img' type="file" name="image-upload" id="image-upload" />
+
+          {/* upload photo user multer */}
+          <form method="POST" action="/profile-upload-single" enctype="multipart/form-data">
+            <div>
+              <h6 className="upload-img">Upload a Profile Picture:</h6>
+              <input type="file" name="profile-file" required/>
+            </div>
+            {/* <div>
+                <input type="submit" value="Upload" />
+            </div> */}
+          </form>
+
+          {/* <h6 className="upload-img">Upload a Profile Picture:</h6>
+          <input className='register-form-item-img' type="file" name="image-upload" id="image-upload" /> */}
           <button className="register-btn-submit" type='submit' >Register</button>
         </form>
         

@@ -27,8 +27,9 @@ export default function Recipe() {
     equipment: [],
     instructions: [],
     tags: [],
+    
     servings: '',
-    recipe_photos: 'dummy_URL',
+    recipe_photos: 'No Photos yet',
     estimatedTime: 0,    
   });
 
@@ -172,11 +173,13 @@ export default function Recipe() {
           
           <h5 className='username-heading'>This recipe is made with love by: <span onClick={()=>navigate("/profile/" + chef.username)}>@{chef.username}</span></h5>
 
-          <img className="recipe-img"src="" alt="photo" />
+          {recipe.recipe_photos !== 'No Photos yet' && <img className="recipe-img" src={recipe.recipe_photos} alt="Recipe" width= '35%'/>}
+          {recipe.recipe_photos === 'No Photos yet' && <div>No Photos Yet</div>}
+          
 
           <div className='recipe-stat'>
             <h6>Cook Time:</h6>
-            <p>{recipe.estimatedtime} mintues</p>
+            <p>{recipe.estimatedtime} minutes</p>
             
             <h6>Servings:</h6>
             <p>{recipe.servings}</p>

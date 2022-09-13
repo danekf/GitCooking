@@ -15,7 +15,7 @@ export default function EditRecipe({recipe, returnToRecipe, title, submissionURL
   useEffect(() => {
     setformValue({
       ...formValue,
-      user_id: user.id
+      user_id: user.id,
     })
   }, [user])
 
@@ -100,9 +100,10 @@ const addIngredientToList = (event) => {
 
     // Eslint-disable-next-line 
   }, [recipeTags])
-  
+
   // Handles all changes to components into the form for submission
   const handleChange =(event) => {
+  
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value
@@ -145,39 +146,36 @@ const deleteItem = (index, event, name)=>{
     // Eslint-disable-next-line
   }, [formValue.instructions])
 
-    // Recipe submission
-    const submitRecipe = (event) => {
-      event.preventDefault();
-      axios({
-        method: "post",
-        url: submissionURL,
-        data: formValue
-      })
-      .then ((response)=>{
-        // If username not found, send error. Messages are curated by server
-        if(response.data.error){
-          toast.error(response.data.error);
-        }
-        // If we we're editing do something different than if forking
-        if(title==='Edit'){
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          setTimeout(()=>{
-            returnToRecipe();
-            window.location = `/recipes/${recipe.id}`
-          }, 2000)       
-        }        
-        if(title==='Fork'){
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          const recipeId = response.data[0].id; 
-          setTimeout(()=>{
-            window.location = `/recipes/${recipeId}`
-          }, 2000)       
-        }
-      })
+//recipe submission
+const submitRecipe = (event) => {
+  event.preventDefault();
+  
+  // event.preventDefault();
+  axios({
+    method: "post",
+    url: submissionURL,
+    data: formValue,
+    header: {"Content-Type": "multipart/form-data"},
+
+  })
+  .then ((response)=>{
+    //if username not found, send error. Messages are curated by server
+    if(response.data.error){
+      toast.error(response.data.error);
     }
+    else{
+      toast.success(`Submitted ${formValue.title} sucessfully!`)
+     
+      setTimeout(()=>{
+         window.location = `/recipes/${recipe.id}`
+      }, 2000)       
+    }
+  })
+}
 
   return (
     <>
+    <main>
       <div className='edit-recipe-body'>
         <div className='edit-recipe-card'>
           <div>
@@ -219,7 +217,7 @@ const deleteItem = (index, event, name)=>{
                     <li><input className="edit-recipe-item-add-ing" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                     <li><input className="edit-recipe-item-add-ing" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
                     <div>
-                      <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}></i>
+                      <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}>Click to add Ingredient</i>
                     </div>
                   </ul>
                 </div>
@@ -244,7 +242,7 @@ const deleteItem = (index, event, name)=>{
                     <li><input className="edit-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                     <li><input className="edit-recipe-item-add-eq" type="text" name="equipmentName" placeholder="Enter Equipment and Details" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
                     <div>
-                      <i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}></i>
+                      <i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}>Click to add Equipment</i>
                     </div>
                   </ul>
                 </div>
@@ -261,9 +259,9 @@ const deleteItem = (index, event, name)=>{
                         <i onClick={(event)=>deleteItem(index, event, "instructions")}class="fa-solid fa-trash trash-icon-instr"></i>
                       </div>
                     </li>            
-                    </div>
-                )}  
-                </ul> 
+                </div>
+              )}  
+              </ul> 
               <div className='add-instr-container'>
                 <ul>
                   <li><input className="edit-recipe-item-add-instr" width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Enter Time Required (in minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/></li>
@@ -271,7 +269,7 @@ const deleteItem = (index, event, name)=>{
                 </ul>
               </div>
               <div>
-                <i className="fa-solid fa-plus add-icon-instr" onClick={addInstructionToList}></i>
+                <i className="fa-solid fa-plus add-icon-instr" onClick={addInstructionToList}>Click to add Instruction</i>
               </div>              
               <h6 className='edit-recipe-heading'>Tags:</h6>
               <div className='tags'>
@@ -281,17 +279,19 @@ const deleteItem = (index, event, name)=>{
                   onChange={setRecipeTags}
                   placeHolder="enter tags"
                 /> 
+
               </div>
-              <h6 className="upload-img">Upload an Image:</h6>
-              <input className='edit-recipe-item-img' type="file" name="image-upload" />
               <div className='recipe-btn-container'>
                 <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
                 <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
-              </div>
+              </div>       
+     
+          </form>
 
-            </form>
+
           </div>
         </div>
-      </>
+      </main>
+    </>
     );  
   }

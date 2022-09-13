@@ -9,6 +9,7 @@ module.exports = (db) => {
   //get all comments for a supplied recipe ID
   router.post('/get', (request,response)=>{
     const {recipeId} = request.body;
+    console.log('recipeId: ,', recipeId)
 
 
     const queryString = `
