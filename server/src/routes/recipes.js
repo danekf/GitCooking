@@ -78,7 +78,6 @@ module.exports = (db) => {
   //get all of a users recipes
   router.post('/user', (request, response) => {
     const {user_id} = request.body;
-    console.log('userid: ', user_id)
 
     const queryString = `
     SELECT *
@@ -163,7 +162,7 @@ module.exports = (db) => {
 // })
 
   // Edit an existing recipe
-  router.post('/edit', upload.single('recipe_photos'), (request, response) => {
+  router.post('/edit', (request, response) => {
     
     const { id, user_id, original_fork_id, title, servings } =
       request.body;
@@ -172,7 +171,8 @@ module.exports = (db) => {
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
-    const recipe_photos = JSON.stringify(request.body.recipe_photos);
+    const recipe_photos = request.body.recipe_photos;
+
 
 
     // Black magic to mage an array work when inputting into pg

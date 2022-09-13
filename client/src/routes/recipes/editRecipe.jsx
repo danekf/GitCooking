@@ -146,25 +146,6 @@ const deleteItem = (index, event, name)=>{
     // Eslint-disable-next-line
   }, [formValue.instructions])
 
-//image submission
-const submitImage = (event) =>{
-  event.preventDefault();
-  const image = new FormData();
-  image.append('myFile', formValue.recipe_photos);
-  axios({
-    method: 'post',
-    url: '/api/recipes/uploadfile', 
-    data: image,
-    header: {"Content-Type": "multipart/form-data"}
-  })
-  .then((response)=>{
-    setformValue({
-      ...formValue,
-      recipe_photos: `/recipePhotos/${response.data.filepath.filename}`
-    })
-  })
-}
-
 //recipe submission
 const submitRecipe = (event) => {
   event.preventDefault();
@@ -189,13 +170,6 @@ const submitRecipe = (event) => {
          window.location = `/recipes/${recipe.id}`
       }, 2000)       
     }
-  })
-}
-
-const handleImage = (event) =>{
-  setformValue({
-    ...formValue,
-    recipe_photos: event.target.files[0]
   })
 }
 
@@ -314,13 +288,7 @@ const handleImage = (event) =>{
      
           </form>
 
-            <h4 className="upload-img">Update Image:</h4>
-            <img src={formValue.recipe_photos} width= '30%' />
-            
-            <form onSubmit={submitImage}> 
-              <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
-              <input type="submit" value="Upload file"/>
-            </form>  
+
           </div>
         </div>
       </main>
