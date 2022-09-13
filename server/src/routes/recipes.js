@@ -1,8 +1,8 @@
 const { response } = require('express');
 const express = require('express');
 const multer = require('multer');
-const upload = multer ({ dest: './uploads/'})
 const router = express.Router();
+const path = require('path');
 
 module.exports = (db) => {
   // Home page, just get recipes of the week,
@@ -87,8 +87,22 @@ module.exports = (db) => {
       });
   });
 
+
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '/../../../client/public/uploads/'))
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+});
+
+const upload = multer({ storage: storage });
+
   // Save a new recipe to the db
-  router.post('/new', (request, response) => {
+  router.post('/new', upload.single('recipe_photos'), (request, response) => {
+
+
     const { user_id, original_fork_id, title, servings } =
       request.body;
 
@@ -120,7 +134,7 @@ module.exports = (db) => {
       `${ingredients}`,
       `${equipment}`,
       `${instructions}`,
-      `${recipe_photos}`,
+      `${request.hostname +'/' + request.file.path}`,
       `${tags}`,
       `${servings}`,
     ];
@@ -129,7 +143,14 @@ module.exports = (db) => {
     db.query(queryString, queryValues).then(({ rows: recipe }) => {
       response.json(recipe);
     });
+
   });
+
+
+//   router.post('/new', upload.single('file'), function(req,res) {
+//     console.log('storage location is ', req.hostname +'/' + req.file.path);
+//     return res.send(req.file);
+// })
 
   // Edit an existing recipe
   router.post('/edit', upload.single('recipe_photos'), (request, response) => {
