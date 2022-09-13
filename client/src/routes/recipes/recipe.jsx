@@ -163,12 +163,12 @@ export default function Recipe() {
         <div className='recipe-card'>
         <h1 className='recipe-title'>{recipe.title}</h1>
           <div className='recipe-icons'>
-            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}></i>}
-            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}></i>}           
-            <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}></i>
-            <i className="fa-solid fa-share icon-hover" onClick={shareRecipe}></i>
+            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Remove as Favourite</i>}
+            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Spoon it</i>}           
+            <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe</i>
+            <i className="fa-solid fa-share icon-hover" onClick={shareRecipe}> Share Recipe</i>
           </div>
-            {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}></i>}
+            {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}>Edit Recipe</i>}
           
           <h5 className='username-heading'>This recipe is made with love by: <span onClick={()=>navigate("/profile/" + chef.username)}>@{chef.username}</span></h5>
 
