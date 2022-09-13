@@ -33,8 +33,7 @@ module.exports = (db) => {
       error.httpStatusCode = 400
       return next(error)
     }
-  
- 
+      console.log('filepath: ',file.path);
     
   })
   ///////////////////////////////
@@ -162,7 +161,7 @@ module.exports = (db) => {
       `${ingredients}`,
       `${equipment}`,
       `${instructions}`,
-      `${request.hostname +'/' + 'potato'}`,
+      `${request.hostname +'/' + request.file.path}`,
       `${tags}`,
       `${servings}`,
     ];
