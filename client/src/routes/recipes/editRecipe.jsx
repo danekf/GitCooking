@@ -243,7 +243,7 @@ const handleImage = (event) =>{
                     <li><input className="edit-recipe-item-add-ing" type="number"  min="0" name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                     <li><input className="edit-recipe-item-add-ing" type="text" name="ingredientName" placeholder='Enter Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
                     <div>
-                      <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}></i>
+                      <i className="fa-solid fa-plus add-icon-ing" onClick={addIngredientToList}>Click to add Ingredient</i>
                     </div>
                   </ul>
                 </div>
@@ -268,7 +268,7 @@ const handleImage = (event) =>{
                     <li><input className="edit-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                     <li><input className="edit-recipe-item-add-eq" type="text" name="equipmentName" placeholder="Enter Equipment and Details" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
                     <div>
-                      <i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}></i>
+                      <i className="fa-solid fa-plus add-icon-eq" onClick={addEquipmentToList}>Click to add Equipment</i>
                     </div>
                   </ul>
                 </div>
@@ -295,7 +295,7 @@ const handleImage = (event) =>{
                 </ul>
               </div>
               <div>
-                <i className="fa-solid fa-plus add-icon-instr" onClick={addInstructionToList}></i>
+                <i className="fa-solid fa-plus add-icon-instr" onClick={addInstructionToList}>Click to add Instruction</i>
               </div>              
               <h6 className='edit-recipe-heading'>Tags:</h6>
               <div className='tags'>

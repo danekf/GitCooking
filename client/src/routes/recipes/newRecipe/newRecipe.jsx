@@ -245,7 +245,7 @@ const deleteItem = (index, event, name)=>{
                 <li><input className='new-item-ing-add-ing' type="number"  min="0"name="ingredientQty" placeholder='Enter Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                 <li><input className='new-item-ing-add-ing' type="text" name="ingredientName" placeholder='Enter Ingredient measurement and details' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
                 <div>
-                  <i className="fa-solid fa-plus new-add-icon" onClick={addIngredientToList}></i>
+                  <i className="fa-solid fa-plus new-add-icon" onClick={addIngredientToList}>Click to add Ingredient</i>
                 </div>
               </ul>
             </div>
@@ -268,7 +268,7 @@ const deleteItem = (index, event, name)=>{
                 <li><input className="new-recipe-item-add-eq" type="number" name="equipmentQty" placeholder='Enter Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                 <li><input className="new-recipe-item-add-eq" type="text" name="equipmentName" placeholder='Enter Ingredient' onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
                 <div>
-                  <i className="fa-solid fa-plus new-add-icon-eq" onClick={addEquipmentToList}></i>
+                  <i className="fa-solid fa-plus new-add-icon-eq" onClick={addEquipmentToList}>Click to add equipment</i>
                 </div>
               </ul>
             </div>
@@ -294,7 +294,7 @@ const deleteItem = (index, event, name)=>{
                 <textarea className="new-recipe-item-add-instr-box" type="text" name="instruction" placeholder='Enter Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/>
                 </li>
                 <div>
-                  <i className="fa-solid fa-plus new-add-icon-eq" onClick={addInstructionToList}></i>
+                  <i className="fa-solid fa-plus new-add-icon-eq" onClick={addInstructionToList}>Click to add instruction</i>
                 </div>
               </ul>
             </div>  
