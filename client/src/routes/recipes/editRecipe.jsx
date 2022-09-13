@@ -184,9 +184,9 @@ const submitRecipe = (event) => {
     }
     else{
       toast.success(`Submitted ${formValue.title} sucessfully!`)
-      const recipeId = response.data[0].id; 
+     
       setTimeout(()=>{
-         window.location = `recipes/${recipeId}`
+         window.location = `/recipes/${recipe.id}`
       }, 2000)       
     }
   })
@@ -305,27 +305,16 @@ const handleImage = (event) =>{
                   onChange={setRecipeTags}
                   placeHolder="enter tags"
                 /> 
+
               </div>
-              <h6 className="upload-img">Upload an Image:</h6>
-              <input className='edit-recipe-item-img' type="file" name="image-upload" />
               <div className='recipe-btn-container'>
                 <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
                 <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
-              </div>
-        
-            <h4>Tags:</h4>
-            <div className='tags'>
-              <TagsInput
-                  name= 'tags'
-                  value={recipeTags}
-                  onChange={setRecipeTags}
-                  placeHolder="enter tags"
-              /> 
-            </div>
-
-            <button className='recipe-btn-submit' type="submit">Submit Recipe!</button>           
+              </div>       
+     
           </form>
 
+            <h4 className="upload-img">Update Image:</h4>
             <img src={formValue.recipe_photos} width= '30%' />
             
             <form onSubmit={submitImage}> 
