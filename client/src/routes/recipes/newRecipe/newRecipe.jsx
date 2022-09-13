@@ -19,7 +19,7 @@ const original_fork_id = props.original_fork_id || 0;
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: '',
+    recipe_photos: 'No Photos yet',
     estimatedTime: 0,
   })
 
@@ -196,8 +196,8 @@ const deleteItem = (index, event, name)=>{
         toast.success(`Submitted ${formValue.title} sucessfully!`)
         const recipeId = response.data[0].id; 
         setTimeout(()=>{
-           window.location = `recipes/${recipeId}`
-        }, 2000)       
+          window.location = `/recipes/${recipeId}`
+       }, 2000)       
       }
     })
   }
@@ -215,7 +215,7 @@ const deleteItem = (index, event, name)=>{
     <div className='new-recipe-body'>
       <div className='create-a-new-recipe-card'>
         <h1 className='new-recipe-title'>Create a New Recipe</h1>
-          <form action="" className='new-recipe-form'>
+          <form onSubmit={submitRecipe} className='new-recipe-form'>
             <h6 className='new-create-heading'>Recipe Title:</h6>
             <input className="new-recipe-item" type="text" name="title" value={formValue.title} onChange={handleChange} />
         
@@ -299,7 +299,17 @@ const deleteItem = (index, event, name)=>{
                 </div>
               </ul>
             </div>  
-            <button className='recipe-btn-submit' type="submit">Submit Recipe!</button>           
+            <h6 className='edit-recipe-heading'>Tags:</h6>
+              <div className='tags'>
+              <TagsInput
+                  name= 'tags'
+                  value={recipeTags}
+                  onChange={setRecipeTags}
+                  placeHolder="enter tags"
+                /> 
+              </div>
+            <button className='recipe-btn-submit' type="submit" onSubmit={submitRecipe}>Submit Recipe!</button>     
+
           </form>
 
           <img src={formValue.recipe_photos} width= '30%' />
