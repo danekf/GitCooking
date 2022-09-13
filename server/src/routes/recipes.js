@@ -3,8 +3,38 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const path = require('path');
+const fs = require('file-system');
 
 module.exports = (db) => {
+   //multer settings for new recipe
+   const storage = multer.diskStorage({
+    destination: 'photos',
+    filename: (req, file, cb) => {
+      cb(null, file.originalname)
+      // cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+  });
+  const upload = multer({ storage: storage });
+
+  ///////////////////////////////
+  //TEST
+  ///////////////////////////////
+  router.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+    const file = req.file;
+    console.log('file: ', file);
+    // if (!file) {
+    //   const error = new Error('Please upload a file')
+    //   error.httpStatusCode = 400
+    //   return next(error)
+    // }
+    //   res.send(file)
+    
+  })
+  ///////////////////////////////
+  ///////////////////////////////
+
+
+
   // Home page, just get recipes of the week,
   ////////////////////////////////////
   // Currently just getting ALL recipes
@@ -72,6 +102,7 @@ module.exports = (db) => {
       });
   });
 
+
   router.post('/recipeId', (request, response) => {
     const { recipeId } = request.body;
     const queryString = `
@@ -86,23 +117,11 @@ module.exports = (db) => {
         response.json(recipes);
       });
   });
-
-
-  const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '/../../../client/public/uploads/'))
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    }
-});
-
-const upload = multer({ storage: storage });
+  
 
   // Save a new recipe to the db
   router.post('/new', upload.single('recipe_photos'), (request, response) => {
-
-
+    console.log('file: ', request.file);
     const { user_id, original_fork_id, title, servings } =
       request.body;
 
@@ -110,7 +129,10 @@ const upload = multer({ storage: storage });
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
-    const recipe_photos = JSON.stringify(request.body.recipe_photos);
+    const recipe_photos =request.body.recipe_photos;
+    upload.single('recipe_photos');
+    
+  
 
     // Black magic to mage an array work when inputting into pg
     // Do not delete the black magic, or these comments about black magic. It is important to keep them.
@@ -134,7 +156,7 @@ const upload = multer({ storage: storage });
       `${ingredients}`,
       `${equipment}`,
       `${instructions}`,
-      `${request.hostname +'/' + request.file.path}`,
+      `${request.hostname +'/' + 'potato'}`,
       `${tags}`,
       `${servings}`,
     ];
@@ -143,7 +165,7 @@ const upload = multer({ storage: storage });
     db.query(queryString, queryValues).then(({ rows: recipe }) => {
       response.json(recipe);
     });
-
+    
   });
 
 
@@ -154,7 +176,7 @@ const upload = multer({ storage: storage });
 
   // Edit an existing recipe
   router.post('/edit', upload.single('recipe_photos'), (request, response) => {
-    console.log(request.body);
+    
     const { id, user_id, original_fork_id, title, servings } =
       request.body;
 

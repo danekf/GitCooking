@@ -12,8 +12,6 @@ export default function NewRecipe(props) {
 const { user, setUser, logout } = useApplicationData();  
 const original_fork_id = props.original_fork_id || 0;
 
-
-
   //form submission handler for submission to server
   const [formValue, setformValue] = useState({
     user_id: 0,
@@ -166,7 +164,9 @@ const deleteItem = (index, event, name)=>{
     axios({
       method: "post",
       url: "/api/recipes/new",
-      data: formValue
+      data: formValue,
+      header: {"Content-Type": "multipart/form-data"},
+
     })
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
@@ -183,6 +183,13 @@ const deleteItem = (index, event, name)=>{
     })
   }
 
+  const handleImage = (event) =>{
+    setformValue({
+      ...formValue,
+      recipe_photos: event.target.files[0]
+    })
+  }
+
 
   return (
     <>
@@ -196,7 +203,9 @@ const deleteItem = (index, event, name)=>{
             closeOnClick
           />
         </div>
-          <form action="">
+        {/* added action method, enctype */}
+        {/* previous <form action=""> */}
+          <form action="/new" method="post" enctype="multipart/form-data">
 
 
             <h1 className='recipe-title'>Create a New Recipe</h1>
@@ -280,15 +289,21 @@ const deleteItem = (index, event, name)=>{
                 placeHolder="enter tags"
               /> 
             </div>
-
-            <div>
-                    <h4>Upload an Image:</h4>
-                    <input type="file" value={formValue.recipe_photos} onChange={handleChange} name="recipe_photos" id="recipe_photos"/>
-                </div>
-
             <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+            </form>
 
-          </form>
+
+            <form action="/api/recipes/uploadfile" enctype="multipart/form-data" method="POST"> 
+              <input type="file" name="myFile" accept='image/*' />
+              <input type="submit" value="Upload a file"/>
+            </form>
+            {/* <form action='/api/recipes/uploadfile' encenctype="multipart/form-data" method="POST">    
+              <div>
+                <h4>Upload an Image:</h4>
+                <input type="file" name="myImage" accept="image/*" />
+                <button className='recipe-btn-submit' type="submit" value="Upload Photo">Submit Photo</button>
+              </div>
+            </form> */}
         </div>
       </main>
     </>

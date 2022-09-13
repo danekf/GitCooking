@@ -25,6 +25,7 @@ export default function Recipe() {
     equipment: [],
     instructions: [],
     tags: [],
+    
     servings: '',
     recipe_photos: '',
     estimatedTime: 0,    
