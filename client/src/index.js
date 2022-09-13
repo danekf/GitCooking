@@ -26,7 +26,6 @@ root.render(
         <Route path='profile' >
           <Route path=':username' element={<UserProfile />}/>
         </Route>
-        {/* <Route path='users/:userName/:recipeId' element={<Recipe />} /> */}
         <Route path='recipes' >
           <Route path=':recipeId' element={<Recipe />}/>
         </Route>

@@ -20,25 +20,6 @@ module.exports = (db) => {
       });
   });
 
-  // Get all of a users created recipes
-  router.get('/user', (request, response) => {
-    const user_id = request.session.userId;
-
-    const queryString = `
-    SELECT *
-    FROM recipes
-    WHERE user_id = $1
-    ;`;
-
-    const queryValues = [`${user_id}`];
-
-    db.query(queryString, queryValues)
-      // Return an array of objects, grouped by recipe ID.
-      .then(({ rows: recipes }) => {
-        response.json(recipes);
-      });
-  });
-
   // Get a users FAVOURITE recipes
   router.get('/favourites', (request, response) => {
     const user_id = request.session.userId;
@@ -70,6 +51,29 @@ module.exports = (db) => {
       });
   });
 
+  //get all of a users recipes
+  router.post('/user', (request, response) => {
+    const {user_id} = request.body;
+    console.log('userid: ', user_id)
+
+    const queryString = `
+    SELECT *
+    FROM recipes
+    WHERE user_id = $1
+    ;`;
+
+    const queryValues = [`${user_id}`];
+
+    db.query(queryString, queryValues)
+      // Return an array of objects, grouped by recipe ID.
+      .then((recipes) => { 
+        console.log(recipes.rows)       
+        response.json(recipes);
+      });
+  });
+
+
+  //get a specific recipe based on id
   router.post('/recipeId', (request, response) => {
     const { recipeId } = request.body;
     const queryString = `
@@ -84,6 +88,7 @@ module.exports = (db) => {
         response.json(recipes);
       });
   });
+
 
   // Save a new recipe to the db
   router.post('/new', (request, response) => {

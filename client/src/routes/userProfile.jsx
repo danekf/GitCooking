@@ -27,52 +27,59 @@ export default function UserProfile() {
   const EDIT = 'EDIT';
   const PUBLIC = 'PUBLIC';
   const LOADING = 'LOADING';
-
+  
+  const [recipes, setRecipes] = useState([]);
   const [mode, setMode] = useState(LOADING);
 
   //if it is our profile, show normal view, else show public mode
+  //use effect when URL in top bar changes
   useEffect(()=>{
     if (currentProfile === user.username){
-      setMode(SHOW);
+      setMode(SHOW);   
     }
-    else{
-      setMode(PUBLIC);
+    else{            
+      //if not users profile, get profile data
       axios({
         method: 'post',
         url: '/api/profile/username',
         data: {username: currentProfile}
       })
-      .then((response)=>{
-        console.log(response.data)
+      .then((response)=>{        
+        setProfile({...response.data[0]})
+        setMode(PUBLIC);
       })
+    }    
+  }, [params])
+
+  useEffect(()=>{
+    let tempId = ''
+    if(mode==='PUBLIC'){
+      tempId = profile.id;
     }
-  }, [user])
+    else{
+      tempId = user.id;
+    }
+    console.log(tempId)
+    axios({
+      method: 'post',
+      url: '/api/recipes/user',
+      data: {user_id: tempId}
+    })
+
+  }, [mode])
+
+
 
   // CB function sets edit profile page to false:
   const returnToProfile = () => {
     setMode(SHOW);
   }
 
-  //get all of a users recipes
-  const [recipes, setRecipes] = useState([]);
-  useEffect(()=>{
-    axios.get(`/api/recipes/user`)
-    .then((response)=>{
-      const tempArray=[]
-      for (let key in response.data){
-        tempArray.push(response.data[key])
-      }
-      setRecipes(tempArray);
-    })
-    // eslint-disable-next-line
-  }, []) 
-
   return (
     <>     
       {/* Controls whether we are showing the edit view, or the regular profile */}
       {mode === LOADING && <h1 className='my-recipes-title '>Loading Profile...</h1>}
       {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
-
       {mode === SHOW && 
         <>
           <div className="profile-card">
@@ -83,7 +90,7 @@ export default function UserProfile() {
             <ProfilePicture profile_picture = {user.profile_picture}/>
             <Badges badges={user.badges}/>
             <h6 className='username'>@{user.username}</h6>
-            <ProfileButtons/>
+            <ProfileButtons user={user}/>
             <h6 className='full-name'>{user.first_name} {user.last_name}</h6>
             <Socials />
             <Qualifications qualifications={user.qualifications}/>
@@ -101,26 +108,25 @@ export default function UserProfile() {
             </ul>
           </div>
         </>
-      }
-      
+      }      
       {mode === PUBLIC && 
         <>
           <div className="profile-card">
-            <ProfilePicture profile_picture = {user.profile_picture}/>
-            <Badges badges={user.badges}/>
-            <h6 className='username'>@{user.username}</h6>
+            <ProfilePicture profile_picture = {profile.profile_picture}/>
+            <Badges badges={profile.badges}/>
+            <h6 className='username'>@{profile.username}</h6>
             <ProfileButtons/>
-            <h6 className='full-name'>{user.first_name} {user.last_name}</h6>
+            <h6 className='full-name'>{profile.first_name} {profile.last_name}</h6>
             <Socials />
-            <Qualifications qualifications={user.qualifications}/>
+            <Qualifications qualifications={profile.qualifications}/>
             <div>
               <p className="bio">Bio</p>
-              <p className="bio-paragraph">{user.bio}</p>
+              <p className="bio-paragraph">{profile.bio}</p>
             </div>
           </div>
           <div>
             <div className='my-recipes-card'>
-            <h1 className='my-recipes-title '>My Recipes</h1>
+            <h1 className='my-recipes-title '>{profile.username}'s Recipes</h1>
           </div>
             <ul>
               {recipes.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
