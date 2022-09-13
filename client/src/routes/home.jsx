@@ -56,7 +56,7 @@ export default function Home() {
         <RecipeCarousel recipes={recipes}/>
       </div>
 
-      <div>
+      <div className='connect-with-us-body'>
         <h3 className="home-page-connect-with-us">Connect with us!</h3>
         <div className="home-page-socials-icons">
           <i class="fa-brands fa-instagram social-icon"></i>

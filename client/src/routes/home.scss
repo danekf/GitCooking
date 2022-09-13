@@ -13,6 +13,7 @@
   font-weight: 100;
   padding: 1em;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.20);
+  background-color: #fff;
 }
 
 .home-page-subtitle {
@@ -33,6 +34,9 @@
   flex-direction: row;
   justify-content: space-around;
   padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: #FAF1E6;
+
   // box-shadow: 0px 1px 10px #888;
 }
 
@@ -55,6 +59,7 @@
 .home-page-copyright {
   font-family: Montserrat;
   padding-bottom: 50px;
+  background-color: #FAF1E6;
 }
 
 .home-page-summary-fork {
@@ -75,7 +80,11 @@
 
 .social-icon {
   padding: 5px;
-  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  color: #FAF1E6;
 }
 
 .home-page-body {
@@ -84,4 +93,26 @@
   box-shadow: 0px 8px 10px -8px #888;
   background-color: #FFAD60;
   flex-direction: column;
+}
+
+.grouped-recipes {
+  padding: 1em;
+  background-color: #FFAD60;
+}
+
+.connect-with-us-body {
+  background-color: #FAF1E6;
+  padding: 1em;
+}
+
+@media screen and (min-width: 550px) {
+  .grouped-recipes {
+    padding: 3em;
+  } 
+}
+
+@media screen and (min-width: 1000px) {
+  .grouped-recipes {
+    padding: 5em;
+  } 
 }

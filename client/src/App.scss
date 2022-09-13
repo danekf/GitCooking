@@ -129,13 +129,13 @@
   }
 }
 
-@media screen and (max-width:680px) {
-  // .mob-view {
-  //   display:block;
-  // }
-  // .normal-view {
-  //   display:none;
-  // }
+@media screen and (max-width:679px) {
+  .mob-view {
+    display:block;
+  }
+  .normal-view {
+    display:none;
+  }
 
   .desktop-view-menu-buttons {
     display: none;
@@ -149,6 +149,9 @@
 @media screen and (min-width:680px) {
   #mobile-dropdown-menu-button {
     display: none;
+  }
+  .desktop-view-menu-buttons {
+    display: flex;
   }
 }
 
