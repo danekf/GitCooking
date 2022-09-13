@@ -1,4 +1,4 @@
-import './CommentListItem_style.scss';
+import './commentList.scss';
 import CommentListItem from "./commentListItem";
 import { useState } from 'react';
 import axios from 'axios';
@@ -42,8 +42,8 @@ export default function CommentList(props) {
 
         {/* Comment input form */}
         <form className='comment-form' onSubmit={submitComment}>
-          <input placeholder='Enter a comment' value={commentValue} onChange={(event)=>setCommentValue(event.target.value)}></input>
-          <i class="fa-solid fa-message" onClick={submitComment}>Submit</i>
+          <textarea className="comment-text-area" placeholder='Enter a comment' value={commentValue} onChange={(event)=>setCommentValue(event.target.value)}></textarea>
+          <i class="fa-solid fa-message-comment" onClick={submitComment}>Submit</i>
         </form>
 
         <ul className="comment-list">

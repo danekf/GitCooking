@@ -1,11 +1,12 @@
 .comment-body {
+  display: flex;
+  justify-content: flex-start;
   font-family: 'Montserrat', sans-serif;
   color: black;
   font-weight: 900;
   border-bottom: 1px solid transparent;
-  border-bottom-color: grey;
+  border-bottom-color: #d9534f;
   border-right: 1px solid transparent;
-  border-bottom-color: grey;
   margin-right: 4em;
   padding: 1em;
 }
@@ -37,8 +38,6 @@
   list-style-type: none;
 }
 
-
-
 .fa-solid{
   color: #d9534f;
   font-size: medium;
@@ -48,3 +47,4 @@
 .fa-solid:hover{
   color: #FFAD60;
 }
+
