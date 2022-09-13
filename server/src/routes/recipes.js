@@ -7,27 +7,34 @@ const fs = require('file-system');
 
 module.exports = (db) => {
    //multer settings for new recipe
-   const storage = multer.diskStorage({
-    destination: 'photos',
+   const recipeStorage = multer.diskStorage({
+    destination: 'photos/recipes',
     filename: (req, file, cb) => {
-      cb(null, file.originalname)
-      // cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
   });
-  const upload = multer({ storage: storage });
+  const profilePicStorage = multer.diskStorage({
+    destination: 'photos/avatar',
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+  });
+  const upload = multer({ storage: recipeStorage });
 
   ///////////////////////////////
   //TEST
   ///////////////////////////////
   router.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-    const file = req.file;
-    console.log('file: ', file);
-    // if (!file) {
-    //   const error = new Error('Please upload a file')
-    //   error.httpStatusCode = 400
-    //   return next(error)
-    // }
-    //   res.send(file)
+    const {recipeId} =  req.body;
+    console.log('recipeId: ', req.body);
+    const file = req.file; 
+    if (!file) {
+      const error = new Error('Please upload a file')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+  
+ 
     
   })
   ///////////////////////////////
@@ -121,7 +128,6 @@ module.exports = (db) => {
 
   // Save a new recipe to the db
   router.post('/new', upload.single('recipe_photos'), (request, response) => {
-    console.log('file: ', request.file);
     const { user_id, original_fork_id, title, servings } =
       request.body;
 
