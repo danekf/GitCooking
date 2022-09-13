@@ -104,17 +104,6 @@ const addIngredientToList = (event) =>{
   }, [recipeTags])
 
 
-  //photo handler
-  // const [recipePhoto, setRecipePhoto]=useState([]);
-  // console.log(recipePhoto);
-  //     useEffect(() =>{
-  //       setformValue({
-  //         ...formValue,
-  //         recipe_photos: ''}) 
-  //       // eslint-disable-next-line 
-  //     }, '')
-
-  //handles all changes to components into the form for submission
   const handleChange =(event) => {
   
     setformValue({
@@ -122,10 +111,6 @@ const addIngredientToList = (event) =>{
       [event.target.name]: event.target.value
     });
   }
-
-  
-    
-
   
   //handles update of created items
 const updateRecipe = (index, event, name)=>{
@@ -163,39 +148,58 @@ const deleteItem = (index, event, name)=>{
     // eslint-disable-next-line
   }, [formValue.instructions])
 
-    //recipe submission
-    const submitRecipe = (event) => {
-      event.preventDefault();
+//image submission
+const submitImage = (event) =>{
+  event.preventDefault();
+  const image = new FormData();
+  image.append('myFile', formValue.recipe_photos);
+  axios({
+    method: 'post',
+    url: '/api/recipes/uploadfile', 
+    data: image,
+    header: {"Content-Type": "multipart/form-data"}
+  })
+  .then((response)=>{
+    setformValue({
+      ...formValue,
+      recipe_photos: `/recipePhotos/${response.data.filepath.filename}`
+    })
+  })
+}
 
-      axios({
-        method: "post",
-        url: submissionURL,
-        data: formValue
-      })
-      .then ((response)=>{
+//recipe submission
+const submitRecipe = (event) => {
+  event.preventDefault();
   
-        //if username not found, send error. Messages are curated by server
-        if(response.data.error){
-          toast.error(response.data.error);
-        }
-        //if we were editing do something different than if forking
-        if(title==='Edit'){
+  // event.preventDefault();
+  axios({
+    method: "post",
+    url: submissionURL,
+    data: formValue,
+    header: {"Content-Type": "multipart/form-data"},
 
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          setTimeout(()=>{
-            returnToRecipe();
-            window.location = `/recipes/${recipe.id}`
-          }, 2000)       
-        }        
-        if(title==='Fork'){
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          const recipeId = response.data[0].id; 
-          setTimeout(()=>{
-            window.location = `/recipes/${recipeId}`
-          }, 2000)       
-        }
-      })
+  })
+  .then ((response)=>{
+    //if username not found, send error. Messages are curated by server
+    if(response.data.error){
+      toast.error(response.data.error);
     }
+    else{
+      toast.success(`Submitted ${formValue.title} sucessfully!`)
+      const recipeId = response.data[0].id; 
+      setTimeout(()=>{
+         window.location = `recipes/${recipeId}`
+      }, 2000)       
+    }
+  })
+}
+
+const handleImage = (event) =>{
+  setformValue({
+    ...formValue,
+    recipe_photos: event.target.files[0]
+  })
+}
 
 
   return (
@@ -294,22 +298,24 @@ const deleteItem = (index, event, name)=>{
               /> 
             </div>
 
+            <button className='recipe-btn-submit' type="submit">Submit Recipe!</button>           
+            </form>
 
-            <div>
+            <img src={formValue.recipe_photos} width= '30%' />
+            
+            <form onSubmit={submitImage}> 
+              <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
+              <input type="submit" value="Upload file"/>
+            </form>  
+
+            {/* {/* <div>
                     <h4>Upload an Image:</h4>
                     <input type="file" value={formValue.recipe_photos} onChange={handleChange} name="recipe_photos" id="recipe_photos"/>
-                </div>
+                </div> */}
+           
+            {/* <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
+            <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button> */}
 
-            {/* upload multiple recipe photos using multer */}
-
-            {/* <h4>Upload an Image:</h4>
-            <input className='recipe-btn-upload' type="file" name="image-upload" id="image-upload" />
-             */}
-            
-            <button className='recipe-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
-            <button className='recipe-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
-
-          </form>
         </div>
       </main>
     </>

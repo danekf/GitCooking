@@ -160,13 +160,7 @@ export default function Recipe() {
           {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
           {recipe.recipe_photos !== 'No Photos yet' && <img className="recipe-img" src={recipe.recipe_photos} alt="Recipe" width= '35%'/>}
-          {recipe.recipe_photos === 'No Photos yet'&&
-            <form action="/api/recipes/uploadfile" enctype="multipart/form-data" method="POST"> 
-              <input type='text' name='recipeId' value = {recipe.id} disabled />
-              <input type="file" name="myFile" accept='image/*' />
-              <input type="submit" value="Upload a file"/>
-            </form>       
-          }
+          {recipe.recipe_photos === 'No Photos yet' && <div>No Photos Yet</div>}
           
 
           <div className='recipe-stat'>
