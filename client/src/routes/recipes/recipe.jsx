@@ -27,7 +27,7 @@ export default function Recipe() {
     tags: [],
     
     servings: '',
-    recipe_photos: '',
+    recipe_photos: 'No Photos yet',
     estimatedTime: 0,    
   });
   const [chef, setChef] = useState([]);
@@ -159,7 +159,7 @@ export default function Recipe() {
           
           {user.id === recipe.user_id && <div onClick={()=>setEditMode(EDIT)}>Edit Recipe <i className="fa-regular fa-pen-to-square"></i></div>}
 
-          {recipe.recipe_photos !== 'No Photos yet' && <img className="recipe-img" src={recipe.recipe_photos} alt="Recipe" />}
+          {recipe.recipe_photos !== 'No Photos yet' && <img className="recipe-img" src={recipe.recipe_photos} alt="Recipe" width= '35%'/>}
           {recipe.recipe_photos === 'No Photos yet'&&
             <form action="/api/recipes/uploadfile" enctype="multipart/form-data" method="POST"> 
               <input type='text' name='recipeId' value = {recipe.id} disabled />
@@ -194,14 +194,7 @@ export default function Recipe() {
           <ul className='card-body'>
             {recipe.tags.map((tag) => <li>{tag} </li>)}
           </ul>
-
-          <h5 className='images-subheading'>Images:</h5>
-          <ul className='card-body'>  
-          {recipe.recipe_photos}  
-
-            
-          </ul>
-
+         
         </div>
         
         <div className='comment-list-card-in-recipe'>

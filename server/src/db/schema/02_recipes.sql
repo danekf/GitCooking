@@ -9,7 +9,7 @@ CREATE TABLE recipes (
   equipment JSONB,
   instructions JSONB,
   estimatedTime INTEGER,
-  recipe_photos varchar(50), --THIS WILL BE CHANGED ONCE WE KNOW HOW WE ARE GOING TO STORE PHOTOS! PLACEHOLDER FOR NOW
+  recipe_photos varchar(50) DEFAULT 'No Photos yet', --THIS WILL BE CHANGED ONCE WE KNOW HOW WE ARE GOING TO STORE PHOTOS! PLACEHOLDER FOR NOW
   tags text[],
   forks INTEGER[],
   servings INTEGER

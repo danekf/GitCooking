@@ -181,8 +181,8 @@ const deleteItem = (index, event, name)=>{
 
   //recipe submission
   const submitRecipe = (event) => {
-
-
+    event.preventDefault();
+    
     // event.preventDefault();
     axios({
       method: "post",
@@ -200,7 +200,7 @@ const deleteItem = (index, event, name)=>{
         toast.success(`Submitted ${formValue.title} sucessfully!`)
         const recipeId = response.data[0].id; 
         setTimeout(()=>{
-          window.location = `recipes/${recipeId}`
+           window.location = `recipes/${recipeId}`
         }, 2000)       
       }
     })
@@ -319,7 +319,13 @@ const deleteItem = (index, event, name)=>{
             <form onSubmit={submitImage}> 
               <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
               <input type="submit" value="Upload file"/>
-            </form>       
+            </form>  
+
+            <ToastContainer 
+            position='top-center'
+            autoClose={3000}
+            closeOnClick
+          />     
             
         </div>
       </main>
