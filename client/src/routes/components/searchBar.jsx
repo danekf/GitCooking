@@ -34,12 +34,10 @@ export default function SearchBar(props) {
       console.log('response: ', response.data)
       if(response.data.length>0){
         setResults(response.data)
-        setMode(RESULTS)
-        setSearchText('')
+        setMode(RESULTS)        
       }
       else{
-        setMode(NONE)
-        setSearchText('')
+        setMode(NONE)        
       }
     })
   }
