@@ -230,7 +230,7 @@ const deleteItem = (index, event, name)=>{
             <>
               <li><textarea min="0" type="number" key={index} name="ingredientQty" placeholder= "Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> </li>
               <li><textarea type="text" key={index} name="ingredientName" placeholder= "Ingredient" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> </li>
-              <li><p onClick={(event)=>deleteItem(index, event, "ingredients")} className="icon-replacement"> REMOVE INGREDIENT </p></li>
+              <li><p onClick={(event)=>deleteItem(index, event, "ingredients")} className="icon-replacement-colour2"> Remove Ingredient : {formValue.ingredients[index].ingredientName} </p></li>
            </>      
             )} 
             </ul>
@@ -249,7 +249,7 @@ const deleteItem = (index, event, name)=>{
             <>
               <li><textarea min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
               <li><textarea type="text" key={index} name="equipmentName" placeholder= "Equipment" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
-              <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="icon-replacement"> REMOVE EQUIPMENT</p></li>              
+              <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="icon-replacement"> Remove Equipment : {formValue.equipment[index].equipmentName}</p></li>              
             </>
             )}      
             </ul>        
@@ -267,7 +267,7 @@ const deleteItem = (index, event, name)=>{
           <>
             <li><textarea className="instructions-ordered" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Time (minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
             <li><textarea className="instructions-ordered" type="text" key={index} name="instruction" placeholder= "Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
-            <p onClick={(event)=>deleteItem(index, event, "instructions")} className="icon-replacement"> REMOVE INSTRUCTION </p>
+            <p onClick={(event)=>deleteItem(index, event, "instructions")} className="icon-replacement"> Remove Step </p>
           </>
             )}   
           </ul>
