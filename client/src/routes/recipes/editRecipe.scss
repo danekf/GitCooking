@@ -1,29 +1,19 @@
-.random {
-  width: 50%;
-}
-
 // General CSS Rules:
 input {
   outline: none;
-  caret-color: #D9534F;
-  border: none;
-  border-bottom: 2px solid transparent;
-  border-bottom-color: #D9534F;
-  
+  caret-color: #D9534F;  
 }
 
 textarea {
   outline: none;
   caret-color: #D9534F;
-  border: none;
-  border-bottom: 2px solid transparent;
-  border-bottom-color: #D9534F;
-
+  width: 40%;
 }
 
 // General Setup:
 .edit-recipe-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-top: 1em;
   margin-left: 1em;
   margin-right: 1em;
@@ -36,6 +26,7 @@ textarea {
 
 .edit-recipe-body {
   background-color: #FFAD60;
+  
 }
 
 .edit-recipe-title {
