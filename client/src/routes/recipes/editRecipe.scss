@@ -76,6 +76,11 @@ textarea {
   width: 100%;
 }
 
+.edit-added-ingredient textarea {
+  border-bottom-color: #FFAD60;
+  max-width: 60%;
+}
+
 .edit-icon-replacement {
   font-family: 'Fredoka One', cursive;
   color: #d9534f;
