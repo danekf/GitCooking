@@ -171,7 +171,7 @@ export default function Recipe() {
           </div>
             {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           <div className='username-heading-body'>
-          <h5 className='username-heading-recipe'>This recipe is made with love by: <span onClick={()=>navigate("/profile/" + chef.username)}> @{chef.username}</span></h5>
+          <h5 className='username-heading-recipe'>This recipe is made with love by: <span className="recipe-author-recipe-page"onClick={()=>navigate("/profile/" + chef.username)}> @{chef.username}</span></h5>
           </div>
           <img className="recipe-img"src="" alt="photo" />
 
