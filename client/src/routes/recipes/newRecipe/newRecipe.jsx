@@ -238,12 +238,12 @@ const deleteItem = (index, event, name)=>{
             </>
           {/* ///////////////////////////////INSTRUCTIONS////////////////////////////////////// */}
           <h6 className='new-create-heading'>Instructions:</h6>
-          <ul className='added-ingredient'>
+          <ul className='added-ingredient ordered'>
           {formValue.instructions.map((item, index) => 
           <>
-            <li><textarea min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Time (minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
-            <li><textarea type="text" key={index} name="instruction" placeholder= "Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
-            <li><p onClick={(event)=>deleteItem(index, event, "instructions")} className="icon-replacement"> REMOVE INSTRUCTION </p></li>
+            <li><textarea className="instructions-ordered" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Time (minutes)" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
+            <li><textarea className="instructions-ordered" type="text" key={index} name="instruction" placeholder= "Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
+            <p onClick={(event)=>deleteItem(index, event, "instructions")} className="icon-replacement"> REMOVE INSTRUCTION </p>
           </>
             )}   
           </ul>
