@@ -9,11 +9,13 @@ module.exports = (db) => {
 
     // Search string
     const queryString = `
-    SELECT *
+    SELECT recipes.id, users.username, recipes.original_fork_id, recipes.title, recipes.ingredients, recipes.equipment, recipes.estimatedTime, recipes.recipe_photos, recipes.tags, recipes.forks, recipes.servings
     FROM recipes
+    INNER JOIN users ON users.id = user_id
     WHERE 
     (
-      title LIKE $1
+      title LIKE $1 
+      OR users.username LIKE $1
     )
     `;
 
