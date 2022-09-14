@@ -101,7 +101,7 @@ export default function UserProfile() {
         <>
           <div className="profile-card">
           <div>
-            <i className="fa-regular fa-pen-to-square" onClick={() => setMode(EDIT)}>hggjgg</i>
+            <i className="fa-regular fa-pen-to-square" onClick={() => setMode(EDIT)}> Edit Profile</i>
           </div>
 
             <ProfilePicture profile_picture = {user.profile_picture}/>
