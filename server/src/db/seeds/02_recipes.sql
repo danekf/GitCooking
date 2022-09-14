@@ -126,7 +126,7 @@ VALUES(
   ]',
   1,
   '/recipePhotos/Default.jpg',
-  ARRAY ['water', 'top'],
+  ARRAY ['water'],
   1,
   null
 );
