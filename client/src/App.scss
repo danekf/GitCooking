@@ -87,9 +87,9 @@
   align-items: center;
 }
 
-.header-profile-picture {
-  height: -10em;
-  width: -10em;
+#header-profile-picture {
+  border-radius: 50%;
+  height: 80px;
 }
 
 .badge-secondary {

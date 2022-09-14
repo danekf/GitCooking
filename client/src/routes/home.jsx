@@ -35,7 +35,7 @@ export default function Home() {
           <h5 className='home-page-button-summary'>to Favourite</h5>
         </div>
         <div className="home-page-summary-fork">
-          <i className='fa-solid fa-utensils'></i>
+          <i id="fork-icon" className='fa-solid fa-utensils'></i>
           <h3>Fork it</h3>
             <h5 className='home-page-button-summary'>to Save & Edit</h5>
         </div>
