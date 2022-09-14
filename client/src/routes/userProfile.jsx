@@ -124,6 +124,17 @@ export default function UserProfile() {
               {recipes.map((recipe) => <li className='recipe-profile-list'><RecipeCard recipe={recipe}/></li>)}
             </ul>
           </div>
+          <div className='connect-with-us-body'>
+        <h3 className="home-page-connect-with-us">Connect with us!</h3>
+        <div className="home-page-socials-icons">
+          <i class="fa-brands fa-instagram social-icon"></i>
+          <i class="fa-brands fa-tiktok social-icon"></i>
+          <i class="fa-brands fa-twitter social-icon"></i>
+          <i class="fa-brands fa-pinterest social-icon"></i>
+        </div>
+      </div>
+
+      <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
         </>
       }      
       {mode === PUBLIC && 
@@ -151,10 +162,7 @@ export default function UserProfile() {
             </ul>
           </div>
           </div>
-        </>
-      }
-      </div>
-      <div className='connect-with-us-body'>
+          <div className='connect-with-us-body'>
         <h3 className="home-page-connect-with-us">Connect with us!</h3>
         <div className="home-page-socials-icons">
           <i class="fa-brands fa-instagram social-icon"></i>
@@ -165,6 +173,10 @@ export default function UserProfile() {
       </div>
 
       <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
+        </>
+      }
+      </div>
+       
     </>
   ); 
 } 
