@@ -7,12 +7,12 @@ export default function RecipeCard(props) {
   const recipe = props.recipe;
   let navigate = useNavigate();
 
-  //hover handler
+  // Hover handler
   const[hover, setHover]= useState(false)
 
-  //recipe modal
+  // Recipe modal
 
-  // loop through recipe tags to print a list separated by commas
+  // Loop through recipe tags to print a list separated by commas
   let tags = recipe.tags;
   let tagsList = tags.join(", ")
 
@@ -32,11 +32,11 @@ export default function RecipeCard(props) {
         <div className='bottom-right text-border' >
 
           {recipe.estimatedtime === 1 && 
-            "Estimated time : 1 minute."
+            "Estimated time: 1 minute."
           }
 
           {recipe.estimatedtime > 1 && 
-          `Estimated time : ${recipe.estimatedtime} minutes.`
+          `Estimated time: ${recipe.estimatedtime} minutes.`
           }
         </div>
         </>

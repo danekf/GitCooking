@@ -74,12 +74,8 @@ textarea {
   margin-left: -2em;
 }
 
-// CSS: Ingredients:
-.new-ingredients-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 8em;
-}
+//CSS: Ingredients:
+
 
 @media screen and (min-width:1024px) {
   .new-ingredients-container {
@@ -95,15 +91,9 @@ textarea {
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 9em;
-  margin-left: 0em;
-  margin-right: -1em;
-}
-
-.new-item-ing-add {
+  //width: 9em;
   margin-left: 1em;
   margin-right: 0.2em;
-
 }
 
 .new-item-ing-add-ing {
@@ -141,9 +131,9 @@ i.fa-solid.fa-trash.new-trash-icon {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: fit-content;
-    margin-right: 3em;
-    margin-left: 1em;  
+    //width: fit-content;
+    //margin-right: 3em;
+    //margin-left: 1em;  
   }
 
   .new-item-ing-add-ing {
@@ -152,7 +142,7 @@ i.fa-solid.fa-trash.new-trash-icon {
   }
 
   div i.fa-solid.fa-plus.-eq {
-    margin-right: em;
+    margin-right: 1em;
     margin-top: 1em;
     justify-content: center; 
     color: #D9534F;
@@ -353,4 +343,14 @@ input.new-recipe-item-add-instr-add {
     width: 45em;
     margin-bottom: 1em;
   }
+}
+
+.text-area {
+  width: 95%;
+}
+
+.fixthis {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

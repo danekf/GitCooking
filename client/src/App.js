@@ -12,7 +12,7 @@ import {useNavigate} from 'react-router-dom';
 
 function App() {
   let navigate = useNavigate();
-  //menu handler
+  // Menu handler
   const { modalProps, getTriggerProps } = useModal();
   const { user, setUser, logout } = useApplicationData();
 
