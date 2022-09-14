@@ -202,8 +202,8 @@ const deleteItem = (index, event, name)=>{
               <ul className='edit-added-ingredient'>
                 {formValue.ingredients.map((item, index) => 
                 <>
-                  <li><textarea className="edit-recipe-item-add" min="0" type="number" key={index} name="ingredientQty" placeholder= "Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/></li> 
-                  <li><textarea className="edit-recipe-item-add" type="text" key={index} name="ingredientName" placeholder= "Ingredient" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> </li>
+                  <li><textarea min="0" type="number" key={index} name="ingredientQty" placeholder= "Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/></li> 
+                  <li><textarea type="text" key={index} name="ingredientName" placeholder= "Ingredient" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> </li>
                   <li><p onClick={(event)=>deleteItem(index, event, "ingredients")} className="edit-icon-replacement"> REMOVE INGREDIENT </p></li>
                 </>
                 )} 
@@ -266,7 +266,6 @@ const deleteItem = (index, event, name)=>{
                 <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
                 <button className='edit-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
               </div>
-
             </form>
           </div>
         </div>
