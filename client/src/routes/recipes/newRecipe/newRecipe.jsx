@@ -300,7 +300,7 @@ const deleteItem = (index, event, name)=>{
           </form> 
 
           <img className='recipe-photo' src={formValue.recipe_photos} width= '30%'  />
-          <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+          <button className='new-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
  
 
