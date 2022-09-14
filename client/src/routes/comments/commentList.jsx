@@ -37,7 +37,7 @@ export default function CommentList(props) {
 
     return(
       <>
-      <div>
+      <div className='comment-card-body'>
         <h1 className='comment-title'>Comments:</h1>
 
         {/* Comment input form */}

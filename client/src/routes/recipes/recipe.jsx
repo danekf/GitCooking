@@ -215,6 +215,17 @@ export default function Recipe() {
     {editMode === EDIT && <EditRecipe  returnToRecipe={returnToRecipe} recipe={recipe} title="Edit" submissionURL = "/api/recipes/edit" />}
     {editMode === FORK && <EditRecipe  returnToRecipe={returnToRecipe} recipe={{...recipe, original_fork_id: recipe.id}} title="Fork" submissionURL = "/api/recipes/new" />}
 
+    <div className='connect-with-us-body'>
+        <h3 className="home-page-connect-with-us">Connect with us!</h3>
+        <div className="home-page-socials-icons">
+          <i class="fa-brands fa-instagram social-icon"></i>
+          <i class="fa-brands fa-tiktok social-icon"></i>
+          <i class="fa-brands fa-twitter social-icon"></i>
+          <i class="fa-brands fa-pinterest social-icon"></i>
+        </div>
+      </div>
+
+      <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
     <ToastContainer 
       position='top-center'
       autoClose={2000}
