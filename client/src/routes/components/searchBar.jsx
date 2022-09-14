@@ -4,11 +4,12 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './searchBar.scss'
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const [searchText, setSearchText]= useState();
 
   const searchDb = (event) =>{
     event.preventDefault();
+    console.log('Searching db for ', searchText)
     axios({
       method: 'post',
       url: '/api/search',
