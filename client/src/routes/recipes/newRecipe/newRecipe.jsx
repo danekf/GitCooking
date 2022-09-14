@@ -9,7 +9,7 @@ export default function NewRecipe(props) {
  const { user, setUser, logout } = useApplicationData();  
 const original_fork_id = props.original_fork_id || 0;
 
-  // Form submission handler for submission to server
+  //form submission handler for submission to server
   const [formValue, setformValue] = useState({
     user_id: 0,
     original_fork_id: original_fork_id,
@@ -19,7 +19,7 @@ const original_fork_id = props.original_fork_id || 0;
     instructions: [],
     tags: [],
     servings: '',
-    recipe_photos: 'dummy_URL',
+    recipe_photos: 'No Photos yet',
     estimatedTime: 0,
   })
 
@@ -154,14 +154,37 @@ const deleteItem = (index, event, name)=>{
       estimatedTime: time});
     // Eslint-disable-next-line
   }, [formValue.instructions])
+  
+  //image submission
+  const submitImage = (event) =>{
+    event.preventDefault();
+    const image = new FormData();
+    image.append('myFile', formValue.recipe_photos);
+    axios({
+      method: 'post',
+      url: '/api/recipes/uploadfile', 
+      data: image,
+    })
+    .then((response)=>{
+      setformValue({
+        ...formValue,
+        recipe_photos: `/recipePhotos/${response.data.filepath.filename}`
+      })
+    })
 
-  // Recipe submission
+  }
+
+  //recipe submission
   const submitRecipe = (event) => {
     event.preventDefault();
+    
+    // event.preventDefault();
     axios({
       method: "post",
       url: "/api/recipes/new",
-      data: formValue
+      data: formValue,
+      header: {"Content-Type": "multipart/form-data"},
+
     })
     .then ((response)=>{
       // If username not found, send error. Messages are curated by server
@@ -173,8 +196,16 @@ const deleteItem = (index, event, name)=>{
         const recipeId = response.data[0].id; 
         setTimeout(()=>{
           window.location = `/recipes/${recipeId}`
-        }, 2000)       
+       }, 2000)       
       }
+    })
+  }
+
+
+  const handleImage = (event) =>{
+    setformValue({
+      ...formValue,
+      recipe_photos: event.target.files[0]
     })
   }
 
@@ -182,13 +213,6 @@ const deleteItem = (index, event, name)=>{
     <>
     <div className='new-recipe-body'>
       <div className='create-a-new-recipe-card'>
-      <div>
-        <ToastContainer 
-          position='top-center'
-          autoClose={2000}
-          closeOnClick
-        />
-      </div>
         <h1 className='new-recipe-title'>Create a New Recipe</h1>
           <form action="" className='new-recipe-form'>
           <h6 className='new-create-heading'>Recipe Title:</h6>
@@ -267,10 +291,21 @@ const deleteItem = (index, event, name)=>{
           <h6 className='new-create-heading'>Upload an Image:</h6>
           <textarea className='new-btn-upload' type="file" name="image-upload"/>
 
-          <button className='new-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+          </form>
 
-        </form>
-      </div>
+          <img src={formValue.recipe_photos} width= '30%' />
+            
+          <form onSubmit={submitImage}> 
+            <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
+            <input type="submit" value="Upload file"/>
+          </form>  
+
+            <ToastContainer 
+            position='top-center'
+            autoClose={3000}
+            closeOnClick
+          />
+        </div>
       </div>
       <div className='connect-with-us-body'>
         <h3 className="home-page-connect-with-us">Connect with us!</h3>

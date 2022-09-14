@@ -70,12 +70,13 @@ function App() {
                     <span class='normal-view'> a new recipe</span>
                   </Link>
                   <div className='logged-in-header'>
-                    {/* <div className='header-profile-picture'>
-                    <ProfilePicture
+                    <div>
+                      <img id='header-profile-picture' src={user.profile_picture} />
+                    {/* <ProfilePicture
                       profile_picture={user.profile_picture}
                       id='profile-pic-display-header'
-                    />
-                    </div> */}
+                    /> */}
+                    </div>
                     <div className='header-name-logout'>
                       <p className='username-display'>@{user.username}</p>
                       {/*Logout can be changed to whatever, just want it to call logout when clicked*/}
@@ -115,7 +116,8 @@ function App() {
           <Outlet />
           <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js'></script>
         </body>
-        
+
+  
       <footer class='app-footer'>
         
         <nav class='app-footer-nav'>
@@ -145,6 +147,7 @@ function App() {
           </Modal>
         </nav>
       </footer>
+     
     </div>
   </html>
   );

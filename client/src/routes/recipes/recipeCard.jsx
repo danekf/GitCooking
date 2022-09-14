@@ -19,11 +19,13 @@ export default function RecipeCard(props) {
   return (
 
     <div className='recipe-card-container'
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onClick={()=>navigate("/recipes/" + recipe.id)}    
-    >
-      <img className="image-recipe" src="https://media.discordapp.net/attachments/1012375567519186984/1018280969951772782/Mapo_Tofu.jpeg?width=1624&height=1082" alt="Snow" width="100%"/>
+    onMouseEnter={() => setHover(true)}
+    onMouseLeave={() => setHover(false)}
+    onClick={()=>navigate("/recipes/" + recipe.id)}    
+    > 
+      {recipe.recipe_photos === 'No Photos yet' && <img className='image-recipe' src='/recipePhotos/Default.jpg' width= '100%'/>}
+      {recipe.recipe_photos !== 'No Photos yet' && <img className="image-recipe" src= {recipe.recipe_photos} width= '100%'/>}
+
       {!hover && (
         <>
         <div className='top-center text-border' >

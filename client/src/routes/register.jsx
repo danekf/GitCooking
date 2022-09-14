@@ -6,16 +6,40 @@ import './register.scss';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 export default function Register() {
+
+
   //state managed form data
   const [formValue, setformValue] = useState({
     username: '',
     password: '',
     email: '',
     first_name: '',
-    last_name: ''
+    last_name: '',
+    profile_picture: '',
   })
 
+    //image submission
+    const submitImage = (event) =>{
+      event.preventDefault();
+      const image = new FormData();
+      image.append('myFile', formValue.profile_picture);
+      axios({
+        method: 'post',
+        url: '/api/register/uploadfile', 
+        data: image,
+      })
+      .then((response)=>{
+        setformValue({
+          ...formValue,
+          profile_picture: `/avatar/${response.data.filepath.filename}`
+        })
+      })
+
+    }
+    
   // const [validationError, setvalidationError] = useState();
 
   //form validation prior to submission, creates an error message
@@ -44,11 +68,15 @@ export default function Register() {
 
 
    //registration handler on button click
-   const submitRegistration = () => {
+   const submitRegistration = (event) => {
+    // event.preventDefault();
+
     axios({
       method: "post",
       url: "/api/register",
-      data: formValue
+      data: formValue,
+      header: {"Content-Type": "multipart/form-data"},
+
     })
     .then ((response)=>{
       //if username not found, send error. Messages are curated by server
@@ -71,7 +99,15 @@ export default function Register() {
     });
   }
 
+  const handleImage = (event) =>{
+    setformValue({
+      ...formValue,
+      profile_picture: event.target.files[0]
+    })
+  }
+
   return (
+    <>
       <div className="register-body">
         <div className="register-card">
         <h1 className="register-title">Register</h1>
@@ -85,11 +121,31 @@ export default function Register() {
           <input className="register-form-item" type='email' id='email' name='email' placeholder="Email" onChange={handleChange}></input>
           <input className="register-form-item" type='text' id='username' name='username' placeholder='Username' onChange={handleChange}></input>
           <input className="register-form-item" type='password' id='password' name='password' placeholder='Password' onChange={handleChange}></input>
-          <h6 className="upload-img">Upload a Profile Picture:</h6>
-          <input className='register-form-item-img' type="file" name="image-upload" id="image-upload" />
+{/* 
+          upload photo user multer
+          <form method="POST" action="/profile-upload-single" enctype="multipart/form-data">
+            <div>
+              <h6 className="upload-img">Upload a Profile Picture:</h6>
+              <input type="file" name="profile-file" required/>
+            </div>
+            {/* <div>
+                <input type="submit" value="Upload" />
+            </div> */}
+          {/* </form> */}
+
+          {/* <h6 className="upload-img">Upload a Profile Picture:</h6>
+          <input className='register-form-item-img' type="file" name="image-upload" id="image-upload" /> */} 
           <button className="register-btn-submit" type='submit' >Register</button>
         </form>
         
+        <img src={formValue.profile_picture} width= '50%' />
+
+          <form onSubmit={submitImage}> 
+            <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
+            <input type="submit" value="Upload file"/>
+          </form> 
+
+
         <div>
           <ToastContainer 
             position='top-center'
@@ -109,5 +165,6 @@ export default function Register() {
 
       <div className='home-page-copyright'>© Copyright 2022 GitCooking. All Rights Reserved</div>
     </div>
+    </>
   );
 }

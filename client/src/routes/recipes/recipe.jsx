@@ -27,8 +27,9 @@ export default function Recipe() {
     equipment: [],
     instructions: [],
     tags: [],
+    
     servings: '',
-    recipe_photos: 'dummy_URL',
+    recipe_photos: 'No Photos yet',
     estimatedTime: 0,    
   });
 
@@ -176,7 +177,7 @@ export default function Recipe() {
 
           <div className='recipe-stat'>
             <h6>Cook Time:</h6>
-            <p>{recipe.estimatedtime} mintues</p>
+            <p>{recipe.estimatedtime} minutes</p>
             
             <h6>Servings:</h6>
             <p>{recipe.servings}</p>

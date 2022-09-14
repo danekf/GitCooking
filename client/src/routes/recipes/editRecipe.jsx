@@ -15,7 +15,7 @@ export default function EditRecipe({recipe, returnToRecipe, title, submissionURL
   useEffect(() => {
     setformValue({
       ...formValue,
-      user_id: user.id
+      user_id: user.id,
     })
   }, [user])
 
@@ -100,9 +100,10 @@ const addIngredientToList = (event) => {
 
     // Eslint-disable-next-line 
   }, [recipeTags])
-  
+
   // Handles all changes to components into the form for submission
   const handleChange =(event) => {
+  
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value
@@ -145,39 +146,36 @@ const deleteItem = (index, event, name)=>{
     // Eslint-disable-next-line
   }, [formValue.instructions])
 
-    // Recipe submission
-    const submitRecipe = (event) => {
-      event.preventDefault();
-      axios({
-        method: "post",
-        url: submissionURL,
-        data: formValue
-      })
-      .then ((response)=>{
-        // If username not found, send error. Messages are curated by server
-        if(response.data.error){
-          toast.error(response.data.error);
-        }
-        // If we we're editing do something different than if forking
-        if(title==='Edit'){
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          setTimeout(()=>{
-            returnToRecipe();
-            window.location = `/recipes/${recipe.id}`
-          }, 2000)       
-        }        
-        if(title==='Fork'){
-          toast.success(`Submitted ${formValue.title} sucessfully!`)
-          const recipeId = response.data[0].id; 
-          setTimeout(()=>{
-            window.location = `/recipes/${recipeId}`
-          }, 2000)       
-        }
-      })
+//recipe submission
+const submitRecipe = (event) => {
+  event.preventDefault();
+  
+  // event.preventDefault();
+  axios({
+    method: "post",
+    url: submissionURL,
+    data: formValue,
+    header: {"Content-Type": "multipart/form-data"},
+
+  })
+  .then ((response)=>{
+    //if username not found, send error. Messages are curated by server
+    if(response.data.error){
+      toast.error(response.data.error);
     }
+    else{
+      toast.success(`Submitted ${formValue.title} sucessfully!`)
+     
+      setTimeout(()=>{
+         window.location = `/recipes/${recipe.id}`
+      }, 2000)       
+    }
+  })
+}
 
   return (
     <>
+    <main>
       <div className='edit-recipe-body'>
         <div className='edit-recipe-card'>
           <div>
@@ -257,6 +255,7 @@ const deleteItem = (index, event, name)=>{
                   onChange={setRecipeTags}
                   placeHolder="enter tags"
                 /> 
+
               </div>
               {/* <h6 className="upload-img">Upload an Image:</h6>
               <div className='file-upload'>
@@ -269,6 +268,7 @@ const deleteItem = (index, event, name)=>{
             </form>
           </div>
         </div>
-      </>
+      </main>
+    </>
     );  
   }

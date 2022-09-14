@@ -1,8 +1,32 @@
 const { response } = require('express');
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
+const path = require('path');
+const fs = require('file-system');
 
 module.exports = (db) => {
+   //multer settings for new recipe
+   const recipeStorage = multer.diskStorage({
+    destination: 'public/recipePhotos',
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+  });
+
+  const upload = multer({ storage: recipeStorage });
+
+  //uploads file to DB, and returns the filename;
+  router.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+    const file = req.file; 
+    if (!file) {
+      const error = new Error('Please upload a file')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+      res.json({filepath: file})    
+  })
+
   // Home page, just get recipes of the week,
   ////////////////////////////////////
   // Currently just getting ALL recipes
@@ -54,7 +78,6 @@ module.exports = (db) => {
   //get all of a users recipes
   router.post('/user', (request, response) => {
     const {user_id} = request.body;
-    console.log('userid: ', user_id)
 
     const queryString = `
     SELECT *
@@ -88,60 +111,69 @@ module.exports = (db) => {
         response.json(recipes);
       });
   });
+  
 
 
   // Save a new recipe to the db
-  router.post('/new', (request, response) => {
-    const { user_id, original_fork_id, title, recipe_photos, servings } =
-      request.body;
+    // Save a new recipe to the db
+    router.post('/new', (request, response) => {
+      const { user_id, original_fork_id, title, recipe_photos, servings } =
+        request.body;
+  
+      // Black magic to make it work with pg, more greyish white magic actually.
+      const ingredients = JSON.stringify(request.body.ingredients);
+      const equipment = JSON.stringify(request.body.equipment);
+      const instructions = JSON.stringify(request.body.instructions);
 
-    // Black magic to make it work with pg, more greyish white magic actually.
-    const ingredients = JSON.stringify(request.body.ingredients);
-    const equipment = JSON.stringify(request.body.equipment);
-    const instructions = JSON.stringify(request.body.instructions);
-
-    // Black magic to mage an array work when inputting into pg
-    // Do not delete the black magic, or these comments about black magic. It is important to keep them.
-    const tags = JSON.stringify(request.body.tags)
-      .replace('[', '{')
-      .replace(']', '}');
-
-    console.log('type of: ', typeof tags);
-    console.log(tags);
-
-    const queryString = `
-    INSERT INTO recipes
-      (user_id, original_fork_id, title, ingredients, equipment, instructions, recipe_photos, tags, servings)
-    VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    RETURNING *;`;
-    const queryValues = [
-      `${user_id}`,
-      `${original_fork_id}`,
-      `${title}`,
-      `${ingredients}`,
-      `${equipment}`,
-      `${instructions}`,
-      `${recipe_photos}`,
-      `${tags}`,
-      `${servings}`,
-    ];
-    console.log(queryValues);
-
-    db.query(queryString, queryValues).then(({ rows: recipe }) => {
-      response.json(recipe);
+  
+      // Black magic to mage an array work when inputting into pg
+      // Do not delete the black magic, or these comments about black magic. It is important to keep them.
+      const tags = JSON.stringify(request.body.tags)
+        .replace('[', '{')
+        .replace(']', '}');
+  
+      const queryString = `
+      INSERT INTO recipes
+        (user_id, original_fork_id, title, ingredients, equipment, instructions, recipe_photos, tags, servings)
+      VALUES
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      RETURNING *;`;
+      const queryValues = [
+        `${user_id}`,
+        `${original_fork_id}`,
+        `${title}`,
+        `${ingredients}`,
+        `${equipment}`,
+        `${instructions}`,
+        `${recipe_photos}`,
+        `${tags}`,
+        `${servings}`,
+      ];
+  
+      db.query(queryString, queryValues).then(({ rows: recipe }) => {
+        response.json(recipe);
+      });
     });
-  });
+
+
+//   router.post('/new', upload.single('file'), function(req,res) {
+//     console.log('storage location is ', req.hostname +'/' + req.file.path);
+//     return res.send(req.file);
+// })
 
   // Edit an existing recipe
   router.post('/edit', (request, response) => {
-    const { id, user_id, original_fork_id, title, recipe_photos, servings } =
+    
+    const { id, user_id, original_fork_id, title, servings } =
       request.body;
 
     // Black magic to make it work with pg, more greyish white magic actually.
     const ingredients = JSON.stringify(request.body.ingredients);
     const equipment = JSON.stringify(request.body.equipment);
     const instructions = JSON.stringify(request.body.instructions);
+    const recipe_photos = request.body.recipe_photos;
+
+
 
     // Black magic to mage an array work when inputting into pg
     // Do not delete the black magic, or these comments about black magic. It is important to keep them.
@@ -171,8 +203,7 @@ module.exports = (db) => {
       `${tags}`,
       `${servings}`,
     ];
-    console.log(queryValues);
-
+ 
     db.query(queryString, queryValues)
       .then(() => {
         response.sendStatus(200);
@@ -206,3 +237,5 @@ module.exports = (db) => {
 
   return router;
 };
+
+
