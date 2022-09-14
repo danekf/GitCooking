@@ -140,7 +140,9 @@ export default function Register() {
         
         <img src={formValue.profile_picture} width= '50%' />
 
-          <form onSubmit={submitImage}> 
+          <h6 className="register-to-login">Upload Profile Picture</h6>
+
+          <form onSubmit={submitImage} className="register-form-item-img"> 
             <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
             <input type="submit" value="Upload file"/>
           </form> 

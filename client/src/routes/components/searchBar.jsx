@@ -62,8 +62,10 @@ export default function SearchBar(props) {
       
       {mode === 'SEARCHING' && 
         <>
-        <img src='https://media0.giphy.com/media/6rmxsMnN0kSryPsI9p/200w.gif?cid=82a1493ba0njjpjmt8bktz0eefzomnladadlpvsztsw6v2h3&rid=200w.gif&ct=g' width='100px'/>
+          <div className="image-search">
+        <img  className="image-search" src='https://media0.giphy.com/media/6rmxsMnN0kSryPsI9p/200w.gif?cid=82a1493ba0njjpjmt8bktz0eefzomnladadlpvsztsw6v2h3&rid=200w.gif&ct=g' width='100px'/>
         Searching...
+        </div>
         </>
       }
 
@@ -75,8 +77,10 @@ export default function SearchBar(props) {
 
       {mode === 'NONE' && 
       <>
+      <div className="image-search">
         <h1>Sorry... no results found for {searchText}.</h1>
         <img src ='https://www.redbrick.me/wp-content/uploads/2019/02/2017-07-12-10-51-59-900x596.jpg' width='50%'/>
+        </div>
       </>
       }
     </Modal>
