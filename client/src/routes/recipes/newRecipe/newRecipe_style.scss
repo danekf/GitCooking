@@ -94,7 +94,7 @@ textarea {
 //   border-bottom-color: #3A6F56
 // }
 
-.edit-added-ingredient textarea {
+.added-ingredient textarea {
   border-bottom-color: #FFAD60;
   max-width: 60%;
 }
@@ -140,6 +140,10 @@ textarea {
 
 .recipe-btn-container {
   display: flex;
+}
+
+.edit-btn-submit{
+  max-width: fit-content;
 }
 
 // Tags:

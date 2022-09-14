@@ -208,12 +208,12 @@ const submitRecipe = (event) => {
                 </ul>
                 <>
                   <ul className='edit-add-ingredient'>
+                    <p className="icon-replacement" onClick={addIngredientToList}> ADD NEW INGREDIENT </p>
                     <li><textarea type="number"  min="0" name="ingredientQty" placeholder='Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                     <li><textarea type="text" name="ingredientName" placeholder='Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
-                    <p className="icon-replacement" onClick={addIngredientToList}> ADD NEW INGREDIENT </p>
                   </ul>
                 </>
-              <h6 className='edit-recipe-heading'>Equipments Required:</h6>
+              <h6 className='edit-recipe-heading'>Equipment Required:</h6>
               <ul className='added-ingredient'>
                 {formValue.equipment.map((item, index) => 
                   <>
@@ -225,9 +225,9 @@ const submitRecipe = (event) => {
               </ul>
                 <>
                   <ul className='edit-add-ingredient'>
+                    <p className="edit-icon-replacement" onClick={addEquipmentToList}> ADD NEW EQUIPMENT </p>
                     <li><textarea type="number" name="equipmentQty" placeholder='Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                     <li><textarea type="text" name="equipmentName" placeholder="Equipment" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
-                    <p className="edit-icon-replacement" onClick={addEquipmentToList}> ADD NEW EQUIPMENT </p>
                   </ul>
                 </>
               <h6 className='edit-recipe-heading'>Instructions:</h6>
@@ -242,9 +242,9 @@ const submitRecipe = (event) => {
                 </ul> 
               <>
                 <ul className='edit-add-ingredient'>
+                  <p className="edit-icon-replacement" onClick={addInstructionToList}> ADD NEW INSTRUCTION </p>
                   <li><textarea width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Time' onChange={handleInstruction} value = {newInstruction.estimatedTime}/></li>
                   <li><textarea type="text" name="instruction" placeholder='Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/></li>
-                  <p className="edit-icon-replacement" onClick={addInstructionToList}> ADD NEW INSTRUCTION </p>
                 </ul>
               </>
               <h6 className='edit-recipe-heading'>Tags:</h6>
