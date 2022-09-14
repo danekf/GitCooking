@@ -552,7 +552,7 @@ VALUES(
     }
   ]',
   26,
-  '/recipePhotos/Mapotofu.jpg',
+  '/recipePhotos/MapoTofu.jpeg',
   ARRAY ['Quick', 'Chinese', 'Easy', 'top', 'meat', 'Spicy'],
   4,
   null
