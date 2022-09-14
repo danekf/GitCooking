@@ -219,9 +219,9 @@ const deleteItem = (index, event, name)=>{
               <ul className='added-ingredient'>
                 {formValue.equipment.map((item, index) => 
                   <>
-                    <li><textarea className="edit-recipe-item-add-eq-add" min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
-                    <li><textarea className="edit-recipe-item-add-eq-add" type="text" key={index} name="equipmentName" placeholder= "Equipment" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
-                    <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="edit-icon-replacement"></p> REMOVE EQUIPMENT </li>
+                    <li><textarea min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
+                    <li><textarea type="text" key={index} name="equipmentName" placeholder= "Equipment" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
+                    <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="edit-icon-replacement"> REMOVE EQUIPMENT </p> </li>
                   </>
                 )}              
               </ul>
@@ -258,10 +258,10 @@ const deleteItem = (index, event, name)=>{
                   placeHolder="enter tags"
                 /> 
               </div>
-              <h6 className="upload-img">Upload an Image:</h6>
+              {/* <h6 className="upload-img">Upload an Image:</h6>
               <div className='file-upload'>
               <textarea className='edit-recipe-item-img' type="file" name="image-upload" />
-              </div>
+              </div> */}
               <div className='edit-recipe-btn-container'>
                 <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
                 <button className='edit-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
