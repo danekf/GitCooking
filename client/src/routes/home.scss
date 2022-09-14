@@ -3,8 +3,6 @@
   color: #d9534f;
   font-weight: 100;
   padding: 0.5em;  
-  margin-top: 1em;
-  margin-bottom: 1em;
   padding-left: 1em;
   padding-right: 1em;
   text-shadow: 0.2rem 0.1rem #FAF1E6;
@@ -22,7 +20,6 @@
 .home-page-subtitle {
   justify-content: center;
   color: #FFAD60;
-  padding: 25px;
   background-color: #FAF1E6;
   margin-left: 0em;
   margin-right: 0em;
@@ -68,6 +65,11 @@
 
 .home-page-summary-fork {
   color: #FFAD60;
+}
+
+#fork-icon {
+  color: #FFAD60;
+  padding-left:20px;
 }
 
 .home-page-connect-with-us {
