@@ -33,8 +33,6 @@ module.exports = (db) => {
       else{
         res.json({Error: 'No results found'})
       }
-
-
     });
   });
 
