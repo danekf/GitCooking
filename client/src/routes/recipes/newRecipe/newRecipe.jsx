@@ -287,21 +287,22 @@ const deleteItem = (index, event, name)=>{
               onChange={setRecipeTags}
               placeHolder="enter tags"
             /> 
-          <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
           </div>
-          <h6 className='new-create-heading'>Upload an Image:</h6>
-          <input className='new-btn-upload' type="file" name="image-upload"/>
 
+
+          <h6 className='new-create-heading'>Upload an Image:</h6>
 
 
           </form>
-
-          <img src={formValue.recipe_photos} width= '30%' />
-            
           <form onSubmit={submitImage}> 
             <input type="file" onChange = {handleImage} name="myFile" accept='image/*' />
             <input type="submit" value="Upload file"/>
-          </form>  
+          </form> 
+
+          <img className='recipe-photo' src={formValue.recipe_photos} width= '30%'  />
+          <button className='new-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+
+ 
 
             <ToastContainer 
             position='top-center'
