@@ -96,7 +96,7 @@ export default function UserProfile() {
     <div className='my-profile-body'>
       {/* Controls whether we are showing the edit view, or the regular profile */}
       {mode === LOADING && <Register/>}
-      {mode === EDIT && <div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
+      {mode === EDIT &&<div><EditProfile user={user} returnToProfile={returnToProfile}/></div>}
       {mode === SHOW && 
         <>
           <div className="profile-card">
