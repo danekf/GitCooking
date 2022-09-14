@@ -58,6 +58,7 @@ const users = require('./routes/users');
 const profiles = require('./routes/profiles');
 const { fstat } = require('fs');
 const comments = require('./routes/comments');
+const search = require('./routes/search');
 
 
 // Mount all resource routes
@@ -68,6 +69,8 @@ app.use('/api/logout', logout());
 app.use('/api/users', users(db));
 app.use('/api/profile', profiles(db));
 app.use('/api/comments', comments(db));
+app.use('/api/search', search(db));
+
 
 
 //static folder for images

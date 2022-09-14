@@ -15,6 +15,7 @@ import Register from './routes/register';
 import NewRecipe from './routes/recipes/newRecipe/newRecipe';
 import Recipe from './routes/recipes/recipe';
 import { Favourites } from './routes/favourites';
+import SearchBar from './routes/components/searchBar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -35,6 +36,7 @@ root.render(
         <Route path='register' element={<Register />} />
         <Route path='newRecipe' element={<NewRecipe />} />
         <Route path='favourites' element={<Favourites />} />
+        <Route path='searchResults' elements={<SearchBar />}/>
         <Route
           path='forkRecipe'
           element={
