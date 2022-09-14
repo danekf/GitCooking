@@ -75,7 +75,7 @@ export default function EditProfile({returnToProfile, user}) {
       else if(response.status === 200){
         toast.success("Update Successful, redirecting to profile...")
         setTimeout(()=>{
-          window.location = '/users/profile'
+          returnToProfile();
         }, 2000)
       }
     })

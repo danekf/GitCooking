@@ -88,7 +88,7 @@ export default function UserProfile() {
 
   // CB function sets edit profile page to false:
   const returnToProfile = () => {
-    setMode(SHOW);
+    setMode(PUBLIC);
   }
 
   return (

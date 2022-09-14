@@ -291,6 +291,9 @@ const deleteItem = (index, event, name)=>{
           <h6 className='new-create-heading'>Upload an Image:</h6>
           <textarea className='new-btn-upload' type="file" name="image-upload"/>
 
+          <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
+
+
           </form>
 
           <img src={formValue.recipe_photos} width= '30%' />

@@ -202,6 +202,7 @@ export default function Recipe() {
               {recipe.tags.map((tag) => <li className='tags'> {tag} </li>)}
             </ul>
           </div>
+          
 
         </div>
         
