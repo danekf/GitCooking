@@ -3,6 +3,54 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  //////////////////////////
+  //Get routes for homepage
+  //////////////////////////
+
+  router.get('/top', (request, response) => {
+    const queryString = `
+    SELECT *
+    FROM recipes
+    ;`;
+
+    db.query(queryString)
+      // Return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+  });
+
+  router.get('/vegetarian', (request, response) => {
+    const queryString = `
+    SELECT *
+    FROM recipes
+    ;`;
+
+    db.query(queryString)
+      // Return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+  });
+
+  router.get('/meat', (request, response) => {
+    const queryString = `
+    SELECT *
+    FROM recipes
+    ;`;
+
+    db.query(queryString)
+      // Return an array of objects, grouped by recipe ID.
+      .then(({ rows: recipes }) => {
+        response.json(recipes);
+      });
+  });
+
+
+  //////////////////////////
+  //Search Function
+  //////////////////////////
+
   //basic search for any value that matches the search
   router.post('/', (req, res) => {
     const {searchText} = req.body;
