@@ -35,11 +35,9 @@ export default function SearchBar(props) {
       if(response.data.length>0){
         setResults(response.data)
         setMode(RESULTS)
-        setSearchText('')
       }
       else{
         setMode(NONE)
-        setSearchText('')
       }
     })
   }
