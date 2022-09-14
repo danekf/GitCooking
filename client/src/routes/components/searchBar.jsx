@@ -71,7 +71,8 @@ export default function SearchBar(props) {
 
       {mode === 'RESULTS' &&
         <>
-          {results.map((recipe) => <li><RecipeCard recipe={recipe}/></li>)}
+        <h1 className='results-title'> Results: </h1>
+          {results.map((recipe) => <li className='results'><RecipeCard recipe={recipe}/></li>)}
         </>
       }
 
