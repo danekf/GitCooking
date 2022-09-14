@@ -116,7 +116,8 @@ function App() {
           <Outlet />
           <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js'></script>
         </body>
-        
+
+  
       <footer class='app-footer'>
         
         <nav class='app-footer-nav'>
@@ -146,6 +147,7 @@ function App() {
           </Modal>
         </nav>
       </footer>
+     
     </div>
   </html>
   );
