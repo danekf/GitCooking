@@ -41,7 +41,10 @@ export default function Login(event) {
         toast.error(response.data.error);
       }
       else{
-        window.location ="/";
+        toast.success('Login sucessful...Redirecting!')
+        setTimeout(()=>{
+          window.location ="/";
+        }, 1500)
       }
     })
   }
@@ -65,7 +68,7 @@ export default function Login(event) {
         <div>
           <ToastContainer 
             position='top-center'
-            autoClose={3000}
+            autoClose={1500}
             closeOnClick
           />
         </div>
