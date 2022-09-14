@@ -102,9 +102,13 @@
   flex-direction: column;
 }
 
-.grouped-recipes {
+.grouped-recipes {  
   padding: 1em;
   background-color: white;
+}
+
+.recipe-card-container{
+  margin: auto;
 }
 
 .connect-with-us-body {
@@ -123,3 +127,8 @@
     padding: 5em;
   } 
 }
+
+// .Home .carousel-inner {
+//   display: flex;
+//   justify-content: center;
+// }
