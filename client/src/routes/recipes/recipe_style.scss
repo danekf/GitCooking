@@ -42,10 +42,10 @@
   color: #d9534f;
   font-size: 0em;
   display: flex;
-  justify-content:center;
+  justify-content:right;
   margin-top: 1em;
   margin-right: 2em;
-  cursor: pointer;
+ 
 }
 
 .fa-solid.fa-pen-to-square.icon-hover {
@@ -67,29 +67,24 @@
   }
 }
 
-.fa-spoon {
-  margin-right: 1em;
-}
-.fa-utensils{
-  margin-right: 1em;
-}
-.fa-pen-to-square{
+.fa-padding{
   padding-right: 1em;
 }
+
 
 .icon-hover:hover {
   color: #FFAD60;
 }
 
 .fa-solid{
-  font-size:medium
+  font-size:medium;
+  cursor: pointer;
 }
 .fa-regular{
   font-size:medium
 }
 
 .edit-recipe-icon {
-  margin-right: 0.2em;
   margin-top: -1.5em;
 }
 

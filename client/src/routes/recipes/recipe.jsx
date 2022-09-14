@@ -164,10 +164,10 @@ export default function Recipe() {
         <div className='recipe-card'>
         <h1 className='recipe-title'>{recipe.title}</h1>
           <div className='recipe-icons'>
-            {isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Spoon Recipe </i>}
-            {!isFavourite && <i className="fa-solid fa-spoon icon-hover" onClick={toggleFavourite}> Delete Spoon </i>}           
-            <i className="fa-solid fa-utensils icon-hover" onClick={forkRecipe}> Fork Recipe </i>
-            <i className="fa-solid fa-share icon-hover" onClick={shareRecipe}> Share Recipe </i>
+            {isFavourite && <i className="fa-solid fa-spoon icon-hover fa-padding" onClick={toggleFavourite}> Spoon Recipe </i>}
+            {!isFavourite && <i className="fa-solid fa-spoon icon-hover fa-padding" onClick={toggleFavourite}> Remove Spoon </i>}           
+            <i className="fa-solid fa-utensils icon-hover fa-padding" onClick={forkRecipe}> Fork Recipe </i>
+            <i className="fa-solid fa-share icon-hover fa-padding" onClick={shareRecipe}> Share Recipe </i>
           </div>
             {user.id === recipe.user_id && <i className="fa-solid fa-pen-to-square icon-hover" onClick={()=>setEditMode(EDIT)}> Edit Recipe </i>}
           <div className='username-heading-body'>
