@@ -238,7 +238,7 @@ const deleteItem = (index, event, name)=>{
               <ul className='add-ingredient'>
                 <li><textarea type="number"  min="0"name="ingredientQty" placeholder='Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                 <li><textarea type="text" name="ingredientName" placeholder='Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
-                <p onClick={addIngredientToList} className="icon-replacement"> ADD INGREDIENT </p>
+                <p onClick={addIngredientToList} className="icon-replacement"> ADD NEW INGREDIENT </p>
               </ul>
             </>
 
@@ -257,7 +257,7 @@ const deleteItem = (index, event, name)=>{
               <ul className='add-ingredient'>
               <li><textarea type="number" name="equipmentQty" placeholder='Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
               <li><textarea type="text" name="equipmentName" placeholder='Equipment' onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
-              <p className="icon-replacement" onClick={addEquipmentToList}> ADD EQUIPMENT</p>
+              <p className="icon-replacement" onClick={addEquipmentToList}> ADD NEW EQUIPMENT</p>
               </ul>
             </>
           {/* ///////////////////////////////INSTRUCTIONS////////////////////////////////////// */}
@@ -275,7 +275,7 @@ const deleteItem = (index, event, name)=>{
             <ul className='add-ingredient'>
               <li><textarea type="number" step="0.5" min="0" name="estimatedTime" placeholder='Time (minutes)' onChange={handleInstruction} value = {newInstruction.estimatedTime}/></li>
               <li><textarea type="text" name="instruction" placeholder='Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/></li>
-              <p className="icon-replacement" onClick={addInstructionToList}> ADD INSTRUCTION</p>
+              <p className="icon-replacement" onClick={addInstructionToList}> ADD NEW INSTRUCTION</p>
             </ul>
             </>
               {/* ///////////////////////////TAGS////////////////////////////////////////////// */}
@@ -287,11 +287,11 @@ const deleteItem = (index, event, name)=>{
               onChange={setRecipeTags}
               placeHolder="enter tags"
             /> 
+          <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
           </div>
           <h6 className='new-create-heading'>Upload an Image:</h6>
-          <textarea className='new-btn-upload' type="file" name="image-upload"/>
+          <input className='new-btn-upload' type="file" name="image-upload"/>
 
-          <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
 
 
           </form>
