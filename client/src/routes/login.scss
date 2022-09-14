@@ -33,6 +33,11 @@
 .login-form-item {
   margin-bottom: 20px;
   padding: 1em;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid transparent;
+  border-bottom-color: #D9534F;
 }
 
 .badge-primary {
