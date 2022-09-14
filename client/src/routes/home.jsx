@@ -22,6 +22,48 @@ export default function Home() {
       }
       setRecipes(tempArray);
     })
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'top'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setTopRecipes(tempArray);
+    })
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'vegetarian'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setVegetarianRecipes(tempArray);
+    })
+
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'meat'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setMeatRecipes(tempArray);
+    })
+
+
     // eslint-disable-next-line
   }, [])
   return (
