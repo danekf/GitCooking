@@ -6,6 +6,12 @@ import RecipeCarousel from './recipeCarousel';
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
+  const [topRecipes, setTopRecipes] = useState([]);
+  const [vegetarianRecipes, setVegetarianRecipes] = useState([]);
+  const [meatRecipes, setMeatRecipes] = useState([]);
+  
+
+
 
   useEffect(()=>{
     axios.get(`/api/recipes`)
@@ -16,6 +22,48 @@ export default function Home() {
       }
       setRecipes(tempArray);
     })
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'top'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setTopRecipes(tempArray);
+    })
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'vegetarian'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setVegetarianRecipes(tempArray);
+    })
+
+
+    axios({
+      method: 'post',
+      url: '/api/search',
+      data: {searchText: 'meat'}
+    })
+    .then((response)=>{
+      const tempArray=[]
+      for (let key in response.data){
+        tempArray.push(response.data[key])
+      }
+      setMeatRecipes(tempArray);
+    })
+
+
     // eslint-disable-next-line
   }, [])
   return (
@@ -48,12 +96,12 @@ export default function Home() {
 
 
       <div className='grouped-recipes'>
-        <h3 className='home-page-subheading'>Top 10 Recipes of the Week</h3>
-        <RecipeCarousel recipes={recipes}/>
-        <h3 className='home-page-subheading'>Popular Recipes</h3>
-        <RecipeCarousel recipes={recipes}/>
-        <h3 className='home-page-subheading'>Most Spooned Recipes</h3>
-        <RecipeCarousel recipes={recipes}/>
+        <h3 className='home-page-subheading'>Top Recipes of the Week</h3>
+        <RecipeCarousel recipes={topRecipes}/>
+        <h3 className='home-page-subheading'>Popular Vegetarian Recipes</h3>
+        <RecipeCarousel recipes={vegetarianRecipes}/>
+        <h3 className='home-page-subheading'>Popular Meat Recipes</h3>
+        <RecipeCarousel recipes={meatRecipes}/>
       </div>
 
       <div className='connect-with-us-body'>
