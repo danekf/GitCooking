@@ -9,8 +9,10 @@ import RecipeCard from '../recipes/recipeCard';
 
 export default function SearchBar(props) {
   const [searchText, setSearchText]= useState();
-  const {modalProps, getTriggerProps} = useModal();
   const [results, setResults]=useState([]);
+  const {modalProps, getTriggerProps} = useModal({
+    background: '#FAF1E6'
+    });
 
   const SEARCHING = 'SEARCHING';
   const RESULTS = 'RESULTS';
@@ -19,28 +21,33 @@ export default function SearchBar(props) {
   const [mode, setMode] = useState(SEARCHING)
 
   const searchDb = (event) =>{
+    
     event.preventDefault();
     setMode(SEARCHING);
-    console.log('Searching db for ', searchText)
+    document.getElementById('secretModalTrigger').click();
     axios({
       method: 'post',
       url: '/api/search',
       data: {searchText: searchText}
     })
     .then((response)=>{
+      console.log('response: ', response.data)
       if(response.data.length>0){
         setResults(response.data)
+        setMode(RESULTS)
+        setSearchText('')
       }
       else{
         setMode(NONE)
+        setSearchText('')
       }
     })
   }
 
   return (
   <>
-    <InputGroup className="search-bar" onSubmit={searchDb}>
-        <InputGroup.Text id="search-button" onClick={searchDb} {...getTriggerProps({ background: '#FAF1E6' })}>
+    <InputGroup className="search-bar" >
+        <InputGroup.Text id="search-button" onClick={searchDb}>
           Search 🍳
         </InputGroup.Text>
 
@@ -50,7 +57,9 @@ export default function SearchBar(props) {
           onChange={(event)=>setSearchText(event.target.value)}
         />
     </InputGroup>
+    
     <Modal {...modalProps}>
+      
       {mode === 'SEARCHING' && 
         <>
         <img src='https://media0.giphy.com/media/6rmxsMnN0kSryPsI9p/200w.gif?cid=82a1493ba0njjpjmt8bktz0eefzomnladadlpvsztsw6v2h3&rid=200w.gif&ct=g' width='100px'/>
@@ -66,10 +75,14 @@ export default function SearchBar(props) {
 
       {mode === 'NONE' && 
       <>
-
+        <h1>Sorry... no results found for {searchText}.</h1>
+        <img src ='https://www.redbrick.me/wp-content/uploads/2019/02/2017-07-12-10-51-59-900x596.jpg' width='50%'/>
       </>
       }
     </Modal>
+
+    {/* Secret and evil modal trigger hidden trigger. TECHNICALLY visible but... not */}
+    <div className='secretModalTrigger' id='secretModalTrigger'{...getTriggerProps({ background: '#FAF1E6' })}>.</div>
   </>
   );  
 }
