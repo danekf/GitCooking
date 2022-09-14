@@ -195,39 +195,39 @@ const submitRecipe = (event) => {
               
               <h6 className='edit-recipe-heading'>Servings:</h6>
               <textarea className="edit-recipe-item" type="number" name="servings" onChange={handleChange} value={formValue.servings} />
-              {/*///////////////////////////////INGREDIENTS//////////////////////  */}
+
               <h6 className='edit-recipe-heading'>Ingredients:</h6>
               <ul className='edit-added-ingredient'>
                 {formValue.ingredients.map((item, index) => 
                 <>
                   <li><textarea min="0" type="number" key={index} name="ingredientQty" placeholder= "Quantity" value={formValue.ingredients[index].ingredientQty} onChange={(event)=>updateRecipe(index, event, "ingredients")}/></li> 
                   <li><textarea type="text" key={index} name="ingredientName" placeholder= "Ingredient" value={formValue.ingredients[index].ingredientName} onChange={(event)=>updateRecipe(index, event, "ingredients")}/> </li>
-                  <li><p onClick={(event)=>deleteItem(index, event, "ingredients")} className="edit-icon-replacement"> REMOVE INGREDIENT </p></li>
+                  <li><p onClick={(event)=>deleteItem(index, event, "ingredients")} className="icon-replacement-colour2"> Remove {formValue.ingredients[index].ingredientName} </p></li>
                 </>
                 )} 
                 </ul>
                 <>
                   <ul className='edit-add-ingredient'>
+                    <p className="icon-replacement" onClick={addIngredientToList}> ADD NEW INGREDIENT </p>
                     <li><textarea type="number"  min="0" name="ingredientQty" placeholder='Quantity' onChange={handleIngredient} value = {newIngredient.ingredientQty}/></li>
                     <li><textarea type="text" name="ingredientName" placeholder='Ingredient' onChange={handleIngredient} value = {newIngredient.ingredientName}/></li>
-                    <p className="edit-icon-replacement" onClick={addIngredientToList}> ADD INGREDIENT </p>
                   </ul>
                 </>
-              <h6 className='edit-recipe-heading'>Equipments Required:</h6>
+              <h6 className='edit-recipe-heading'>Equipment Required:</h6>
               <ul className='added-ingredient'>
                 {formValue.equipment.map((item, index) => 
                   <>
                     <li><textarea min="0" step="1" type="number" key={index} name="equipmentQty" placeholder= "Quantity" value={formValue.equipment[index].equipmentQty} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
                     <li><textarea type="text" key={index} name="equipmentName" placeholder= "Equipment" value={formValue.equipment[index].equipmentName} onChange={(event)=>updateRecipe(index, event, "equipment")}/></li>
-                    <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="edit-icon-replacement"> REMOVE EQUIPMENT </p> </li>
+                    <li><p onClick={(event)=>deleteItem(index, event, "equipment")} className="icon-replacement-colour2"> Remove {formValue.equipment[index].equipmentName} </p> </li>
                   </>
                 )}              
               </ul>
                 <>
                   <ul className='edit-add-ingredient'>
+                    <p className="edit-icon-replacement" onClick={addEquipmentToList}> ADD NEW EQUIPMENT </p>
                     <li><textarea type="number" name="equipmentQty" placeholder='Quantity' onChange={handleEquipment} value = {newEquipment.equipmentQty}/></li>
                     <li><textarea type="text" name="equipmentName" placeholder="Equipment" onChange={handleEquipment} value = {newEquipment.equipmentName}/></li>
-                    <p className="edit-icon-replacement" onClick={addEquipmentToList}> ADD EQUIPMENT </p>
                   </ul>
                 </>
               <h6 className='edit-recipe-heading'>Instructions:</h6>
@@ -236,15 +236,15 @@ const submitRecipe = (event) => {
                 <>
                   <li><textarea className="edit-recipe-item-add-instr-add" min="0" step="0.5" type="number" key={index} name="estimatedTime" placeholder= "Time" value={formValue.instructions[index].estimatedTime} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
                   <li><textarea className="edit-recipe-item-add-instr-add-box" type="text" key={index} name="instruction" placeholder= "Instruction" value={formValue.instructions[index].instruction} onChange={(event)=>updateRecipe(index, event, "instructions")}/></li>
-                  <p onClick={(event)=>deleteItem(index, event, "instructions")} className="edit-icon-replacement"> REMOVE INSTRUCTION </p>
+                  <p onClick={(event)=>deleteItem(index, event, "instructions")} className="icon-replacement-colour2"> Remove Step </p>
                   </>
                 )}  
                 </ul> 
               <>
                 <ul className='edit-add-ingredient'>
+                  <p className="edit-icon-replacement" onClick={addInstructionToList}> ADD NEW INSTRUCTION </p>
                   <li><textarea width="5" type="number" step="0.5" min="0" name="estimatedTime" placeholder='Time' onChange={handleInstruction} value = {newInstruction.estimatedTime}/></li>
                   <li><textarea type="text" name="instruction" placeholder='Instruction' onChange={handleInstruction} value = {newInstruction.instruction}/></li>
-                  <p className="edit-icon-replacement" onClick={addInstructionToList}> ADD INSTRUCTION </p>
                 </ul>
               </>
               <h6 className='edit-recipe-heading'>Tags:</h6>
@@ -262,8 +262,8 @@ const submitRecipe = (event) => {
               <textarea className='edit-recipe-item-img' type="file" name="image-upload" />
               </div> */}
               <div className='edit-recipe-btn-container'>
-                <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
                 <button className='edit-btn-submit' onClick={()=>returnToRecipe()}>Cancel</button>
+                <button className='edit-btn-submit' type="submit" onClick={submitRecipe}>Submit Recipe!</button>
               </div>
             </form>
           </div>
