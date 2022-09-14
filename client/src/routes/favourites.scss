@@ -16,6 +16,10 @@
   padding-left: 1em;
 }
 
+li.container-fave {
+  display: contents;
+}
+
 @media screen and (min-width: 550px) {
   .recipe-list-fave-container {
     padding-right: 2em;
@@ -43,3 +47,4 @@
     padding-left: 5em;
   }
 }
+
