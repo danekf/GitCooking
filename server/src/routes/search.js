@@ -14,12 +14,12 @@ module.exports = (db) => {
     INNER JOIN users ON users.id = user_id
     WHERE 
     (
-      title LIKE $1 
+      title LIKE $1
       OR users.username LIKE $1
     )
     `;
 
-    const queryValues = [`${searchText}`];
+    const queryValues = [`%${searchText}%`];
 
     db.query(queryString, queryValues)
     .then(({rows: recipes}) => {
