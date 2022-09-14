@@ -112,7 +112,7 @@
 .recipe-img {
   display: block;
   margin-top: 2em;
-  margin-left: 1em;
+  margin-left: 27%;
   margin-right: 1em;
   margin-bottom: 2em;
   border: 1px solid transparent;
@@ -209,4 +209,9 @@ ul li.tags {
 
 .comment-body-recipe {
   margin-right: 1.7em;
+}
+
+.recipe-author-name:hover {
+  color: #FFAD60;
+  cursor: pointer;
 }
